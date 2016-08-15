@@ -41,20 +41,24 @@
  */
 
 body {
-    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 .business-header {
-    height: 400px;
-    background: url('http://placehold.it/1920x400') center center no-repeat scroll;
+    padding: 20px;
+    background: #efefef url('http://placehold.it/1920x400') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
 }
+ .business-header h2{
 
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+}
 /* Customize the text color and shadow color and to optimize text legibility. */
 
 .tagline {
@@ -68,6 +72,10 @@ body {
     margin: 0 auto;
 }
 
+
+.navbar {
+    margin-bottom: 0px;
+}
 footer {
     margin: 50px 0;
 }
@@ -81,23 +89,31 @@ footer {
 /*menu*/
 
 .menu-background{
-  background-color: #FF149B;
+  background-color: #FFf;
   width: 100%;
   /*height: 100%;*/
-  position: absolute;
+  margin-top: 5%;
 }
 
 .menu-left-text{
-  margin-left: 33%;
-width: 450px;
-display: block;
+
+display: inline-block;
 text-align: center;
 font-size: 18px;
 }
 
+.navbar-inverse .navbar-nav > li > a{
+  color:#FF149B;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
+  color:#FFf;
+  background-color: #FF149B;
+}
 /*boxes*/
-.panel-color-text{
-  color: #5e98ef !important;
+.panel-default > .panel-heading,
+.panel-body h6{
+  color: #5e98ef;
   font-weight: bold;
 }
 
