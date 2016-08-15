@@ -47,11 +47,11 @@ body {
 
 .business-header {
     padding: 20px;
-    background: #efefef url('http://placehold.it/1920x400') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    background-color: #ececec;
 }
  .business-header h2{
 
@@ -75,24 +75,49 @@ body {
 
 .navbar {
     margin-bottom: 0px;
+    text-align: center;
 }
-footer {
+
+/*footer {
     margin: 50px 0;
+}*/
+.footer-background{
+  background-color: #c3c3c3;
+  position: absolute;
+      width: 100%;
+}
+.footer-text-1{
+margin: 20px;
+float: left;
+}
+
+.footer-text-2{
+  margin: 20px;
+  float: right;
 }
 
 /*begin navbar*/
-.navbar-icon{
-  font-size:20px;
+.icon-navbar{
+  font-size:30px;
 }
 
+.logo-header{
+  margin: 4% auto;
+}
 
+.headerfi{
+  position: fixed;
+min-height: 40px !important;
+padding: 0 !important;
+z-index: 999981;
+}
 /*menu*/
 
 .menu-background{
   background-color: #FFf;
   width: 100%;
   /*height: 100%;*/
-  margin-top: 5%;
+  /*margin-top: 5%;*/
 }
 
 .menu-left-text{
@@ -102,14 +127,25 @@ text-align: center;
 font-size: 18px;
 }
 
-.navbar-inverse .navbar-nav > li > a{
+ .navbar-inverse .navbar-nav > li > a > span{
   color:#FF149B;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus > span{
   color:#FFf;
   background-color: #FF149B;
 }
+
+.navbar-inverse .navbar-nav > li > a:hover > span {
+  color: #fff;
+}
+
+.menu-background .menu-left-text .navbar-nav > li {
+  float: left;
+  height: 56px;
+  width: 180px;
+}
+
 /*boxes*/
 .panel-default > .panel-heading,
 .panel-body h6{

@@ -4227,6 +4227,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-fixed-bottom .navbar-collapse {
     max-height: 200px;
   }
+
 }
 .container > .navbar-header,
 .container-fluid > .navbar-header,
