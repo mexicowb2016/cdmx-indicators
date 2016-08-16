@@ -100,17 +100,25 @@ float: left;
 .icon-navbar{
   font-size:30px;
 }
-
+.position-url{
+  margin-top:80%;
+  font-size: 14px;
+}
 .logo-header{
   margin: 4% auto;
 }
 
+.position-icon-nav{
+  margin-top: 64%;
+}
 .headerfi{
   position: fixed;
 min-height: 40px !important;
 padding: 0 !important;
 z-index: 999981;
 }
+
+
 /*menu*/
 
 .menu-background{
@@ -156,4 +164,14 @@ font-size: 18px;
 .icon-right{
   float: right;
   font-size: 21px;
+}
+.panel-text-tittle{
+  color: #5C5C5C;
+  font-size: 12px;
+  font-weight: normal;
+
+}
+.size-percentage{
+  font-size: 35px;
+  color: #8a8b8a;
 }

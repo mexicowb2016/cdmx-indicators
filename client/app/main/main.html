@@ -10,7 +10,7 @@
               <span class="icon-bar"></span>
           </button>
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand position-url" href="#">
               cdmx.gob.mx
             </a>
         </div>
@@ -19,10 +19,10 @@
         <img src="../app/images/logo.png" class="logo-header"/>
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
+                <li class="position-icon-nav">
                     <a href="#"><i class="mdi mdi-twitter icon-navbar"></i></a>
                 </li>
-                <li>
+                <li class="position-icon-nav">
                     <a href="#"><i class="mdi mdi-facebook icon-navbar"></i></a>
                 </li>
 
@@ -70,21 +70,25 @@
           <div class="col-lg-4 col-sm-4">
             <div class="panel panel-default">
               <div class="panel-body text-center">
-                <h6>Basic panel</h6>
+                <h6>Gasto de Inversión</h6>
+                <span class="size-percentage">40%</span>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-sm-4">
             <div class="panel panel-default">
               <div class="panel-body text-center">
-                <h6>Basic panel</h6>
+                <h6>Gasto Corriente</h6>
+                <span class="size-percentage">85%</span>
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-sm-4">
             <div class="panel panel-default">
               <div class="panel-body text-center">
-                <h6>Basic panel</h6>
+                <h6>Top 3 en Ejeción de Inversión</h6>
+                <button class="btn btn-default btn-sm" type="button" name="button">Secretaria</button>
+                <button class="btn btn-default btn-sm" type="button" name="button">Proyecto</button>
               </div>
             </div>
           </div>
@@ -96,7 +100,7 @@
   <div class="row">
     <div class="col-lg-12 col-sm-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Ejecución del gasto por Secretaria <i class="mdi mdi-comment-question-outline icon-right"></i></div>
+        <div class="panel-heading">Ejecución del gasto por Secretaria <i class="mdi mdi-information icon-right"></i></div>
         <div class="panel-body">
           Panel Body
         </div>
@@ -105,23 +109,57 @@
   </div>
 </div>
 
+
 <br>
 <div class="container">
     <div class="row">
           <div class="col-lg-6 col-sm-6">
             <div class="panel panel-default">
+              <div class="panel-heading">Desvió del momento del gasto<a href="#ventana1" data-toggle="modal"><i class="mdi mdi-information icon-right"></i></a>
+                  <br><span class="panel-text-tittle">CLCs que registraron el compromiso a tiempo vs CLCs que no lo registraron por Secretaria</span></div>
               <div class="panel-body">
-                Basic panel
+                Panel content
               </div>
             </div>
           </div>
 
+<!-- Modal one -->
+          <div class="modal face" id="ventana1">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                    <!-- Header de la ventana-->
+                      <div class="modal-header">
+                          <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title">Encabezado de nuestra ventana</h4>
+                      </div>
+
+                    <!-- Contenido de la ventana -->
+                    <div class="modal-body">
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                    <!-- Footer de la ventana-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                    </div>
+                  </div>
+              </div>
+          </div>
+
+<!-- Modal one end -->
+
           <div class="col-lg-6 col-sm-6">
             <div class="panel panel-default">
+              <div class="panel-heading">Numero de adecuaciones liquidas<i class="mdi mdi-information icon-right"></i>
+              <br><span class="panel-text-tittle">Adecuaciones por Secretaria</span></div>
               <div class="panel-body">
-                Basic panel
+                Panel content
               </div>
             </div>
+
           </div>
    </div>
 </div>
@@ -131,10 +169,13 @@
   <div class="row">
     <div class="col-lg-12 col-sm-12">
       <div class="panel panel-default">
+        <div class="panel-heading">Calidad de la gestión<i class="mdi mdi-information icon-right"></i>
+        <br><span class="panel-text-tittle">Numero de entradas de CLCs y de rechazos de CLC(YTD)</span></div>
         <div class="panel-body">
-          Basic panel
+          Panel content
         </div>
       </div>
+
     </div>
   </div>
 </div>
