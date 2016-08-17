@@ -173,10 +173,17 @@ font-size: 18px;
 
 }
 .size-percentage{
-  font-size: 35px;
-  color: #8a8b8a;
+font-size: 48px;
+color: #8a8b8a;
+margin: 0px;
+margin-bottom: -20px;
 }
 
+.size-percentage-1{
+color: #8a8b8a;
+margin: 0px;
+font-size: 18px;
+}
 
 /*Button footer*/
 * {
