@@ -77,7 +77,9 @@ body {
     margin-bottom: 0px;
     text-align: center;
 }
-
+.main-container{
+  padding-top:221px;
+}
 /*begin navbar*/
 .icon-navbar{
   font-size:30px;
