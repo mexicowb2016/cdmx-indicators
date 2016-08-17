@@ -78,24 +78,6 @@ body {
     text-align: center;
 }
 
-/*footer {
-    margin: 50px 0;
-}*/
-.footer-background{
-  background-color: #c3c3c3;
-  position: absolute;
-      width: 100%;
-}
-.footer-text-1{
-margin: 20px;
-float: left;
-}
-
-.footer-text-2{
-  margin: 20px;
-  float: right;
-}
-
 /*begin navbar*/
 .icon-navbar{
   font-size:30px;
@@ -118,6 +100,23 @@ padding: 0 !important;
 z-index: 999981;
 }
 
+/*footer {
+    margin: 50px 0;
+}*/
+.footer-background{
+  background-color: #c3c3c3;
+  position: absolute;
+      width: 100%;
+}
+.footer-text-1{
+margin: 20px;
+float: left;
+}
+
+.footer-text-2{
+  margin: 20px;
+  float: right;
+}
 
 /*menu*/
 
@@ -175,3 +174,95 @@ font-size: 18px;
   font-size: 35px;
   color: #8a8b8a;
 }
+
+
+/*Button footer*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+
+.buttom-footer{
+  float: right;
+  position: inherit;
+  margin-top: -50px;
+  z-index: 100;
+}
+/*for lack a better headline*/
+
+/*i'm a button, click me!*/
+
+.boom-size {
+  width: 50px;
+  height: 50px;
+  color: #ffffff;
+  background-color: #FF149B;
+  text-decoration: none;
+  font-size: 2em;
+  border: none;
+  /*margin: 10px 0 0 5px;*/
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  border-radius: 50%;
+
+}
+/*magic starts here*/
+
+.boom-size:hover {
+  cursor: pointer;
+}
+
+.boom:hover {
+  color: #FF149B;
+  border: #FF149B;
+  opacity: 0;
+  -webkit-transform: scale(2, 2);
+  -moz-transform: scale(2, 2);
+  transform: scale(2, 2);
+
+}
+
+/*for the sake of responsiveness...*/
+
+@media (max-width: 330px) {
+  .buttom-footer {
+    width: 100%;
+  }
+  .button-size {
+    width: 90%;
+    margin: 5% 0 0 5%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  .position-url{
+    margin-top:0%;
+    font-size: 12px;
+  }
+
+
+  .buttom-footer{
+    display: none;
+  }
+  .navbar-nav{
+    width: 400px;
+  }
+
+ }
