@@ -155,6 +155,11 @@ font-size: 18px;
   width: 180px;
 }
 
+.active-menu{
+  background-color: #FF149B;
+  height: 5px;
+}
+
 /*boxes*/
 .panel-default > .panel-heading,
 .panel-body h6{
