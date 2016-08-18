@@ -188,6 +188,21 @@ font-size: 18px;
 .icon-information{
   color: #b4b5b4;
 }
+
+.buttom-position{
+  margin-left: 22%;
+  margin-right: 22%;
+}
+
+.label-background{
+  background-color: #fff;
+  color: #df5593;
+  border: 2px #df5593 solid;
+  border-radius: 50%;
+  font-size: 12px;
+  margin-left: 10%;
+}
+
 /*Button footer*/
 * {
   margin: 0;
@@ -252,7 +267,11 @@ font-size: 18px;
   }
 }
 
-
+/*Modals styles*/
+.btn-modal{
+  background-color: #FF149B;
+  color:#fff;
+}
 
 
 

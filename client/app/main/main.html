@@ -88,10 +88,18 @@
           <div class="col-lg-4 col-sm-4">
             <div class="panel panel-default">
               <div class="panel-heading">Tres primeros en Ejecución de Gasto de Capital<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
-              <div class="panel-body text-center">
-                <button class="btn btn-default btn-sm" type="button" name="button">Secretaria</button>
-                <button class="btn btn-default btn-sm" type="button" name="button">Proyecto</button>
-
+              <div class="panel-body">
+                <div class="btn-group buttom-position">
+                  <label class="btn btn-default" ng-model="radioModel" uib-btn-radio="'Left'">Secretaria</label>
+                  <label class="btn btn-default" ng-model="radioModel" uib-btn-radio="'Middle'">Proyecto</label>
+              </div>
+                <br>
+                <br>
+                <div class="">
+                  <p><span class="label label-background">1</span> Educaión</p>
+                  <p><span class="label label-background">2</span> Obras e Infraestructura</p>
+                  <p><span class="label label-background">3</span> Seguridad Civil</p>
+                </div>
               </div>
             </div>
           </div>
@@ -129,6 +137,9 @@
 
 
 
+
+
+<!-- Information modal -->
 <footer class="footer-background">
   <div class="footer-text-1">
      ® 2015 Gobierno del Distrito Federal
@@ -142,19 +153,14 @@
 </footer>
 
 <script type="text/ng-template" id="information-modal.html">
-    <div class="modal-header">
-        <h3 class="modal-title">{{indicatorContent.title}}</h3>
-    </div>
+    <!-- <div class="modal-header">
+        <span class="modal-title">{{indicatorContent.title}}</span>
+    </div> -->
     <div class="modal-body">
-
         <p>{{indicatorContent.description}}</p>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-modal" type="button" ng-click="ok()">OK</button>
     </div>
 </script>
-
-<!-- Information modal -->
-
 <!-- Information modal end -->

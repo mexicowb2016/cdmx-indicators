@@ -78,4 +78,5 @@ angular.module('cdmxIndicatorsApp')
          $scope.animationsEnabled = !$scope.animationsEnabled;
        };
    //Fin codigo modal
+   $scope.radioModel = 'Middle';
   });
