@@ -5938,7 +5938,8 @@ button.close {
 }
 .modal-header {
   padding: 15px;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px #ff149b solid;
+  margin: 11px;
 }
 .modal-header .close {
   margin-top: -2px;
@@ -5949,11 +5950,13 @@ button.close {
 }
 .modal-body {
   position: relative;
-  padding: 15px;
+  padding: 25px;
+
 }
 .modal-footer {
   padding: 15px;
-  text-align: right;
+  padding-top: 0px;
+  text-align: center;
   border-top: 1px solid transparent;
 }
 .modal-footer .btn + .btn {

@@ -78,22 +78,26 @@ body {
     text-align: center;
 }
 .main-container{
-  padding-top:221px;
+  padding-top:229px;
 }
 /*begin navbar*/
 .icon-navbar{
   font-size:30px;
 }
 .position-url{
-  margin-top:80%;
+  margin-top:100%;
   font-size: 14px;
 }
 .logo-header{
   margin: 4% auto;
+  margin-right: 10%;
+  color: #ffffff;
+  font-size: 40px;
+  text-align: center;
 }
 
 .position-icon-nav{
-  margin-top: 64%;
+  margin-top: -72px;
 }
 .headerfi{
   position: fixed;
@@ -278,7 +282,10 @@ font-size: 18px;
   color:#fff;
 }
 
-
+.modal-text{
+  color: #FF149B;
+  text-transform: uppercase;
+  }
 
 
 
@@ -293,6 +300,15 @@ font-size: 18px;
     font-size: 12px;
   }
 
+ /*nav-logo*/
+
+ .logo-header{
+   margin: 4% auto;
+   margin-right: 3%;
+   color: #ffffff;
+   font-size: 20px;
+   text-align: center;
+ }
 
   .buttom-footer{
     display: none;
