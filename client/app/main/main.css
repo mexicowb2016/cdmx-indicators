@@ -163,7 +163,16 @@ font-size: 18px;
   background-color: #FF149B;
   height: 5px;
 }
+/*header*/
+.header-text-1{
+  font-size: 24px;
+  color:#4c4c4c;
 
+}
+.header-text-2{
+  font-size: 34px;
+    color:#4c4c4c;
+}
 /*boxes*/
 .panel-default > .panel-heading,
 .panel-body h6{
@@ -199,8 +208,8 @@ font-size: 18px;
 }
 
 .buttom-position{
-  margin-left: 22%;
-  margin-right: 22%;
+  margin-left: 27%;
+
 }
 
 .label-background{
@@ -298,23 +307,59 @@ font-size: 18px;
   .position-url{
     margin-top:0%;
     font-size: 12px;
+    margin-bottom: -15px;
   }
 
  /*nav-logo*/
 
  .logo-header{
    margin: 4% auto;
-   margin-right: 3%;
+   margin-top: -15px;
+   margin-left: 12%;
    color: #ffffff;
-   font-size: 20px;
+   font-size: 18px;
    text-align: center;
  }
+ /*nav-menu*/
+ .main-container{
+   padding-top:202px;
+ }
+ .menu-background .menu-left-text .navbar-nav > li {
+   float: left;
+   height: 42px;
+   width: 180px;
+ }
 
+  .navbar-nav{
+    width: 400px;
+    padding-left: 15px;
+  }
+  .menu-left-text{
+
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+  height: 100px;
+  }
+
+  /*header*/
+  .header-text-1{
+    font-size: 14px;
+    color:#4c4c4c;
+
+  }
+  .header-text-2{
+    font-size: 24px;
+      color:#4c4c4c;
+  }
+
+/*footer*/
   .buttom-footer{
     display: none;
   }
-  .navbar-nav{
-    width: 400px;
+  .footer-text-1{
+  margin: 20px;
+  float: left;
+  margin-bottom: -10px;
   }
-
  }
