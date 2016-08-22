@@ -18,6 +18,13 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/spent/spent.socket').register(socket);
+  require('../api/spentType/spentType.socket').register(socket);
+  require('../api/institutionalActivity/institutionalActivity.socket').register(socket);
+  require('../api/departmentSubFunction/departmentSubFunction.socket').register(socket);
+  require('../api/departmentFunction/departmentFunction.socket').register(socket);
+  require('../api/finality/finality.socket').register(socket);
+  require('../api/managerCenter/managerCenter.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
 }
 
