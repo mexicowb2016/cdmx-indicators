@@ -311,16 +311,13 @@ font-size: 18px;
   text-transform: uppercase;
   }
 
-.first-indicator-graph div{
-  background: #DF5593;
-  padding: 15px;
-  margin: 1px;
-}
-
-.second-indicator-graph div{
-  background: #DF5593;
-  padding: 15px;
-  margin: 1px;
+.first-indicator-graph div, .second-indicator-graph div{
+  background: #FF149B;
+  height: 25px;
+  text-align: right;
+  color: white;
+  padding-right: 2px;
+  width: 0;
 }
 
 

@@ -219,12 +219,11 @@ function saveDataInModelArray(modelArray, isSpentModel, params, currentItem, ref
   }
 }
 
-function totalWait(callback, params) {
+function totalWait(callback) {
   if (countTotal == countTotalFinished) {
     countTotal = 0;
     countTotalFinished = 0;
-    console.log(params);
-    callback(params);
+    callback();
   } else {
     setTimeout(function(){return totalWait(callback)}, 1000);
   }
@@ -309,25 +308,30 @@ function populateCollectionRelationship() {
 }
 
 (function populateDatabase() {
+  console.log('Check if database is populated...');
   Spent.find(function (err, docs) {
     if (err) console.log(err);
     var length = docs.length;
     if (length == 0) {
-      Spent.find().remove(function () {
-        InstitutionalActivity.find().remove(function () {
-          DepartmentSubFunction.find().remove(function () {
-            DepartmentFunction.find().remove(function () {
-              SpentType.find().remove(function () {
-                ManagerCenter.find().remove(function () {
-                  Finality.find().remove(function () {
-                    createDataWithoutDocReferences();
-                  })
-                })
-              })
-            })
-          })
-        })
+      console.log('Database is not populated yet, population process starting now...');
+      //Avoid callback hell!! use promises!!!!
+      Spent.find().remove().then(function () {
+        return InstitutionalActivity.find().remove();
+      }).then(function () {
+        return DepartmentSubFunction.find().remove();
+      }).then(function () {
+        return DepartmentFunction.find().remove();
+      }).then(function () {
+        return SpentType.find().remove();
+      }).then(function () {
+        return ManagerCenter.find().remove();
+      }).then(function () {
+        return Finality.find().remove();
+      }).then(function () {
+        createDataWithoutDocReferences();
       });
+    } else {
+      console.log('Database is already populated!');
     }
   });
 })();

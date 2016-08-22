@@ -6,15 +6,9 @@ angular.module('cdmxIndicatorsApp')
 
     $scope.ui = {};
 
-    financeDataService.getTotalSpentData(1).then(function (response) {
+    financeDataService.getAllTotalSpentData().then(function (response) {
       var data = response.data;
-      financeDataService.getTotalSpentGraph($scope, data, 1);
-    }).catch(function (err) {
-      console.log(err);
-    });
-    financeDataService.getTotalSpentData(2).then(function (response) {
-      var data = response.data;
-      financeDataService.getTotalSpentGraph($scope, data, 1);
+      financeDataService.getTotalSpentGraph($scope, data);
     }).catch(function (err) {
       console.log(err);
     });

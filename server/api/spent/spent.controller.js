@@ -54,6 +54,68 @@ exports.destroy = function(req, res) {
   });
 };
 
+exports.getAllTotalSpents = function (req, res) {
+  Spent.find().populate('spentType').exec(function (err, spents){
+    if (err) console.log(err);
+    var result;
+    var dividedResult;
+    var i;
+    var originalNormalSpentSum = 0;
+    var modifiedNormalSpentSum = 0;
+    var executedNormalSpentSum = 0;
+    var originalCapitalSpentSum = 0;
+    var modifiedCapitalSpentSum = 0;
+    var executedCapitalSpentSum = 0;
+    var normalSpentExecutedByPercentage = 0;
+    var capitalSpentExecutedByPercentage = 0;
+    for (i = 0; i < spents.length; i++) {
+      if (spents[i].spentType.spentTypeId == 1) {
+        //TODO consider all spents made in each month - not only december
+        originalNormalSpentSum += spents[i].originalSpent;
+        modifiedNormalSpentSum += spents[i].modifiedSpents.december;
+        executedNormalSpentSum += spents[i].executedSpents.december;
+      }
+      if (spents[i].spentType.spentTypeId == 2) {
+        //TODO consider all spents made in each month - not only december
+        originalCapitalSpentSum += spents[i].originalSpent;
+        modifiedCapitalSpentSum += spents[i].modifiedSpents.december;
+        executedCapitalSpentSum += spents[i].executedSpents.december;
+      }
+    }
+    if (originalNormalSpentSum != 0) {
+      originalNormalSpentSum = parseFloat(originalNormalSpentSum.toFixed(2));
+    }
+    if (modifiedNormalSpentSum != 0 && executedNormalSpentSum != 0) {
+      executedNormalSpentSum = parseFloat(executedNormalSpentSum.toFixed(2));
+      modifiedNormalSpentSum = parseFloat(modifiedNormalSpentSum.toFixed(2));
+      dividedResult = (executedNormalSpentSum / modifiedNormalSpentSum).toFixed(2);
+      dividedResult = parseFloat(dividedResult);
+      normalSpentExecutedByPercentage = dividedResult * 100;
+    }
+    if (originalCapitalSpentSum != 0) {
+      originalCapitalSpentSum = parseFloat(originalCapitalSpentSum.toFixed(2));
+    }
+    if (modifiedCapitalSpentSum != 0 && executedCapitalSpentSum != 0) {
+      executedCapitalSpentSum = parseFloat(executedCapitalSpentSum.toFixed(2));
+      modifiedCapitalSpentSum = parseFloat(modifiedCapitalSpentSum.toFixed(2));
+      dividedResult = (executedCapitalSpentSum / modifiedCapitalSpentSum).toFixed(2);
+      dividedResult = parseFloat(dividedResult);
+      capitalSpentExecutedByPercentage = dividedResult * 100;
+    }
+    result = {
+      executedNormalTotalSpentPercentage: normalSpentExecutedByPercentage,
+      originalNormalSpentSum: Math.round(originalNormalSpentSum),
+      modifiedNormalSpentSum: Math.round(modifiedNormalSpentSum),
+      executedNormalSpentSum: Math.round(executedNormalSpentSum),
+      executedCapitalTotalSpentPercentage: capitalSpentExecutedByPercentage,
+      originalCapitalSpentSum: Math.round(originalCapitalSpentSum),
+      modifiedCapitalSpentSum: Math.round(modifiedCapitalSpentSum),
+      executedCapitalSpentSum: Math.round(executedCapitalSpentSum)
+    };
+    return res.status(200).json(result);
+  });
+};
+
 //Get normal or capital total spents
 exports.getTotalSpents = function(req, res) {
   var spentType = req.params.spentTypeId;
@@ -65,26 +127,33 @@ exports.getTotalSpents = function(req, res) {
     var modifiedSpentSum = 0;
     var executedSpentSum = 0;
     var spentExecutedByPercentage = 0;
-
-    for (i = 0; i < spents.length; i++) {
-      if (spents[i].spentType.spentTypeId == spentType) {
-        originalSpentSum += spents[i].originalSpent;
-        modifiedSpentSum += spents[i].modifiedSpents.december;
-        executedSpentSum += spents[i].executedSpents.december;
+    var result;
+    var dividedResult;
+      for (i = 0; i < spents.length; i++) {
+        if (spents[i].spentType.spentTypeId == spentType) {
+          //TODO consider all spents made in each month - not only december
+          originalSpentSum += spents[i].originalSpent;
+          modifiedSpentSum += spents[i].modifiedSpents.december;
+          executedSpentSum += spents[i].executedSpents.december;
+        }
       }
-    }
-    if (modifiedSpentSum != 0 && executedSpentSum != 0) {
-      var dividedResult = (executedSpentSum / modifiedSpentSum).toFixed(2);
-      dividedResult = parseFloat(dividedResult);
-      spentExecutedByPercentage = Math.round(dividedResult) * 100;
-    }
-    var result = {
-      executedTotalSpentPercentage: spentExecutedByPercentage,
-      originalTotalSpent: parseFloat(originalSpentSum.toFixed(2)),
-      modifiedTotalSpent: parseFloat(modifiedSpentSum.toFixed(2)),
-      executedTotalSpent: parseFloat(executedSpentSum.toFixed(2))
-    };
-    return res.status(200).json(result);
+      if (originalSpentSum != 0) {
+        originalSpentSum = parseFloat(originalSpentSum.toFixed(2));
+      }
+      if (modifiedSpentSum != 0 && executedSpentSum != 0) {
+        executedSpentSum = parseFloat(executedSpentSum.toFixed(2));
+        modifiedSpentSum = parseFloat(modifiedSpentSum.toFixed(2));
+        dividedResult = (executedSpentSum / modifiedSpentSum).toFixed(2);
+        dividedResult = parseFloat(dividedResult);
+        spentExecutedByPercentage = dividedResult * 100;
+      }
+      result = {
+        executedTotalSpentPercentage: spentExecutedByPercentage,
+        originalTotalSpent: Math.round(originalSpentSum),
+        modifiedTotalSpent: Math.round(modifiedSpentSum),
+        executedTotalSpent: Math.round(executedSpentSum)
+      };
+      return res.status(200).json(result);
   });
 };
 
