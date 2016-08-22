@@ -56,16 +56,15 @@ exports.destroy = function(req, res) {
 
 //Get normal or capital total spents
 exports.getTotalSpents = function(req, res) {
-  var spentType = req.params.spentType;
+  var spentType = req.params.spentTypeId;
+  // console.log(req.params);
   Spent.find().populate('spentType').exec(function (err, spents){
     if (err) console.log(err);
     var i;
     var originalSpentSum = 0;
     var modifiedSpentSum = 0;
     var executedSpentSum = 0;
-    console.log(spents[0].spentType);
-    console.log(spents[0].spentType.spentTypeId);
-    console.log(spentType);
+    var spentExecutedByPercentage = 0;
 
     for (i = 0; i < spents.length; i++) {
       if (spents[i].spentType.spentTypeId == spentType) {
@@ -74,12 +73,16 @@ exports.getTotalSpents = function(req, res) {
         executedSpentSum += spents[i].executedSpents.december;
       }
     }
-    var spentExecutedByPercentage = Math.round(executedSpentSum / originalSpentSum);
+    if (modifiedSpentSum != 0 && executedSpentSum != 0) {
+      var dividedResult = (executedSpentSum / modifiedSpentSum).toFixed(2);
+      dividedResult = parseFloat(dividedResult);
+      spentExecutedByPercentage = Math.round(dividedResult) * 100;
+    }
     var result = {
       executedTotalSpentPercentage: spentExecutedByPercentage,
-      originalTotalSpent: originalSpentSum,
-      modifiedTotalSpent: modifiedSpentSum,
-      executedTotalSpent: executedSpentSum
+      originalTotalSpent: parseFloat(originalSpentSum.toFixed(2)),
+      modifiedTotalSpent: parseFloat(modifiedSpentSum.toFixed(2)),
+      executedTotalSpent: parseFloat(executedSpentSum.toFixed(2))
     };
     return res.status(200).json(result);
   });

@@ -73,8 +73,16 @@
             <div class="panel panel-default">
               <div class="panel-heading">Gasto de Capital<i ng-click="open(myModalContent.indicator1)" class="mdi mdi-information icon-right icon-information"></i></div>
               <div class="panel-body text-center">
-                <p class="size-percentage">40%</p>
+                <p class="size-percentage">{{ui.executedTotalSpentPercentage}}%</p>
                 <p class="size-percentage-1">Ejecutado</p>
+                <div class="first-indicator-graph">
+                  <label>Presupuesto Ejercido</label>
+                  <div class="size-percentage-1 executed-graph"></div>
+                  <label>Presupuesto Modificado</label>
+                  <div class="size-percentage-1 modified-graph"></div>
+                  <label>Presupuesto Original</label>
+                  <div class="size-percentage-1 original-graph"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -82,8 +90,16 @@
             <div class="panel panel-default">
               <div class="panel-heading">Gasto Corriente<i ng-click="open(myModalContent.indicator2)" class="mdi mdi-information icon-right icon-information"></i></div>
                 <div class="panel-body text-center">
-                  <p class="size-percentage">85%</p>
+                  <p class="size-percentage">{{ui.executedTotalSpentPercentage}}%</p>
                   <p class="size-percentage-1">Ejecutado</p>
+                  <div class="second-indicator-graph">
+                    <label>Presupuesto Ejercido</label>
+                    <div class="size-percentage-1 executed-graph"></div>
+                    <label>Presupuesto Modificado</label>
+                    <div class="size-percentage-1 modified-graph"></div>
+                    <label>Presupuesto Original</label>
+                    <div class="size-percentage-1 original-graph"></div>
+                  </div>
                 </div>
             </div>
           </div>

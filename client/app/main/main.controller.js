@@ -1,8 +1,23 @@
 'use strict';
 
 angular.module('cdmxIndicatorsApp')
-  .controller('MainCtrl', function ($scope, $http, socket, $uibModal, $log) {
-    $scope.awesomeThings = [];
+  .controller('MainCtrl', function ($scope, $uibModal, financeDataService) {
+    $scope.loading = false;
+
+    $scope.ui = {};
+
+    financeDataService.getTotalSpentData(1).then(function (response) {
+      var data = response.data;
+      financeDataService.getTotalSpentGraph($scope, data, 1);
+    }).catch(function (err) {
+      console.log(err);
+    });
+    financeDataService.getTotalSpentData(2).then(function (response) {
+      var data = response.data;
+      financeDataService.getTotalSpentGraph($scope, data, 1);
+    }).catch(function (err) {
+      console.log(err);
+    });
 
     $scope.myModalContent = {
       indicator1: {
@@ -24,33 +39,10 @@ angular.module('cdmxIndicatorsApp')
       indicator5:{
         title:'Ejecución del gasto por función',
         description:'Presenta la ejecución del gasto por función, de conformidad con la finalidad a la cual corresponde el gasto (gobierno, desarrollo social o desarrollo económico).'
-      },
-    }
-
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
-
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
     };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
 
     //Codigo modal
-    $scope.items = ['item1', 'item2', 'item3'];
-
      $scope.animationsEnabled = true;
 
        $scope.open = function (indicator) {
@@ -65,12 +57,6 @@ angular.module('cdmxIndicatorsApp')
                return indicator;
              }
            }
-         });
-
-         modalInstance.result.then(function (selectedItem) {
-           $scope.selected = selectedItem;
-         }, function () {
-           $log.info('Modal dismissed at: ' + new Date());
          });
        };
 

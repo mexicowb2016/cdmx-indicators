@@ -296,7 +296,17 @@ font-size: 18px;
   text-transform: uppercase;
   }
 
+.first-indicator-graph div{
+  background: #DF5593;
+  padding: 15px;
+  margin: 1px;
+}
 
+.second-indicator-graph div{
+  background: #DF5593;
+  padding: 15px;
+  margin: 1px;
+}
 
 
 
