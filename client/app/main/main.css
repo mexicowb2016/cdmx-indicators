@@ -223,7 +223,7 @@ font-size: 18px;
 }
 
 .buttom-position{
-  margin-left: 27%;
+  margin-left: 15%;
 
 }
 
@@ -233,9 +233,27 @@ font-size: 18px;
   border: 2px #df5593 solid;
   border-radius: 50%;
   font-size: 12px;
-  margin-left: 10%;
+  margin-top: 15%;
 }
 
+.fixed-panel {
+  min-height: 320px;
+  max-height: 320px;
+
+}
+
+.text-box {
+  text-align: left;
+  font-size: 12px;
+  margin: 0px;
+  margin-left: 12%;
+  margin-bottom: 5%;
+}
+.panel > .panel-body .panel-width > p{
+  width: 0px;
+  height: 0px;
+  margin: 0px;
+}
 /*Button footer*/
 * {
   margin: 0;
@@ -319,7 +337,9 @@ font-size: 18px;
   padding-right: 2px;
   width: 0;
 }
-
+.modal.in .modal-dialog {
+      margin-top: 12%;
+}
 
 
 

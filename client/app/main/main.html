@@ -71,7 +71,7 @@
     <div class="row">
 
           <div class="col-lg-4 col-sm-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default fixed-panel">
               <div class="panel-heading">Gasto de Capital<i ng-click="open(myModalContent.indicator1)" class="mdi mdi-information icon-right icon-information"></i></div>
               <div class="panel-body text-center">
                 <p class="size-percentage">{{ui.executedCapitalTotalSpentPercentage}}%</p>
@@ -88,7 +88,7 @@
             </div>
           </div>
           <div class="col-lg-4 col-sm-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default fixed-panel">
               <div class="panel-heading">Gasto Corriente<i ng-click="open(myModalContent.indicator2)" class="mdi mdi-information icon-right icon-information"></i></div>
                 <div class="panel-body text-center">
                   <p class="size-percentage">{{ui.executedNormalTotalSpentPercentage}}%</p>
@@ -105,7 +105,7 @@
             </div>
           </div>
           <div class="col-lg-4 col-sm-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default fixed-panel">
               <div class="panel-heading">Tres primeros en Ejecución de Gasto de Capital<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
               <div class="panel-body">
                 <div class="btn-group buttom-position">
@@ -114,10 +114,10 @@
               </div>
                 <br>
                 <br>
-                <div class="">
-                  <p><span class="label label-background">1</span> {{ui.firstCapitalSpent}}</p>
-                  <p><span class="label label-background">2</span> {{ui.secondCapitalSpent}}</p>
-                  <p><span class="label label-background">3</span> {{ui.thirdCapitalSpent}}</p>
+                <div class="panel-width">
+                  <p><span class="label label-background">1</span> <div class="text-box">{{ui.firstCapitalSpent}}</div></p>
+                  <p><span class="label label-background">2</span> <div class="text-box">{{ui.secondCapitalSpent}}</div></p>
+                  <p><span class="label label-background">3</span> <div class="text-box">{{ui.thirdCapitalSpent}}</div></p>
                 </div>
               </div>
             </div>
