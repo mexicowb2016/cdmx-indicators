@@ -157,6 +157,102 @@ exports.getTotalSpents = function(req, res) {
   });
 };
 
+exports.getTop3CapitalSpentsByDependency = function (req, res) {
+  Spent.find().populate('managerCenter spentType').exec(function (err, spents) {
+    if (err) console.log(err);
+    var i;
+    var results = {
+      first: {},
+      second: {},
+      third: {}
+    };
+    var managerCenterObj = {};
+    for (i = 0; i < spents.length; i++) {
+      if (spents[i].spentType.spentTypeId == 2 && spents[i].managerCenter.dependency == 1) {
+        //TODO consider all spents made in each month - not only december
+        if (managerCenterObj[spents[i].managerCenter.name] == null) {
+          managerCenterObj[spents[i].managerCenter.name] = 0;
+          managerCenterObj[spents[i].managerCenter.name] += spents[i].executedSpents.december;
+        } else {
+          managerCenterObj[spents[i].managerCenter.name] += spents[i].executedSpents.december;
+        }
+      }
+    }
+    var key;
+    var totalArr = [];
+    for (key in managerCenterObj) {
+      if (managerCenterObj.hasOwnProperty(key)) {
+        managerCenterObj[key] = Math.round(parseFloat(managerCenterObj[key].toFixed(2)));
+        totalArr.push({
+          name: key,
+          totalSpent: managerCenterObj[key]
+        });
+      }
+    }
+    
+    totalArr.sort(function (a, b) {
+      return b - a;
+    });
+
+    results.first.name = totalArr[0].name;
+    results.first.totalSpent = totalArr[0].totalSpent;
+    results.second.name = totalArr[1].name;
+    results.second.totalSpent = totalArr[1].totalSpent;
+    results.third.name = totalArr[2].name;
+    results.third.totalSpent = totalArr[2].totalSpent;
+    
+    return res.status(200).json(results);
+  });
+};
+
+exports.getTop3CapitalSpentsByInstitutionalAct = function(req, res) {
+  Spent.find().populate('institutionalActivity spentType').exec(function (err, spents) {
+    var i;
+    var results = {
+      first: {},
+      second: {},
+      third: {}
+    };
+    var institutionalActObj = {};
+    for (i = 0; i < spents.length; i++) {
+      if (spents[i].spentType.spentTypeId == 2) {
+        //TODO consider all spents made in each month - not only december
+        if (institutionalActObj[spents[i].institutionalActivity.name] == null) {
+          institutionalActObj[spents[i].institutionalActivity.name] = 0;
+          institutionalActObj[spents[i].institutionalActivity.name] += spents[i].executedSpents.december;
+        } else {
+          institutionalActObj[spents[i].institutionalActivity.name] += spents[i].executedSpents.december;
+        }
+      }
+    }
+    
+    var totalArr = [];
+    var key;
+    for (key in institutionalActObj) {
+      if (institutionalActObj.hasOwnProperty(key)) {
+        institutionalActObj[key] = Math.round(parseFloat(institutionalActObj[key].toFixed(2)));
+        totalArr.push({
+          name: key,
+          totalSpent: institutionalActObj[key]
+        });
+      }
+    }
+    
+    totalArr.sort(function (a, b) {
+      return b.totalSpent - a.totalSpent;
+    });
+    
+    results.first.name = totalArr[0].name;
+    results.first.totalSpent = totalArr[0].totalSpent;
+    results.second.name = totalArr[1].name;
+    results.second.totalSpent = totalArr[1].totalSpent;
+    results.third.name = totalArr[2].name;
+    results.third.totalSpent = totalArr[2].totalSpent;
+    
+    return res.status(200).json(results);
+  });
+};
+
 function handleError(res, err) {
   return res.status(500).send(err);
 }

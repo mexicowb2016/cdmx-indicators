@@ -1,14 +1,26 @@
 angular.module('cdmxIndicatorsApp').
   service('financeDataService', function ($http, $filter) {
     return {
-      getTotalSpentGraph: getTotalSpentGraph,
-      getAllTotalSpentData: getAllTotalSpents,
-      getTotalSpentData: getTotalSpentData
+      getAllTotalSpentData: getAllTotalSpentsData,
+      getTop3CapitalSpentsByDependencyData: getTop3CapitalSpentsByDependencyData,
+      getTop3CapitalSpentsByInstActData: getTop3CapitalSpentsByInstActData,
+      getTotalSpentData: getTotalSpentData,
+      getTotalSpentGraph: getTotalSpentGraph
     };
 
-    function getAllTotalSpents() {
+    function getAllTotalSpentsData() {
       var url = '/api/spents/get/allTotalSpents/';
       return $http.get(url);
+    }
+  
+    function getTop3CapitalSpentsByDependencyData() {
+      var url = '/api/spents/get/top3CapitalSpents/dependency';
+      return $http.get(url, {cache:true});
+    }
+  
+    function getTop3CapitalSpentsByInstActData() {
+      var url = '/api/spents/get/top3CapitalSpents/institutionalActivity';
+      return $http.get(url, {cache:true});
     }
 
     function getTotalSpentData(spentType) {

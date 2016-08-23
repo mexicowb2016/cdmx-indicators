@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('cdmxIndicatorsApp')
-  .controller('MainCtrl', function ($scope, $uibModal, financeDataService) {
+  .controller('MainCtrl', function ($scope, $uibModal, financeDataService, $filter) {
     $scope.loading = false;
 
     $scope.ui = {};
+
+    $scope.ui.top3CapitalSpentModel = 'Dependency';
 
     financeDataService.getAllTotalSpentData().then(function (response) {
       var data = response.data;
@@ -37,26 +39,53 @@ angular.module('cdmxIndicatorsApp')
     };
 
     //Codigo modal
-     $scope.animationsEnabled = true;
+    $scope.animationsEnabled = true;
+    $scope.open = function (indicator) {
+      var modalInstance = $uibModal.open({
+       animation: $scope.animationsEnabled,
+       templateUrl: 'information-modal.html',
+       controller: 'ModalCtrl',
+       size: 'sm',
+       resolve: {
+         indicator: function () {
+           return indicator;
+         }
+       }
+      });
 
-       $scope.open = function (indicator) {
+    };
+    $scope.toggleAnimation = function () {
+     $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+    //Fin codigo modal
 
-         var modalInstance = $uibModal.open({
-           animation: $scope.animationsEnabled,
-           templateUrl: 'information-modal.html',
-           controller: 'ModalCtrl',
-           size: 'sm',
-           resolve: {
-             indicator: function () {
-               return indicator;
-             }
-           }
-         });
-       };
+    $scope.getTop3CapitalSpentsByDependency = function () {
+      $scope.ui.firstCapitalSpent = '';
+      $scope.ui.secondCapitalSpent = '';
+      $scope.ui.thirdCapitalSpent = '';
+      financeDataService.getTop3CapitalSpentsByDependencyData().then(function (response) {
+        var data = response.data;
+        $scope.ui.firstCapitalSpent = data.first.name.toUpperCase();
+        $scope.ui.secondCapitalSpent = data.second.name.toUpperCase();
+        $scope.ui.thirdCapitalSpent = data.third.name.toUpperCase();
+      }).catch(function (err) {
+        console.log(err);
+      });
+    };
 
-       $scope.toggleAnimation = function () {
-         $scope.animationsEnabled = !$scope.animationsEnabled;
-       };
-   //Fin codigo modal
-   $scope.radioModel = 'Middle';
+    $scope.getTop3CapitalSpentsByInstAct = function () {
+      $scope.ui.firstCapitalSpent = '';
+      $scope.ui.secondCapitalSpent = '';
+      $scope.ui.thirdCapitalSpent = '';
+      financeDataService.getTop3CapitalSpentsByInstActData().then(function (response) {
+        var data = response.data;
+        $scope.ui.firstCapitalSpent = data.first.name;
+        $scope.ui.secondCapitalSpent = data.second.name;
+        $scope.ui.thirdCapitalSpent = data.third.name;
+      }).catch(function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.getTop3CapitalSpentsByDependency();
   });

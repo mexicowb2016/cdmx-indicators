@@ -109,15 +109,15 @@
               <div class="panel-heading">Tres primeros en Ejecución de Gasto de Capital<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
               <div class="panel-body">
                 <div class="btn-group buttom-position">
-                  <label class="btn btn-default btn-sm" ng-model="radioModel" uib-btn-radio="'Left'">Secretaria</label>
-                  <label class="btn btn-default btn-sm" ng-model="radioModel" uib-btn-radio="'Middle'">Proyecto</label>
+                  <label class="btn btn-default btn-sm" ng-model="ui.top3CapitalSpentModel" ng-click="getTop3CapitalSpentsByDependency()" uib-btn-radio="'Dependency'">Dependencia</label>
+                  <label class="btn btn-default btn-sm" ng-model="ui.top3CapitalSpentModel" ng-click="getTop3CapitalSpentsByInstAct()" uib-btn-radio="'institutionalActivity'">Actividad Institucional</label>
               </div>
                 <br>
                 <br>
                 <div class="">
-                  <p><span class="label label-background">1</span> Educaión</p>
-                  <p><span class="label label-background">2</span> Obras e Infraestructura</p>
-                  <p><span class="label label-background">3</span> Seguridad Civil</p>
+                  <p><span class="label label-background">1</span> {{ui.firstCapitalSpent}}</p>
+                  <p><span class="label label-background">2</span> {{ui.secondCapitalSpent}}</p>
+                  <p><span class="label label-background">3</span> {{ui.thirdCapitalSpent}}</p>
                 </div>
               </div>
             </div>

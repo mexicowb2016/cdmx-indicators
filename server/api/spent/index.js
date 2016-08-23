@@ -13,5 +13,7 @@ router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 router.get('/get/allTotalSpents/', controller.getAllTotalSpents);
 router.get('/get/totalSpents/:spentTypeId/', controller.getTotalSpents);
+router.get('/get/top3CapitalSpents/dependency/', controller.getTop3CapitalSpentsByDependency);
+router.get('/get/top3CapitalSpents/institutionalActivity/', controller.getTop3CapitalSpentsByInstitutionalAct);
 
 module.exports = router;
