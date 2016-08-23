@@ -327,6 +327,8 @@ font-size: 18px;
 .modal-text{
   color: #FF149B;
   text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
   }
 
 .first-indicator-graph div, .second-indicator-graph div{

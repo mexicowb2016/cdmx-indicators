@@ -9,3 +9,4 @@ angular.module('cdmxIndicatorsApp')
         controller: 'GenerosCtrl'
       });
   });
+  
