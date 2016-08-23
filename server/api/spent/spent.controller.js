@@ -191,7 +191,7 @@ exports.getTop3CapitalSpentsByDependency = function (req, res) {
     }
     
     totalArr.sort(function (a, b) {
-      return b - a;
+      return b.totalSpent - a.totalSpent;
     });
 
     results.first.name = totalArr[0].name;
@@ -200,7 +200,7 @@ exports.getTop3CapitalSpentsByDependency = function (req, res) {
     results.second.totalSpent = totalArr[1].totalSpent;
     results.third.name = totalArr[2].name;
     results.third.totalSpent = totalArr[2].totalSpent;
-    
+
     return res.status(200).json(results);
   });
 };
@@ -225,7 +225,7 @@ exports.getTop3CapitalSpentsByInstitutionalAct = function(req, res) {
         }
       }
     }
-    
+
     var totalArr = [];
     var key;
     for (key in institutionalActObj) {
@@ -237,18 +237,18 @@ exports.getTop3CapitalSpentsByInstitutionalAct = function(req, res) {
         });
       }
     }
-    
+
     totalArr.sort(function (a, b) {
       return b.totalSpent - a.totalSpent;
     });
-    
+
     results.first.name = totalArr[0].name;
     results.first.totalSpent = totalArr[0].totalSpent;
     results.second.name = totalArr[1].name;
     results.second.totalSpent = totalArr[1].totalSpent;
     results.third.name = totalArr[2].name;
     results.third.totalSpent = totalArr[2].totalSpent;
-    
+
     return res.status(200).json(results);
   });
 };
