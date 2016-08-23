@@ -332,13 +332,18 @@ font-size: 18px;
 .first-indicator-graph div, .second-indicator-graph div{
   background: #FF149B;
   height: 25px;
-  text-align: right;
+  text-align: left;
   color: white;
-  padding-right: 2px;
+  padding-left: 2px;
   width: 0;
 }
 .modal.in .modal-dialog {
       margin-top: 12%;
+}
+
+div.panel-body.single-bar-ctn {
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 

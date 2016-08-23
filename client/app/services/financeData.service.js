@@ -12,12 +12,12 @@ angular.module('cdmxIndicatorsApp').
       var url = '/api/spents/get/allTotalSpents/';
       return $http.get(url);
     }
-  
+
     function getTop3CapitalSpentsByDependencyData() {
       var url = '/api/spents/get/top3CapitalSpents/dependency';
       return $http.get(url, {cache:true});
     }
-  
+
     function getTop3CapitalSpentsByInstActData() {
       var url = '/api/spents/get/top3CapitalSpents/institutionalActivity';
       return $http.get(url, {cache:true});
@@ -34,9 +34,9 @@ angular.module('cdmxIndicatorsApp').
       var mainGraphDivCls;
       var dataArr = [];
       if (spentType) {
-        dataArr[0] = data.originalTotalSpent;
-        dataArr[1] = data.modifiedTotalSpent;
-        dataArr[2] = data.executedTotalSpent;
+        dataArr[0] = data.originalTotalSpent / 10e5;
+        dataArr[1] = data.modifiedTotalSpent / 10e5;
+        dataArr[2] = data.executedTotalSpent / 10e5;
         if (spentType == 2) {
           scope.ui.executedCapitalTotalSpentPercentage = data.executedTotalSpentPercentage;
           mainGraphDivCls = 'first-indicator-graph';
@@ -46,16 +46,16 @@ angular.module('cdmxIndicatorsApp').
         }
         createSingleHorizontalBarGraph(dataArr, mainGraphDivCls);
       } else {
-        dataArr[0] = data.originalCapitalSpentSum;
-        dataArr[1] = data.modifiedCapitalSpentSum;
-        dataArr[2] = data.executedCapitalSpentSum;
+        dataArr[0] = data.originalCapitalSpentSum / 10e5;
+        dataArr[1] = data.modifiedCapitalSpentSum / 10e5;
+        dataArr[2] = data.executedCapitalSpentSum / 10e5;
         scope.ui.executedCapitalTotalSpentPercentage = data.executedCapitalTotalSpentPercentage;
         mainGraphDivCls = 'first-indicator-graph';
         createSingleHorizontalBarGraph(dataArr, mainGraphDivCls);
 
-        dataArr[0] = data.originalNormalSpentSum;
-        dataArr[1] = data.modifiedNormalSpentSum;
-        dataArr[2] = data.executedNormalSpentSum;
+        dataArr[0] = data.originalNormalSpentSum / 10e5;
+        dataArr[1] = data.modifiedNormalSpentSum / 10e5;
+        dataArr[2] = data.executedNormalSpentSum / 10e5;
         scope.ui.executedNormalTotalSpentPercentage = data.executedNormalTotalSpentPercentage;
         mainGraphDivCls = 'second-indicator-graph';
         createSingleHorizontalBarGraph(dataArr, mainGraphDivCls);
@@ -63,6 +63,7 @@ angular.module('cdmxIndicatorsApp').
 
     }
 
+    //Graph Utility functions
     function createSingleHorizontalBarGraph(dataArr, mainContainerSelector) {
       var x;
       var mainContainer;
