@@ -39,12 +39,14 @@ module.exports = function (grunt) {
       dev: {
         options: {
           script: 'server/app.js',
-          debug: true
+          debug: true,
+          opts: ['--max_old_space_size=8192']
         }
       },
       prod: {
         options: {
-          script: 'dist/server/app.js'
+          script: 'dist/server/app.js',
+          opts: ['--max_old_space_size=8192']
         }
       }
     },
