@@ -199,56 +199,17 @@ font-size: 18px;
   float: right;
   font-size: 21px;
 }
-.panel-text-tittle{
-  color: #5C5C5C;
-  font-size: 12px;
-  font-weight: normal;
 
-}
-.size-percentage{
-font-size: 48px;
-color: #bbbbbb;
-margin: 0px;
-margin-bottom: -20px;
-margin-top: -20px;
-}
-
-.size-percentage-1{
-color: #bbbbbb;
-margin: 0px;
-font-size: 18px;
-}
 .icon-information{
   color: #b4b5b4;
 }
 
-.buttom-position{
-  margin-left:0%;
-
-}
-
-.label-background{
-  background-color: #fff;
-  color: #df5593;
-  border: 2px #df5593 solid;
-  border-radius: 50%;
-  font-size: 12px;
-  margin-top: 15%;
-}
-
-.fixed-panel {
+/*.fixed-panel {
   min-height: 320px;
   max-height: 320px;
 
-}
+}*/
 
-.text-box {
-  text-align: left;
-  font-size: 12px;
-  margin: 0px;
-  margin-left: 12%;
-  margin-bottom: 5%;
-}
 .panel > .panel-body .panel-width > p{
   width: 0px;
   height: 0px;

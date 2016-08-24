@@ -2,7 +2,7 @@
 
 angular.module('cdmxIndicatorsApp')
   .controller('MainCtrl', function ($scope, $uibModal, financeDataService, $filter) {
-    $scope.loading = false;
+    $scope.loading = true;
 
     $scope.ui = {};
 
@@ -55,6 +55,7 @@ angular.module('cdmxIndicatorsApp')
     financeDataService.getAllTotalSpentData().then(function (response) {
       var data = response.data;
       financeDataService.getTotalSpentGraph($scope, data);
+      $scope.loading = false;
     }).catch(function (err) {
       console.log(err);
     });
