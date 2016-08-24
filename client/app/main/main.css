@@ -306,6 +306,14 @@ font-size: 18px;
 
 }
 
+div.panel-body.executed-spent-dependency-graph svg{
+  height: 500px;
+}
+
+div.panel-body.executed-spent-function-graph svg {
+  height: 1000px;
+}
+
 /*for the sake of responsiveness...*/
 
 @media (max-width: 330px) {

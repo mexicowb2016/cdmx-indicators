@@ -15,5 +15,7 @@ router.get('/get/allTotalSpents/', controller.getAllTotalSpents);
 router.get('/get/totalSpents/:spentTypeId/', controller.getTotalSpents);
 router.get('/get/top3CapitalSpents/dependency/', controller.getTop3CapitalSpentsByDependency);
 router.get('/get/top3CapitalSpents/institutionalActivity/', controller.getTop3CapitalSpentsByInstitutionalAct);
+router.get('/get/executedSpents/dependency/', controller.getExecutedSpentsByDependency);
+router.get('/get/executedSpents/function/', controller.getExecutedSpentsByDepartmentFunction);
 
 module.exports = router;

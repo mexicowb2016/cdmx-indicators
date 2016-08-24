@@ -2,6 +2,10 @@ angular.module('cdmxIndicatorsApp').
   service('financeDataService', function ($http, $filter) {
     return {
       getAllTotalSpentData: getAllTotalSpentsData,
+      getExecutedSpentsByDepartmentFunctionData: getExecutedSpentsByDepartmentFunctionData,
+      getExecutedSpentsByDepartmentFunctionGraph: getExecutedSpentsByDepartmentFunctionGraph,
+      getExecutedSpentsByDependencyData: getExecutedSpentsByDependencyData,
+      getExecutedSpentsByDependencyGraph: getExecutedSpentsByDependencyGraph,
       getTop3CapitalSpentsByDependencyData: getTop3CapitalSpentsByDependencyData,
       getTop3CapitalSpentsByInstActData: getTop3CapitalSpentsByInstActData,
       getTotalSpentData: getTotalSpentData,
@@ -11,6 +15,28 @@ angular.module('cdmxIndicatorsApp').
     function getAllTotalSpentsData() {
       var url = '/api/spents/get/allTotalSpents/';
       return $http.get(url);
+    }
+
+    function getExecutedSpentsByDepartmentFunctionData () {
+      var url = '/api/spents/get/executedSpents/function/';
+      return $http.get(url);
+    }
+
+    function getExecutedSpentsByDepartmentFunctionGraph (data) {
+      data = formatMultiBarData(data);
+      console.log(data);
+      createMultiHorizontalBarGraph(data, 'executed-spent-function-graph');
+    }
+
+    function getExecutedSpentsByDependencyData () {
+      var url = '/api/spents/get/executedSpents/dependency/';
+      return $http.get(url);
+    }
+
+    function getExecutedSpentsByDependencyGraph (data) {
+      data = formatMultiBarData(data);
+      console.log(data);
+      createMultiBarGraph(data, 'executed-spent-dependency-graph');
     }
 
     function getTop3CapitalSpentsByDependencyData() {
@@ -64,6 +90,76 @@ angular.module('cdmxIndicatorsApp').
     }
 
     //Graph Utility functions
+    function createMultiBarGraph(data, elementContainerCls) {
+      nv.addGraph(function() {
+        var chart = nv.models.multiBarChart()
+          .color(['#FF149B','#F1BDCE']) //colors for every barChart
+          .showControls(false)
+          .staggerLabels(true)
+          .showLegend(false);
+
+        chart.xAxis
+          .tickFormat(function (d){return d});
+
+        chart.yAxis
+          .tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+          .tickFormat(function (d){ return d + '%'});
+
+        chart.forceY([0, 100]);
+
+        if (data.length > 10) {
+          // chart.rotateLabels(-90);
+          // chart.xAxis.ticks(5);
+          chart.groupSpacing(0.1);
+          chart.wrapLabels(true);
+        }
+
+        d3.select('.' + elementContainerCls + ' svg')
+          .datum(data)
+          .call(chart);
+
+        nv.utils.windowResize(chart.update);
+
+        return chart;
+      });
+    }
+
+    function createMultiHorizontalBarGraph(data, elementContainerCls) {
+      nv.addGraph(function() {
+        var chart = nv.models.multiBarHorizontalChart()
+          // .x(function(d) { return d.label })
+          // .y(function(d) { return d.value })
+          .color(['#FF149B','#F1BDCE']) //colors for every barChart
+          .showControls(false)
+          .margin({"left": 200})
+          .showLegend(false);
+
+        chart.xAxis
+          .tickFormat(function (d){return d});
+
+        chart.yAxis
+          .tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+          .tickFormat(function (d){ return d + '%'});
+
+        chart.forceY([0, 100]);
+
+
+        if (data.length > 10) {
+          // chart.rotateLabels(-90);
+          // chart.xAxis.ticks(5);
+          chart.groupSpacing(0.1);
+        }
+
+        d3.select('.' + elementContainerCls + ' svg')
+          .datum(data)
+          .call(chart);
+
+        nv.utils.windowResize(chart.update);
+
+        return chart;
+      });
+    }
+
     function createSingleHorizontalBarGraph(dataArr, mainContainerSelector) {
       var x;
       var mainContainer;
@@ -94,4 +190,24 @@ angular.module('cdmxIndicatorsApp').
         .style('width', x(dataArr[2]) + 'px')
         .text(function(d) { return executedCurrency + ' mdp'; });
     }
+
+    function formatMultiBarData (data) {
+      var key;
+      var result = [];
+      for (key in data) {
+        if (data.hasOwnProperty(key)) {
+          result.push({
+            "key": "Gasto Corriente",
+            "values": [{x:key, y:data[key].normalSpentExecuted}]
+          }, {
+            "key": "Gasto Capital",
+            "values": [{x:key, y:data[key].capitalSpentExecuted}]
+          })
+        }
+      }
+      return result;
+    }
+
+
+
 });

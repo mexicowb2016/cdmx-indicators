@@ -108,7 +108,16 @@ function removeComparedModels() {
     DepartmentFunction: {},
     DepartmentSubFunction: {},
     InstitutionalActivity: {}
-  }
+  };
+  dbCollections = {
+    ManagerCenter: [],
+    Finality: [],
+    SpentType: [],
+    DepartmentFunction: [],
+    DepartmentSubFunction: [],
+    InstitutionalActivity: [],
+    Spent: []
+  };
 }
 
 function getManagerCenterModelData (key) {

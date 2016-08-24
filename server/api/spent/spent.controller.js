@@ -189,7 +189,7 @@ exports.getTop3CapitalSpentsByDependency = function (req, res) {
         });
       }
     }
-    
+
     totalArr.sort(function (a, b) {
       return b.totalSpent - a.totalSpent;
     });
@@ -252,6 +252,118 @@ exports.getTop3CapitalSpentsByInstitutionalAct = function(req, res) {
     return res.status(200).json(results);
   });
 };
+
+exports.getExecutedSpentsByDependency = function (req, res) {
+  Spent.find().populate('managerCenter spentType').exec(function (err, spents) {
+    if (err) {console.log(err);}
+    var i;
+    var j;
+    var managerCenterObj = {};
+    var managerCenterArr = getSpentsByMainManagerCentersDependency();
+    for (i = 0; i < spents.length; i++) {
+      if (spents[i].managerCenter.dependency == 1) {
+        for (j = 0; j < managerCenterArr.length; j++) {
+          if (spents[i].managerCenter.name == managerCenterArr[j]) {
+            setTotalSpentsForManagerCenterByDependency(managerCenterObj, spents[i]);
+            break;
+          }
+        }
+      }
+    }
+    var key;
+    var result = {};
+    var normalExecuted;
+    var capitalExecuted;
+    for (key in managerCenterObj) {
+      if (managerCenterObj.hasOwnProperty(key)) {
+        normalExecuted= parseFloat((managerCenterObj[key].normalSpent.executedSpents / managerCenterObj[key].normalSpent.modifiedSpents).toFixed(2)) * 100;
+        capitalExecuted = parseFloat((managerCenterObj[key].capitalSpent.executedSpents / managerCenterObj[key].capitalSpent.modifiedSpents).toFixed(2)) * 100;
+        result[key] = {
+          normalSpentExecuted: Math.round(normalExecuted),
+          capitalSpentExecuted: Math.round(capitalExecuted)
+        };
+      }
+    }
+    return res.status(200).json(result);
+  });
+};
+
+exports.getExecutedSpentsByDepartmentFunction = function (req, res) {
+  Spent.find().populate('departmentFunction spentType').exec(function(err, spents){
+    if (err) console.log(err);
+    var i;
+    var departmentFunObj = {};
+    for (i = 0; i < spents.length; i++) {
+      if (departmentFunObj[spents[i].departmentFunction.name] == null) {
+        departmentFunObj[spents[i].departmentFunction.name] = {
+          normalSpent: {
+            modifiedSpents: 0,
+            executedSpents: 0
+          },
+          capitalSpent: {
+            modifiedSpents: 0,
+            executedSpents: 0
+          }
+        }
+      }
+      //TODO consider all spents made in each month - not only december
+      if (spents[i].spentType.spentTypeId == 1) {
+        departmentFunObj[spents[i].departmentFunction.name].normalSpent.modifiedSpents += spents[i].modifiedSpents.december;
+        departmentFunObj[spents[i].departmentFunction.name].normalSpent.executedSpents += spents[i].executedSpents.december;
+      }
+      if (spents[i].spentType.spentTypeId == 2) {
+        departmentFunObj[spents[i].departmentFunction.name].capitalSpent.modifiedSpents += spents[i].modifiedSpents.december;
+        departmentFunObj[spents[i].departmentFunction.name].capitalSpent.executedSpents += spents[i].executedSpents.december;
+      }
+    }
+    var key;
+    var normalExecuted;
+    var capitalExecuted;
+    var result = {};
+    for (key in departmentFunObj) {
+      if (departmentFunObj.hasOwnProperty(key)) {
+        normalExecuted = parseFloat((departmentFunObj[key].normalSpent.executedSpents / departmentFunObj[key].normalSpent.modifiedSpents).toFixed(2)) * 100;
+        capitalExecuted = parseFloat((departmentFunObj[key].capitalSpent.executedSpents / departmentFunObj[key].capitalSpent.modifiedSpents).toFixed(2)) * 100;
+        result[key] = {
+          normalSpentExecuted: Math.round(normalExecuted),
+          capitalSpentExecuted: Math.round(capitalExecuted)
+        };
+      }
+    }
+    return res.status(200).json(result);
+  })
+};
+
+function getSpentsByMainManagerCentersDependency () {
+  return ['Procuraduría General de Justicia del Distrito Federal', 'Secretaría de Desarrollo Social del Distrito Federal',
+    'Secretaría de Obras y Servicios del Distrito Federal', 'Secretaría de Salud del Distrito Federal', 'Secretaría de Seguridad Pública del Distrito Federal'
+  ];
+}
+
+function setTotalSpentsForManagerCenterByDependency (mainObj, currentSpent) {
+  if (mainObj[currentSpent.managerCenter.name] == null) {
+    mainObj[currentSpent.managerCenter.name] = {
+      normalSpent: {
+        modifiedSpents: 0,
+        executedSpents: 0
+      },
+      capitalSpent: {
+        modifiedSpents: 0,
+        executedSpents: 0
+      }
+    };
+  }
+  //TODO consider all spents made in each month - not only december
+  if (currentSpent.spentType.spentTypeId == 1) {
+    mainObj[currentSpent.managerCenter.name].normalSpent.modifiedSpents += currentSpent.modifiedSpents.december;
+    mainObj[currentSpent.managerCenter.name].normalSpent.executedSpents += currentSpent.executedSpents.december;
+  }
+  if (currentSpent.spentType.spentTypeId == 2) {
+    mainObj[currentSpent.managerCenter.name].capitalSpent.modifiedSpents += currentSpent.modifiedSpents.december;
+    mainObj[currentSpent.managerCenter.name].capitalSpent.executedSpents += currentSpent.executedSpents.december;
+  }
+
+}
 
 function handleError(res, err) {
   return res.status(500).send(err);

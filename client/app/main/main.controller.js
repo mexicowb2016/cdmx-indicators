@@ -8,13 +8,6 @@ angular.module('cdmxIndicatorsApp')
 
     $scope.ui.top3CapitalSpentModel = 'Dependency';
 
-    financeDataService.getAllTotalSpentData().then(function (response) {
-      var data = response.data;
-      financeDataService.getTotalSpentGraph($scope, data);
-    }).catch(function (err) {
-      console.log(err);
-    });
-
     $scope.myModalContent = {
       indicator1: {
         title: 'Gasto de capital',
@@ -58,6 +51,29 @@ angular.module('cdmxIndicatorsApp')
      $scope.animationsEnabled = !$scope.animationsEnabled;
     };
     //Fin codigo modal
+
+    financeDataService.getAllTotalSpentData().then(function (response) {
+      var data = response.data;
+      financeDataService.getTotalSpentGraph($scope, data);
+    }).catch(function (err) {
+      console.log(err);
+    });
+
+    financeDataService.getExecutedSpentsByDependencyData().then(function (response) {
+      var data = response.data;
+      console.log(data);
+      financeDataService.getExecutedSpentsByDependencyGraph(data);
+    }).catch(function (err) {
+      console.log(err);
+    });
+
+    financeDataService.getExecutedSpentsByDepartmentFunctionData().then(function (response) {
+      var data = response.data;
+      console.log(data);
+      financeDataService.getExecutedSpentsByDepartmentFunctionGraph(data);
+    }).catch(function (err) {
+      console.log(err);
+    });
 
     $scope.getTop3CapitalSpentsByDependency = function () {
       $scope.ui.firstCapitalSpent = '';
