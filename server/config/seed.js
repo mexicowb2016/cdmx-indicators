@@ -386,8 +386,7 @@ function populateSectorsGenreCollectionData () {
       jobClassification: genreDBModelComparation.JobClassification[genreDataArray[i].JOB_CLASSIFICATION]
     });
   }
-  Sector.create(genreDBCollections.Sector).then(function (err, docs) {
-    if (err) { console.log(err); }
+  Sector.create(genreDBCollections.Sector).then(function () {
     genreCounter.countTotalFinished++;
   });
 }
