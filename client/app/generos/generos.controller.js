@@ -8,19 +8,10 @@
   'use strict';
 
   angular.module('cdmxIndicatorsApp')
-    .controller('GenerosCtrl', function ($scope, $uibModal, financeDataService, $filter) {
-      $scope.loading = false;
+    .controller('GenerosCtrl', function ($scope, $uibModal, financeDataService, $rootScope) {
+      $rootScope.loading = false;
 
       $scope.ui = {};
-
-      $scope.ui.top3CapitalSpentModel = 'Dependency';
-
-      financeDataService.getAllTotalSpentData().then(function (response) {
-        var data = response.data;
-        financeDataService.getTotalSpentGraph($scope, data);
-      }).catch(function (err) {
-        console.log(err);
-      });
 
       $scope.myModalContent = {
         indicator1: {
@@ -65,34 +56,5 @@
        $scope.animationsEnabled = !$scope.animationsEnabled;
       };
       //Fin codigo modal
-
-      $scope.getTop3CapitalSpentsByDependency = function () {
-        $scope.ui.firstCapitalSpent = '';
-        $scope.ui.secondCapitalSpent = '';
-        $scope.ui.thirdCapitalSpent = '';
-        financeDataService.getTop3CapitalSpentsByDependencyData().then(function (response) {
-          var data = response.data;
-          $scope.ui.firstCapitalSpent = data.first.name.toUpperCase();
-          $scope.ui.secondCapitalSpent = data.second.name.toUpperCase();
-          $scope.ui.thirdCapitalSpent = data.third.name.toUpperCase();
-        }).catch(function (err) {
-          console.log(err);
-        });
-      };
-
-      $scope.getTop3CapitalSpentsByInstAct = function () {
-        $scope.ui.firstCapitalSpent = '';
-        $scope.ui.secondCapitalSpent = '';
-        $scope.ui.thirdCapitalSpent = '';
-        financeDataService.getTop3CapitalSpentsByInstActData().then(function (response) {
-          var data = response.data;
-          $scope.ui.firstCapitalSpent = data.first.name;
-          $scope.ui.secondCapitalSpent = data.second.name;
-          $scope.ui.thirdCapitalSpent = data.third.name;
-        }).catch(function (err) {
-          console.log(err);
-        });
-      };
-
-      $scope.getTop3CapitalSpentsByDependency();
+      
     });

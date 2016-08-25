@@ -98,12 +98,12 @@ angular.module('cdmxIndicatorsApp').
           .staggerLabels(true)
           .showLegend(false);
 
-        chart.xAxis
-          .tickFormat(function (d){return d});
-
         chart.yAxis
           .tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
           .tickFormat(function (d){ return d + '%'});
+
+        chart.xAxis
+          .tickFormat(function (d){return d});
 
         chart.forceY([0, 100]);
 
@@ -117,6 +117,8 @@ angular.module('cdmxIndicatorsApp').
         d3.select('.' + elementContainerCls + ' svg')
           .datum(data)
           .call(chart);
+
+        // d3.select('.' + elementContainerCls + ' svg').selectAll('g.nv-group').selectAll('rect').attr('width', 20);
 
         nv.utils.windowResize(chart.update);
 
@@ -143,10 +145,13 @@ angular.module('cdmxIndicatorsApp').
 
         chart.forceY([0, 100]);
 
+        // chart.xRange([0, 800]);
+        //
+        // setTimeout(function() {
+        //   d3.selectAll('.' + elementContainerCls + ' svg').selectAll('rect').attr("height", chart.xAxis.rangeBand() / 3);
+        // }, 10);
 
         if (data.length > 10) {
-          // chart.rotateLabels(-90);
-          // chart.xAxis.ticks(5);
           chart.groupSpacing(0.1);
         }
 

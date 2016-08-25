@@ -7,6 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+//Finance models
 var ManagerCenter = require('../api/managerCenter/managerCenter.model');
 var Finality = require('../api/finality/finality.model');
 var DepartmentFunction = require('../api/departmentFunction/departmentFunction.model');
@@ -17,6 +18,13 @@ var Spent = require('../api/spent/spent.model');
 var financeData = require('../api/inspectors_data/financeData.json');
 var managerCenterArray = financeData['DATA'];
 var managerCenterLength = financeData['DATA'].length;
+//Genre models
+var JobClassification = require('../api/jobClassification/jobClassification.model');
+var Genre = require('../api/genre/genre.model');
+var Sector = require('../api/sector/sector.model');
+var genreData = require('../api/inspectors_data/genreData.json');
+var genreDataArray = genreData['DATA'];
+var genreDataLength = genreDataArray.length;
 
 
 Thing.find({}).remove(function() {
@@ -97,8 +105,33 @@ var dbModelsId = {
   InstitutionalActivity: 'institutionalId'
 };
 
-var countTotal = 0;
-var countTotalFinished = 0;
+var genreDBCollections = {
+  Sector: [],
+  Genre: [{name: 'Masculino'},{name: 'Femenino'}],
+  JobClassification: [
+    {name: 'Estabilidad Laboral'},
+    {name: 'Haberes'},
+    {name: 'Mando Medio'},
+    {name: 'Mando Superior'},
+    {name: 'Tecnico Operativo de Base'},
+    {name: 'Tecnico Operativo de Confianza'}
+  ]
+};
+
+var genreDBModelComparation = {
+  Genre: {},
+  JobClassification: {}
+};
+
+var financeCounter = {
+  countTotal: 0,
+  countTotalFinished: 0
+};
+
+var genreCounter = {
+  countTotal: 0,
+  countTotalFinished: 0
+};
 
 function removeComparedModels() {
   dbCompareModels = {
@@ -118,6 +151,16 @@ function removeComparedModels() {
     InstitutionalActivity: [],
     Spent: []
   };
+}
+
+function removeGenreComparedCollections (){
+  genreDBModelComparation = {
+    Genre: {},
+    JobClassification: {}
+  };
+  genreDBCollections.Sector = [];
+  genreDBCollections.Genre = [];
+  genreDBCollections.JobClassification = [];
 }
 
 function getManagerCenterModelData (key) {
@@ -228,13 +271,13 @@ function saveDataInModelArray(modelArray, isSpentModel, params, currentItem, ref
   }
 }
 
-function totalWait(callback) {
-  if (countTotal == countTotalFinished) {
-    countTotal = 0;
-    countTotalFinished = 0;
+function totalWait(callback, params) {
+  if (params.countTotal == params.countTotalFinished) {
+    params.countTotal = 0;
+    params.countTotalFinished = 0;
     callback();
   } else {
-    setTimeout(function(){return totalWait(callback)}, 1000);
+    setTimeout(function(){return totalWait(callback, params)}, 1000);
   }
 }
 
@@ -255,7 +298,7 @@ function createDataWithoutDocReferences() {
   //Control each process (Model creation and ModelComparator creation) with a counter once the counter is completed then it follows the next process which is to populate all related ID's of all documents.
   for (var key in dbCollections) {
     if (dbCollections.hasOwnProperty(key)) {
-      countTotal++;
+      financeCounter.countTotal++;
       createDocumentCollection(dbModels[key], dbCollections[key]).then(
         function (key) {
           return function (docs) {
@@ -265,15 +308,15 @@ function createDataWithoutDocReferences() {
                   dbCompareModels[key][docs[i][dbModelsId[key]]] = docs[i]._id;
                 }
               }
-              countTotalFinished++;
+              financeCounter.countTotalFinished++;
             }
           };
 
         }(key))
     }
   }
-  countTotal--;
-  totalWait(populateCollectionRelationship);
+  financeCounter.countTotal--;
+  totalWait(populateCollectionRelationship, financeCounter);
 }
 
 function sortSpentsByPriorityOrder(arr) {
@@ -286,8 +329,8 @@ function sortSpentsByPriorityOrder(arr) {
 }
 
 function populateCollectionRelationship() {
-  console.log('Collections have been populated without reference ID relationships');
-  countTotal++;
+  console.log('Finance Collections have been populated without reference ID relationships');
+  financeCounter.countTotal++;
   Spent.find(function (err, docs) {
     if (err) {console.log(err);}
     docs = sortSpentsByPriorityOrder(docs);
@@ -302,27 +345,76 @@ function populateCollectionRelationship() {
         return function (err) {
           if (err) {console.log(err);}
           if (i == managerCenterLength - 1) {
-            countTotalFinished++;
+            financeCounter.countTotalFinished++;
           }
         }
       }(i));
     }
     totalWait(function() {
       removeComparedModels();
-      console.log('All collections are populated!');
-    });
+      console.log('All Finance collections are populated!');
+    }, financeCounter);
 
   });
 
 }
 
+function saveGenreModelComparatorObjReference (modelObj, docs) {
+  for (var i = 0; i < docs.length; i++) {
+    modelObj[docs[i].name] = docs[i]._id;
+  }
+}
+
+function populateSectorsGenreCollectionData () {
+  console.log('Genre collections without reference Ids are populated!');
+  console.log('Starting to populate collection with reference id!');
+  for (var i = 0; i < genreDataLength; i++) {
+    genreDBCollections.Sector.push({
+      name: genreDataArray[i].SECTOR,
+      staffNo: genreDataArray[i].STAFF_NO,
+      avgBruteSalary: genreDataArray[i].AVG_BRUTE_SALARY,
+      avgBaseSalary: genreDataArray[i].AVG_BASE_SALARY,
+      avgExtraordinaryTime: genreDataArray[i].AVG_EXTRAORDINARY_TIME,
+      avgOtherBenefits: genreDataArray[i].AVG_OTHER_BENEFITS,
+      sumBruteSalary: genreDataArray[i].SUM_BRUTE_SALARY,
+      sumBaseSalary: genreDataArray[i].SUM_BASE_SALARY,
+      sumExtraordinaryTime: genreDataArray[i].SUM_EXTRAORDINARY_TIME,
+      sumOtherBenefits: genreDataArray[i].SUM_OTHER_BENEFITS,
+      recruitments: genreDataArray[i].RECRUITMENTS,
+      promotions: genreDataArray[i].PROMOTIONS,
+      genre: genreDBModelComparation.Genre[genreDataArray[i].GENRE],
+      jobClassification: genreDBModelComparation.JobClassification[genreDataArray[i].JOB_CLASSIFICATION]
+    });
+  }
+  Sector.create(genreDBCollections.Sector).then(function (err, docs) {
+    if (err) { console.log(err); }
+    genreCounter.countTotalFinished++;
+  });
+}
+
+function createGenreDataWithoutDocReferences () {
+  genreCounter.countTotal++;
+  totalWait(function () {
+    removeGenreComparedCollections();
+    console.log('All Genre Collections are populated!');
+  }, genreCounter);
+  Genre.create(genreDBCollections.Genre).then(function (docs) {
+    saveGenreModelComparatorObjReference(genreDBModelComparation.Genre, docs);
+    return JobClassification.create(genreDBCollections.JobClassification);
+  }).then(function (docs) {
+    saveGenreModelComparatorObjReference(genreDBModelComparation.JobClassification, docs);
+    populateSectorsGenreCollectionData();
+  });
+
+}
+
 (function populateDatabase() {
-  console.log('Check if database is populated...');
+  console.log('Check if Finance collections are populated...');
   Spent.find(function (err, docs) {
     if (err) console.log(err);
     var length = docs.length;
     if (length == 0) {
-      console.log('Database is not populated yet, population process starting now...');
+      console.log('Finance collections are not populated yet, population process starting now...');
       //Avoid callback hell!! use promises!!!!
       Spent.find().remove().then(function () {
         return InstitutionalActivity.find().remove();
@@ -340,7 +432,25 @@ function populateCollectionRelationship() {
         createDataWithoutDocReferences();
       });
     } else {
-      console.log('Database is already populated!');
+      console.log('Finance collections are already populated!');
+    }
+  });
+  console.log('Check if Genre collections are populated...');
+  Sector.find(function (err, docs) {
+    if (err) {console.log(err);}
+    var length = docs.length;
+    if (length == 0) {
+      console.log('Genre collections are not populated yet, population process starting now...');
+      Sector.find().remove().then(function (err, docs) {
+        return Genre.find().remove();
+      }).then(function () {
+        return JobClassification.find().remove();
+      }).then(function () {
+        createGenreDataWithoutDocReferences();
+      });
+    } else {
+      removeGenreComparedCollections();
+      console.log('Genre collections are already populated!')
     }
   });
 })();

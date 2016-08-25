@@ -18,6 +18,9 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/genre/genre.socket').register(socket);
+  require('../api/sector/sector.socket').register(socket);
+  require('../api/jobClassification/jobClassification.socket').register(socket);
   require('../api/spent/spent.socket').register(socket);
   require('../api/spentType/spentType.socket').register(socket);
   require('../api/institutionalActivity/institutionalActivity.socket').register(socket);

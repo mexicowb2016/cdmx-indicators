@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('cdmxIndicatorsApp')
-  .controller('MainCtrl', function ($scope, $uibModal, financeDataService, $filter) {
-    $scope.loading = true;
+  .controller('MainCtrl', function ($scope, $uibModal, financeDataService, $rootScope) {
+    $rootScope.loading = true;
 
     $scope.ui = {};
 
@@ -55,7 +55,7 @@ angular.module('cdmxIndicatorsApp')
     financeDataService.getAllTotalSpentData().then(function (response) {
       var data = response.data;
       financeDataService.getTotalSpentGraph($scope, data);
-      $scope.loading = false;
+      $rootScope.loading = false;
     }).catch(function (err) {
       console.log(err);
     });
