@@ -1,3 +1,163 @@
-<div class="col-md-12">
-This is the datosAbiertos view.
+<!-- <loader ng-show="loading"></loader> -->
+<navbar-cdmx></navbar-cdmx>
+
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <img src="../app/images/icon-datos-abiertos.png" width="160"/>
+          </div>
+            <div class="col-md-10">
+                <span class="header-text-1">Datos Abiertos | <strong>Ciudad de México</strong></span>
+                <br>
+                <span class="header-text-2">Iniciativa de Datos Abiertos de la CDMX</span>
+            </div>
+        </div>
+    </div>
+</header>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">Comparativas con iniciativas de datos abiertos<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
+        <div class="panel-body">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-sm-2">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <img src="../app/images/icon-view.png" width="70" alt="" />
+          <p class="size-percentage-2">20</p>
+          <p class="size-percentage-3">Visitas</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-sm-2">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <img src="../app/images/icon-user.png" width="70" alt="" />
+          <p class="size-percentage-2">20</p>
+          <span class="size-percentage-3">Usuarios</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-sm-8">
+      <div class="panel panel-default panel-size">
+        <div class="panel-heading">Evolución oferta y demanda de datos de la CDMX<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
+        <div class="panel-body">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">Oferta de datos abiertos<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
+        <div class="panel-body">
+          <table class="table table-hover table-responsive">
+            <thead>
+              <tr>
+                <th>Ranking</th>
+                <th>Dependencia</th>
+                <th>Datasets</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">Demanda de datos abiertos<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
+        <div class="panel-body">
+          <table class="table table-hover table-responsive">
+            <thead>
+              <tr>
+                <th>Ranking</th>
+                <th>Dependencia</th>
+                <th>Datasets</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<footer-cdmx></footer-cdmx>
+<!-- Information modal -->
+<script type="text/ng-template" id="information-modal.html">
+    <div class="modal-header">
+        <span class="modal-title modal-text">{{indicatorContent.title}}</span>
+    </div>
+    <div class="modal-body">
+        <p>{{indicatorContent.description}}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-modal" type="button" ng-click="ok()">OK</button>
+    </div>
+</script>
+<!-- Information modal end -->

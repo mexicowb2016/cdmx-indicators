@@ -551,6 +551,9 @@ div.panel-body.single-bar-ctn {
       color:#4c4c4c;
   }
 
+.icon-header{
+  width: 180px;
+}
 /*footer*/
   .buttom-footer{
     display: none;
