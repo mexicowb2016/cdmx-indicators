@@ -11,5 +11,8 @@ router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
+router.get('/get/womenJobClassification/quantity', controller.getWomenQuantityByJobClassification);
+router.get('/get/womenJobClassification/recruitment', controller.getWomenRecruitmentRepresentationByJobClassification);
+router.get('/get/womenJobClassification/promotion', controller.getWomenPromotionRepresentationByJobClassification);
 
 module.exports = router;

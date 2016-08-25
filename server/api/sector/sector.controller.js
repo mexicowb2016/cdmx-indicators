@@ -54,6 +54,58 @@ exports.destroy = function(req, res) {
   });
 };
 
+function filterWomenRepresentationByJobClassification (sectors, requiredField) {
+  var i;
+  var jobClassificationObj = {};
+  for (i = 0; i < sectors.length; i++) {
+    if (jobClassificationObj[sectors[i].jobClassification.name] == null) {
+      jobClassificationObj[sectors[i].jobClassification.name] = {
+        women: 0,
+        men: 0
+      };
+    }
+    if (sectors[i].genre.name == 'Femenino') {
+      jobClassificationObj[sectors[i].jobClassification.name].women += sectors[i][requiredField];
+    }
+    if (sectors[i].genre.name == 'Masculino') {
+      jobClassificationObj[sectors[i].jobClassification.name].men += sectors[i][requiredField];
+    }
+  }
+  var key;
+  for (key in jobClassificationObj) {
+    if (jobClassificationObj.hasOwnProperty(key)) {
+      jobClassificationObj[key].total = jobClassificationObj[key].women + jobClassificationObj[key].men;
+      jobClassificationObj[key].womenPercentage = jobClassificationObj[key].women / jobClassificationObj[key].total;
+      jobClassificationObj[key].womenPercentage = Math.round(parseFloat((jobClassificationObj[key].womenPercentage).toFixed(2)));
+    }
+  }
+  return jobClassificationObj;
+}
+
+exports.getWomenQuantityByJobClassification = function (req, res) {
+  Sector.find().populate('jobClassification genre').exec(function (err, sectors) {
+    if (err) {console.log(err);}
+    var result = filterWomenRepresentationByJobClassification(sectors, 'staffNo');
+    return res.status(200).json(result);
+  })
+};
+
+exports.getWomenRecruitmentRepresentationByJobClassification = function (req, res) {
+  Sector.find().populate('jobClassification genre').exec(function (err, sectors) {
+    if (err) {console.log(err);}
+    var result = filterWomenRepresentationByJobClassification(sectors, 'recruitments');
+    return res.status(200).json(result);
+  })
+};
+
+exports.getWomenPromotionRepresentationByJobClassification = function (req, res) {
+  Sector.find().populate('jobClassification genre').exec(function (err, sectors) {
+    if (err) {console.log(err);}
+    var result = filterWomenRepresentationByJobClassification(sectors, 'promotions');
+    return res.status(200).json(result);
+  })
+};
+
 function handleError(res, err) {
   return res.status(500).send(err);
 }
