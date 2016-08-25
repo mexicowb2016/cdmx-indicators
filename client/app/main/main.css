@@ -138,7 +138,29 @@ float: left;
   margin: 20px;
   float: right;
 }
+#oz-scroll {
+	position:fixed;
+	bottom:15px;
+	right:-80px;
+	height:48px;
+	width:48px;
+	overflow:hidden;
+	display:none;
+	zoom:1;
+	filter:alpha(opacity=60);
+	opacity:.6;
+	-webkit-transition:all .5s ease-in-out;
+	-moz-transition:all .5s ease-in-out;
+	-ms-transition:all .5s ease-in-out;
+	-o-transition:all .5s ease-in-out;
+	transition:all .5s ease-in-out;
+}
 
+#oz-scroll img {max-width:100%}
+
+#oz-scroll:hover {opacity:1}
+
+.style4 {background-image:url('../app/images/style4.png')}
 /*menu*/
 
 .menu-background{
@@ -275,7 +297,7 @@ font-size: 18px;
 
 /*i'm a button, click me!*/
 
-.boom-size {
+/*.boom-size {
   width: 50px;
   height: 50px;
   color: #ffffff;
@@ -283,14 +305,14 @@ font-size: 18px;
   text-decoration: none;
   font-size: 2em;
   border: none;
-  /*margin: 10px 0 0 5px;*/
+  margin: 10px 0 0 5px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
   border-radius: 50%;
 
 }
-/*magic starts here*/
+
 
 .boom-size:hover {
   cursor: pointer;
@@ -304,7 +326,7 @@ font-size: 18px;
   -moz-transform: scale(2, 2);
   transform: scale(2, 2);
 
-}
+}*/
 
 div.panel-body.executed-spent-dependency-graph svg{
   height: 500px;

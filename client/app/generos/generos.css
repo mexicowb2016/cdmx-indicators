@@ -215,6 +215,10 @@ font-size: 18px;
   height: 0px;
   margin: 0px;
 }
+.dropdowns-align{
+  display: inline-block;
+  margin-top: 15px;
+}
 /*Button footer*/
 * {
   margin: 0;
