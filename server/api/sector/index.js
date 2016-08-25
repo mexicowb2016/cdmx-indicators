@@ -14,5 +14,6 @@ router.delete('/:id', controller.destroy);
 router.get('/get/womenJobClassification/quantity/', controller.getWomenQuantityByJobClassification);
 router.get('/get/womenJobClassification/recruitment/', controller.getWomenRecruitmentRepresentationByJobClassification);
 router.get('/get/womenJobClassification/promotion/', controller.getWomenPromotionRepresentationByJobClassification);
+router.get('/get/womenJobClassification/salaryGap/', controller.getWomenSalaryGapByJobClassification);
 
 module.exports = router;

@@ -3,28 +3,37 @@
  */
 angular.module('cdmxIndicatorsApp').
   service('genreDataService', function ($http) {
+    var saveJobClassificationDataOrder = ['Mando Superior', 'Mando Medio', 'Tecnico Operativo de Confianza', 'Tecnico Operativo de Base', 'Haberes', 'Estabilidad Laboral'];
+
     return {
       getWomenPromotedRepresentationGraph: getWomenPromotedRepresentationGraph,
       getWomenQuantityRepresentationGraph: getWomenQuantityRepresentationGraph,
       getWomenRecruitmentRepresentationGraph: getWomenRecruitmentRepresentationGraph,
+      getWomenSalaryGapRepresentationGraph: getWomenSalaryGapRepresentationGraph,
       getWomenPromotedRepresentationDataByJobClassification: getWomenPromotedRepresentationDataByJobClassification,
       getWomenQuantityRepresentationDataByJobClassification: getWomenQuantityRepresentationDataByJobClassification,
-      getWomenRecruitmentRepresentationDataByJobClassification: getWomenRecruitmentRepresentationDataByJobClassification
+      getWomenRecruitmentRepresentationDataByJobClassification: getWomenRecruitmentRepresentationDataByJobClassification,
+      getWomenSalaryGapDataByJobClassification: getWomenSalaryGapDataByJobClassification
     };
 
     function getWomenPromotedRepresentationGraph (data) {
-      data = formatMultiBarData(data);
-      createMultiBarGraph(data, 'women-promoted-percentage')
+      data = formatMultiBarSingleData(data);
+      createMultiBarGraph(data, 'women-promoted-percentage', true)
     }
 
     function getWomenQuantityRepresentationGraph (data) {
-      data = formatMultiBarData(data);
-      createMultiBarGraph(data, 'women-quantity-percentage')
+      data = formatMultiBarSingleData(data);
+      createMultiBarGraph(data, 'women-quantity-percentage', true)
     }
 
     function getWomenRecruitmentRepresentationGraph (data) {
-      data = formatMultiBarData(data);
-      createMultiBarGraph(data, 'women-recruitment-percentage')
+      data = formatMultiBarSingleData(data);
+      createMultiBarGraph(data, 'women-recruitment-percentage', true)
+    }
+
+    function getWomenSalaryGapRepresentationGraph (data) {
+      data = formatMultiBarMultiData(data);
+      createMultiBarGraph(data, 'women-salaryGap-percentage', false);
     }
 
     function getWomenPromotedRepresentationDataByJobClassification() {
@@ -39,16 +48,20 @@ angular.module('cdmxIndicatorsApp').
       return $http.get('/api/sectors/get/womenJobClassification/recruitment/');
     }
 
+    function getWomenSalaryGapDataByJobClassification () {
+      return $http.get('/api/sectors/get/womenJobClassification/salaryGap/');
+    }
+
 
   //Utility functions
 
-    function createMultiBarGraph (data, elementContainerCls) {
+    function createMultiBarGraph (data, elementContainerCls, isSingleBar) {
       nv.addGraph(function() {
         var chart = nv.models.multiBarChart()
-          .color(['#FF149B']) //colors for every barChart
+          .color(isSingleBar ? ['#FF149B'] : ['#FF0000','#9DC3E6', '#A5A5A5', '#F5B183']) //colors for every barChart
           .showControls(false)
           .staggerLabels(true)
-          .margin({"bottom": 70})
+          .margin({"bottom": 80})
           .showLegend(false);
 
         chart.yAxis
@@ -57,8 +70,8 @@ angular.module('cdmxIndicatorsApp').
 
         chart.xAxis
           .tickFormat(function (d){return d});
-
-        chart.forceY([0, 100]);
+        var rangeData = isSingleBar ? [0, 100] : [0, 50];
+        chart.forceY(rangeData);
 
         chart.wrapLabels(true);
 
@@ -72,15 +85,48 @@ angular.module('cdmxIndicatorsApp').
       });
     }
 
-    function formatMultiBarData (data) {
+    function formatMultiBarMultiData (data) {
       var key;
       var result = [];
-      for (key in data) {
-        if (data.hasOwnProperty(key)) {
-          result.push({
-            "key": key,
-            "values": [{x:key, y:data[key].womenPercentage}]
-          })
+      for (var i = 0; i < saveJobClassificationDataOrder.length; i++) {
+          for (key in data) {
+            if (data.hasOwnProperty(key)) {
+              if (key == saveJobClassificationDataOrder[i]) {
+              result.push({
+                "key": 'Brecha en remuneración bruta',
+                "values": [{x: key, y: data[key].bruteSalaryGapPercentage == null ? 0 : data[key].bruteSalaryGapPercentage}]
+              }, {
+                "key": 'Brecha en salario base',
+                "values": [{x: key, y: data[key].baseSalaryGapPercentage == null ? 0 : data[key].baseSalaryGapPercentage}]
+              }, {
+                "key": 'Brecha en tiempo extraordinario',
+                "values": [{x: key, y: data[key].extraordinaryTimeGapPercentage == null ? 0 : data[key].extraordinaryTimeGapPercentage}]
+              }, {
+                "key": 'Brecha en otras prestaciones',
+                "values": [{x: key, y: data[key].otherTimeGapPercentage == null ? 0 : data[key].otherTimeGapPercentage}]
+              });
+              break;
+            }
+          }
+        }
+      }
+      return result;
+    }
+
+    function formatMultiBarSingleData (data) {
+      var key;
+      var result = [];
+      for (var i = 0; i < saveJobClassificationDataOrder.length; i++) {
+        for (key in data) {
+          if (data.hasOwnProperty(key)) {
+            if (key == saveJobClassificationDataOrder[i]) {
+              result.push({
+                "key": key,
+                "values": [{x:key, y:data[key].womenPercentage}]
+              });
+              break;
+            }
+          }
         }
       }
       return result;

@@ -3,7 +3,7 @@
   angular.module('cdmxIndicatorsApp')
     .controller('GenerosCtrl', function ($scope, $uibModal, genreDataService, $rootScope) {
       $rootScope.loading = true;
-      
+
       $scope.ui = {};
 
       $scope.myModalContent = {
@@ -58,7 +58,7 @@
       }).catch(function (err) {
         console.log(err);
       });
-      
+
       genreDataService.getWomenQuantityRepresentationDataByJobClassification().then(function (response) {
         var data = response.data;
         console.log(data);
@@ -74,5 +74,13 @@
       }).catch(function (err) {
         console.log(err);
       });
-      
+
+      genreDataService.getWomenSalaryGapDataByJobClassification().then(function (response) {
+        var data = response.data;
+        console.log(data);
+        genreDataService.getWomenSalaryGapRepresentationGraph(data);
+      }).catch(function (err) {
+        console.log(err);
+      });
+
     });

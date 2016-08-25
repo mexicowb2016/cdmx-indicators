@@ -35,7 +35,6 @@ angular.module('cdmxIndicatorsApp').
 
     function getExecutedSpentsByDependencyGraph (data) {
       data = formatMultiBarData(data);
-      console.log(data);
       createMultiBarGraph(data, 'executed-spent-dependency-graph');
     }
 
