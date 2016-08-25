@@ -313,6 +313,10 @@ div.panel-body.executed-spent-dependency-graph svg{
 div.panel-body.executed-spent-function-graph svg {
   height: 1000px;
 }
+
+div.panel-body.women-promoted-percentage svg, div.panel-body.women-quantity-percentage svg, div.panel-body.women-recruitment-percentage svg {
+  height: 300px;
+}
 /*loading*/
 .loading-body  {
  width: 100%;

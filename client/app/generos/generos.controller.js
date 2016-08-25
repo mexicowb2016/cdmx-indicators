@@ -1,16 +1,9 @@
-// 'use strict';
-//
-// angular.module('cdmxIndicatorsApp')
-//   .controller('GenerosCtrl', function ($scope) {
-//     $scope.message = 'Hello';
-//   });
-
-  'use strict';
+'use strict';
 
   angular.module('cdmxIndicatorsApp')
-    .controller('GenerosCtrl', function ($scope, $uibModal, financeDataService, $rootScope) {
-      $rootScope.loading = false;
-
+    .controller('GenerosCtrl', function ($scope, $uibModal, genreDataService, $rootScope) {
+      $rootScope.loading = true;
+      
       $scope.ui = {};
 
       $scope.myModalContent = {
@@ -56,5 +49,30 @@
        $scope.animationsEnabled = !$scope.animationsEnabled;
       };
       //Fin codigo modal
+
+      genreDataService.getWomenPromotedRepresentationDataByJobClassification().then(function (response) {
+        var data = response.data;
+        console.log(data);
+        genreDataService.getWomenPromotedRepresentationGraph(data);
+        $rootScope.loading = false;
+      }).catch(function (err) {
+        console.log(err);
+      });
+      
+      genreDataService.getWomenQuantityRepresentationDataByJobClassification().then(function (response) {
+        var data = response.data;
+        console.log(data);
+        genreDataService.getWomenQuantityRepresentationGraph(data);
+      }).catch(function (err) {
+        console.log(err);
+      });
+
+      genreDataService.getWomenRecruitmentRepresentationDataByJobClassification().then(function (response) {
+        var data = response.data;
+        console.log(data);
+        genreDataService.getWomenRecruitmentRepresentationGraph(data);
+      }).catch(function (err) {
+        console.log(err);
+      });
       
     });

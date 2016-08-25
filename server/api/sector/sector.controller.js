@@ -76,7 +76,7 @@ function filterWomenRepresentationByJobClassification (sectors, requiredField) {
     if (jobClassificationObj.hasOwnProperty(key)) {
       jobClassificationObj[key].total = jobClassificationObj[key].women + jobClassificationObj[key].men;
       jobClassificationObj[key].womenPercentage = jobClassificationObj[key].women / jobClassificationObj[key].total;
-      jobClassificationObj[key].womenPercentage = Math.round(parseFloat((jobClassificationObj[key].womenPercentage).toFixed(2)));
+      jobClassificationObj[key].womenPercentage = Math.round(parseFloat((jobClassificationObj[key].womenPercentage).toFixed(2)) * 100);
     }
   }
   return jobClassificationObj;
