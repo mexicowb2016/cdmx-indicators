@@ -44,7 +44,7 @@
 
 
 body {
-  background: url('../../app/images/background.jpg')no-repeat center center fixed;
+  background: url('../images/background.jpg')no-repeat center center fixed;
    -webkit-background-size: cover;
    -moz-background-size: cover;
    background-size: cover;
@@ -167,14 +167,14 @@ float: left;
   margin: 20px;
   float: right;
 }
-#oz-scroll {
+#scrollTop-button {
 	position:fixed;
 	bottom:15px;
-	right:-80px;
-	height:48px;
-	width:48px;
+	right: -80px;
+	height:49px;
+	width:49px;
 	overflow:hidden;
-	display:none;
+	display: none;
 	zoom:1;
 	filter:alpha(opacity=60);
 	opacity:.6;
@@ -185,11 +185,11 @@ float: left;
 	transition:all .5s ease-in-out;
 }
 
-#oz-scroll img {max-width:100%}
+#scrollTop-button img {max-width:100%}
 
-#oz-scroll:hover {opacity:1}
+#scrollTop-button:hover {opacity:1}
 
-.style4 {background-image:url('../app/images/style4.png')}
+.scrollTop-button {background-image:url('../images/style4.png')}
 /*menu*/
 
 .menu-background{
@@ -243,6 +243,33 @@ font-size: 18px;
 }
 .padding-col{
   margin-right: 20px;
+}
+.img-finanzas{
+    background-image: url('../images/icon-finanzas.png');
+    width: 100px;
+    height: 100px;
+}
+.img-genero{
+  background-image: url('../images/icon-genero.png');
+  width: 100px;
+  height: 100px;
+}
+
+.img-datosa-biertos{
+  background-image: url('../images/icon-datos-abiertos.png');
+  width: 100px;
+  height: 100px;
+}
+
+.img-view{
+  background-image: url('../images/icon-view.png');
+  width: 50px;
+  height: 50px;
+}
+.img-user{
+  background-image: url('../images/icon-user.png');
+  width: 50px;
+  height: 50px;
 }
 /*boxes*/
 .panel-default > .panel-heading,
@@ -331,6 +358,9 @@ margin: 0px;
 font-size: 14px;
 
 }
+.panel-size {
+  height: 313px;
+}
 /*Button footer*/
 * {
   margin: 0;
@@ -396,7 +426,7 @@ div.panel-body.women-promoted-percentage svg, div.panel-body.women-quantity-perc
 }
 
 div.panel-body.offer-demand-opendata svg{
-  height: 550px;
+  height: 250px;
 }
 /*loading*/
 .loading-body  {
