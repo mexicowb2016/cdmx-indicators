@@ -40,7 +40,8 @@
   <body ng-app="cdmxIndicatorsApp">
     <div class="background-general"></div>
     <div class="background-color-general"></div>
-<loader ng-show="loading"></loader>
+    <loader ng-show="loading"></loader>
+
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -79,6 +80,7 @@
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
 
         <!-- build:js({.tmp,client}) app/app.js -->

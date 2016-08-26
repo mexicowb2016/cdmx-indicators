@@ -14,44 +14,47 @@ angular.module('cdmxIndicatorsApp').
     return $http.get('/api/results/get/openData/demandOffer/');
   }
 
-  function getOfferDemandOpenDataGraph (data) {
+  function getOfferDemandOpenDataGraph (data, rootScope) {
 
-    nv.addGraph(function() {
-      var chart = nv.models.lineChart()
-          .showLegend(false)
-          .margin({"right": 25})
-          .useInteractiveGuideline(true);
+    google.charts.setOnLoadCallback(function createDualYAxisLinearChart() {
+      // data = formatOfferDemandLinearData(data);
+      var graphContainerEl = angular.element('div.offer-demand-opendata');
+      var graphContainerDOMEl = graphContainerEl[0];
 
-      data = formatOfferDemandLinearData(data);
+      var graphData = new google.visualization.DataTable();
+      graphData.addColumn('string', 'Tiempo');
+      graphData.addColumn('number', 'Evolucion oferta de datos abiertos');
+      graphData.addColumn('number', 'Evolucion demanda de datos abiertos');
 
-      chart.xAxis
-        .axisLabel('Tiempo')
-        .tickFormat(function (d) {
-          return d3.time.format('%b-%Y')(new Date(d));
-        });
+      graphData.addRows(data);
 
-      chart.yAxis
-        .axisLabel('Acumulacion')
-        .tickFormat(d3.format('d'));
+      var chartOptions = {
+        title: '',
+        legend: { position: 'none' },
+        width: graphContainerEl.width(),
+        height: 270,
+        lineWidth: 4,
+        series: {
+          0: {color: '#FF149B', axis: 'Acumulado oferta'},
+          1: {color: '#C3C3C3', axis: 'Acumulado demanda'}
+        },
+        axes: {
+          'Acumulado oferta': {label: 'Acumulado oferta'},
+          'Acumulado demanda': {label: 'Acumulado demanda'}
+        }
+      };
 
-      d3.select('.offer-demand-opendata svg')
-        .datum(data)
-        .transition().duration(500)
-        .call(chart);
-
-      nv.utils.windowResize(chart.update);
-
-      return chart;
+      var linearChart = new google.charts.Line(graphContainerDOMEl);
+      linearChart.draw(graphData, chartOptions);
+      console.log(linearChart);
     });
   }
 
   function formatOfferDemandLinearData (data) {
     var currentLine;
     for (var i = 0; i < data.length; i++) {
-      currentLine = data[i].values;
-      for (var j = 0; j < currentLine.length; j++) {
-        currentLine[j].x = new Date(currentLine[j].x);
-      }
+      currentLine = data[i];
+      currentLine[0] = new Date(currentLine[0]);
     }
     return data;
   }

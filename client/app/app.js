@@ -44,7 +44,7 @@ angular.module('cdmxIndicatorsApp', [
 
   .run(function ($rootScope, $location, Auth) {
     $rootScope.loading = true;
-
+    //Set D3 localization
     var d3MexicanLocalization = d3.locale({
       "decimal": ".",
       "thousands": ",",
@@ -60,7 +60,8 @@ angular.module('cdmxIndicatorsApp', [
       "shortMonths": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
     });
     d3.time.format = d3MexicanLocalization.timeFormat;
-    
+    //Load only once google chart API
+    google.charts.load('current', {'packages':['line', 'corechart'], 'language': 'es'});
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {

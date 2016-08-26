@@ -68,44 +68,30 @@ function createOfferDemandOpenDataResult() {
     18300,
     18310
   ];
-  var offerOpenData = [];
-  var demandOpenData = [];
+  var result = [];
+  // result.push(['Periodo', 'Acumulacion Oferta', 'Acumulacion Demanda']);
 
-  offerOpenData = saveOpenDataArray(offerOpenData, offerOpenDataGathering);
-  demandOpenData = saveOpenDataArray(demandOpenData, demandOpenDataGathering);
+  result = saveOpenDataFormatArray(result, offerOpenDataGathering, demandOpenDataGathering);
 
-  return [
-    {
-      values: offerOpenData,
-      key: 'EVOLUCION OFERTA DE DATOS ABIERTOS',
-      color: "#ff7f0e"
-    },
-    {
-      values: demandOpenData,
-      key: 'EVOLUCION DEMANDA DE DATOS ABIERTOS',
-      color: "#2ca02c"
-    }
-  ];
+  return result;
 }
 
-function saveOpenDataArray(saveArray, dataArr) {
+function saveOpenDataFormatArray(saveArray, offerDataArr, demandDataArr) {
   var i, j;
-  var c = 0;
-  var month;
+  var offerCounter = 0;
+  var demandCounter = 0;
+  var monthNameArr = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
   for (i = 2014; i <= 2016; i++) {
-    for(j = 1; j <= 12; j++) {
-      if (j > 9) {
-        month = j;
-      } else {
-        month = '0' + j;
-      }
-      if (i == 2016 && j == '08') {
+    for(j = 0; j < 12; j++) {
+      if (i == 2016 && j == 7) {
         break;
       }
-      saveArray.push({
-        x: new Date(month + '-01-' + i),
-        y: dataArr[c++]
-      });
+      saveArray.push([
+        // new Date(i, j),
+        (monthNameArr[j] + '-' + i),
+        offerDataArr[offerCounter++],
+        demandDataArr[demandCounter++]
+      ]);
     }
   }
   return saveArray;
