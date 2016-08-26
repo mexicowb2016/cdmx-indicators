@@ -1,0 +1,22 @@
+{
+  "Secretaría de Obras y Servicios del Distrito Federal": {
+    "normalSpentExecuted":91,
+    "capitalSpentExecuted":52
+  },
+  "Secretaría de Desarrollo Social del Distrito Federal": {
+    "normalSpentExecuted":95,
+    "capitalSpentExecuted":15
+  },
+  "Secretaría de Seguridad Pública del Distrito Federal": {
+    "normalSpentExecuted":95,
+    "capitalSpentExecuted":84
+  },
+  "Procuraduría General de Justicia del Distrito Federal": {
+    "normalSpentExecuted":94,
+    "capitalSpentExecuted":43
+  },
+  "Secretaría de Salud del Distrito Federal": {
+    "normalSpentExecuted":84,
+    "capitalSpentExecuted":58
+  }
+}

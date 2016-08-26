@@ -339,6 +339,10 @@ div.panel-body.executed-spent-function-graph svg {
 div.panel-body.women-promoted-percentage svg, div.panel-body.women-quantity-percentage svg, div.panel-body.women-recruitment-percentage svg, div.panel-body.women-salaryGap-percentage svg{
   height: 300px;
 }
+
+div.panel-body.offer-demand-opendata svg{
+  height: 550px;
+}
 /*loading*/
 .loading-body  {
  width: 100%;

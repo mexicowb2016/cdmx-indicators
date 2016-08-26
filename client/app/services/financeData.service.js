@@ -13,12 +13,12 @@ angular.module('cdmxIndicatorsApp').
     };
 
     function getAllTotalSpentsData() {
-      var url = '/api/spents/get/allTotalSpents/';
+      var url = '/api/results/get/totalAllSpents/';
       return $http.get(url);
     }
 
     function getExecutedSpentsByDepartmentFunctionData () {
-      var url = '/api/spents/get/executedSpents/function/';
+      var url = '/api/results/get/executedSpents/function/';
       return $http.get(url);
     }
 
@@ -29,7 +29,7 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function getExecutedSpentsByDependencyData () {
-      var url = '/api/spents/get/executedSpents/dependency/';
+      var url = '/api/results/get/executedSpents/dependency/';
       return $http.get(url);
     }
 
@@ -39,12 +39,12 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function getTop3CapitalSpentsByDependencyData() {
-      var url = '/api/spents/get/top3CapitalSpents/dependency';
+      var url = '/api/results/get/top3CapitalSpents/dependency';
       return $http.get(url, {cache:true});
     }
 
     function getTop3CapitalSpentsByInstActData() {
-      var url = '/api/spents/get/top3CapitalSpents/institutionalActivity';
+      var url = '/api/results/get/top3CapitalSpents/institutionalActivity';
       return $http.get(url, {cache:true});
     }
 

@@ -44,6 +44,23 @@ angular.module('cdmxIndicatorsApp', [
 
   .run(function ($rootScope, $location, Auth) {
     $rootScope.loading = true;
+
+    var d3MexicanLocalization = d3.locale({
+      "decimal": ".",
+      "thousands": ",",
+      "grouping": [3],
+      "currency": ["P", ""],
+      "dateTime": "%a %b %e %X %Y",
+      "date": "%d/%m/%Y",
+      "time": "%H:%M:%S",
+      "periods": ["AM", "PM"],
+      "days": ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
+      "shortDays": ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+      "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+      "shortMonths": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+    });
+    d3.time.format = d3MexicanLocalization.timeFormat;
+    
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {

@@ -284,6 +284,8 @@ exports.getExecutedSpentsByDependency = function (req, res) {
         };
       }
     }
+    console.log('Fourth Indicator');
+    console.log(JSON.stringify(result));
     return res.status(200).json(result);
   });
 };
@@ -330,6 +332,8 @@ exports.getExecutedSpentsByDepartmentFunction = function (req, res) {
         };
       }
     }
+    console.log('Fifth Indicator');
+    console.log(JSON.stringify(result));
     return res.status(200).json(result);
   })
 };

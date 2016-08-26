@@ -1,0 +1,74 @@
+{
+  "COORDINACION DE LA POLITICA DE GOBIERNO": {
+    "normalSpentExecuted": 92,
+    "capitalSpentExecuted": 43
+  },
+  "JUSTICIA": {
+    "normalSpentExecuted": 93,
+    "capitalSpentExecuted": 68
+  },
+  "ASUNTOS DE ORDEN PUBLICO Y DE SEGURIDAD INTERIOR": {
+    "normalSpentExecuted": 95,
+    "capitalSpentExecuted": 85
+  },
+  "PROTECCION AMBIENTAL": {
+    "normalSpentExecuted": 89,
+    "capitalSpentExecuted": 66
+  },
+  "RECREACION, CULTURA Y OTRAS MANIFESTACIONES SOCIALES": {
+    "normalSpentExecuted": 86,
+    "capitalSpentExecuted": 62
+  },
+  "CIENCIA, TECNOLOGIA E INNOVACION": {
+    "normalSpentExecuted": 73,
+    "capitalSpentExecuted": 0
+  },
+  "OTROS SERVICIOS GENERALES": {
+    "normalSpentExecuted": 85,
+    "capitalSpentExecuted": 86
+  },
+  "PROTECCION SOCIAL": {
+    "normalSpentExecuted": 94,
+    "capitalSpentExecuted": 70
+  },
+  "ASUNTOS ECONOMICOS, COMERCIALES Y LABORALES EN GENERAL": {
+    "normalSpentExecuted": 89,
+    "capitalSpentExecuted": 94
+  },
+  "AGROPECUARIA, SILVICULTURA, PESCA Y CAZA": {
+    "normalSpentExecuted": 97,
+    "capitalSpentExecuted": 73
+  },
+  "VIVIENDA Y SERVICIOS A LA COMUNIDAD": {
+    "normalSpentExecuted": 90,
+    "capitalSpentExecuted": 60
+  },
+  "SALUD": {
+    "normalSpentExecuted": 86,
+    "capitalSpentExecuted": 66
+  },
+  "EDUCACION": {
+    "normalSpentExecuted": 84,
+    "capitalSpentExecuted": 55
+  },
+  "OTRAS INDUSTRIAS Y OTROS ASUNTOS ECONOMICOS": {
+    "normalSpentExecuted": 79,
+    "capitalSpentExecuted": 62
+  },
+  "OTROS ASUNTOS SOCIALES": {
+    "normalSpentExecuted": 84,
+    "capitalSpentExecuted": 89
+  },
+  "TURISMO": {
+    "normalSpentExecuted": 54,
+    "capitalSpentExecuted": 60
+  },
+  "TRANSPORTE": {
+    "normalSpentExecuted": 76,
+    "capitalSpentExecuted": 52
+  },
+  "ASUNTOS FINANCIEROS Y HACENDARIOS": {
+    "normalSpentExecuted": 97,
+    "capitalSpentExecuted": 0
+  }
+}

@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('cdmxIndicatorsApp')
-  .controller('datosAbiertosCtrl', function ($scope, $uibModal, financeDataService, $rootScope) {
+  .controller('DatosAbiertosCtrl', function ($scope, $uibModal, openDataService, $rootScope) {
     $rootScope.loading = true;
 
     $scope.ui = {};
-
-    $scope.ui.top3CapitalSpentModel = 'Dependency';
 
     $scope.myModalContent = {
       indicator1: {
@@ -50,59 +48,12 @@ angular.module('cdmxIndicatorsApp')
     $scope.toggleAnimation = function () {
      $scope.animationsEnabled = !$scope.animationsEnabled;
     };
-    //Fin codigo modal
 
-    financeDataService.getAllTotalSpentData().then(function (response) {
+    openDataService.getOfferDemandOpenData().then(function (response) {
       var data = response.data;
-      financeDataService.getTotalSpentGraph($scope, data);
+      openDataService.getOfferDemandOpenDataGraph(data);
       $rootScope.loading = false;
     }).catch(function (err) {
       console.log(err);
     });
-
-    financeDataService.getExecutedSpentsByDependencyData().then(function (response) {
-      var data = response.data;
-      console.log(data);
-      financeDataService.getExecutedSpentsByDependencyGraph(data);
-    }).catch(function (err) {
-      console.log(err);
-    });
-
-    financeDataService.getExecutedSpentsByDepartmentFunctionData().then(function (response) {
-      var data = response.data;
-      console.log(data);
-      financeDataService.getExecutedSpentsByDepartmentFunctionGraph(data);
-    }).catch(function (err) {
-      console.log(err);
-    });
-
-    $scope.getTop3CapitalSpentsByDependency = function () {
-      $scope.ui.firstCapitalSpent = '';
-      $scope.ui.secondCapitalSpent = '';
-      $scope.ui.thirdCapitalSpent = '';
-      financeDataService.getTop3CapitalSpentsByDependencyData().then(function (response) {
-        var data = response.data;
-        $scope.ui.firstCapitalSpent = data.first.name.toUpperCase();
-        $scope.ui.secondCapitalSpent = data.second.name.toUpperCase();
-        $scope.ui.thirdCapitalSpent = data.third.name.toUpperCase();
-      }).catch(function (err) {
-        console.log(err);
-      });
-    };
-
-    $scope.getTop3CapitalSpentsByInstAct = function () {
-      $scope.ui.firstCapitalSpent = '';
-      $scope.ui.secondCapitalSpent = '';
-      $scope.ui.thirdCapitalSpent = '';
-      financeDataService.getTop3CapitalSpentsByInstActData().then(function (response) {
-        var data = response.data;
-        $scope.ui.firstCapitalSpent = data.first.name;
-        $scope.ui.secondCapitalSpent = data.second.name;
-        $scope.ui.thirdCapitalSpent = data.third.name;
-      }).catch(function (err) {
-        console.log(err);
-      });
-    };
-
-    $scope.getTop3CapitalSpentsByDependency();
   });
