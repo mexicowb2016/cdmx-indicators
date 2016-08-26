@@ -13,7 +13,9 @@ angular.module('cdmxIndicatorsApp').
       getWomenPromotedRepresentationDataByJobClassification: getWomenPromotedRepresentationDataByJobClassification,
       getWomenQuantityRepresentationDataByJobClassification: getWomenQuantityRepresentationDataByJobClassification,
       getWomenRecruitmentRepresentationDataByJobClassification: getWomenRecruitmentRepresentationDataByJobClassification,
-      getWomenSalaryGapDataByJobClassification: getWomenSalaryGapDataByJobClassification
+      getWomenSalaryGapDataByJobClassification: getWomenSalaryGapDataByJobClassification,
+      getWomenProportion: getWomenProportion,
+      getWomenProportionRepresentationGraph: getWomenProportionRepresentationGraph
     };
 
     function getWomenPromotedRepresentationGraph (data) {
@@ -36,6 +38,14 @@ angular.module('cdmxIndicatorsApp').
       createMultiBarGraph(data, 'women-salaryGap-percentage', false);
     }
 
+    function getWomenProportionRepresentationGraph (data) {
+      createPieChart(data.quintil1, 'women-proportion', 'piesvg1', 'Quintil 1');
+      createPieChart(data.quintil2, 'women-proportion', 'piesvg2', 'Quintil 2');
+      createPieChart(data.quintil3, 'women-proportion', 'piesvg3', 'Quintil 3');
+      createPieChart(data.quintil4, 'women-proportion', 'piesvg4', 'Quintil 4');
+      createPieChart(data.quintil5, 'women-proportion', 'piesvg5', 'Quintil 5');
+    }
+
     function getWomenPromotedRepresentationDataByJobClassification() {
       return $http.get('/api/sectors/get/womenJobClassification/promotion/');
     }
@@ -50,6 +60,10 @@ angular.module('cdmxIndicatorsApp').
 
     function getWomenSalaryGapDataByJobClassification () {
       return $http.get('/api/sectors/get/womenJobClassification/salaryGap/');
+    }
+
+    function getWomenProportion () {
+      return $http.get('/api/results/get/genre/proportion');
     }
 
 
@@ -132,5 +146,52 @@ angular.module('cdmxIndicatorsApp').
       return result;
     }
 
+    function createPieChart(data, elementContainerCls, elementSvgId, title) {
+      var margin = {top: 40, right: 10, bottom: 20, left: 10};
+      var width = 120 - margin.left - margin.right;
+      var height = 150 - margin.top - margin.bottom;
+      var radius = Math.min(width, height) / 2;
+
+      var color = d3.scale.ordinal()
+          .range(["#5A74C0", "#FF0E98"]);
+
+      var arc = d3.svg.arc()
+          .outerRadius(radius - 10)
+          .innerRadius(0);
+
+      var labelArc = d3.svg.arc()
+          .outerRadius(radius - 40)
+          .innerRadius(radius - 40);
+
+      var pie = d3.layout.pie()
+          .sort(null)
+          .value(function(d) { return d.value; });
+
+      var svg = d3.select(".women-proportion #" + elementSvgId)
+          .attr("width", width)
+          .attr("height", height)
+        .append("g")
+          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+      var g = svg.selectAll(".arc")
+          .data(pie(data))
+        .enter().append("g")
+          .attr("class", "arc");
+
+      g.append("path")
+          .attr("d", arc)
+          .style("fill", function(d, i) { return color(i); });
+
+      g.append("text")
+          .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+          .attr("dy", ".35em")
+          .text(function(d) { return d.label; });
+
+      svg.append("text")
+          .attr("x", 0)
+          .attr("y", 0 - (margin.top / 2) - 16)
+          .attr("text-anchor", "middle")
+          .text(title);
+    }
 
 });

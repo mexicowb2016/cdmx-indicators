@@ -17,5 +17,6 @@ router.get('/get/top3CapitalSpents/institutionalActivity/', controller.financeTo
 router.get('/get/executedSpents/dependency/', controller.financeExecutedSpentsByDependency);
 router.get('/get/executedSpents/function/', controller.financeExecutedSpentsByDepartmentFunction);
 router.get('/get/openData/demandOffer/', controller.openDataDemandOffer);
+router.get('/get/genre/proportion/', controller.genreProportion);
 
 module.exports = router;

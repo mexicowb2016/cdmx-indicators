@@ -83,7 +83,57 @@ exports.openDataDemandOffer = function (req, res) {
   return res.status(200).json(openDataResults.firstIndicator);
 };
 
+//genre
+exports.genreProportion = function (req, res) {
+  return res.status(200).json({
+    quintil1: [
+      {
+        label: "Hombre",
+        value: 0.65
+      }, {
+        label: "Mujer",
+        value: 0.35
+      }
+    ],
+    quintil2: [
+      {
+        label: "Hombre",
+        value: 0.6
+      }, {
+        label: "Mujer",
+        value: 0.4
+      }
+    ],
+    quintil3: [
+      {
+        label: "Hombre",
+        value: 0.54
+      }, {
+        label: "Mujer",
+        value: 0.46
+      }
+    ],
+    quintil4: [
+      {
+        label: "Hombre",
+        value: 0.45
+      }, {
+        label: "Mujer",
+        value: 0.55
+      }
+    ],
+    quintil5: [
+      {
+        label: "Hombre",
+        value: 0.39
+      }, {
+        label: "Mujer",
+        value: 0.61
+      }
+    ]
+  })
+}
+
 function handleError(res, err) {
   return res.status(500).send(err);
 }
-
