@@ -97,7 +97,7 @@ body {
     text-align: center;
 }
 .main-container{
-  padding-top:189px;
+  padding-top:174px;
 }
 
 .container-fluid > .row > .menu-left-text > .nav > li > a{
@@ -115,9 +115,11 @@ body {
   font-size:30px;
 }
 .navbar > .container > .navbar-header > a {
-  margin-top:70%;
+  margin-top:74%;
   font-size: 14px;
   color: #fff;
+  margin-bottom: -22px;
+
 }
 .logo-header{
   margin: 1% auto;
@@ -136,12 +138,12 @@ body {
 }*/
 
 .position-icon-nav{
-  margin-top: -140px;
+  margin-top: -120px;
 }
 .navbar-date{
   color: #fff;
-  margin-bottom: 10px;
-  margin-top: -40px;
+  /*margin-bottom: 10px;*/
+  margin-top: 10px;
 }
 .headerfi{
   position: fixed;
@@ -150,6 +152,14 @@ padding: 0 !important;
 z-index: 999981;
 }
 
+.img-logo{
+  background-image: url('../images/logo.png');
+  height: 67px;
+  width: 145px;
+  text-align: center;
+  margin-left: 49%;
+  margin-bottom: -45px;
+  }
 /*footer {
     margin: 50px 0;
 }*/
@@ -233,43 +243,47 @@ font-size: 18px;
 }
 /*header*/
 .header-text-1{
-  font-size: 24px;
+  font-size: 18px;
   color:#4c4c4c;
 
 }
 .header-text-2{
-  font-size: 34px;
+  font-size: 25px;
     color:#4c4c4c;
 }
 .padding-col{
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .img-finanzas{
     background-image: url('/app/images/icon-finanzas.png');
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }
 .img-genero{
   background-image: url('/app/images/icon-genero.png');
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 .img-datosa-biertos{
   background-image: url('/app/images/icon-datos-abiertos.png');
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 .img-view{
   background-image: url('/app/images/icon-view.png');
   width: 50px;
   height: 50px;
+  margin-top: 11px;
+
 }
 .img-user{
   background-image: url('/app/images/icon-user.png');
   width: 50px;
   height: 50px;
+  margin-top: 11px;
+
 }
 /*boxes*/
 .panel-default > .panel-heading,
@@ -280,7 +294,7 @@ font-size: 18px;
 
 .icon-right{
   float: right;
-  font-size: 21px;
+  font-size: 21px !important;
 }
 .panel-text-tittle{
   color: #5C5C5C;
@@ -360,6 +374,20 @@ font-size: 14px;
 }
 .panel-size {
   height: 313px;
+}
+
+.panel-body-past{
+  margin: 24px;
+}
+
+.panel-size-1{
+  height: 330px;
+}
+.panel-size-2{
+  height: 100px;
+}
+.panel-body-center{
+  text-align: center;
 }
 /*Button footer*/
 * {

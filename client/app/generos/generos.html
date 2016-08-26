@@ -37,26 +37,36 @@
     <div class="row">
 
           <div class="col-lg-6 col-sm-6">
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-size-1">
               <div class="panel-heading">Proporción de mujeres por clasificación del puesto<i ng-click="open(myModalContent.indicator1)" class="mdi mdi-information icon-right icon-information"></i></div>
                 <div class="panel-body women-quantity-percentage">
-                  <svg></svg>
+                  <!-- <svg></svg> -->
+                 <div class="panel-body-center">
+                    <button class="btn btn-default" type="submit">Mando Superior</button>
+                    <button class="btn btn-default" type="submit">Mando Medio</button>
+                    <button class="btn btn-default" type="submit">Estabilidad Laboral</button>
+                    <button class="btn btn-default" type="submit">Haberes</button>
+                </div>
                 </div>
             </div>
           </div>
           <div class="col-lg-6 col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">Brecha salarial entre hombres y mujeres<i ng-click="open(myModalContent.indicator2)" class="mdi mdi-information icon-right icon-information"></i></div>
-                <div class="panel-body women-salaryGap-percentage">
-                  <svg></svg>
-                </div>
+            <div class="panel panel-default panel-size-1">
+              <div class="panel-heading">Proporcion de mujeres por clasificacion del puesto<i ng-click="open(myModalContent.indicator1)" class="mdi mdi-information icon-right icon-information"></i></div>
+              <div class="panel-body women-proportion">
+                <svg id="piesvg1"></svg>
+                <svg id="piesvg2"></svg>
+                <svg id="piesvg3"></svg>
+                <svg id="piesvg4"></svg>
+                <svg id="piesvg5"></svg>
+              </div>
             </div>
           </div>
     </div>
 </div>
 
 <br>
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-lg-6 col-sm-6">
       <div class="panel panel-default">
@@ -76,19 +86,19 @@
     </div>
   </div>
 </div>
-<br>
+<br>-->
+
+
+
 <div class="container">
   <div class="row">
+    <div class="col-lg-3 col-sm-3"></div>
     <div class="col-lg-6 col-sm-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Proporcion de mujeres por clasificacion del puesto<i ng-click="open(myModalContent.indicator5)" class="mdi mdi-information icon-right icon-information"></i></div>
-        <div class="panel-body women-proportion">
-          <svg id="piesvg1"></svg>
-          <svg id="piesvg2"></svg>
-          <svg id="piesvg3"></svg>
-          <svg id="piesvg4"></svg>
-          <svg id="piesvg5"></svg>
-        </div>
+        <div class="panel-heading">Brecha salarial entre hombres y mujeres<i ng-click="open(myModalContent.indicator2)" class="mdi mdi-information icon-right icon-information"></i></div>
+          <div class="panel-body women-salaryGap-percentage">
+            <svg></svg>
+          </div>
       </div>
     </div>
   </div>
