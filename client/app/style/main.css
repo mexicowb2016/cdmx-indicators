@@ -44,7 +44,7 @@
 
 
 body {
-  background: url('images/background.jpg')no-repeat center center fixed;
+  background: url('/app/images/background.jpg')no-repeat center center fixed;
    -webkit-background-size: cover;
    -moz-background-size: cover;
    background-size: cover;
@@ -62,7 +62,7 @@ body {
   position: fixed;
   z-index: -5;
 }
-/* Header Image Background - Change the URL below to your image path (example: images/background.jpg) */
+/* Header Image Background - Change the URL below to your image path (example: /app/images/background.jpg) */
 
 .business-header {
     padding: 20px;
@@ -189,7 +189,7 @@ float: left;
 
 #scrollTop-button:hover {opacity:1}
 
-.scrollTop-button {background-image:url('images/style4.png')}
+.scrollTop-button {background-image:url('/app/images/style4.png')}
 /*menu*/
 
 .menu-background{
@@ -245,29 +245,29 @@ font-size: 18px;
   margin-right: 20px;
 }
 .img-finanzas{
-    background-image: url('images/icon-finanzas.png');
+    background-image: url('/app/images/icon-finanzas.png');
     width: 100px;
     height: 100px;
 }
 .img-genero{
-  background-image: url('images/icon-genero.png');
+  background-image: url('/app/images/icon-genero.png');
   width: 100px;
   height: 100px;
 }
 
 .img-datosa-biertos{
-  background-image: url('images/icon-datos-abiertos.png');
+  background-image: url('/app/images/icon-datos-abiertos.png');
   width: 100px;
   height: 100px;
 }
 
 .img-view{
-  background-image: url('images/icon-view.png');
+  background-image: url('/app/images/icon-view.png');
   width: 50px;
   height: 50px;
 }
 .img-user{
-  background-image: url('images/icon-user.png');
+  background-image: url('/app/images/icon-user.png');
   width: 50px;
   height: 50px;
 }
