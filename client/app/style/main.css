@@ -33,6 +33,7 @@
     margin-left: 15px;
 }
 
+
 /*-----new theme begin-----*/
 /*
  * Start Bootstrap - Business Frontpage (http://startbootstrap.com/)
@@ -43,6 +44,26 @@
 body {
 }
 
+.background-general{
+  background: url('../app/images/background.jpg')no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   background-size: cover;
+   -o-background-size: cover;
+   height: 100%;
+   width: 100%;
+   text-align: center;
+   z-index: -5;
+}
+
+.background-color-general{
+  background-color: #4C4C4C;
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -5;
+}
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 .business-header {
@@ -78,7 +99,11 @@ body {
     text-align: center;
 }
 .main-container{
-  padding-top:229px;
+  padding-top:189px;
+}
+
+.container-fluid > .row > .menu-left-text > .nav > li > a{
+  padding: 16px 0px;
 }
 .min.navbar-fixed-top {
     /*background-color: rgba(34, 34, 34, 0.65);*/
@@ -91,28 +116,34 @@ body {
 .icon-navbar{
   font-size:30px;
 }
-.position-url{
-  margin-top:100%;
+.navbar > .container > .navbar-header > a {
+  margin-top:70%;
   font-size: 14px;
+  color: #fff;
 }
 .logo-header{
-  margin: 4% auto;
+  margin: 1% auto;
   margin-right: 10%;
   color: #ffffff;
-  font-size: 40px;
+  font-size: 23px;
   text-align: center;
 }
 
-.min.position-url{
+/*.min.position-url{
   margin-top: 0% ;
 }
 .min.logo-header{
   margin-top: 0% ;
   margin-bottom: 0%;
-}
+}*/
 
 .position-icon-nav{
-  margin-top: -72px;
+  margin-top: -140px;
+}
+.navbar-date{
+  color: #fff;
+  margin-bottom: 10px;
+  margin-top: -40px;
 }
 .headerfi{
   position: fixed;
@@ -166,12 +197,14 @@ float: left;
 .menu-background{
   background-color: #FFf;
   width: 100%;
-  /*height: 100%;*/
+  height: 55px;
   /*margin-top: 5%;*/
 }
-
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+    height: 55px;
+    }
 .menu-left-text{
-
 display: inline-block;
 text-align: center;
 font-size: 18px;
@@ -209,6 +242,9 @@ font-size: 18px;
 .header-text-2{
   font-size: 34px;
     color:#4c4c4c;
+}
+.padding-col{
+  margin-right: 20px;
 }
 /*boxes*/
 .panel-default > .panel-heading,
@@ -275,6 +311,21 @@ font-size: 18px;
   width: 0px;
   height: 0px;
   margin: 0px;
+}
+
+.size-percentage-2{
+font-size: 26px;
+color: #bbbbbb;
+margin: 0px;
+margin-bottom: -20px;
+margin-top: -20px;
+    display: inline-block;
+}
+
+.size-percentage-3{
+color: #bbbbbb;
+margin: 0px;
+font-size: 18px;
 }
 /*Button footer*/
 * {
