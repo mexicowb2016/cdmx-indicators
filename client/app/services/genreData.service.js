@@ -39,11 +39,11 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function getWomenProportionRepresentationGraph (data) {
-      createPieChart(data.quintil1, 'women-proportion', 'piesvg1', 'Quintil 1');
-      createPieChart(data.quintil2, 'women-proportion', 'piesvg2', 'Quintil 2');
-      createPieChart(data.quintil3, 'women-proportion', 'piesvg3', 'Quintil 3');
-      createPieChart(data.quintil4, 'women-proportion', 'piesvg4', 'Quintil 4');
-      createPieChart(data.quintil5, 'women-proportion', 'piesvg5', 'Quintil 5');
+      createPieChart(data.quintil1, 'women-proportion', 'piesvg1', 'Quintil 1', '$123 - $131');
+      createPieChart(data.quintil2, 'women-proportion', 'piesvg2', 'Quintil 2', '$123 - $131');
+      createPieChart(data.quintil3, 'women-proportion', 'piesvg3', 'Quintil 3', '$123 - $131');
+      createPieChart(data.quintil4, 'women-proportion', 'piesvg4', 'Quintil 4', '$123 - $131');
+      createPieChart(data.quintil5, 'women-proportion', 'piesvg5', 'Quintil 5', '$123 - $131');
     }
 
     function getWomenPromotedRepresentationDataByJobClassification() {
@@ -146,10 +146,10 @@ angular.module('cdmxIndicatorsApp').
       return result;
     }
 
-    function createPieChart(data, elementContainerCls, elementSvgId, title) {
+    function createPieChart(data, elementContainerCls, elementSvgId, title, footer) {
       var margin = {top: 40, right: 10, bottom: 20, left: 10};
       var width = 120 - margin.left - margin.right;
-      var height = 150 - margin.top - margin.bottom;
+      var height = 200 - margin.top - margin.bottom;
       var radius = Math.min(width, height) / 2;
 
       var color = d3.scale.ordinal()
@@ -189,9 +189,14 @@ angular.module('cdmxIndicatorsApp').
 
       svg.append("text")
           .attr("x", 0)
-          .attr("y", 0 - (margin.top / 2) - 16)
+          .attr("y", 0 - (margin.top / 2) - 36)
           .attr("text-anchor", "middle")
           .text(title);
+      svg.append("text")
+          .attr("x", 0)
+          .attr("y", 85 - (margin.top / 2))
+          .attr("text-anchor", "middle")
+          .text(footer);
     }
 
 });
