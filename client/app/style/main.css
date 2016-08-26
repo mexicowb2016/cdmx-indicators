@@ -41,24 +41,22 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-body {
-}
 
-.background-general{
-  background: url('../app/images/background.jpg')no-repeat center center fixed;
+
+body {
+  background: url('../../app/images/background.jpg')no-repeat center center fixed;
    -webkit-background-size: cover;
    -moz-background-size: cover;
    background-size: cover;
    -o-background-size: cover;
    height: 100%;
    width: 100%;
-   text-align: center;
    z-index: -5;
 }
 
 .background-color-general{
-  background-color: #4C4C4C;
-  opacity: 0.3;
+  background-color: #fff;
+  opacity: 0.8;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -322,10 +320,16 @@ margin-top: -20px;
     display: inline-block;
 }
 
+.percentage-center{
+  text-align: center;
+  margin-left: 52px;
+  margin-top: -45px;
+}
 .size-percentage-3{
 color: #bbbbbb;
 margin: 0px;
-font-size: 18px;
+font-size: 14px;
+
 }
 /*Button footer*/
 * {
