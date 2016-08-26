@@ -34,8 +34,8 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function getWomenSalaryGapRepresentationGraph (data) {
-      data = formatMultiBarMultiData(data);
-      createMultiBarGraph(data, 'women-salaryGap-percentage', false);
+      data = format4GroupedMultiBarData(data);
+      create4GroupedMultiBarChart(data);
     }
 
     function getWomenProportionRepresentationGraph (data) {
@@ -59,7 +59,7 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function getWomenSalaryGapDataByJobClassification () {
-      return $http.get('/api/sectors/get/womenJobClassification/salaryGap/');
+      return $http.get('/api/results/get/genre/salaryGap/');
     }
 
     function getWomenProportion () {
@@ -68,6 +68,32 @@ angular.module('cdmxIndicatorsApp').
 
 
   //Utility functions
+    function create4GroupedMultiBarChart (data) {
+      google.charts.setOnLoadCallback(function createGroupedBy4MultiBarChart () {
+        var containerGraphEl = angular.element('div.women-salaryGap-percentage');
+        var containerGraphDOMEl = containerGraphEl[0];
+        var dataGraph = google.visualization.arrayToDataTable(data);
+
+        var chartOptions = {
+          title: '',
+          bar: {
+            groupWidth: '70%'
+          },
+          chartArea: {
+            top: 10,
+            width: '80%',
+            height: '70%'
+          },
+          colors: ['#D83E87', '#E16F9F', '#E794b4', '#F0BECE'],
+          legend: {position: 'none'},
+          vAxis: {format: ''},
+          hAxis: {},
+          seriesType: 'bars'
+        };
+        var barChart = new google.visualization.ComboChart(containerGraphDOMEl);
+        barChart.draw(dataGraph, chartOptions);
+      });
+    }
 
     function createMultiBarGraph (data, elementContainerCls, isSingleBar) {
       nv.addGraph(function() {
@@ -99,27 +125,25 @@ angular.module('cdmxIndicatorsApp').
       });
     }
 
-    function formatMultiBarMultiData (data) {
+    function format4GroupedMultiBarData (data) {
       var key;
-      var result = [];
+      var result = [
+        [
+          'Clasificación del Puesto',
+          'Brecha en remuneración bruta',
+          'Brecha en salario base',
+          'Brecha en tiempo extraordinario',
+          'Brecha en otras prestaciones'
+        ]
+      ];
       for (var i = 0; i < saveJobClassificationDataOrder.length; i++) {
           for (key in data) {
             if (data.hasOwnProperty(key)) {
               if (key == saveJobClassificationDataOrder[i]) {
-              result.push({
-                "key": 'Brecha en remuneración bruta',
-                "values": [{x: key, y: data[key].bruteSalaryGapPercentage == null ? 0 : data[key].bruteSalaryGapPercentage}]
-              }, {
-                "key": 'Brecha en salario base',
-                "values": [{x: key, y: data[key].baseSalaryGapPercentage == null ? 0 : data[key].baseSalaryGapPercentage}]
-              }, {
-                "key": 'Brecha en tiempo extraordinario',
-                "values": [{x: key, y: data[key].extraordinaryTimeGapPercentage == null ? 0 : data[key].extraordinaryTimeGapPercentage}]
-              }, {
-                "key": 'Brecha en otras prestaciones',
-                "values": [{x: key, y: data[key].otherTimeGapPercentage == null ? 0 : data[key].otherTimeGapPercentage}]
-              });
-              break;
+                result.push(
+                  [key, data[key].bruteSalaryGapPercentage, data[key].baseSalaryGapPercentage, data[key].extraordinaryTimeGapPercentage, data[key].otherTimeGapPercentage]
+                );
+                break;
             }
           }
         }

@@ -4,6 +4,7 @@ var _ = require('lodash');
 var Result = require('./result.model');
 var financeResults = require('../inspectors_data/financeResults');
 var openDataResults = require('../inspectors_data/openDataResults');
+var genreDataResults = require('../inspectors_data/genreResults');
 
 // Get list of results
 exports.index = function(req, res) {
@@ -131,8 +132,12 @@ exports.genreProportion = function (req, res) {
         value: 0.61
       }
     ]
-  })
-}
+  });
+};
+
+exports.genreSalaryGap = function (req, res) {
+  return res.status(200).json(genreDataResults.fifthIndicator);
+};
 
 function handleError(res, err) {
   return res.status(500).send(err);
