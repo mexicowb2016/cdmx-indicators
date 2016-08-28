@@ -699,3 +699,7 @@ div.panel-body.single-bar-ctn {
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
 }
+
+.offer {
+  color: #FF149B;
+}
