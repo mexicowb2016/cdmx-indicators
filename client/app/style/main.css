@@ -154,6 +154,7 @@ z-index: 999981;
 
 .img-logo{
   background-image: url('../images/logo.png');
+  background-size: 145px 67px;
   height: 67px;
   width: 145px;
   text-align: center;
