@@ -8,16 +8,16 @@
 
       $scope.myModalContent = {
         indicator1: {
-          title: 'Proporción de mujeres por clasificación del puesto',
-          description: 'Este gráfico muestra el porcentaje de mujeres en el conjunto de personal de cada categoría: mando superior, mando medio, técnico operativo de confianza, técnico operativo de base, haberes y estabilidad laboral. Se calcula el porcentaje dividiendo la suma de mujeres en cada categoría sobre la suma de hombres.'
+          title: 'Composición por género en distintos puestos, y las contrataciones y promociones en el último trimestre.',
+          description: 'En este gráfico se muestra la composición de hombres y mujeres en distintas categorías de puestos públicos: mando superior, mando medio, estabilidad laboral y haberes. Así mismo, se muestra la composición por género en las contrataciones y promociones en el último trimestre.'
         },
         indicator2: {
-          title:'Brecha salarial entre hombres y mujeres',
-          description:'Este gráfico muestra la brecha de la remuneración entre hombres y mujeres en remuneración bruta, salario base, tiempo extraordinario y otras prestaciones, en las seis categorías de puesto. Se calcula la brecha restando el promedio de remuneración de mujeres al promedio correspondiente de hombres, y dividida por el último.'
+          title:'Composición por género en los quintiles de remuneración de personal técnico-operativo.',
+          description:'En este gráfico se muestra la composición por género en los quintiles de remuneración mensual de personal técnico-operativo.'
         },
         indicator3: {
-          title:'Porcentaje de mujeres contratadas por clasificación del puesto',
-          description:'Este gráfico muestra el porcentaje de mujeres en el conjunto de contrataciones realizadas durante el último trimestre, en cada categoría: mando superior, mando medio, técnico operativo de confianza, técnico operativo de base, haberes y estabilidad laboral. Se calcula el porcentaje dividiendo la suma de mujeres contratadas sobre la suma de todo el personal contratado.'
+          title:'Brecha salarial entre hombres y mujeres.',
+          description:'Este gráfico muestra la brecha de la remuneración entre hombres y mujeres en remuneración bruta, salario base, tiempo extraordinario y otras prestaciones, en las seis categorías de puesto. Se calcula la brecha restando el promedio de remuneración de mujeres al promedio correspondiente de hombres, y dividida por el último.'
         },
         indicator4:{
           title:'Porcentaje de mujeres promovidas por clasificación del puesto',

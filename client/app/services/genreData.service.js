@@ -55,11 +55,11 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function getWomenProportionRepresentationGraph (data) {
-      createPieChart(data.quintil1, 'women-proportion', 'piesvg1', 'Quintil 1', '$123 - $131');
-      createPieChart(data.quintil2, 'women-proportion', 'piesvg2', 'Quintil 2', '$123 - $131');
-      createPieChart(data.quintil3, 'women-proportion', 'piesvg3', 'Quintil 3', '$123 - $131');
-      createPieChart(data.quintil4, 'women-proportion', 'piesvg4', 'Quintil 4', '$123 - $131');
-      createPieChart(data.quintil5, 'women-proportion', 'piesvg5', 'Quintil 5', '$123 - $131');
+      createPieChart(data.quintil1, 'women-proportion', 'piesvg1', 'Quintil 1', '$10,000-$20,000');
+      createPieChart(data.quintil2, 'women-proportion', 'piesvg2', 'Quintil 2', '$8,000-$10,000');
+      createPieChart(data.quintil3, 'women-proportion', 'piesvg3', 'Quintil 3', '$6,000-$8,000');
+      createPieChart(data.quintil4, 'women-proportion', 'piesvg4', 'Quintil 4', '$4,500-$6,000');
+      createPieChart(data.quintil5, 'women-proportion', 'piesvg5', 'Quintil 5', '$1,000-$4,500');
     }
 
     function getWomenPromotedRepresentationDataByJobClassification() {
