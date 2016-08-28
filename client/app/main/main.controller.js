@@ -4,6 +4,8 @@ angular.module('cdmxIndicatorsApp')
   .controller('MainCtrl', function ($scope, $uibModal, financeDataService, $rootScope) {
     $rootScope.loading = true;
 
+    $scope.selectedFinance = "active-menu";
+
     $scope.ui = {};
 
     $scope.ui.top3CapitalSpentModel = 'Dependency';

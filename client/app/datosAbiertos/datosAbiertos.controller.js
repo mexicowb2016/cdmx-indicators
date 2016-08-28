@@ -4,6 +4,8 @@ angular.module('cdmxIndicatorsApp')
   .controller('DatosAbiertosCtrl', function ($scope, $uibModal, openDataService, $rootScope) {
     $rootScope.loading = true;
 
+    $scope.selectedOpenData = "active-menu";
+
     $scope.ui = {};
 
     $scope.myModalContent = {

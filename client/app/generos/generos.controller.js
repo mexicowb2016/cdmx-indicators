@@ -4,6 +4,8 @@
     .controller('GenerosCtrl', function ($scope, $uibModal, genreDataService, $rootScope, $timeout) {
       $rootScope.loading = true;
 
+      $scope.selectedGenre = "active-menu";
+
       $scope.ui = {};
 
       $scope.myModalContent = {

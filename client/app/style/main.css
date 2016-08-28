@@ -241,7 +241,9 @@ font-size: 18px;
 .active-menu{
   background-color: #FF149B;
   height: 5px;
+  color: #FFFFFF !important;
 }
+
 /*header*/
 .header-text-1{
   font-size: 18px;
