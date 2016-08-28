@@ -41,7 +41,7 @@ var thirdIndicatorByActivityInstData = {
 
 var fourthIndicator = require('./financeFourthIndicator.json');
 
-var fifthIndicator = require('./financeFifthIndicator.json');
+var fifthIndicator = require('./financeData3.json');
 
 module.exports = {
   firstSecondIndicatorData: firstSecondIndicator,
@@ -50,5 +50,3 @@ module.exports = {
   fourthIndicator: fourthIndicator,
   fifthIndicator: fifthIndicator
 };
-
-

@@ -70,13 +70,16 @@ angular.module('cdmxIndicatorsApp')
       console.log(err);
     });
 
-    financeDataService.getExecutedSpentsByDepartmentFunctionData().then(function (response) {
-      var data = response.data;
-      console.log(data);
-      financeDataService.getExecutedSpentsByDepartmentFunctionGraph(data);
-    }).catch(function (err) {
-      console.log(err);
-    });
+    $scope.indicator5sort = 'name';
+    $scope.updateIndicator5 = function() {
+      financeDataService.getExecutedSpentsByDepartmentFunctionData($scope.indicator5sort).then(function (response) {
+        var data = response.data;
+        financeDataService.getExecutedSpentsByDepartmentFunctionGraph(data);
+      }).catch(function (err) {
+        console.log(err);
+      });
+    };
+    $scope.updateIndicator5();
 
     $scope.getTop3CapitalSpentsByDependency = function () {
       $scope.ui.firstCapitalSpent = '';

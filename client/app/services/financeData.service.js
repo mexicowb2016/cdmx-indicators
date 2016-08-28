@@ -17,13 +17,19 @@ angular.module('cdmxIndicatorsApp').
       return $http.get(url);
     }
 
-    function getExecutedSpentsByDepartmentFunctionData () {
+    function getExecutedSpentsByDepartmentFunctionData (sort) {
       var url = '/api/results/get/executedSpents/function/';
-      return $http.get(url);
+      return $http({
+        url: url,
+        method: 'GET',
+        params: {
+          sort: sort
+        }
+      });
     }
 
     function getExecutedSpentsByDepartmentFunctionGraph (data) {
-      data = formatMultiBarData(data);
+      data = formatMultiBarDataIndicator5(data);
       console.log(data);
       createMultiHorizontalBarGraph(data, 'executed-spent-function-graph');
     }
@@ -130,19 +136,20 @@ angular.module('cdmxIndicatorsApp').
         var chart = nv.models.multiBarHorizontalChart()
           // .x(function(d) { return d.label })
           // .y(function(d) { return d.value })
-          .color(['#FF149B','#F1BDCE']) //colors for every barChart
+          .color(['#FF149B']) //colors for every barChart
           .showControls(false)
-          .margin({"left": 200})
+          .margin({"left": 420})
           .showLegend(false);
+
+        format = d3.format("0,000");
 
         chart.xAxis
           .tickFormat(function (d){return d});
 
         chart.yAxis
-          .tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
-          .tickFormat(function (d){ return d + '%'});
+          .tickFormat(function (d){ return format(d)});
 
-        chart.forceY([0, 100]);
+        // chart.forceY([0, 100]);
 
         // chart.xRange([0, 800]);
         //
@@ -212,6 +219,16 @@ angular.module('cdmxIndicatorsApp').
       return result;
     }
 
-
+    function formatMultiBarDataIndicator5(data) {
+      var result = [];
+      for (var i = 0; i < data.length; i++) {
+        var key = data[i].description;
+        result.push({
+          "key": key,
+          "values": [{x:key, y:data[i].executed}]
+        })
+      }
+      return result;
+    }
 
 });

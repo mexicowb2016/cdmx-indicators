@@ -111,6 +111,12 @@
       <div class="panel panel-default">
         <div class="panel-heading">Ejecución del Gasto por Función<i ng-click="open(myModalContent.indicator5)" class="mdi mdi-information icon-right icon-information"></i>
         </div>
+        <div class="panel-body">
+          <div class="btn-group">
+            <label class="btn btn-default btn-sm" ng-model="indicator5sort" ng-click="updateIndicator5()" uib-btn-radio="'name'" ng-value="name">Ranking por Nombre</label>
+            <label class="btn btn-default btn-sm" ng-model="indicator5sort" ng-click="updateIndicator5()" uib-btn-radio="'executed'" ng-value="executed">Ranking por Ejercido</label>
+          </div>
+        </div>
         <div class="panel-body executed-spent-function-graph">
           <svg></svg>
         </div>

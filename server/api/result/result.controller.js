@@ -77,7 +77,52 @@ exports.financeExecutedSpentsByDependency = function (req, res) {
 };
 
 exports.financeExecutedSpentsByDepartmentFunction = function (req, res) {
-  return res.status(200).json(financeResults.fifthIndicator);
+  var sort = req.query.sort;
+  var results = [];
+  if (sort == 'name') {
+    var names = [];
+    var data = {};
+    for (var i = 0; i < financeResults.fifthIndicator.DATA.length; i++) {
+      names.push(financeResults.fifthIndicator.DATA[i].DESCRIPTION);
+      data[financeResults.fifthIndicator.DATA[i].DESCRIPTION] = financeResults.fifthIndicator.DATA[i].EXECUTED;
+    }
+    names.sort();
+    for (var i = 0; i < names.length; i++) {
+      var value = data[names[i]];
+      var intValue = parseInt(value.split(',').join(''));
+      results.push({
+        description: names[i],
+        executed: intValue
+      })
+    }
+  } else if (sort == 'executed') {
+    var executed = [];
+    var data = {};
+    for (var i = 0; i < financeResults.fifthIndicator.DATA.length; i++) {
+      var value = financeResults.fifthIndicator.DATA[i].EXECUTED;
+      var intValue = parseInt(value.split(',').join(''));
+      executed.push(intValue);
+      data[intValue] = financeResults.fifthIndicator.DATA[i].DESCRIPTION;
+    }
+    function sortNumber(a,b) {
+      return a - b;
+    }
+    executed.sort(sortNumber);
+    for (var i = 0; i < executed.length; i++) {
+      results.push({
+        description: data[executed[i]],
+        executed: executed[i]
+      })
+    }
+  } else {
+    for (var i = 0; i < financeResults.fifthIndicator.DATA.length; i++) {
+      results.push({
+        description: financeResults.fifthIndicator.DATA[i].DESCRIPTION,
+        executed: financeResults.fifthIndicator.DATA[i].EXECUTED
+      })
+    }
+  }
+  return res.status(200).json(results);
 };
 
 //openData indicator endpoints
