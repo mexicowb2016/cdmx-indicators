@@ -1,7 +1,7 @@
 'use strict';
 
   angular.module('cdmxIndicatorsApp')
-    .controller('GenerosCtrl', function ($scope, $uibModal, genreDataService, $rootScope) {
+    .controller('GenerosCtrl', function ($scope, $uibModal, genreDataService, $rootScope, $timeout) {
       $rootScope.loading = true;
 
       $scope.ui = {};
@@ -90,5 +90,34 @@
       }).catch(function (err) {
         console.log(err);
       });
+
+      $scope.indicator5 = 'demographic';
+
+      $scope.dependency = 0;
+
+      $scope.classifications = {
+        0: "Estabilidad Laboral",
+        1: "Haberes",
+        2: "Mando Medio",
+        3: "Mando Superior",
+        4: "Tecnico Operativo de Base",
+        5: "Tecnico Operativo de Confianza"
+      };
+
+      $scope.classification = 0;
+
+      $scope.updateIndicator5 = function() {
+        if ($scope.indicator5 == 'demographic') {
+          genreDataService.getDemographic($scope.dependency, $scope.classifications[$scope.classification]).then(function(data) {
+            genreDataService.getDemographicGraph(data.data);
+          });
+        } else {
+          genreDataService.getRemuneration($scope.dependency, $scope.classifications[$scope.classification]).then(function(data) {
+            genreDataService.getRemunerationGraph(data.data);
+          });
+        }
+      };
+
+      $timeout($scope.updateIndicator5, 1500);
 
     });

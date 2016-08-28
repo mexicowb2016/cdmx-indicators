@@ -5,6 +5,7 @@ var Result = require('./result.model');
 var financeResults = require('../inspectors_data/financeResults');
 var openDataResults = require('../inspectors_data/openDataResults');
 var genreDataResults = require('../inspectors_data/genreResults');
+var genreDataResults2 = require('../inspectors_data/genreDataResults2');
 
 // Get list of results
 exports.index = function(req, res) {
@@ -137,6 +138,18 @@ exports.genreProportion = function (req, res) {
 
 exports.genreSalaryGap = function (req, res) {
   return res.status(200).json(genreDataResults.fifthIndicator);
+};
+
+exports.genreDemographic = function (req, res) {
+  var dependency = req.query.dependency;
+  var classification = req.query.classification;
+  return res.status(200).json(genreDataResults2.genreData2FilterDemographic(dependency, classification));
+};
+
+exports.genreRemuneration = function (req, res) {
+  var dependency = req.query.dependency;
+  var classification = req.query.classification;
+  return res.status(200).json(genreDataResults2.genreData2FilterRemuneration(dependency, classification));
 };
 
 function handleError(res, err) {

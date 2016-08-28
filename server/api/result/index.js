@@ -19,5 +19,7 @@ router.get('/get/executedSpents/function/', controller.financeExecutedSpentsByDe
 router.get('/get/openData/demandOffer/', controller.openDataDemandOffer);
 router.get('/get/genre/proportion/', controller.genreProportion);
 router.get('/get/genre/salaryGap/', controller.genreSalaryGap);
+router.get('/get/genre/demographic/', controller.genreDemographic);
+router.get('/get/genre/remuneration/', controller.genreRemuneration);
 
 module.exports = router;

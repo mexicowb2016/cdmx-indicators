@@ -456,6 +456,11 @@ div.panel-body.women-promoted-percentage svg, div.panel-body.women-quantity-perc
 div.panel-body.offer-demand-opendata svg{
   height: 250px;
 }
+
+div.panel-body.women-demographic-classification div {
+  height: 500px;
+}
+
 /*loading*/
 .loading-body  {
  width: 100%;

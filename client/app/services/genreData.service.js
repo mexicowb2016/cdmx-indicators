@@ -15,7 +15,11 @@ angular.module('cdmxIndicatorsApp').
       getWomenRecruitmentRepresentationDataByJobClassification: getWomenRecruitmentRepresentationDataByJobClassification,
       getWomenSalaryGapDataByJobClassification: getWomenSalaryGapDataByJobClassification,
       getWomenProportion: getWomenProportion,
-      getWomenProportionRepresentationGraph: getWomenProportionRepresentationGraph
+      getWomenProportionRepresentationGraph: getWomenProportionRepresentationGraph,
+      getDemographic: getDemographic,
+      getDemographicGraph: getDemographicGraph,
+      getRemuneration: getRemuneration,
+      getRemunerationGraph: getRemunerationGraph
     };
 
     function getWomenPromotedRepresentationGraph (data) {
@@ -36,6 +40,18 @@ angular.module('cdmxIndicatorsApp').
     function getWomenSalaryGapRepresentationGraph (data) {
       data = format4GroupedMultiBarData(data);
       create4GroupedMultiBarChart(data);
+    }
+
+    function getDemographicGraph (data) {
+      data = formatMultiBarDemographicData(data, 'proportion');
+      console.log(data);
+      createMultiBarHorizontalGraph(data, 'women-demographic-classification-div');
+    }
+
+    function getRemunerationGraph (data) {
+      data = formatMultiBarDemographicData(data, 'salaryGap');
+      console.log(data);
+      createMultiBarHorizontalGraph(data, 'women-demographic-classification-div');
     }
 
     function getWomenProportionRepresentationGraph (data) {
@@ -64,6 +80,28 @@ angular.module('cdmxIndicatorsApp').
 
     function getWomenProportion () {
       return $http.get('/api/results/get/genre/proportion');
+    }
+
+    function getDemographic(dependency, classification) {
+      return $http({
+        url: '/api/results/get/genre/demographic',
+        method: 'GET',
+        params: {
+          dependency: dependency,
+          classification: classification
+        }
+      });
+    }
+
+    function getRemuneration(dependency, classification) {
+      return $http({
+        url: '/api/results/get/genre/remuneration',
+        method: 'GET',
+        params: {
+          dependency: dependency,
+          classification: classification
+        }
+      });
     }
 
 
@@ -125,6 +163,21 @@ angular.module('cdmxIndicatorsApp').
       });
     }
 
+    function createMultiBarHorizontalGraph (data, elementContainerId) {
+      var data = google.visualization.arrayToDataTable(data);
+
+      var options = {
+        title: '',
+        chartArea: {width: '40%', height: '90%', left: '55%', top: 10},
+        fontSize: 12,
+        legend: "none"
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById(elementContainerId));
+
+      chart.draw(data, options);
+    }
+
     function format4GroupedMultiBarData (data) {
       var key;
       var result = [
@@ -166,6 +219,14 @@ angular.module('cdmxIndicatorsApp').
             }
           }
         }
+      }
+      return result;
+    }
+
+    function formatMultiBarDemographicData (data, field) {
+      var result = [['Sector', 'Proporcion', {role: 'style'}]];
+      for (var key in data) {
+        result.push([key, data[key][field], '#FF149B']);
       }
       return result;
     }
