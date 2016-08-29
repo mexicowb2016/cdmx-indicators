@@ -79,7 +79,17 @@ exports.financeExecutedSpentsByDependency = function (req, res) {
   var results = [];
   for (var i = 0; i < financeResults.fourthIndicator.DATA.length; i++) {
     var data = financeResults.fourthIndicator.DATA[i];
-    if (data.DEPENDENCY == dependency && data.FAVORITE == favorite) {
+    var matches = false;
+    if (favorite == '1') {
+      if (data.FAVORITE == favorite) {
+        matches = true;
+      }
+    } else {
+      if (data.DEPENDENCY == dependency) {
+        matches = true;
+      }
+    }
+    if (matches) {
       var currentSpent = parseInt(data.CURRENT_SPENT.split('%').join(''));
       var capitalSpent = parseInt(data.CAPITAL_SPENT.split('%').join(''));
       var totalSpent = parseInt(data.TOTAL_SPENT.split('%').join(''));
