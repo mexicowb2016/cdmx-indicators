@@ -398,6 +398,44 @@ font-size: 14px;
 .panel-body-center{
   text-align: center;
 }
+
+.btn-color{
+  border-radius: 0px;
+  box-shadow: none;
+  background: #c1c1c1;
+  color:  #4c4c4c;
+  font-weight: bold
+}
+
+.btn-color .btn:hover, .btn:focus, .btn.focus {
+  color: #444444;
+  text-decoration: none;
+  background: #4c4c4c;
+  color: #fff;
+  }
+
+  .btn-color-1{
+    background: #dddddd;
+    border-radius: 0px;
+    box-shadow: none;
+  }
+
+.dropdown-margin{
+  margin-top: 25px;
+}
+
+.btn-size-color{
+  height: 35px;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.li-margin{
+  margin: 0px 15px;
+}
+.dropdown-size {
+  width: 245px;
+}
 /*Button footer*/
 * {
   margin: 0;

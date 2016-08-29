@@ -42,10 +42,10 @@
                 <div class="panel-body women-quantity-percentage">
                   <!-- <svg></svg> -->
                  <div class="panel-body-center">
-                    <button class="btn btn-default" type="submit">Mando Superior</button>
-                    <button class="btn btn-default" type="submit">Mando Medio</button>
-                    <button class="btn btn-default" type="submit">Estabilidad Laboral</button>
-                    <button class="btn btn-default" type="submit">Haberes</button>
+                    <button class="btn btn-color" type="submit">Mando Superior</button>
+                    <button class="btn btn-color" type="submit">Mando Medio</button>
+                    <button class="btn btn-color" type="submit">Estabilidad Laboral</button>
+                    <button class="btn btn-color" type="submit">Haberes</button>
                 </div>
                 </div>
             </div>
@@ -112,34 +112,34 @@
         </div>
         <div class="panel-body">
           <div class="btn-group">
-            <label class="btn btn-default btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'demographic'" ng-value="demographic">Interactivo Demografico</label>
-            <label class="btn btn-default btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'remuneration'" ng-value="remuneration">Interactivo Remuneracion</label>
+            <label class="btn btn-color btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'demographic'" ng-value="demographic">Interactivo Demografico</label>
+            <label class="btn btn-color-1 btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'remuneration'" ng-value="remuneration">Interactivo Remuneracion</label>
           </div>
           <br>
-          <div class="dropdowns-align">
+          <div class="dropdowns-align dropdown-margin">
              Filtre el gráfico por sector o clasificación de puesto:
                 <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
-                  <a href="#" class="btn btn-default" data-toggle="dropdown" uib-dropdown-toggle>Sector<span class="caret"></span></a>
+                  <a href="#" class="btn btn-color" data-toggle="dropdown" uib-dropdown-toggle>Sector <span class="caret"></span></a>
                   <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                    <li><input type="radio" ng-model="dependency" ng-value="0" id="dependencies0" ng-change="updateIndicator5()" /><label for="dependencies0">Delegaciones</label></li>
+                    <li class="li-margin"><input type="radio" ng-model="dependency" ng-value="0" id="dependencies0" ng-change="updateIndicator5()" /><label for="dependencies0">Delegaciones</label></li>
                     <!-- <li class="divider"></li> -->
-                    <li><input type="radio" ng-model="dependency" ng-value="1" id="dependencies1" ng-change="updateIndicator5()" /><label for="dependencies0">Dependencias</label></li>
+                    <li class="li-margin"><input type="radio" ng-model="dependency" ng-value="1" id="dependencies1" ng-change="updateIndicator5()" /><label for="dependencies0">Dependencias</label></li>
                   </ul>
                 </div>
                 <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
-                  <a href="#" class="btn btn-default" data-toggle="dropdown" uib-dropdown-toggle>Clasificación<span class="caret"></span></a>
-                  <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                    <li><input type="radio" ng-model="classification" ng-value="0" id="classifications0" ng-change="updateIndicator5()" /><label for="classifications0">Estabilidad Laboral</label></li>
+                  <a href="#" class="btn btn-color" data-toggle="dropdown" uib-dropdown-toggle>Clasificación <span class="caret"></span></a>
+                  <ul class="dropdown-menu dropdown-size" uib-dropdown-menu role="menu">
+                    <li class="li-margin"><input type="radio" ng-model="classification" ng-value="0" id="classifications0" ng-change="updateIndicator5()" /><label for="classifications0">Estabilidad Laboral</label></li>
                     <!-- <li class="divider"></li> -->
-                    <li><input type="radio" ng-model="classification" ng-value="1" id="classifications1" ng-change="updateIndicator5()" /><label for="classifications1">Haberes</label></li>
+                    <li class="li-margin"><input type="radio" ng-model="classification" ng-value="1" id="classifications1" ng-change="updateIndicator5()" /><label for="classifications1">Haberes</label></li>
                     <!-- <li class="divider"></li> -->
-                    <li><input type="radio" ng-model="classification" ng-value="2" id="classifications2" ng-change="updateIndicator5()" /><label for="classifications2">Mando Medio</label></li>
+                    <li class="li-margin"><input type="radio" ng-model="classification" ng-value="2" id="classifications2" ng-change="updateIndicator5()" /><label for="classifications2">Mando Medio</label></li>
                     <!-- <li class="divider"></li> -->
-                    <li><input type="radio" ng-model="classification" ng-value="3" id="classifications3" ng-change="updateIndicator5()" /><label for="classifications3">Mando Superior</label></li>
+                    <li class="li-margin"><input type="radio" ng-model="classification" ng-value="3" id="classifications3" ng-change="updateIndicator5()" /><label for="classifications3">Mando Superior</label></li>
                     <!-- <li ceass="divider"></li> -->
-                    <li><input type="radio" ng-model="classification" ng-value="4" id="classifications4" ng-change="updateIndicator5()" /><label for="classifications4">Técnico Operativo de Base</label></li>
+                    <li class="li-margin"><input type="radio" ng-model="classification" ng-value="4" id="classifications4" ng-change="updateIndicator5()" /><label for="classifications4">Técnico Operativo de Base</label></li>
                     <!-- <li class="divider"></li> -->
-                    <li><input type="radio" ng-model="classification" ng-value="5" id="classifications5" ng-change="updateIndicator5()" /><label for="classifications5">Técnico Operativo de Confianza</label></li>
+                    <li class="li-margin"><input type="radio" ng-model="classification" ng-value="5" id="classifications5" ng-change="updateIndicator5()" /><label for="classifications5">Técnico Operativo de Confianza</label></li>
                   </ul>
                 </div>
 
