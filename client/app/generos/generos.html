@@ -166,7 +166,7 @@
             <div class="col-md-6">
               <span class="">Filtro:&nbsp;</span>
               <div class="btn-group">
-                <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
+                <div class="btn-group" uib-dropdown>
                   <a href="#" class="btn btn-color" data-toggle="dropdown" uib-dropdown-toggle>Sector <span class="caret"></span></a>
                   <ul class="dropdown-menu" uib-dropdown-menu role="menu">
                     <li class="li-margin"><input type="radio" ng-model="dependency" ng-value="0" id="dependencies0" ng-change="updateIndicator5()" /><label for="dependencies0">Delegaciones</label></li>
@@ -174,7 +174,7 @@
                     <li class="li-margin"><input type="radio" ng-model="dependency" ng-value="1" id="dependencies1" ng-change="updateIndicator5()" /><label for="dependencies0">Dependencias</label></li>
                   </ul>
                 </div>
-                <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
+                <div class="btn-group" uib-dropdown>
                   <a href="#" class="btn btn-color" data-toggle="dropdown" uib-dropdown-toggle>Clasificación <span class="caret"></span></a>
                   <ul class="dropdown-menu dropdown-size" uib-dropdown-menu role="menu">
                     <li class="li-margin"><input type="radio" ng-model="classification" ng-value="0" id="classifications0" ng-change="updateIndicator5()" /><label for="classifications0">Estabilidad Laboral</label></li>
