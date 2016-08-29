@@ -1,3 +1,95 @@
-<div class="col-md-12">
-This is the negocios view.
+<!-- Navigation -->
+<navbar-cdmx></navbar-cdmx>
+<!-- Image Background Page Header -->
+<!-- Note: The background image is set within the business-casual.css file. -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-1 padding-col">
+            <div class="img-negocios"></div>
+          </div>
+            <div class="col-md-8">
+                <span class="header-text-1">Doing Business | <strong>Ciudad de México</strong></span>
+                <br>
+                <span class="header-text-2">Indicadores Doing Business CDMX</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<br>
+<div class="container">
+    <section>
+      <p><strong>Sobre el indicador:</strong> Este indicador tiene como objetivo el seguimiento del cumplimiento de metas de las entidades involucradas del Gobierno de la CDMX para mejorar la facilidad de hacer negocios en la Ciudad. El método de evaluación es la mejora en el ranking subnacional y nacional Doing Business publicado por el Banco Mundial.
+      </p>
+    </section>
 </div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-sm-3">
+      <div class="panel panel-default panel-size-4">
+        <div class="panel-heading">Ranking Subnacional<i ng-click="open(myModalContent.indicator1)" class="mdi mdi-information icon-right icon-information"></i></div>
+        <div class="panel-body">
+          Panel content
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6">
+      <div class="panel panel-default panel-size-4">
+        <div class="panel-heading">Ranking Subnacional - Parte II <i ng-click="open(myModalContent.indicator2)" class="mdi mdi-information icon-right icon-information"></i></div>
+        <div class="panel-body">
+          Panel content
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-3">
+      <div class="panel panel-default panel-size-4">
+        <div class="panel-heading">Ranking Mundial <i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
+        <div class="panel-body">
+          Panel content
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-sm-4">
+      <div class="panel panel-default panel-size-5">
+        <div class="panel-heading">Calificación Actual <i ng-click="open(myModalContent.indicator4)" class="mdi mdi-information icon-right icon-information"></i></div>
+        <div class="panel-body">
+          Panel content
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-sm-8">
+      <div class="panel panel-default panel-size-5">
+        <div class="panel-heading">Cumplimiento de metas - Entidades Responsables <i ng-click="open(myModalContent.indicator5)" class="mdi mdi-information icon-right icon-information"></i></div>
+        <div class="panel-body">
+          Panel content
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer-cdmx></footer-cdmx>
+<!-- Information modal -->
+<script type="text/ng-template" id="information-modal.html">
+    <div class="modal-header">
+        <span class="modal-title modal-text">{{indicatorContent.title}}</span>
+    </div>
+    <div class="modal-body">
+        <p>{{indicatorContent.description}}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-modal" type="button" ng-click="ok()">OK</button>
+    </div>
+</script>
+<!-- Information modal end -->
