@@ -259,22 +259,22 @@ font-size: 18px;
 }
 .img-finanzas{
     background-image: url('/app/images/icon-finanzas.png');
-    background-size: 80px 80px;
-    width: 80px;
-    height: 80px;
+    background-size: 70px 70px;
+    width: 70px;
+    height: 70px;
 }
 .img-genero{
   background-image: url('/app/images/icon-genero.png');
-  background-size: 80px 80px;
-  width: 80px;
-  height: 80px;
+  background-size: 70px 70px;
+  width: 70px;
+  height: 70px;
 }
 
 .img-datosa-biertos{
   background-image: url('/app/images/icon-datos-abiertos.png');
-  background-size: 80px 80px;
-  width: 80px;
-  height: 80px;
+  background-size: 70px 70px;
+  width: 70px;
+  height: 70px;
 }
 
 .img-view{
