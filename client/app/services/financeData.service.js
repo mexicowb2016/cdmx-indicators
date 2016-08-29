@@ -30,7 +30,7 @@ angular.module('cdmxIndicatorsApp').
 
     function getExecutedSpentsByDepartmentFunctionGraph (data) {
       data = formatMultiBarDataIndicator5(data);
-      createMultiHorizontalBarGraph(data, 'executed-spent-function-graph');
+      createMultiHorizontalBarGraph(data, 'indicator5div');
     }
 
     function getExecutedSpentsByDependencyData (favorite, dependency, sort) {
@@ -49,7 +49,7 @@ angular.module('cdmxIndicatorsApp').
     function getExecutedSpentsByDependencyGraph (data) {
       data = formatMultiBarDataIndicator4(data);
       console.log(data);
-      createMultiBarGraph(data, 'executed-spent-dependency-graph');
+      createMultiBarGraph(data, 'indicator4div');
     }
 
     function getTop3CapitalSpentsByDependencyData() {
@@ -104,80 +104,116 @@ angular.module('cdmxIndicatorsApp').
 
     //Graph Utility functions
     function createMultiBarGraph(data, elementContainerCls) {
-      nv.addGraph(function() {
-        var chart = nv.models.multiBarHorizontalChart()
-          .color(['#FF0E98','#C1C1C1']) //colors for every barChart
-          .showControls(false)
-          // .staggerLabels(true)
-          .margin({"left": 620})
-          .showLegend(false);
+      google.charts.setOnLoadCallback(function createGroupedBy4MultiBarChart () {
+        var containerGraphEl = angular.element('#' + elementContainerCls);
+        var containerGraphDOMEl = containerGraphEl[0];
+        var dataGraph = google.visualization.arrayToDataTable(data);
 
-        chart.yAxis
-          .tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
-          .tickFormat(function (d){ return d + '%'; });
+        var options = {
+          title: '',
+          colors: ['#FF0E98','#C1C1C1'],
+          chartArea: {width: '40%', height: '90%', left: '50%', top: 10},
+          fontSize: 12,
+          legend: "none",
+          bars: "horizontal"
+        };
 
-        chart.xAxis
-          .tickFormat(function (d){ return d; });
+        var chart = new google.visualization.BarChart(containerGraphDOMEl);
 
-        chart.forceY([0, 100]);
-
-        // if (data.length > 10) {
-        //   // chart.rotateLabels(-90);
-        //   // chart.xAxis.ticks(5);
-        //   chart.groupSpacing(0.1);
-        //   chart.wrapLabels(true);
-        // }
-
-        d3.select('.' + elementContainerCls + ' svg')
-          .datum(data)
-          .call(chart);
-
-        // d3.select('.' + elementContainerCls + ' svg').selectAll('g.nv-group').selectAll('rect').attr('width', 20);
-
-        nv.utils.windowResize(chart.update);
-
-        return chart;
+        chart.draw(dataGraph, options);
       });
+      // nv.addGraph(function() {
+      //   var chart = nv.models.multiBarHorizontalChart()
+      //     .color(['#FF0E98','#C1C1C1']) //colors for every barChart
+      //     .showControls(false)
+      //     // .staggerLabels(true)
+      //     .margin({"left": 620})
+      //     .showLegend(false);
+      //
+      //   chart.yAxis
+      //     .tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+      //     .tickFormat(function (d){ return d + '%'; });
+      //
+      //   chart.xAxis
+      //     .tickFormat(function (d){ return d; });
+      //
+      //   chart.forceY([0, 100]);
+      //
+      //   // if (data.length > 10) {
+      //   //   // chart.rotateLabels(-90);
+      //   //   // chart.xAxis.ticks(5);
+      //   //   chart.groupSpacing(0.1);
+      //   //   chart.wrapLabels(true);
+      //   // }
+      //
+      //   d3.select('.' + elementContainerCls + ' svg')
+      //     .datum(data)
+      //     .call(chart);
+      //
+      //   // d3.select('.' + elementContainerCls + ' svg').selectAll('g.nv-group').selectAll('rect').attr('width', 20);
+      //
+      //   nv.utils.windowResize(chart.update);
+      //
+      //   return chart;
+      // });
     }
 
     function createMultiHorizontalBarGraph(data, elementContainerCls) {
-      nv.addGraph(function() {
-        var chart = nv.models.multiBarHorizontalChart()
-          // .x(function(d) { return d.label })
-          // .y(function(d) { return d.value })
-          .color(['#FF149B']) //colors for every barChart
-          .showControls(false)
-          .margin({"left": 420})
-          .showLegend(false);
+      google.charts.setOnLoadCallback(function createGroupedBy4MultiBarChart () {
+        var containerGraphEl = angular.element('#' + elementContainerCls);
+        var containerGraphDOMEl = containerGraphEl[0];
+        var dataGraph = google.visualization.arrayToDataTable(data);
 
-        format = d3.format("0,000");
+        var options = {
+          title: '',
+          colors: ['#FF149B'],
+          chartArea: {width: '40%', height: '90%', left: '50%', top: 10},
+          fontSize: 12,
+          legend: "none",
+          bars: "horizontal"
+        };
 
-        chart.xAxis
-          .tickFormat(function (d){return d});
+        var chart = new google.visualization.BarChart(containerGraphDOMEl);
 
-        chart.yAxis
-          .tickFormat(function (d){ return format(d)});
-
-        // chart.forceY([0, 100]);
-
-        // chart.xRange([0, 800]);
-        //
-        // setTimeout(function() {
-        //   d3.selectAll('.' + elementContainerCls + ' svg').selectAll('rect').attr("height", chart.xAxis.rangeBand() / 3);
-        // }, 10);
-
-        if (data.length > 10) {
-          chart.groupSpacing(0.1);
-        }
-
-        d3.select('.' + elementContainerCls + ' svg')
-          .datum(data)
-          .call(chart);
-
-        nv.utils.windowResize(chart.update);
-
-        return chart;
+        chart.draw(dataGraph, options);
       });
+      // nv.addGraph(function() {
+      //   var chart = nv.models.multiBarHorizontalChart()
+      //     // .x(function(d) { return d.label })
+      //     // .y(function(d) { return d.value })
+      //     .color(['#FF149B']) //colors for every barChart
+      //     .showControls(false)
+      //     .margin({"left": 420})
+      //     .showLegend(false);
+      //
+      //   format = d3.format("0,000");
+      //
+      //   chart.xAxis
+      //     .tickFormat(function (d){return d});
+      //
+      //   chart.yAxis
+      //     .tickFormat(function (d){ return format(d)});
+      //
+      //   // chart.forceY([0, 100]);
+      //
+      //   // chart.xRange([0, 800]);
+      //   //
+      //   // setTimeout(function() {
+      //   //   d3.selectAll('.' + elementContainerCls + ' svg').selectAll('rect').attr("height", chart.xAxis.rangeBand() / 3);
+      //   // }, 10);
+      //
+      //   if (data.length > 10) {
+      //     chart.groupSpacing(0.1);
+      //   }
+      //
+      //   d3.select('.' + elementContainerCls + ' svg')
+      //     .datum(data)
+      //     .call(chart);
+      //
+      //   nv.utils.windowResize(chart.update);
+      //
+      //   return chart;
+      // });
     }
 
     function createSingleHorizontalBarGraph(dataArr, mainContainerSelector) {
@@ -229,28 +265,19 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function formatMultiBarDataIndicator4(data) {
-      var result = [];
+      var result = [['Centro', 'Gasto Corriente', 'Gasto Capital']];
       for (var i = 0; i < data.length; i++) {
         var key = data[i].center;
-        result.push({
-          "key": "Gasto Corriente",
-          "values": [{x:key, y:data[i].currentSpent}]
-        }, {
-          "key": "Gasto Capital",
-          "values": [{x:key, y:data[i].capitalSpent}]
-        })
+        result.push([key, data[i].currentSpent, data[i].capitalSpent])
       }
       return result;
     }
 
     function formatMultiBarDataIndicator5(data) {
-      var result = [];
+      var result = [['Funcion', 'Gasto']];
       for (var i = 0; i < data.length; i++) {
         var key = data[i].description;
-        result.push({
-          "key": key,
-          "values": [{x:key, y:data[i].executed}]
-        })
+        result.push([key, data[i].executed]);
       }
       return result;
     }
