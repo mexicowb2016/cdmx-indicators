@@ -4,7 +4,7 @@ angular.module('cdmxIndicatorsApp')
   .controller('NegociosCtrl', function ($scope, $uibModal, financeDataService, $rootScope) {
     $rootScope.loading = true;
 
-    $scope.selectedFinance = "active-menu";
+    $scope.selectedBusiness = "active-menu";
 
     $scope.ui = {};
 
