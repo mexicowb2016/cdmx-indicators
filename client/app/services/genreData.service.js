@@ -6,6 +6,8 @@ angular.module('cdmxIndicatorsApp').
     var saveJobClassificationDataOrder = ['Mando Superior', 'Mando Medio', 'Tecnico Operativo de Confianza', 'Tecnico Operativo de Base', 'Haberes', 'Estabilidad Laboral'];
 
     return {
+      getGenreJobClassificationData: getGenreJobClassificationData,
+      getGenreJobClassificationGraph: getGenreJobClassificationGraph,
       getWomenPromotedRepresentationGraph: getWomenPromotedRepresentationGraph,
       getWomenQuantityRepresentationGraph: getWomenQuantityRepresentationGraph,
       getWomenRecruitmentRepresentationGraph: getWomenRecruitmentRepresentationGraph,
@@ -21,6 +23,15 @@ angular.module('cdmxIndicatorsApp').
       getRemuneration: getRemuneration,
       getRemunerationGraph: getRemunerationGraph
     };
+
+    function getGenreJobClassificationData() {
+      return $http.get('/api/results/get/genreJobClassification/');
+    }
+
+    function getGenreJobClassificationGraph(data, checkedBtn) {
+      data = formatDualBarGraph(data, checkedBtn);
+      createDualGroupedHorizontalBarGraph(data);
+    }
 
     function getWomenPromotedRepresentationGraph (data) {
       data = formatMultiBarSingleData(data);
@@ -162,7 +173,16 @@ angular.module('cdmxIndicatorsApp').
         return chart;
       });
     }
-
+    function formatDualBarGraph (data, checkedBtn) {
+      var result = [];
+      result[0] = data[checkedBtn].womenQuantityPercentage;
+      result[1] = data[checkedBtn].menQuantityPercentage;
+      result[2] = data[checkedBtn].womenRecruitmentPercentage;
+      result[3] = data[checkedBtn].menRecruitmentPercentage;
+      result[4] = data[checkedBtn].womenPromotionPercentage;
+      result[5] = data[checkedBtn].menPromotionPercentage;
+      return result;
+    }
     function createMultiBarHorizontalGraph (data, elementContainerId) {
       var data = google.visualization.arrayToDataTable(data);
 
@@ -282,6 +302,55 @@ angular.module('cdmxIndicatorsApp').
           .attr("y", 85 - (margin.top / 2))
           .attr("text-anchor", "middle")
           .text(footer);
+    }
+
+    function createDualGroupedHorizontalBarGraph(dataArr) {
+      var x;
+      var mainContainer;
+      var maxBarElementWidth = angular.element('.genre-job-classification').width();
+
+      x = d3.scale.linear()
+        .domain([0, 100])
+        .range([0, maxBarElementWidth]);
+
+      mainContainer = d3.selectAll('.genre-job-classification');
+
+      var womenQuantityPercentage = dataArr[0];
+      var menQuantityPercentage = dataArr[1];
+      var womenRecruitmentPercentage = dataArr[2];
+      var menRecruitmentPercentage = dataArr[3];
+      var womenPromotionPercentage = dataArr[4];
+      var menPromotionPercentage = dataArr[5];
+
+      mainContainer
+        .select('div.men-quantity-bar-graph')
+        .style('width', x(menQuantityPercentage) + 'px')
+        .text(function(d) { return menQuantityPercentage + ' %'; });
+
+      mainContainer
+        .select('div.women-quantity-bar-graph')
+        .style('width', x(womenQuantityPercentage) + 'px')
+        .text(function(d) { return womenQuantityPercentage + ' %'; });
+
+      mainContainer
+        .select('div.men-recruitment-bar-graph')
+        .style('width', x(menRecruitmentPercentage) + 'px')
+        .text(function(d) { return menRecruitmentPercentage + ' %'; });
+
+      mainContainer
+        .select('div.women-recruitment-bar-graph')
+        .style('width', x(womenRecruitmentPercentage) + 'px')
+        .text(function(d) { return womenRecruitmentPercentage + ' %'; });
+
+      mainContainer
+        .select('div.men-promotion-bar-graph')
+        .style('width', x(menPromotionPercentage) + 'px')
+        .text(function(d) { return menPromotionPercentage + ' %'; });
+
+      mainContainer
+        .select('div.women-promotion-bar-graph')
+        .style('width', x(womenPromotionPercentage) + 'px')
+        .text(function(d) { return womenPromotionPercentage + ' %'; });
     }
 
 });

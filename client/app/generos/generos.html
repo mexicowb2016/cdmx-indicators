@@ -39,14 +39,45 @@
           <div class="col-lg-6 col-sm-6">
             <div class="panel panel-default panel-size-1">
               <div class="panel-heading">Proporción de mujeres por clasificación del puesto<i ng-click="open(myModalContent.indicator1)" class="mdi mdi-information icon-right icon-information"></i></div>
-                <div class="panel-body women-quantity-percentage">
-                  <!-- <svg></svg> -->
-                 <div class="panel-body-center">
-                    <button class="btn btn-color" type="submit">Mando Superior</button>
-                    <button class="btn btn-color" type="submit">Mando Medio</button>
-                    <button class="btn btn-color" type="submit">Estabilidad Laboral</button>
-                    <button class="btn btn-color" type="submit">Haberes</button>
-                </div>
+                <div class="panel-body">
+                   <div class="panel-body-center">
+                      <button ng-class="{active: ui.jobClassification.superiorCommand}" ng-click="getGenreJobClassificationGraph(classifications[3])" class="btn btn-color" type="button">Mando Superior</button>
+                      <button ng-class="{active: ui.jobClassification.mediumCommand}" ng-click="getGenreJobClassificationGraph(classifications[2])" class="btn btn-color" type="button">Mando Medio</button>
+                      <button ng-class="{active: ui.jobClassification.jobStability}" ng-click="getGenreJobClassificationGraph(classifications[0])" class="btn btn-color" type="button">Estabilidad Laboral</button>
+                      <button ng-class="{active: ui.jobClassification.duty}" ng-click="getGenreJobClassificationGraph(classifications[1])" class="btn btn-color" type="button">Haberes</button>
+                      <div class="genre-job-classification-ctn">
+                        <div class="row genre-bar-ctn">
+                          <div class="col-md-1">
+                            <div class="img-genre-quantity"></div>
+                          </div>
+                          <div class="col-md-11 genre-job-classification">
+                            <div class="men-quantity-bar-graph"></div>
+                            <div class="women-quantity-bar-graph"></div>
+                            <div class="genre-bar-label">Conjunto hombres y mujeres - Dic 2015</div>
+                          </div>
+                        </div>
+                        <div class="row genre-bar-ctn">
+                          <div class="col-md-1">
+                            <div class="img-genre-recruitment"></div>
+                          </div>
+                          <div class="col-md-11 genre-job-classification">
+                            <div class="men-recruitment-bar-graph"></div>
+                            <div class="women-recruitment-bar-graph"></div>
+                            <div class="genre-bar-label">Contrataciones hombres y mujeres - Dic 2015</div>
+                          </div>
+                        </div>
+                        <div class="row genre-bar-ctn">
+                          <div class="col-md-1">
+                            <div class="img-genre-promotion"></div>
+                          </div>
+                          <div class="col-md-11 genre-job-classification">
+                            <div class="men-promotion-bar-graph"></div>
+                            <div class="women-promotion-bar-graph"></div>
+                            <div class="genre-bar-label">Promociones hombres y mujeres - Dic 2015</div>
+                          </div>
+                        </div>
+                      </div>
+                   </div>
                 </div>
             </div>
           </div>

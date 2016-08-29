@@ -1,3 +1,5 @@
+var firstToThirdIndicator = require('./genreFirstToThirdIndicatorData.json');
+
 var fifthIndicator = {
   "Estabilidad Laboral": {
     "bruteSalaryGapPercentage": 13,
@@ -38,5 +40,6 @@ var fifthIndicator = {
 };
 
 module.exports = {
+  firstToThirdIndicator: firstToThirdIndicator,
   fifthIndicator: fifthIndicator
 };

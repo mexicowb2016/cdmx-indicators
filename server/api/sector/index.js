@@ -15,5 +15,6 @@ router.get('/get/womenJobClassification/quantity/', controller.getWomenQuantityB
 router.get('/get/womenJobClassification/recruitment/', controller.getWomenRecruitmentRepresentationByJobClassification);
 router.get('/get/womenJobClassification/promotion/', controller.getWomenPromotionRepresentationByJobClassification);
 router.get('/get/womenJobClassification/salaryGap/', controller.getWomenSalaryGapByJobClassification);
+router.get('/get/genreJobClassification/', controller.getGenreJobClassification);
 
 module.exports = router;

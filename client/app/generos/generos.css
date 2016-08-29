@@ -1,0 +1,37 @@
+.genre-job-classification-ctn{
+  padding: 18px 18px 6px 18px;
+}
+
+.genre-job-classification-ctn div.genre-job-classification{
+  padding-left: 50px;
+}
+
+div.genre-job-classification .genre-bar-label{
+  text-align: left;
+  color: #7F7F7F;
+  font-size: 14px;
+}
+
+.genre-bar-ctn {
+  padding-bottom: 10px;
+}
+
+.women-quantity-bar-graph, .women-recruitment-bar-graph, .women-promotion-bar-graph{
+  background-color: #E482A9;
+  height: 18px;
+  color: #FFFFFF;
+  text-align: left;
+  line-height: 19px;
+  padding-left: 2px;
+  width: 0;
+}
+
+.men-quantity-bar-graph, .men-recruitment-bar-graph, .men-promotion-bar-graph {
+  background-color: #5A74C0;
+  height: 18px;
+  color: #FFFFFF;
+  text-align: left;
+  line-height: 19px;
+  padding-left: 2px;
+  width: 0;
+}

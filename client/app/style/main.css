@@ -300,6 +300,27 @@ font-size: 18px;
   margin-top: 11px;
 
 }
+
+.img-genre-quantity {
+  background-image: url('/app/images/genre-people.png');
+  background-size: 60px 60px;
+  width: 60px;
+  height: 60px;
+}
+
+.img-genre-recruitment {
+  background-image: url('/app/images/genre-agreement.png');
+  background-size: 60px 60px;
+  width: 60px;
+  height: 60px;
+}
+
+.img-genre-promotion {
+  background-image: url('/app/images/genre-promotion.png');
+  background-size: 60px 60px;
+  width: 60px;
+  height: 60px;
+}
 /*boxes*/
 .panel-default > .panel-heading,
 .panel-body h6{
@@ -414,7 +435,7 @@ font-size: 14px;
   font-weight: bold
 }
 
-.btn-color .btn:hover, .btn:focus, .btn.focus {
+.btn-color .btn:hover, .btn:focus, .btn.focus, .btn-color.active {
   color: #444444;
   text-decoration: none;
   background: #4c4c4c;

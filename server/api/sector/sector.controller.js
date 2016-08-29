@@ -87,6 +87,67 @@ exports.getWomenSalaryGapByJobClassification = function (req, res) {
   });
 };
 
+exports.getGenreJobClassification = function (req, res) {
+  Sector.find().populate('jobClassification genre').exec(function (err, sectors) {
+    if (err) {console.log(err);}
+    var result = filterGenreRepresentationByJobClassification(sectors);
+    return res.status(200).json(result);
+  });
+};
+
+function filterGenreRepresentationByJobClassification (sectors, requiredField) {
+  var i;
+  var jobClassificationObj = {};
+  for (i = 0; i < sectors.length; i++) {
+    if (jobClassificationObj[sectors[i].jobClassification.name] == null) {
+      jobClassificationObj[sectors[i].jobClassification.name] = {
+        womenQuantity: 0,
+        menQuantity: 0,
+        womenRecruitment: 0,
+        menRecruitment: 0,
+        womenPromotion: 0,
+        menPromotion: 0
+      };
+    }
+    if (sectors[i].genre.name == 'Femenino') {
+      jobClassificationObj[sectors[i].jobClassification.name].womenQuantity += sectors[i]['staffNo'];
+      jobClassificationObj[sectors[i].jobClassification.name].womenRecruitment += sectors[i]['recruitments'];
+      jobClassificationObj[sectors[i].jobClassification.name].womenPromotion += sectors[i]['promotions'];
+    }
+    if (sectors[i].genre.name == 'Masculino') {
+      jobClassificationObj[sectors[i].jobClassification.name].menQuantity += sectors[i]['staffNo'];
+      jobClassificationObj[sectors[i].jobClassification.name].menRecruitment += sectors[i]['recruitments'];
+      jobClassificationObj[sectors[i].jobClassification.name].menPromotion += sectors[i]['promotions'];
+    }
+  }
+  var key;
+  var result = {};
+  for (key in jobClassificationObj) {
+    if (jobClassificationObj.hasOwnProperty(key)) {
+      result[key] = {};
+      jobClassificationObj[key].totalQuantity = jobClassificationObj[key].womenQuantity + jobClassificationObj[key].menQuantity;
+      jobClassificationObj[key].totalRecruitment = jobClassificationObj[key].womenRecruitment + jobClassificationObj[key].menRecruitment;
+      jobClassificationObj[key].totalPromotion = jobClassificationObj[key].womenPromotion + jobClassificationObj[key].menPromotion;
+      //Quantity Data
+      result[key].womenQuantityPercentage = jobClassificationObj[key].womenQuantity / jobClassificationObj[key].totalQuantity;
+      result[key].womenQuantityPercentage = Math.round(parseFloat((result[key].womenQuantityPercentage).toFixed(2)) * 100);
+      result[key].menQuantityPercentage = jobClassificationObj[key].menQuantity / jobClassificationObj[key].totalQuantity;
+      result[key].menQuantityPercentage = Math.round(parseFloat((result[key].menQuantityPercentage).toFixed(2)) * 100);
+      //Promotion Data
+      result[key].womenPromotionPercentage = jobClassificationObj[key].womenPromotion / jobClassificationObj[key].totalPromotion;
+      result[key].womenPromotionPercentage = Math.round(parseFloat((result[key].womenPromotionPercentage).toFixed(2)) * 100);
+      result[key].menPromotionPercentage = jobClassificationObj[key].menPromotion / jobClassificationObj[key].totalPromotion;
+      result[key].menPromotionPercentage = Math.round(parseFloat((result[key].menPromotionPercentage).toFixed(2)) * 100);
+      //Recruitment Data
+      result[key].womenRecruitmentPercentage = jobClassificationObj[key].womenRecruitment / jobClassificationObj[key].totalRecruitment;
+      result[key].womenRecruitmentPercentage = Math.round(parseFloat((result[key].womenRecruitmentPercentage).toFixed(2)) * 100);
+      result[key].menRecruitmentPercentage = jobClassificationObj[key].menRecruitment / jobClassificationObj[key].totalRecruitment;
+      result[key].menRecruitmentPercentage = Math.round(parseFloat((result[key].menRecruitmentPercentage).toFixed(2)) * 100);
+    }
+  }
+  return result;
+}
+
 function filterWomenRepresentationByJobClassification (sectors, requiredField) {
   var i;
   var jobClassificationObj = {};

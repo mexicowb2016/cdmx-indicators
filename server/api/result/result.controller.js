@@ -92,19 +92,10 @@ exports.financeExecutedSpentsByDependency = function (req, res) {
     }
   }
   if (sort == 'current') {
-    function sortCurrent(a, b) {
-      return a.currentSpent - b.currentSpent;
-    }
     results.sort(sortCurrent);
   } else if (sort == 'capital') {
-    function sortCapital(a, b) {
-      return a.capitalSpent - b.capitalSpent;
-    }
     results.sort(sortCapital);
   } else {
-    function sortTotal(a, b) {
-      return a.totalSpent - b.totalSpent;
-    }
     results.sort(sortTotal);
   }
   return res.status(200).json(results);
@@ -138,9 +129,7 @@ exports.financeExecutedSpentsByDepartmentFunction = function (req, res) {
       executed.push(intValue);
       data[intValue] = financeResults.fifthIndicator.DATA[i].DESCRIPTION;
     }
-    function sortNumber(a, b) {
-      return a - b;
-    }
+
     executed.sort(sortNumber);
     for (var i = 0; i < executed.length; i++) {
       results.push({
@@ -231,6 +220,26 @@ exports.genreRemuneration = function (req, res) {
   return res.status(200).json(genreDataResults2.genreData2FilterRemuneration(dependency, classification));
 };
 
+exports.genreJobClassification = function (req, res) {
+  return res.status(200).json(genreDataResults.firstToThirdIndicator);
+};
+
 function handleError(res, err) {
   return res.status(500).send(err);
+}
+
+function sortCurrent(a, b) {
+  return a.currentSpent - b.currentSpent;
+}
+
+function sortCapital(a, b) {
+  return a.capitalSpent - b.capitalSpent;
+}
+
+function sortTotal(a, b) {
+  return a.totalSpent - b.totalSpent;
+}
+
+function sortNumber(a, b) {
+  return a - b;
 }

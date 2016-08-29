@@ -6,7 +6,14 @@
 
       $scope.selectedGenre = "active-menu";
 
-      $scope.ui = {};
+      $scope.ui = {
+        jobClassification: {
+          superiorCommand: false,
+          mediumCommand: false,
+          jobStability: false,
+          duty: false
+        }
+      };
 
       $scope.myModalContent = {
         indicator1: {
@@ -121,5 +128,38 @@
       };
 
       $timeout($scope.updateIndicator5, 1500);
+
+      $scope.clearSetGenreJobClassificationActiveButtonCSS = function (type) {
+        $scope.ui.jobClassification.superiorCommand = false;
+        $scope.ui.jobClassification.mediumCommand = false;
+        $scope.ui.jobClassification.jobStability = false;
+        $scope.ui.jobClassification.duty = false;
+        if (type == 'Mando Superior') {
+          $scope.ui.jobClassification.superiorCommand = true;
+        }
+        if (type == 'Mando Medio') {
+          $scope.ui.jobClassification.mediumCommand = true;
+        }
+        if (type == 'Estabilidad Laboral') {
+          $scope.ui.jobClassification.jobStability = true;
+        }
+        if (type == 'Haberes') {
+          $scope.ui.jobClassification.duty = true;
+        }
+
+      };
+
+      $scope.getGenreJobClassificationGraph = function (type) {
+        $scope.clearSetGenreJobClassificationActiveButtonCSS(type);
+        genreDataService.getGenreJobClassificationData().then(function (response) {
+          var data = response.data;
+          genreDataService.getGenreJobClassificationGraph(data, type);
+        }).catch(function (err) {
+          console.log(err);
+        });
+      };
+
+      $scope.getGenreJobClassificationGraph($scope.classifications[3])
+
 
     });

@@ -21,5 +21,6 @@ router.get('/get/genre/proportion/', controller.genreProportion);
 router.get('/get/genre/salaryGap/', controller.genreSalaryGap);
 router.get('/get/genre/demographic/', controller.genreDemographic);
 router.get('/get/genre/remuneration/', controller.genreRemuneration);
+router.get('/get/genreJobClassification/', controller.genreJobClassification);
 
 module.exports = router;
