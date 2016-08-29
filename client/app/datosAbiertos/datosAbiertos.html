@@ -17,14 +17,7 @@
 <br>
 <div class="container">
     <section>
-      <p><strong>Sobre el indicador:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <p><strong>Sobre el indicador:</strong> Este tablero muestra datos agregados sobre la Iniciativa de Datos Abiertos de la CDMX en relación al ecosistema de datos abiertos de la ciudad, que abarca tanto la oferta como la demanda de datos abiertos. Con base en los datos del portal gobiernoabierto.cdmx.gob.mx de la CDMX, los gráficos muestran aquellas entidades que publican más datos abiertos y aquellas que reciben más descargas de conjuntos datos, la evolución de esta oferta y demanda a lo largo del tiempo, y el número de visitas y usuarios del portal de Gobierno Abierto de la ciudad. Adicionalmente, se incluye una comparativa con la oferta de datos abiertos de otras iniciativas del país y la región.
       </p>
     </section>
 </div>
@@ -33,7 +26,7 @@
   <div class="row">
     <div class="col-lg-8 col-sm-8">
       <div class="panel panel-default panel-size-2">
-        <div class="panel-heading">Comparativas con iniciativas de datos abiertos<i ng-click="open(myModalContent.indicator1)" class="mdi mdi-information icon-right icon-information"></i></div>
+         <div class="panel-heading">Comparativas con iniciativas de datos abiertos<!--<i ng-click="open(myModalContent.indicator1)" class="mdi mdi-information icon-right icon-information"></i> --></div>
         <div class="panel-body">
           <strong>CDMX 283</strong> <span class="panel-body-past">Jalisco 200</span>  <span class="panel-body-past">Nuevo Leon 1000</span>  <span class="panel-body-past">Buenos Aires 160</span>  <span class="panel-body-past">Bogota 35</span>  <span class="panel-body-past">NYC 1500</span>
         </div>
@@ -44,7 +37,7 @@
         <div class="panel-body">
           <div class="img-view"></div>
           <div class="percentage-center">
-            <p class="size-percentage-2 light-label-open-data">20</p>
+            <p class="size-percentage-2 light-label-open-data">48 <span class="percentage-text">(mil)</span></p>
             <p class="size-percentage-3">Visitas</p>
           </div>
         </div>
@@ -55,7 +48,7 @@
         <div class="panel-body">
           <div class="img-user"></div>
             <div class="percentage-center">
-              <p class="size-percentage-2 light-label-open-data">20</p>
+              <p class="size-percentage-2 light-label-open-data">350 <span class="percentage-text">(mil)</span></p>
               <span class="size-percentage-3">Usuarios</span>
             </div>
         </div>
@@ -74,8 +67,9 @@
       </div>
     </div>
     <div class="col-lg-4 col-sm-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">Oferta de datos abiertos<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
+      <div class="panel panel-default panel-size">
+        <div class="panel-heading">Número de descargas de datos abiertos
+          <br>de la CDMX por entidad<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information icon-position"></i></div>
         <div class="panel-body">
           <table class="table table-hover table-responsive">
             <thead>
@@ -117,8 +111,8 @@
       </div>
     </div>
     <div class="col-lg-4 col-sm-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">Demanda de datos abiertos<i ng-click="open(myModalContent.indicator4)" class="mdi mdi-information icon-right icon-information"></i></div>
+      <div class="panel panel-default panel-size">
+        <div class="panel-heading">Número de datasets publicados en gobiernoabierto.cdmx.gob.mx por entidad<i ng-click="open(myModalContent.indicator4)" class="mdi mdi-information icon-right icon-information icon-position"></i></div>
         <div class="panel-body">
           <table class="table table-hover table-responsive">
             <thead>

@@ -15,7 +15,7 @@ angular.module('cdmxIndicatorsApp')
       },
       indicator2: {
         title:'Evolución de la oferta de datos abiertos de la CDMX',
-        description:'Número de datasets publicados en gobiernogobiernoabierto.cdmx.gob.mx'
+        description:'Número de descargas de datasets desde el portal de datos abiertos de la CDMX; y número de datasets publicados en gobierno gobiernoabierto.cdmx.gob.mx'
       },
       indicator3: {
         title:'Entidades con mayor oferta de datos abiertos',

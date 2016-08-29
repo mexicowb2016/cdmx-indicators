@@ -355,6 +355,9 @@ font-size: 18px;
   color: #b4b5b4;
 }
 
+.icon-position{
+    margin-top: -7%;
+}
 .buttom-position{
   display: table;
   margin: 0 auto;
@@ -410,7 +413,7 @@ font-size: 14px;
 
 }
 .panel-size {
-  height: 313px;
+  height: 336px;
 }
 
 .panel-body-past{
@@ -520,6 +523,15 @@ font-size: 14px;
 .text-label-1{
   margin-bottom: 5px;
   font-size: 13px;
+}
+/*datos abiertos*/
+p.size-percentage-2.light-label-open-data{
+  font-size: 21px;
+  color: #FF149B;
+  font-weight: bold;
+}
+.percentage-text{
+  font-size: 12px;
 }
 /*Button footer*/
 * {
