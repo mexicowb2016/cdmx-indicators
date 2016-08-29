@@ -59,31 +59,6 @@
       };
       //Fin codigo modal
 
-      genreDataService.getWomenPromotedRepresentationDataByJobClassification().then(function (response) {
-        var data = response.data;
-        console.log(data);
-        genreDataService.getWomenPromotedRepresentationGraph(data);
-        $rootScope.loading = false;
-      }).catch(function (err) {
-        console.log(err);
-      });
-
-      genreDataService.getWomenQuantityRepresentationDataByJobClassification().then(function (response) {
-        var data = response.data;
-        console.log(data);
-        genreDataService.getWomenQuantityRepresentationGraph(data);
-      }).catch(function (err) {
-        console.log(err);
-      });
-
-      genreDataService.getWomenRecruitmentRepresentationDataByJobClassification().then(function (response) {
-        var data = response.data;
-        console.log(data);
-        genreDataService.getWomenRecruitmentRepresentationGraph(data);
-      }).catch(function (err) {
-        console.log(err);
-      });
-
       genreDataService.getWomenSalaryGapDataByJobClassification().then(function (response) {
         var data = response.data;
         console.log(data);
@@ -120,11 +95,13 @@
           $scope.ui.fifthIndicatorGraphTitle = 'Proporción de mujeres en cada ente público';
           genreDataService.getDemographic($scope.dependency, $scope.classifications[$scope.classification]).then(function(data) {
             genreDataService.getDemographicGraph(data.data);
+            $rootScope.loading = false;
           });
         } else {
           $scope.ui.fifthIndicatorGraphTitle = 'Brecha salarial entre hombres y mujeres en cada ente público';
           genreDataService.getRemuneration($scope.dependency, $scope.classifications[$scope.classification]).then(function(data) {
             genreDataService.getRemunerationGraph(data.data);
+            $rootScope.loading = false;
           });
         }
       };
