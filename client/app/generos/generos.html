@@ -110,7 +110,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Consulta interactiva de las dependencias y delegaciones<i ng-click="open(myModalContent.indicator5)" class="mdi mdi-information icon-right icon-information"></i>
         </div>
-        <div class="panel-body">
+        <div class="panel-body pane-body-size">
           <div class="btn-group">
             <label class="btn btn-color btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'demographic'" ng-value="demographic">Interactivo Demografico</label>
             <label class="btn btn-color-1 btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'remuneration'" ng-value="remuneration">Interactivo Remuneracion</label>
@@ -142,9 +142,9 @@
                     <li class="li-margin"><input type="radio" ng-model="classification" ng-value="5" id="classifications5" ng-change="updateIndicator5()" /><label for="classifications5">Técnico Operativo de Confianza</label></li>
                   </ul>
                 </div>
-
           </div>
-          <div class="panel-body women-demographic-classification">
+          <br>
+          <div class="women-demographic-classification">
             <div id="women-demographic-classification-div"></div>
           </div>
         </div>
