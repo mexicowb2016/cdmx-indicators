@@ -6,7 +6,9 @@ var genreData2FilterDemographic = function(dependency, classification) {
     var data = genreData2.DATA[i];
     if (data['DEPENDENCY'] == dependency && data['CLASSIFICATION'] == classification) {
       results[data['SECTOR']] = {
-        proportion: parseFloat(data['PROPORTION_WOMEN'])
+        proportion: parseFloat(data['PROPORTION_WOMEN']),
+        women: parseInt(data['QUANTITY_WOMEN']),
+        men: parseInt(data['QUANTITY_MEN'])
       };
     }
   }

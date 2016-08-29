@@ -196,10 +196,16 @@ angular.module('cdmxIndicatorsApp').
     function createMultiBarHorizontalGraph (data, elementContainerId) {
       google.charts.setOnLoadCallback(function () {
         var dataGraph = google.visualization.arrayToDataTable(data);
+        var formatter = new google.visualization.NumberFormat({
+            fractionDigits: 2,
+            suffix: '%'
+        });
+        formatter.format(dataGraph, 1);
         var options = {
           title: '',
           chartArea: {width: '40%', height: '90%', left: '55%', top: 10},
           fontSize: 12,
+          hAxis: {format: "#'%'"},
           legend: "none"
         };
 
@@ -257,7 +263,7 @@ angular.module('cdmxIndicatorsApp').
     function formatMultiBarDemographicData (data, field) {
       var result = [['Sector', 'Proporcion', {role: 'style'}]];
       for (var key in data) {
-        result.push([key, data[key][field], '#FF149B']);
+        result.push([key, data[key][field] * 100, '#FF149B']);
       }
       return result;
     }
