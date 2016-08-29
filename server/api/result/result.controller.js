@@ -73,7 +73,41 @@ exports.financeTop3CapitalSpentsByInstitutionalActivity = function (req, res) {
 };
 
 exports.financeExecutedSpentsByDependency = function (req, res) {
-  return res.status(200).json(financeResults.fourthIndicator);
+  var favorite = req.query.favorite;
+  var dependency = req.query.dependency;
+  var sort = req.query.sort;
+  var results = [];
+  for (var i = 0; i < financeResults.fourthIndicator.DATA.length; i++) {
+    var data = financeResults.fourthIndicator.DATA[i];
+    if (data.DEPENDENCY == dependency && data.FAVORITE == favorite) {
+      var currentSpent = parseInt(data.CURRENT_SPENT.split('%').join(''));
+      var capitalSpent = parseInt(data.CAPITAL_SPENT.split('%').join(''));
+      var totalSpent = parseInt(data.TOTAL_SPENT.split('%').join(''));
+      results.push({
+        center: data.CENTER,
+        currentSpent: currentSpent,
+        capitalSpent: capitalSpent,
+        totalSpent: totalSpent
+      });
+    }
+  }
+  if (sort == 'current') {
+    function sortCurrent(a, b) {
+      return a.currentSpent - b.currentSpent;
+    }
+    results.sort(sortCurrent);
+  } else if (sort == 'capital') {
+    function sortCapital(a, b) {
+      return a.capitalSpent - b.capitalSpent;
+    }
+    results.sort(sortCapital);
+  } else {
+    function sortTotal(a, b) {
+      return a.totalSpent - b.totalSpent;
+    }
+    results.sort(sortTotal);
+  }
+  return res.status(200).json(results);
 };
 
 exports.financeExecutedSpentsByDepartmentFunction = function (req, res) {
@@ -104,7 +138,7 @@ exports.financeExecutedSpentsByDepartmentFunction = function (req, res) {
       executed.push(intValue);
       data[intValue] = financeResults.fifthIndicator.DATA[i].DESCRIPTION;
     }
-    function sortNumber(a,b) {
+    function sortNumber(a, b) {
       return a - b;
     }
     executed.sort(sortNumber);

@@ -39,7 +39,7 @@ var thirdIndicatorByActivityInstData = {
   }
 };
 
-var fourthIndicator = require('./financeFourthIndicator.json');
+var fourthIndicator = require('./financeData2.json');
 
 var fifthIndicator = require('./financeData3.json');
 

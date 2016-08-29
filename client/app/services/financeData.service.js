@@ -30,17 +30,25 @@ angular.module('cdmxIndicatorsApp').
 
     function getExecutedSpentsByDepartmentFunctionGraph (data) {
       data = formatMultiBarDataIndicator5(data);
-      console.log(data);
       createMultiHorizontalBarGraph(data, 'executed-spent-function-graph');
     }
 
-    function getExecutedSpentsByDependencyData () {
+    function getExecutedSpentsByDependencyData (favorite, dependency, sort) {
       var url = '/api/results/get/executedSpents/dependency/';
-      return $http.get(url);
+      return $http({
+        url: url,
+        method: 'GET',
+        params: {
+          favorite: favorite,
+          dependency: dependency,
+          sort: sort
+        }
+      });
     }
 
     function getExecutedSpentsByDependencyGraph (data) {
-      data = formatMultiBarData(data);
+      data = formatMultiBarDataIndicator4(data);
+      console.log(data);
       createMultiBarGraph(data, 'executed-spent-dependency-graph');
     }
 
@@ -97,27 +105,28 @@ angular.module('cdmxIndicatorsApp').
     //Graph Utility functions
     function createMultiBarGraph(data, elementContainerCls) {
       nv.addGraph(function() {
-        var chart = nv.models.multiBarChart()
-          .color(['#FF149B','#F1BDCE']) //colors for every barChart
+        var chart = nv.models.multiBarHorizontalChart()
+          .color(['#FF0E98','#C1C1C1']) //colors for every barChart
           .showControls(false)
-          .staggerLabels(true)
+          // .staggerLabels(true)
+          .margin({"left": 620})
           .showLegend(false);
 
         chart.yAxis
           .tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
-          .tickFormat(function (d){ return d + '%'});
+          .tickFormat(function (d){ return d + '%'; });
 
         chart.xAxis
-          .tickFormat(function (d){return d});
+          .tickFormat(function (d){ return d; });
 
         chart.forceY([0, 100]);
 
-        if (data.length > 10) {
-          // chart.rotateLabels(-90);
-          // chart.xAxis.ticks(5);
-          chart.groupSpacing(0.1);
-          chart.wrapLabels(true);
-        }
+        // if (data.length > 10) {
+        //   // chart.rotateLabels(-90);
+        //   // chart.xAxis.ticks(5);
+        //   chart.groupSpacing(0.1);
+        //   chart.wrapLabels(true);
+        // }
 
         d3.select('.' + elementContainerCls + ' svg')
           .datum(data)
@@ -215,6 +224,21 @@ angular.module('cdmxIndicatorsApp').
             "values": [{x:key, y:data[key].capitalSpentExecuted}]
           })
         }
+      }
+      return result;
+    }
+
+    function formatMultiBarDataIndicator4(data) {
+      var result = [];
+      for (var i = 0; i < data.length; i++) {
+        var key = data[i].center;
+        result.push({
+          "key": "Gasto Corriente",
+          "values": [{x:key, y:data[i].currentSpent}]
+        }, {
+          "key": "Gasto Capital",
+          "values": [{x:key, y:data[i].capitalSpent}]
+        })
       }
       return result;
     }

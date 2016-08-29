@@ -451,7 +451,7 @@ font-size: 14px;
 }*/
 
 div.panel-body.executed-spent-dependency-graph svg{
-  height: 500px;
+  height: 2000px;
 }
 
 div.panel-body.executed-spent-function-graph svg {
@@ -702,4 +702,18 @@ div.panel-body.single-bar-ctn {
 
 .offer {
   color: #FF149B;
+}
+
+.finance-selected {
+  background-color: #4C4C4C !important;
+  color: #FFFFFF !important;
+}
+
+.finance-unselected {
+  background-color: #C1C1C1 !important;
+  color: #4C4C4C !important;
+}
+
+.finance-button {
+  width: 140px;
 }
