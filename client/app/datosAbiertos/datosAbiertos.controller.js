@@ -19,11 +19,11 @@ angular.module('cdmxIndicatorsApp')
       },
       indicator3: {
         title:'Entidades con mayor oferta de datos abiertos',
-        description:'Número de datasets publicados en gobiernoabierto.cdmx.gob.mxpor entidad'
+        description:'Número de descargas de datos abiertos de la CDMX por entidad'
       },
       indicator4:{
         title:'Entidades con mayor demanda de datos abiertos',
-        description:'Número de descargas de datos abiertos de la CDMX por entidad'
+        description:'Número de datasets publicados en gobiernoabierto.cdmx.gob.mx por entidad'
       },
     };
 

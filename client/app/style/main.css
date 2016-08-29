@@ -426,6 +426,9 @@ font-size: 14px;
 .panel-size-2{
   height: 100px;
 }
+.panel-size-3{
+  height: 440px;
+}
 .panel-body-center{
   text-align: center;
 }
@@ -485,27 +488,27 @@ font-size: 14px;
 }
 
 .background-color-graph-2{
-  background-color: #E482A9;
+  background-color: #D83E87;
   height: 15px;
   width: 20px;
   margin-bottom: 0px;
 }
 .background-color-graph-3{
-  background-color: #5A74C0;
+  background-color: #E16F9F;
   height: 15px;
   width: 20px;
   margin-bottom: 0px;
-  margin-left: 39px;
+  margin-left: 44px;
 }
 
 .background-color-graph-4{
-  background-color: #E482A9;
+  background-color: #E794B4;
   height: 15px;
   width: 20px;
   margin-bottom: 0px;
 }
 .background-color-graph-5{
-  background-color: #5A74C0;
+  background-color: #F0BECE;
   height: 15px;
   width: 20px;
   margin-bottom: 0px;
@@ -513,8 +516,15 @@ font-size: 14px;
 }
 .women-color-graph{
   margin: 15px;
+  margin-top: 40px;
 }
-
+.women-color-graph-1{
+  margin:  12px 40px;
+  margin-top: -10px;
+}
+.women-color-graph-2{
+  margin-top: -20px;
+}
 .text-label{
   margin-bottom: 5px;
   font-size: 16px;
