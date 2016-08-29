@@ -258,7 +258,7 @@ angular.module('cdmxIndicatorsApp').
       var radius = Math.min(width, height) / 2;
 
       var color = d3.scale.ordinal()
-          .range(["#5A74C0", "#FF0E98"]);
+          .range(["#5A74C0", "#E482A9"]);
 
       var arc = d3.svg.arc()
           .outerRadius(radius - 10)
