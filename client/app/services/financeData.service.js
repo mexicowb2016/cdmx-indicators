@@ -34,6 +34,7 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function getExecutedSpentsByDependencyData (favorite, dependency, sort) {
+      dependency = dependency == 'dependencies' ? 1 : 0;
       var url = '/api/results/get/executedSpents/dependency/';
       return $http({
         url: url,

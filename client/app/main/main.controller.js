@@ -63,17 +63,17 @@ angular.module('cdmxIndicatorsApp')
     });
 
     $scope.indicator4favorite = true;
-    $scope.indicator4dependency = 1;
+    $scope.indicator4dependency = 'preferred';
     $scope.indicator4sort = 'current';
     $scope.updateIndicator4 = function() {
-      var favorite = $scope.indicator4favorite ? 1 : 0;
+      var favorite = $scope.indicator4dependency == 'preferred' ? 1 : 0;
       financeDataService.getExecutedSpentsByDependencyData(favorite, $scope.indicator4dependency, $scope.indicator4sort).then(function (response) {
         var data = response.data;
         financeDataService.getExecutedSpentsByDependencyGraph(data);
       }).catch(function (err) {
         console.log(err);
       });
-    }
+    };
     $scope.updateIndicator4();
 
     $scope.indicator5sort = 'name';

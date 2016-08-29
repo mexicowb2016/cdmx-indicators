@@ -68,8 +68,8 @@
               <div class="panel-heading">Tres primeros en Ejecución de Gasto de Capital<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
               <div class="panel-body">
                 <div class="btn-group buttom-position">
-                  <label class="btn btn-color btn-sm" ng-model="ui.top3CapitalSpentModel" ng-click="getTop3CapitalSpentsByDependency()" uib-btn-radio="'Dependency'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dependencia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                  <label class="btn btn-color-1 btn-sm" ng-model="ui.top3CapitalSpentModel" ng-click="getTop3CapitalSpentsByInstAct()" uib-btn-radio="'institutionalActivity'">Actividad Institucional</label>
+                  <label ng-class="{active: ui.top3CapitalSpentModel == 'Dependency'}" class="btn btn-color btn-sm" ng-model="ui.top3CapitalSpentModel" ng-click="getTop3CapitalSpentsByDependency()" uib-btn-radio="'Dependency'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dependencia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                  <label ng-class="{active: ui.top3CapitalSpentModel == 'institutionalActivity'}" class="btn btn-color btn-sm" ng-model="ui.top3CapitalSpentModel" ng-click="getTop3CapitalSpentsByInstAct()" uib-btn-radio="'institutionalActivity'">Actividad Institucional</label>
                 </div>
                 <br>
                 <div class="panel-width">
@@ -93,21 +93,24 @@
           <div class="row">
             <div class="col-lg-4 col-sm-4">
               Filtro: <br />
-              <label class="btn btn-default btn-sm finance-button btn-size-color" ng-model="indicator4favorite" ng-click="updateIndicator4()" uib-btn-checkbox ng-class="indicator4favorite ? 'finance-selected' : 'finance-unselected'">Preferida</label>
-              <div class="btn-group btn-size-color" uib-dropdown>
-                <a href="#" class="btn btn-default finance-button" data-toggle="dropdown" uib-dropdown-toggle ng-class="'finance-unselected'">{{indicator4dependency == 1 ? 'Dependencias': 'Delegaciones'}}<span class="caret"></span></a>
-                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                  <li class="li-margin"><input type="radio" ng-model="indicator4dependency" ng-value="1" id="indicator4dependency1" ng-change="updateIndicator4()" /><label for="indicator4dependency1">Dependencias</label></li>
-                  <!-- <li class="divider"></li> -->
-                  <li class="li-margin"><input type="radio" ng-model="indicator4dependency" ng-value="0" id="indicator4dependency0" ng-change="updateIndicator4()" /><label for="indicator4dependency0">Delegaciones</label></li>
-                </ul>
-              </div>
+              <label class="btn btn-sm btn-color" ng-model="indicator4dependency" ng-click="updateIndicator4()" uib-btn-radio="'preferred'" ng-class="{active: indicator4dependency == 'preferred'}">Preferida</label>
+              <label class="btn btn-sm btn-color" ng-model="indicator4dependency" ng-click="updateIndicator4()" uib-btn-radio="'dependencies'" ng-class="{active: indicator4dependency == 'dependencies'}">Dependencias</label>
+              <label class="btn btn-sm btn-color" ng-model="indicator4dependency" ng-click="updateIndicator4()" uib-btn-radio="'delegacies'" ng-class="{active: indicator4dependency == 'delegacies'}">Delegaciones</label>
+              <!--<label class="btn btn-default btn-sm finance-button btn-size-color" ng-model="indicator4favorite" ng-click="updateIndicator4()" uib-btn-checkbox ng-class="indicator4favorite ? 'finance-selected' : 'finance-unselected'">Preferida</label>-->
+              <!--<div class="btn-group btn-size-color" uib-dropdown>-->
+                <!--<a href="#" class="btn btn-default finance-button" data-toggle="dropdown" uib-dropdown-toggle ng-class="'finance-unselected'">{{indicator4dependency == 1 ? 'Dependencias': 'Delegaciones'}}<span class="caret"></span></a>-->
+                <!--<ul class="dropdown-menu" uib-dropdown-menu role="menu">-->
+                  <!--<li class="li-margin"><input type="radio" ng-model="indicator4dependency" ng-value="1" id="indicator4dependency1" ng-change="updateIndicator4()" /><label for="indicator4dependency1">Dependencias</label></li>-->
+                  <!--&lt;!&ndash; <li class="divider"></li> &ndash;&gt;-->
+                  <!--<li class="li-margin"><input type="radio" ng-model="indicator4dependency" ng-value="0" id="indicator4dependency0" ng-change="updateIndicator4()" /><label for="indicator4dependency0">Delegaciones</label></li>-->
+                <!--</ul>-->
+              <!--</div>-->
             </div>
             <div class="col-lg-4 col-sm-4">
               Ranking por: <br />
               <div class="btn-group">
-                <label class="btn btn-default btn-sm finance-button btn-size-color" ng-model="indicator4sort" ng-click="updateIndicator4()" uib-btn-radio="'current'" ng-value="current" ng-class="indicator4sort == 'current' ? 'finance-selected' : 'finance-unselected'">Corriente</label>
-                <label class="btn btn-default btn-sm finance-button btn-size-color" ng-model="indicator4sort" ng-click="updateIndicator4()" uib-btn-radio="'capital'" ng-value="capital" ng-class="indicator4sort == 'capital' ? 'finance-selected' : 'finance-unselected'">Capital</label>
+                <label class="btn btn-sm btn-color" ng-model="indicator4sort" ng-click="updateIndicator4()" uib-btn-radio="'current'" ng-class="{active: indicator4sort == 'current'}">Corriente</label>
+                <label class="btn btn-sm btn-color" ng-model="indicator4sort" ng-click="updateIndicator4()" uib-btn-radio="'capital'" ng-class="{active: indicator4sort == 'capital'}">Capital</label>
               </div>
             </div>
 
@@ -129,8 +132,8 @@
         </div>
         <div class="panel-body">
           <div class="btn-group">
-            <label class="btn btn-color btn-sm" ng-model="indicator5sort" ng-click="updateIndicator5()" uib-btn-radio="'name'" ng-value="name">Ranking por Nombre</label>
-            <label class="btn btn-color-1 btn-sm" ng-model="indicator5sort" ng-click="updateIndicator5()" uib-btn-radio="'executed'" ng-value="executed">Ranking por Ejercido</label>
+            <label class="btn btn-color btn-sm" ng-model="indicator5sort" ng-click="updateIndicator5()" uib-btn-radio="'name'" ng-class="{active: indicator5sort == 'name'}">Ranking por Nombre</label>
+            <label class="btn btn-color btn-sm" ng-model="indicator5sort" ng-click="updateIndicator5()" uib-btn-radio="'executed'" ng-class="{active: indicator5sort == 'executed'}">Ranking por Ejercido</label>
           </div>
         </div>
         <div class="panel-body executed-spent-function-graph">

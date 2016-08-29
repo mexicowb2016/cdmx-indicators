@@ -159,8 +159,8 @@
         </div>
         <div class="panel-body pane-body-size">
           <div class="btn-group">
-            <label class="btn btn-color btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'demographic'" ng-value="demographic">Interactivo Demografico</label>
-            <label class="btn btn-color-1 btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'remuneration'" ng-value="remuneration">Interactivo Remuneracion</label>
+            <label ng-class="{active: indicator5 == 'demographic'}" class="btn btn-color btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'demographic'">Interactivo Demografico</label>
+            <label ng-class="{active: indicator5 == 'remuneration'}" class="btn btn-color btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'remuneration'" >Interactivo Remuneracion</label>
           </div>
           <br>
           <div class="dropdowns-align dropdown-margin">
