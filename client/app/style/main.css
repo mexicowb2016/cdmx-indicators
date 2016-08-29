@@ -118,7 +118,7 @@ body {
   margin-top:0%;
   font-size: 14px;
   color: #fff;
-  margin-bottom: -22px;
+  margin-bottom: -13px;
 
 }
 .logo-header{
@@ -418,7 +418,7 @@ font-size: 14px;
 }
 
 .panel-size-1{
-  height: 330px;
+  height: 350px;
 }
 .panel-size-2{
   height: 100px;
@@ -463,6 +463,63 @@ font-size: 14px;
 }
 .dropdown-size {
   width: 245px;
+}
+.panel-center-graph{
+  text-align: center;
+}
+.background-color-graph{
+  background-color: #E482A9;
+  height: 20px;
+  width: 25px;
+  margin-bottom: 0px;
+}
+.background-color-graph-1{
+  background-color: #5A74C0;
+  height: 20px;
+  width: 25px;
+  margin-bottom: 0px;
+  margin-left: 35px;
+}
+
+.background-color-graph-2{
+  background-color: #E482A9;
+  height: 15px;
+  width: 20px;
+  margin-bottom: 0px;
+}
+.background-color-graph-3{
+  background-color: #5A74C0;
+  height: 15px;
+  width: 20px;
+  margin-bottom: 0px;
+  margin-left: 39px;
+}
+
+.background-color-graph-4{
+  background-color: #E482A9;
+  height: 15px;
+  width: 20px;
+  margin-bottom: 0px;
+}
+.background-color-graph-5{
+  background-color: #5A74C0;
+  height: 15px;
+  width: 20px;
+  margin-bottom: 0px;
+  margin-left: 35px;
+}
+.women-color-graph{
+  margin: 15px;
+}
+
+.text-label{
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.text-label-1{
+  margin-bottom: 5px;
+  font-size: 13px;
 }
 /*Button footer*/
 * {

@@ -84,12 +84,18 @@
           <div class="col-lg-6 col-sm-6">
             <div class="panel panel-default panel-size-1">
               <div class="panel-heading">Proporcion de mujeres por clasificacion del puesto<i ng-click="open(myModalContent.indicator2)" class="mdi mdi-information icon-right icon-information"></i></div>
-              <div class="panel-body women-proportion">
+              <div class="panel-body women-proportion panel-center-graph">
+                <br>
+                <br>
                 <svg id="piesvg1"></svg>
                 <svg id="piesvg2"></svg>
                 <svg id="piesvg3"></svg>
                 <svg id="piesvg4"></svg>
                 <svg id="piesvg5"></svg>
+                <div class="women-color-graph">
+                    <label class="background-color-graph"></label> <span class="text-label">Mujer</span>
+                    <label class="background-color-graph-1"></label> <span class="text-label">Hombre</span>
+                </div>
               </div>
             </div>
           </div>
@@ -125,10 +131,20 @@
   <div class="row">
     <div class="col-lg-3 col-sm-3"></div>
     <div class="col-lg-6 col-sm-6">
-      <div class="panel panel-default">
+      <div class="panel panel-default panel-size-1">
         <div class="panel-heading">Brecha salarial entre hombres y mujeres<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-right icon-information"></i></div>
-          <div class="panel-body women-salaryGap-percentage">
-            <svg></svg>
+          <div class="panel-body">
+            <div class="women-salaryGap-percentage">
+              <svg></svg>
+            </div>
+            <div class="women-color-graph">
+                <label class="background-color-graph-2"></label> <span class="text-label-1">Brecha en remuneración bruta</span>
+                <label class="background-color-graph-3"></label> <span class="text-label-1">Brecha en salari base</span>
+            </div>
+            <div class="women-color-graph">
+                <label class="background-color-graph-4"></label> <span class="text-label-1">Breach en tiempo extradionario</span>
+                <label class="background-color-graph-5"></label> <span class="text-label-1">Brecha en otras tras prestaciones</span>
+            </div>
           </div>
       </div>
     </div>
