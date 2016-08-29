@@ -598,7 +598,7 @@ div.panel-body.executed-spent-function-graph svg {
 }
 
 div.panel-body.executed-spent-function-graph #indicator5div {
-  height: 1000px;
+  height: 400px;
 }
 
 div.panel-body.women-promoted-percentage svg, div.panel-body.women-quantity-percentage svg, div.panel-body.women-recruitment-percentage svg, div.panel-body.women-salaryGap-percentage svg{

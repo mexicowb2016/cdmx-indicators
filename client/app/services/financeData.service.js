@@ -164,13 +164,20 @@ angular.module('cdmxIndicatorsApp').
         var containerGraphDOMEl = containerGraphEl[0];
         var dataGraph = google.visualization.arrayToDataTable(data);
 
+        var formatter = new google.visualization.NumberFormat({
+            fractionDigits: 0,
+            suffix: ' (MNX)'
+        });
+        formatter.format(dataGraph, 1);
+
         var options = {
           title: '',
           colors: ['#FF149B'],
-          chartArea: {width: '40%', height: '90%', left: '50%', top: 10},
+          chartArea: {width: '58%', height: '90%', left: '38%', top: 10},
           fontSize: 12,
           legend: "none",
-          bars: "horizontal"
+          bars: "horizontal",
+          hAxis: {title: "Pesos Mexicanos (MXN)", format: "# (MNX)"}
         };
 
         var chart = new google.visualization.BarChart(containerGraphDOMEl);
