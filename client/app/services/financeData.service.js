@@ -167,7 +167,7 @@ angular.module('cdmxIndicatorsApp').
 
         var formatter = new google.visualization.NumberFormat({
             fractionDigits: 0,
-            suffix: ' (MNX)'
+            suffix: ' (MXN)'
         });
         formatter.format(dataGraph, 1);
 
@@ -178,7 +178,7 @@ angular.module('cdmxIndicatorsApp').
           fontSize: 12,
           legend: "none",
           bars: "horizontal",
-          hAxis: {title: "Pesos Mexicanos (MXN)", format: "# (MNX)"}
+          hAxis: {title: "Pesos Mexicanos (MXN)"}
         };
 
         var chart = new google.visualization.BarChart(containerGraphDOMEl);
