@@ -83,7 +83,7 @@
           </div>
           <div class="col-lg-6 col-sm-6">
             <div class="panel panel-default panel-size-1">
-              <div class="panel-heading">Proporcion de mujeres por clasificacion del puesto<i ng-click="open(myModalContent.indicator2)" class="mdi mdi-information icon-right icon-information"></i></div>
+              <div class="panel-heading">Composición por género de personal técnico-operativo por quintil de remuneración<i ng-click="open(myModalContent.indicator2)" class="mdi mdi-information icon-right icon-information"></i></div>
               <div class="panel-body women-proportion panel-center-graph">
                 <br>
                 <svg id="piesvg1"></svg>
@@ -155,13 +155,17 @@
         <div class="panel-heading">Consulta interactiva de las dependencias y delegaciones<i ng-click="open(myModalContent.indicator5)" class="mdi mdi-information icon-right icon-information"></i>
         </div>
         <div class="panel-body pane-body-size">
-          <div class="btn-group">
-            <label ng-class="{active: indicator5 == 'demographic'}" class="btn btn-color btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'demographic'">Interactivo Demografico</label>
-            <label ng-class="{active: indicator5 == 'remuneration'}" class="btn btn-color btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'remuneration'" >Interactivo Remuneracion</label>
-          </div>
-          <br>
-          <div class="dropdowns-align dropdown-margin">
-             Filtre el gráfico por sector o clasificación de puesto:
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <span>Grafico:&nbsp;</span>
+              <div class="btn-group">
+                <label ng-class="{active: indicator5 == 'demographic'}" class="btn btn-color btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'demographic'">Interactivo Demografico</label>
+                <label ng-class="{active: indicator5 == 'remuneration'}" class="btn btn-color btn-sm" ng-model="indicator5" ng-click="updateIndicator5()" uib-btn-radio="'remuneration'" >Interactivo Remuneracion</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <span class="">Filtro:&nbsp;</span>
+              <div class="btn-group">
                 <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
                   <a href="#" class="btn btn-color" data-toggle="dropdown" uib-dropdown-toggle>Sector <span class="caret"></span></a>
                   <ul class="dropdown-menu" uib-dropdown-menu role="menu">
@@ -186,11 +190,16 @@
                     <li class="li-margin"><input type="radio" ng-model="classification" ng-value="5" id="classifications5" ng-change="updateIndicator5()" /><label for="classifications5">Técnico Operativo de Confianza</label></li>
                   </ul>
                 </div>
+              </div>
+            </div>
           </div>
-          <br>
-          <div class="women-demographic-classification">
-            <div id="women-demographic-classification-div"></div>
+          <div class="row separate-graph-filter">
+            <div class="col-md-12 women-demographic-classification">
+              <label class="fifthIndicator-graph-title">{{ui.fifthIndicatorGraphTitle}}</label>
+              <div id="women-demographic-classification-div"></div>
+            </div>
           </div>
+
         </div>
       </div>
 

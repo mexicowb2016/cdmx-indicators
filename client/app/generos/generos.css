@@ -35,3 +35,12 @@ div.genre-job-classification .genre-bar-label{
   padding-left: 2px;
   width: 0;
 }
+
+.separate-graph-filter{
+  padding-top: 30px;
+}
+.fifthIndicator-graph-title {
+  color: #7F7F7F;
+  font-size: 14px;
+  font-weight: bold;
+}

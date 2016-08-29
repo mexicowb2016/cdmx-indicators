@@ -123,6 +123,16 @@ angular.module('cdmxIndicatorsApp').
         var containerGraphDOMEl = containerGraphEl[0];
         var dataGraph = google.visualization.arrayToDataTable(data);
 
+        var formatter = new google.visualization.NumberFormat({
+          fractionDigits: 0,
+          suffix: '%'
+        });
+        //Take this format for all bars
+        formatter.format(dataGraph, 1);
+        formatter.format(dataGraph, 2);
+        formatter.format(dataGraph, 3);
+        formatter.format(dataGraph, 4);
+
         var chartOptions = {
           title: '',
           bar: {
@@ -135,7 +145,7 @@ angular.module('cdmxIndicatorsApp').
           },
           colors: ['#D83E87', '#E16F9F', '#E794b4', '#F0BECE'],
           legend: {position: 'none'},
-          vAxis: {format: ''},
+          vAxis: {format: '#\'%\''},
           hAxis: {},
           seriesType: 'bars'
         };
@@ -184,18 +194,19 @@ angular.module('cdmxIndicatorsApp').
       return result;
     }
     function createMultiBarHorizontalGraph (data, elementContainerId) {
-      var data = google.visualization.arrayToDataTable(data);
+      google.charts.setOnLoadCallback(function () {
+        var dataGraph = google.visualization.arrayToDataTable(data);
+        var options = {
+          title: '',
+          chartArea: {width: '40%', height: '90%', left: '55%', top: 10},
+          fontSize: 12,
+          legend: "none"
+        };
 
-      var options = {
-        title: '',
-        chartArea: {width: '40%', height: '90%', left: '55%', top: 10},
-        fontSize: 12,
-        legend: "none"
-      };
+        var chart = new google.visualization.BarChart(document.getElementById(elementContainerId));
 
-      var chart = new google.visualization.BarChart(document.getElementById(elementContainerId));
-
-      chart.draw(data, options);
+        chart.draw(dataGraph, options);
+      });
     }
 
     function format4GroupedMultiBarData (data) {
