@@ -97,7 +97,7 @@ body {
     text-align: center;
 }
 .main-container{
-  padding-top:126px;
+  padding-top:137px;
 }
 
 .container-fluid > .row > .menu-left-text > .nav > li > a{
@@ -269,18 +269,21 @@ font-size: 18px;
   background-size: 70px 70px;
   width: 70px;
   height: 70px;
+  margin-top: 4px;
 }
 .img-finanzas{
     background-image: url('/app/images/icon-finanzas.png');
     background-size: 70px 70px;
     width: 70px;
     height: 70px;
+    margin-top: 4px;
 }
 .img-genero{
   background-image: url('/app/images/icon-genero.png');
   background-size: 70px 70px;
   width: 70px;
   height: 70px;
+  margin-top: 4px;
 }
 
 .img-datosa-biertos{
@@ -288,6 +291,7 @@ font-size: 18px;
   background-size: 70px 70px;
   width: 70px;
   height: 70px;
+  margin-top: 4px;
 }
 
 .img-view{
@@ -484,6 +488,7 @@ font-size: 14px;
   height: 20px;
   width: 25px;
   margin-bottom: 0px;
+  margin-right: 5px;
 }
 .background-color-graph-1{
   background-color: #5A74C0;
@@ -491,6 +496,7 @@ font-size: 14px;
   width: 25px;
   margin-bottom: 0px;
   margin-left: 35px;
+  margin-right: 5px;
 }
 
 .background-color-graph-2{
@@ -498,6 +504,7 @@ font-size: 14px;
   height: 15px;
   width: 20px;
   margin-bottom: 0px;
+  margin-right: 5px;
 }
 .background-color-graph-3{
   background-color: #E16F9F;
@@ -505,6 +512,7 @@ font-size: 14px;
   width: 20px;
   margin-bottom: 0px;
   margin-left: 44px;
+  margin-right: 5px;
 }
 
 .background-color-graph-4{
@@ -512,6 +520,7 @@ font-size: 14px;
   height: 15px;
   width: 20px;
   margin-bottom: 0px;
+  margin-right: 5px;
 }
 .background-color-graph-5{
   background-color: #F0BECE;
@@ -519,6 +528,7 @@ font-size: 14px;
   width: 20px;
   margin-bottom: 0px;
   margin-left: 35px;
+  margin-right: 5px;
 }
 .women-color-graph{
   margin: 15px;
@@ -846,12 +856,14 @@ div.panel-body.single-bar-ctn {
   .header-text-1{
     font-size: 14px;
     color:#4c4c4c;
+    margin-top: 5%;
 
   }
   .header-text-2{
     font-size: 24px;
       color:#4c4c4c;
   }
+
 
 .icon-header{
   width: 180px;
