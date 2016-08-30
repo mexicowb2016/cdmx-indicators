@@ -624,7 +624,8 @@ div.panel-body.executed-spent-dependency-graph svg{
 }
 
 div.panel-body.executed-spent-dependency-graph #indicator4div {
-  height: 2000px;
+  height: 500px;
+  transition-duration: 0s;
 }
 
 div.panel-body.executed-spent-function-graph svg {

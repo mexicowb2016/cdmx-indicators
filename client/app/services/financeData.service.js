@@ -1,5 +1,5 @@
 angular.module('cdmxIndicatorsApp').
-  service('financeDataService', function ($http, $filter) {
+  service('financeDataService', function ($http, $filter, $timeout) {
     return {
       getAllTotalSpentData: getAllTotalSpentsData,
       getExecutedSpentsByDepartmentFunctionData: getExecutedSpentsByDepartmentFunctionData,
@@ -50,7 +50,7 @@ angular.module('cdmxIndicatorsApp').
     function getExecutedSpentsByDependencyGraph (data) {
       data = formatMultiBarDataIndicator4(data);
       console.log(data);
-      createMultiBarGraph(data, 'indicator4div');
+      createMultiBarGraph(data, 'indicator4div', true);
     }
 
     function getTop3CapitalSpentsByDependencyData() {
@@ -104,16 +104,21 @@ angular.module('cdmxIndicatorsApp').
     }
 
     //Graph Utility functions
-    function createMultiBarGraph(data, elementContainerCls) {
+    function createMultiBarGraph(data, elementContainerCls, calculateHeight) {
       google.charts.setOnLoadCallback(function createGroupedBy4MultiBarChart () {
         var containerGraphEl = angular.element('#' + elementContainerCls);
         var containerGraphDOMEl = containerGraphEl[0];
+        var height = '80%';
+        if (calculateHeight) {
+          var elementHeight = (data.length * 30) + 'px';
+          document.getElementById(elementContainerCls).style.height = elementHeight;
+        }
         var dataGraph = google.visualization.arrayToDataTable(data);
 
         var options = {
           title: '',
           colors: ['#FF0E98','#C1C1C1'],
-          chartArea: {width: '40%', height: '90%', left: '50%', top: 10},
+          chartArea: {width: '60%', height: height, left: '50%', top: 10},
           fontSize: 12,
           legend: "none",
           bars: "horizontal"
@@ -121,7 +126,9 @@ angular.module('cdmxIndicatorsApp').
 
         var chart = new google.visualization.BarChart(containerGraphDOMEl);
 
-        chart.draw(dataGraph, options);
+        $timeout(function() {
+          chart.draw(dataGraph, options);
+        }, 1000);
       });
       // nv.addGraph(function() {
       //   var chart = nv.models.multiBarHorizontalChart()
