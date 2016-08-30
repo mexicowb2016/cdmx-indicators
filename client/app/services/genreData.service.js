@@ -203,7 +203,7 @@ angular.module('cdmxIndicatorsApp').
         formatter.format(dataGraph, 1);
         var options = {
           title: '',
-          chartArea: {width: '40%', height: '90%', left: '55%', top: 10},
+          chartArea: {width: '50%', height: '90%', left: '48%', top: 10},
           fontSize: 12,
           hAxis: {format: "#'%'"},
           legend: "none"
