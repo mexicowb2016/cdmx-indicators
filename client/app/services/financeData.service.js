@@ -134,9 +134,13 @@ angular.module('cdmxIndicatorsApp').
 
         var chart = new google.visualization.BarChart(containerGraphDOMEl);
 
-        $timeout(function() {
-          chart.draw(dataGraph, options);
-        }, 1000);
+        chart.draw(dataGraph, options);
+        var element = angular.element('#' + elementContainerCls + " svg g")[0];
+        console.log(element);
+        console.log(element.getBBox().height);
+        document.getElementById(elementContainerCls).style.height = (element.getBBox().height + 20) + 'px';
+        var elementSvg = angular.element('#' + elementContainerCls + " svg")[0];
+        elementSvg.setAttribute('height', element.getBBox().height + 20);
       });
       // nv.addGraph(function() {
       //   var chart = nv.models.multiBarHorizontalChart()

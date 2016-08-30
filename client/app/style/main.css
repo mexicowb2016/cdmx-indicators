@@ -619,9 +619,9 @@ p.size-percentage-2.light-label-open-data{
 
 }*/
 
-div.panel-body.executed-spent-dependency-graph svg{
+/*div.panel-body.executed-spent-dependency-graph svg{
   height: 480px;
-}
+}*/
 
 div.panel-body.executed-spent-dependency-graph #indicator4div {
   height: 500px;
