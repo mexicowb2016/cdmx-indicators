@@ -620,7 +620,7 @@ p.size-percentage-2.light-label-open-data{
 }*/
 
 div.panel-body.executed-spent-dependency-graph svg{
-  height: 2000px;
+  height: 480px;
 }
 
 div.panel-body.executed-spent-dependency-graph #indicator4div {
