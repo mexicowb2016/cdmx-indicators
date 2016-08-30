@@ -2,7 +2,7 @@
 var fs = require('fs');
 var csv = require('fast-csv');
 var file = __dirname;
-var stream = fs.createReadStream(file+"/Finanzas_Indicador_4.csv");
+var stream = fs.createReadStream(file+"/Finanzas_Indicador_4_v3.csv");
 
 var csvStream = csv();
 
