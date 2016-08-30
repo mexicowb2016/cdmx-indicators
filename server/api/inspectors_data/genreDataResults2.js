@@ -21,7 +21,9 @@ var genreData2FilterRemuneration = function(dependency, classification) {
     var data = genreData2.DATA[i];
     if (data['DEPENDENCY'] == dependency && data['CLASSIFICATION'] == classification) {
       results[data['SECTOR']] = {
-        salaryGap: parseFloat(data['SALARY_GAP'])
+        salaryGap: parseFloat(data['SALARY_GAP']),
+        women: parseInt(data['QUANTITY_WOMEN']),
+        men: parseInt(data['QUANTITY_MEN'])
       };
     }
   }
