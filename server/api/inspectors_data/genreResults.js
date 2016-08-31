@@ -25,13 +25,13 @@ var fifthIndicator = {
     "extraordinaryTimeGapPercentage": 0,
     "otherTimeGapPercentage": 20
   },
-  "Tecnico Operativo de Base": {
+  "Tecnico Operativo Base": {
     "bruteSalaryGapPercentage": 13,
     "baseSalaryGapPercentage": 14,
     "extraordinaryTimeGapPercentage": 0,
     "otherTimeGapPercentage": 23
   },
-  "Tecnico Operativo de Confianza": {
+  "Tecnico Operativo Confianza": {
     "bruteSalaryGapPercentage": 15,
     "baseSalaryGapPercentage": 13,
     "extraordinaryTimeGapPercentage": 19,

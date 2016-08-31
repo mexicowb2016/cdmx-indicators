@@ -3,7 +3,7 @@
  */
 angular.module('cdmxIndicatorsApp').
   service('genreDataService', function ($http) {
-    var saveJobClassificationDataOrder = ['Mando Superior', 'Mando Medio', 'Tecnico Operativo de Confianza', 'Tecnico Operativo de Base', 'Haberes', 'Estabilidad Laboral'];
+    var saveJobClassificationDataOrder = ['Mando Superior', 'Mando Medio', 'Tecnico Operativo Confianza', 'Tecnico Operativo Base', 'Haberes', 'Estabilidad Laboral'];
 
     return {
       getGenreJobClassificationData: getGenreJobClassificationData,
