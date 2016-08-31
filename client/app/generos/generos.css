@@ -44,3 +44,21 @@ div.genre-job-classification .genre-bar-label{
   font-size: 14px;
   font-weight: bold;
 }
+
+#pie-tooltip {
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  opacity: 0;
+  padding: 10px;
+  z-index: 100;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  -moz-box-shadow: 4px 4px 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+
+#pie-tooltip #pie-title{
+  font-weight: bold;
+}

@@ -306,7 +306,27 @@ angular.module('cdmxIndicatorsApp').
       var g = svg.selectAll(".arc")
           .data(pie(data))
         .enter().append("g")
-          .attr("class", "arc");
+          .attr("class", "arc")
+          .on("mouseover", function (d) {
+            console.log(d);
+            d3.select('#pie-tooltip')
+              .style('left', d3.event.pageX + 'px')
+              .style('top', (d3.event.pageY - 60) + 'px')
+              .style('opacity', 1)
+            .select('#pie-title')
+              .text(title);
+
+            d3.select('#pie-tooltip #pie-slice-label')
+              .text(d.data.label);
+
+            d3.select('#pie-tooltip #pie-slice-value')
+              .text(Math.round(d.value * 100));
+          })
+          .on("mouseout", function () {
+            // Hide the tooltip
+            d3.select("#pie-tooltip")
+              .style("opacity", 0);
+          });
 
       g.append("path")
           .attr("d", arc)
