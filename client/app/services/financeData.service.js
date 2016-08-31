@@ -117,7 +117,7 @@ angular.module('cdmxIndicatorsApp').
 
         var formatter = new google.visualization.NumberFormat({
             fractionDigits: 0,
-            suffix: ' Miles de Pesos Mexicanos (MXN)'
+            suffix: '%'
         });
         formatter.format(dataGraph, 1);
         formatter.format(dataGraph, 2);
@@ -128,7 +128,7 @@ angular.module('cdmxIndicatorsApp').
           chartArea: {width: '60%', height: height, left: '50%', top: 10},
           fontSize: 12,
           legend: "none",
-          hAxis: {format: "#' Mil (MXN)'"},
+          hAxis: {format: "#'%'"},
           bars: "horizontal"
         };
 
