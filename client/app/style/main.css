@@ -646,9 +646,14 @@ div.panel-body.offer-demand-opendata svg{
 
 div.women-demographic-classification div {
   height: 500px;
-margin-bottom: -500px;
-
+  margin-bottom: -500px;
 }
+
+div.women-demographic-classification div.google-visualization-tooltip {
+  height: auto;
+  width: 200px;
+}
+
 .pane-body-size{
   height: 700px;
 }

@@ -206,7 +206,8 @@ angular.module('cdmxIndicatorsApp').
           chartArea: {width: '50%', height: '90%', left: '48%', top: 10},
           fontSize: 12,
           hAxis: {format: "#'%'"},
-          legend: "none"
+          legend: "none",
+          tooltip: {isHtml: true}
         };
 
         var chart = new google.visualization.BarChart(document.getElementById(elementContainerId));
@@ -261,9 +262,22 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function formatMultiBarDemographicData (data, field) {
-      var result = [['Sector', 'Proporcion', {role: 'style'}]];
+      var result = [['Sector', 'Proporcion', {role: 'style'}, {type:'string', role: 'tooltip', p: {'html': true}}]];
       for (var key in data) {
-        result.push([key, data[key][field] * 100, '#FF149B']);
+        var tooltip = "";
+        tooltip += '<div>';
+        tooltip += '<div class="google-visualization-tooltip">';
+        tooltip += '<ul class="google-visualization-tooltip-item-list">';
+        tooltip += '<li class="google-visualization-tooltip-item"><strong>' + key + '</strong></li>';
+        tooltip += '<li class="google-visualization-tooltip-item">';
+        tooltip += '<span>Proporcion del conjunto de mujeres:</span><strong> ' + parseInt(data[key][field] * 100) + '%</strong><br />';
+        tooltip += '<span>Cantidad de Mujeres:</span><span style="font-weight: bolder; color: #E482A9;"> ' + data[key].women + '</span><br />';
+        tooltip += '<span>Cantidad de Hombres:</span><span style="font-weight: bolder; color: #5A74C0;"> ' + data[key].men + '</span><br />';
+        tooltip += '</li>';
+        tooltip += '</ul>';
+        tooltip += '</div>';
+        tooltip += '</div>';
+        result.push([key, data[key][field] * 100, '#FF149B', tooltip]);
       }
       return result;
     }
