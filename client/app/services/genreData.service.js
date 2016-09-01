@@ -281,7 +281,7 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function formatMultiBarRemunerationData (data, field) {
-      var result = [['Sector', 'Proporcion', {role: 'style'}]];
+      var result = [['Sector', 'Brecha salarial entre hombres y mujeres', {role: 'style'}]];
       for (var key in data) {
         result.push([key, data[key][field] * 100, '#FF149B']);
       }
