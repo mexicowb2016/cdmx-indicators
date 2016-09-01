@@ -55,13 +55,11 @@ angular.module('cdmxIndicatorsApp').
 
     function getDemographicGraph (data) {
       data = formatMultiBarDemographicData(data, 'proportion');
-      console.log(data);
       createMultiBarHorizontalGraph(data, 'women-demographic-classification-div');
     }
 
     function getRemunerationGraph (data) {
       data = formatMultiBarRemunerationData(data, 'salaryGap');
-      console.log(data);
       createMultiBarHorizontalGraph(data, 'women-demographic-classification-div');
     }
 
@@ -322,7 +320,6 @@ angular.module('cdmxIndicatorsApp').
         .enter().append("g")
           .attr("class", "arc")
           .on("mouseover", function (d) {
-            console.log(d);
             d3.select('#pie-tooltip')
               .style('left', d3.event.pageX + 'px')
               .style('top', (d3.event.pageY - 60) + 'px')

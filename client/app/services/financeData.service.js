@@ -49,7 +49,6 @@ angular.module('cdmxIndicatorsApp').
 
     function getExecutedSpentsByDependencyGraph (data) {
       data = formatMultiBarDataIndicator4(data);
-      console.log(data);
       createMultiBarGraph(data, 'indicator4div', true);
     }
 
@@ -136,8 +135,6 @@ angular.module('cdmxIndicatorsApp').
 
         chart.draw(dataGraph, options);
         var element = angular.element('#' + elementContainerCls + " svg g")[0];
-        console.log(element);
-        console.log(element.getBBox().height);
         document.getElementById(elementContainerCls).style.height = (element.getBBox().height + 20) + 'px';
         var elementSvg = angular.element('#' + elementContainerCls + " svg")[0];
         elementSvg.setAttribute('height', element.getBBox().height + 20);

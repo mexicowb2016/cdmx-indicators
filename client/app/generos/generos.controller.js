@@ -61,7 +61,6 @@
 
       genreDataService.getWomenSalaryGapDataByJobClassification().then(function (response) {
         var data = response.data;
-        console.log(data);
         genreDataService.getWomenSalaryGapRepresentationGraph(data);
       }).catch(function (err) {
         console.log(err);
@@ -69,7 +68,6 @@
 
       genreDataService.getWomenProportion().then(function (response) {
         var data = response.data;
-        console.log(data);
         genreDataService.getWomenProportionRepresentationGraph(data);
       }).catch(function (err) {
         console.log(err);

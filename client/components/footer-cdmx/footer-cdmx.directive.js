@@ -6,7 +6,6 @@ angular.module('cdmxIndicatorsApp')
       templateUrl: 'components/footer-cdmx/footer-cdmx.html',
       restrict: 'EA',
       link: function (scope, element, attrs) {
-        console.log(element);
         var fixedButton = element.find('.scrollTop-button');
         angular.element($window).bind("scroll", function() {
           if (angular.element($window).scrollTop() >= 200) {

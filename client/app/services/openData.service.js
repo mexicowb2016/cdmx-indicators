@@ -46,7 +46,6 @@ angular.module('cdmxIndicatorsApp').
 
       var linearChart = new google.charts.Line(graphContainerDOMEl);
       linearChart.draw(graphData, chartOptions);
-      console.log(linearChart);
     });
   }
 
