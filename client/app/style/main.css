@@ -97,11 +97,11 @@ body {
     text-align: center;
 }
 .main-container{
-  padding-top:137px;
+  padding-top:143px;
 }
 
 .container-fluid > .row > .menu-left-text > .nav > li > a{
-  padding: 7px 0px;
+  padding: 13px 0px;
 }
 .min.navbar-fixed-top {
     /*background-color: rgba(34, 34, 34, 0.65);*/
@@ -209,7 +209,7 @@ float: left;
 .menu-background{
   background-color: #FFf;
   width: 100%;
-  height: 36px;
+  height: 44px;
   /*margin-top: 5%;*/
 }
 .navbar-inverse .navbar-nav > li > a {
@@ -248,7 +248,7 @@ font-size: 18px;
   color: #FFFFFF !important;
 }
 .size-menu{
-  height: 38px !important;
+  height: 44px !important;
 }
 
 /*header*/
@@ -338,10 +338,6 @@ font-size: 18px;
   font-weight: bold;
 }
 
-.icon-right{
-  float: right;
-  font-size: 21px !important;
-}
 .panel-text-tittle{
   color: #5C5C5C;
   font-size: 12px;
@@ -362,7 +358,10 @@ margin: 0px;
 font-size: 18px;
 }
 .icon-information{
+  float: right;
   color: #b4b5b4;
+  position: relative;
+  font-size: 20px !important;
 }
 
 .icon-position{
