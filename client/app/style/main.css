@@ -331,6 +331,16 @@ font-size: 18px;
   width: 60px;
   height: 60px;
 }
+
+.img-CDMX {
+  background-image: url('/app/images/CDMX.png');
+  background-size:90px;
+  width: 90px;
+  height:116px;
+  margin-right: 0px;
+  margin-left: 145px;
+  margin-top: -113px;
+}
 /*boxes*/
 .panel-default > .panel-heading,
 .panel-body h6{
@@ -549,6 +559,7 @@ font-size: 14px;
   margin-bottom: 5px;
   font-size: 13px;
 }
+
 /*datos abiertos*/
 p.size-percentage-2.light-label-open-data{
   font-size: 21px;
@@ -558,6 +569,34 @@ p.size-percentage-2.light-label-open-data{
 .percentage-text{
   font-size: 12px;
 }
+
+.text-ranking-mundial{
+  text-align: center;
+  color: #000;
+  width: 140px;
+}
+
+.text-mexico{
+  font-size: 15px;
+  margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.text-mexico-1{
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin-top: -28px;
+}
+
+.text-mexico-2{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin-top: -28px;
+}
+
+
 
 /*negocios*/
 /*.panel-size-4{
