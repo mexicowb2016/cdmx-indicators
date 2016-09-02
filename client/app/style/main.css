@@ -574,6 +574,7 @@ p.size-percentage-2.light-label-open-data{
   text-align: center;
   color: #000;
   width: 140px;
+  margin-top: 39px;
 }
 
 .text-mexico{
@@ -599,12 +600,23 @@ p.size-percentage-2.light-label-open-data{
 
 
 /*negocios*/
-/*.panel-size-4{
-  height: 150px;
+.panel-size-6{
+ height:266px;
 }
-.panel-size-5{
-  height: 300px;
-}*/
+.btn-flat{
+  box-shadow:none;
+  border-radius: 0px;
+}
+.btn-color-2{
+  background-color:#c3c3c3;
+  color:#fff;
+}
+.button-aling{
+  margin-top: 26px;
+}
+.button-aling-1{
+  margin-top: 10px;
+}
 /*Button footer*/
 * {
   margin: 0;
