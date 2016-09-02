@@ -197,6 +197,15 @@ angular.module('cdmxIndicatorsApp')
       svg.style('padding-top', '25px')
         .attr('width', ctnEl.width())
         .attr('height', heightCtn);
+
       svg.append('g').classed('focus', 1).datum(data).call(chart);
+
+      //Change polygon and circle points color
+      d3.select('.radar-ctn svg polygon')
+        .style('fill', '#FF149B')
+        .style('stroke', '#FF149B');
+      d3.selectAll('.radar-ctn svg circle')
+        .style('stroke', '#FF149B')
+        .style('fill', '#FF149B');
     }
   });

@@ -27,3 +27,7 @@ div.gauge-btn-ctn {
 .starting-business-graph, .property-registry-graph, .construction-permission-handling-graph, .contract-compliance-graph {
   padding-left: 7px;
 }
+
+.goal-complainment-g{
+  height: 385px;
+}
