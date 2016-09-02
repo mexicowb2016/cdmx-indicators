@@ -866,75 +866,6 @@ div.panel-body.single-bar-ctn {
 }
 
 
-
-
-/* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px) {
-  .position-url{
-    margin-top:0%;
-    font-size: 12px;
-    margin-bottom: -15px;
-  }
-
- /*nav-logo*/
-
- .logo-header{
-   margin: 4% auto;
-   margin-top: -15px;
-   margin-left: 12%;
-   color: #ffffff;
-   font-size: 18px;
-   text-align: center;
- }
- /*nav-menu*/
- .main-container{
-   padding-top:202px;
- }
- .menu-background .menu-left-text .navbar-nav > li {
-   float: left;
-   height: 36px;
-   width: 180px;
- }
-
-  .navbar-nav{
-    width: 400px;
-    padding-left: 15px;
-  }
-  .menu-left-text{
-
-  display: inline-block;
-  text-align: center;
-  font-size: 18px;
-  height: 100px;
-  }
-
-  /*header*/
-  .header-text-1{
-    font-size: 14px;
-    color:#4c4c4c;
-    margin-top: 5%;
-
-  }
-  .header-text-2{
-    font-size: 24px;
-      color:#4c4c4c;
-  }
-
-
-.icon-header{
-  width: 180px;
-}
-/*footer*/
-  .buttom-footer{
-    display: none;
-  }
-  .footer-text-1{
-  margin: 20px;
-  float: left;
-  margin-bottom: -10px;
-  }
- }
-
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
 }
@@ -956,3 +887,143 @@ div.panel-body.single-bar-ctn {
 .finance-button {
   width: 140px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  .position-url{
+  display: none;
+  }
+
+ /*nav-logo*/
+
+ .logo-header{
+   margin: 4% auto;
+   margin-top: -68px;
+   margin-left: 12%;
+   color: #ffffff;
+   font-size: 13px;
+   text-align: center;
+   width: 100%;
+ }
+
+ .img-logo {
+    background-image: url('/app/images/logo.png');
+    background-size: 80px 31px;
+    height: 31px;
+    width: 80px;
+    text-align: center;
+    margin-left: 29%;
+    margin-bottom: 5px;
+    margin-top:0px;
+}
+ /*nav-menu*/
+ .main-container{
+   padding-top:113px;
+ }
+ .menu-background .menu-left-text .navbar-nav > li {
+   float: left;
+   height: 36px;
+   width: 180px;
+ }
+
+  .navbar-nav{
+    width: 400px;
+    padding-left: 15px;
+  }
+  .menu-left-text{
+
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+  height: 100px;
+  }
+
+  .buttom-navbar{
+    height: 115px !important;
+   width: inherit;
+   background-color: #fff;
+  }
+
+  /*header*/
+  .header-text-1{
+    font-size: 14px;
+    color:#4c4c4c;
+    margin-top: 5%;
+
+  }
+  .header-text-2{
+    font-size: 18px;
+      color:#4c4c4c;
+  }
+
+
+.icon-header{
+  width: 180px;
+}
+
+.img-negocios{
+  background-image: url('/app/images/icon-negocios.png');
+  background-size: 60px 60px;
+  width: 60px;
+  height: 60px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+.img-finanzas{
+    background-image: url('/app/images/icon-finanzas.png');
+    background-size: 60px 60px;
+    width: 60px;
+    height: 60px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+.img-genero{
+  background-image: url('/app/images/icon-genero.png');
+  background-size: 60px 60px;
+  width: 60px;
+  height: 60px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.img-datosa-biertos{
+  background-image: url('/app/images/icon-datos-abiertos.png');
+  background-size: 60px 60px;
+  width: 60px;
+  height: 60px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+/*genero boxes*/
+.panel-size-1{
+  height: 600px;
+}
+.panel-size-3{
+  height: 480px;
+}
+
+
+/*footer*/
+  .buttom-footer{
+    display: none;
+  }
+  .footer-text-1{
+  margin: 20px;
+  float: left;
+  margin-bottom: -10px;
+  }
+ }
