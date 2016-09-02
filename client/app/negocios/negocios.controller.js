@@ -60,4 +60,40 @@ angular.module('cdmxIndicatorsApp')
       console.log(err);
     })
 
+    $scope.selectedIndicator = 'Todos';
+    $scope.indicator4all = true;
+
+    $scope.selectIndicator4All = function() {
+      $scope.selectedIndicator = 'Todos';
+      $scope.indicator4all = true;
+      $scope.updateIndicator4();
+    }
+
+    $scope.selectIndicator4 = function(indicator) {
+      $scope.selectedIndicator = indicator;
+      $scope.indicator4all = false;
+      $scope.updateIndicator4();
+    }
+
+    $scope.updateIndicator4 = function() {
+      var indicator = '';
+      if ($scope.selectedIndicator.charAt(0) == 'A') {
+        indicator = 'opening';
+      } else if ($scope.selectedIndicator.charAt(0) == 'M') {
+        indicator = 'permissions';
+      } else if ($scope.selectedIndicator.charAt(0) == 'R') {
+        indicator = 'registry';
+      } else if ($scope.selectedIndicator.charAt(0) == 'C') {
+        indicator = 'contracts';
+      } else if ($scope.selectedIndicator.charAt(0) == 'T') {
+        indicator = 'all';
+      }
+      businessDataService.getDoingBusinessGoals(indicator).then(function (response) {
+        var data = response.data;
+        $scope.indicator4data = data;
+      })
+    };
+
+    $scope.updateIndicator4();
+
   });

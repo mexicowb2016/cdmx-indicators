@@ -23,5 +23,6 @@ router.get('/get/genre/demographic/', controller.genreDemographic);
 router.get('/get/genre/remuneration/', controller.genreRemuneration);
 router.get('/get/genreJobClassification/', controller.genreJobClassification);
 router.get('/get/businessSubnationalRank/', controller.businessSubnationalRank)
+router.get('/get/businessGoals/', controller.businessGoals);
 
 module.exports = router;

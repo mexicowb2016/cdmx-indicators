@@ -5,11 +5,22 @@ angular.module('cdmxIndicatorsApp')
   .service('businessDataService', function ($http) {
     return {
       getSubnationalRankData: getSubnationalRankData,
+      getDoingBusinessGoals: getDoingBusinessGoals,
       getSubnationalRankGraph: getSubnationalRankGraph
     };
 
     function getSubnationalRankData () {
       return $http.get('/api/results/get/businessSubnationalRank/');
+    }
+
+    function getDoingBusinessGoals(indicator) {
+      return $http({
+        url: '/api/results/get/businessGoals',
+        method: 'GET',
+        params: {
+          indicator: indicator
+        }
+      });
     }
 
     function getSubnationalRankGraph (data) {
@@ -145,6 +156,6 @@ angular.module('cdmxIndicatorsApp')
         .duration(config.transitionMs)
         .ease('elastic')
         .attr('transform', 'rotate(' +newAngle +')');
-      
+
     }
   });

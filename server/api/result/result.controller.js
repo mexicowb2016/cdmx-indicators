@@ -168,6 +168,12 @@ exports.openDataDemandOffer = function (req, res) {
 exports.businessSubnationalRank = function (req, res) {
   return res.status(200).json(businessDataResults.firstIndicator);
 };
+
+exports.businessGoals = function (req, res) {
+  var indicator = req.query.indicator;
+  return res.status(200).json(businessDataResults.fourthIndicator(indicator));
+};
+
 //genre
 exports.genreProportion = function (req, res) {
   return res.status(200).json({
