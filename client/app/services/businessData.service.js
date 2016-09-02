@@ -58,7 +58,7 @@ angular.module('cdmxIndicatorsApp')
         majorTicks: 4,
         labelFormat: d3.format(',g'),
         labelInset: 10,
-        arcColorArr: ['#4ABB5E', '#D0D352', '#CC6F34', '#C2252B']
+        arcColorArr: ['#d1d1d3', '#f9d3e4', '#ef84b6', '#ff149b']
       };
 
       var range;
