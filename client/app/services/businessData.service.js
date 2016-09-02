@@ -4,10 +4,20 @@
 angular.module('cdmxIndicatorsApp')
   .service('businessDataService', function ($http) {
     return {
+      getCurrentQualificationData: getCurrentQualificationData,
+      getCurrentQualificationGraph: getCurrentQualificationGraph,
       getSubnationalRankData: getSubnationalRankData,
       getDoingBusinessGoals: getDoingBusinessGoals,
       getSubnationalRankGraph: getSubnationalRankGraph
     };
+
+    function getCurrentQualificationData (param) {
+      return $http.get('/api/results/get/business/currentQualification/'+param);
+    }
+
+    function getCurrentQualificationGraph(data, title, qualification) {
+      createRadialChart(data, title, qualification);
+    }
 
     function getSubnationalRankData () {
       return $http.get('/api/results/get/businessSubnationalRank/');
@@ -157,5 +167,36 @@ angular.module('cdmxIndicatorsApp')
         .ease('elastic')
         .attr('transform', 'rotate(' +newAngle +')');
 
+    }
+
+    function createRadialChart(data, title, qualification) {
+      var chart = RadarChart.chart();
+      var ctnEl = angular.element('div.panel-body.radar-g');
+      var heightCtn;
+      if (ctnEl.children().length > 0) {
+        ctnEl.children().remove();
+      }
+      heightCtn = 280;
+
+      chart.config({
+        w: ctnEl.width(),
+        h: heightCtn - 30,
+        levels: 5,
+        maxValue: 100
+      });
+
+      var mainTML = '<h5 class="text-center">' + title + '</h5>' +
+        '<div class="text-center">Calificacion actual de CDMX: ' + qualification + ' de 100</div>' +
+        '<div class="radar-ctn"></div>';
+      ctnEl.html(mainTML);
+
+      var ctn = d3.select('.radar-ctn');
+
+      var svg = ctn.append('svg');
+      //Insert padding-top in order to display properly a tooltip when it is hovered at top position of the y-axis
+      svg.style('padding-top', '25px')
+        .attr('width', ctnEl.width())
+        .attr('height', heightCtn);
+      svg.append('g').classed('focus', 1).datum(data).call(chart);
     }
   });

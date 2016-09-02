@@ -10,6 +10,8 @@ var firstIndicator = {
   "Registro de propiedades": 32
 };
 
+var thirdIndicator = require('./businessData.json');
+
 var fourthIndicator = function(indicator) {
   var indicatorStarts = ' ';
   if (indicator == 'all') {
@@ -42,5 +44,6 @@ var fourthIndicator = function(indicator) {
 module.exports = {
   businessData4: businessData4,
   firstIndicator: firstIndicator,
+  thirdIndicator: thirdIndicator,
   fourthIndicator: fourthIndicator
 };

@@ -174,6 +174,55 @@ exports.businessGoals = function (req, res) {
   return res.status(200).json(businessDataResults.fourthIndicator(indicator));
 };
 
+exports.businessCurrentQualification = function (req, res) {
+  var rankDetail = parseInt(req.params.rankDetail);
+  var data = businessDataResults.thirdIndicator;
+  var result;
+  for (var key in data) {
+    if (data.hasOwnProperty(key)) {
+      if (rankDetail == 1 && key == 'Apertura de una empresa') {
+        result = getSetBusiness3IndicatorResultObj(data, key);
+        break;
+      }
+      if (rankDetail == 2 && key == 'Registro de propiedades') {
+        result = getSetBusiness3IndicatorResultObj(data, key);
+        break;
+      }
+      if (rankDetail == 3 && key == 'Manejo de permisos de construcción') {
+        result = getSetBusiness3IndicatorResultObj(data, key);
+        break;
+      }
+      if (rankDetail == 4 && key == 'Cumplimiento de contratos') {
+        result = getSetBusiness3IndicatorResultObj(data, key);
+        break;
+      }
+    }
+  }
+  return res.status(200).json(result);
+};
+
+function getSetBusiness3IndicatorResultObj (data, key) {
+  var result = {};
+  // var className  = key.toLowerCase();
+  // className = 'radarg-' + (className.split(' ').join('-'));
+  var resultObj = {
+    className: key,
+    axes: []
+  };
+  for (var inner in data[key]) {
+    if (data[key].hasOwnProperty(inner)) {
+      if (result['qualification'] == null) {
+        result['qualification'] = data[key][inner]['Calificacion_CDMX'];
+      }
+      resultObj.axes.push({
+        axis: inner, value: data[key][inner]['Porcentaje']
+      })
+    }
+  }
+  result['radarData'] = [resultObj];
+  return result;
+}
+
 //genre
 exports.genreProportion = function (req, res) {
   return res.status(200).json({

@@ -7,6 +7,7 @@ angular.module('cdmxIndicatorsApp')
     $scope.selectedBusiness = "active-menu";
 
     $scope.ui = {};
+    $scope.ui.indicator3 = {};
 
     $scope.myModalContent = {
       indicator1: {
@@ -58,22 +59,42 @@ angular.module('cdmxIndicatorsApp')
       $rootScope.loading = false;
     }).catch(function (err) {
       console.log(err);
-    })
+    });
 
     $scope.selectedIndicator = 'Todos';
+    $scope.selectedIndicator3 = 'Apertura de una empresa';
     $scope.indicator4all = true;
 
     $scope.selectIndicator4All = function() {
       $scope.selectedIndicator = 'Todos';
       $scope.indicator4all = true;
       $scope.updateIndicator4();
-    }
+    };
 
     $scope.selectIndicator4 = function(indicator) {
       $scope.selectedIndicator = indicator;
+      $scope.selectedIndicator3 = indicator;
       $scope.indicator4all = false;
+      $scope.updateIndicator3();
       $scope.updateIndicator4();
-    }
+    };
+
+    $scope.updateIndicator3 = function() {
+      var indicator = -1;
+      if ($scope.selectedIndicator3.charAt(0) == 'A') {
+        indicator = 1;
+      } else if ($scope.selectedIndicator3.charAt(0) == 'M') {
+        indicator = 3;
+      } else if ($scope.selectedIndicator3.charAt(0) == 'R') {
+        indicator = 2;
+      } else if ($scope.selectedIndicator3.charAt(0) == 'C') {
+        indicator = 4;
+      }
+      businessDataService.getCurrentQualificationData(indicator).then(function (response) {
+        var data = response.data;
+        businessDataService.getCurrentQualificationGraph(data.radarData, $scope.selectedIndicator3, data.qualification);
+      })
+    };
 
     $scope.updateIndicator4 = function() {
       var indicator = '';
@@ -94,6 +115,7 @@ angular.module('cdmxIndicatorsApp')
       })
     };
 
+    $scope.updateIndicator3();
     $scope.updateIndicator4();
 
   });
