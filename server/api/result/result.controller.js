@@ -209,14 +209,22 @@ function getSetBusiness3IndicatorResultObj (data, key) {
     className: key,
     axes: []
   };
+  var axisObj;
   for (var inner in data[key]) {
     if (data[key].hasOwnProperty(inner)) {
       if (result['qualification'] == null) {
         result['qualification'] = data[key][inner]['Calificacion_CDMX'];
       }
-      resultObj.axes.push({
-        axis: inner, value: data[key][inner]['Porcentaje']
-      })
+      if (inner == 'Procedimientos (Numero)') {
+        axisObj = {axis: inner, value: data[key][inner]['Porcentaje'], yOffset: -10}
+      } else if (inner == 'Tiempo (Dias)') {
+        axisObj = {axis: inner, value: data[key][inner]['Porcentaje'], xOffset: -40, yOffset: 10}
+      } else if (inner == 'Calidad (%)') {
+        axisObj = {axis: inner, value: data[key][inner]['Porcentaje'], xOffset: 40, yOffset: -14}
+      } else {
+        axisObj = {axis: inner, value: data[key][inner]['Porcentaje']}
+      }
+      resultObj.axes.push(axisObj);
     }
   }
   result['radarData'] = [resultObj];

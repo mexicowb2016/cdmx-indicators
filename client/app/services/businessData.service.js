@@ -40,7 +40,7 @@ angular.module('cdmxIndicatorsApp')
       createGaugeChart('.contract-compliance-graph', data['Cumplimiento de contratos'], 'Cumplimiento de contratos');
     }
 
-    function createGaugeChart(container, data, title) {
+    function createGaugeChart(container, data) {
       var config = {
         size: 171,
         clipWidth: 170,
@@ -186,7 +186,7 @@ angular.module('cdmxIndicatorsApp')
       });
 
       var mainTML = '<h5 class="text-center">' + title + '</h5>' +
-        '<div class="text-center">Calificacion actual de CDMX: ' + qualification + ' de 100</div>' +
+        '<div class="text-center">Calificacion actual de CDMX: <strong>' + qualification + '</strong> de 100</div>' +
         '<div class="radar-ctn"></div>';
       ctnEl.html(mainTML);
 

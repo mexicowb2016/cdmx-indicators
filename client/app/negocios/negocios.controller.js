@@ -8,6 +8,7 @@ angular.module('cdmxIndicatorsApp')
 
     $scope.ui = {};
     $scope.ui.indicator3 = {};
+    $scope.ui.indicator1 = {};
 
     $scope.myModalContent = {
       indicator1: {
@@ -55,6 +56,10 @@ angular.module('cdmxIndicatorsApp')
 
     businessDataService.getSubnationalRankData().then(function (response) {
       var data = response.data;
+      $scope.ui.indicator1.firstTitle = data['Apertura de una empresa'];
+      $scope.ui.indicator1.secondTitle = data['Registro de propiedades'];
+      $scope.ui.indicator1.thirdTitle = data['Manejo de permisos de construccion'];
+      $scope.ui.indicator1.fourthTitle = data['Cumplimiento de contratos'];
       businessDataService.getSubnationalRankGraph(data);
       $rootScope.loading = false;
     }).catch(function (err) {
