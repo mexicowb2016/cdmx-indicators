@@ -6,6 +6,7 @@ var financeResults = require('../inspectors_data/financeResults');
 var openDataResults = require('../inspectors_data/openDataResults');
 var genreDataResults = require('../inspectors_data/genreResults');
 var genreDataResults2 = require('../inspectors_data/genreDataResults2');
+var businessDataResults = require('../inspectors_data/businessResults');
 
 // Get list of results
 exports.index = function(req, res) {
@@ -163,6 +164,10 @@ exports.openDataDemandOffer = function (req, res) {
   return res.status(200).json(openDataResults.firstIndicator);
 };
 
+//business indicator endpoints
+exports.businessSubnationalRank = function (req, res) {
+  return res.status(200).json(businessDataResults.firstIndicator);
+};
 //genre
 exports.genreProportion = function (req, res) {
   return res.status(200).json({

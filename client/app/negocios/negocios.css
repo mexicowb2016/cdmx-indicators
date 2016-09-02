@@ -1,0 +1,29 @@
+#power-gauge g.arc {
+  fill: steelblue;
+}
+
+#power-gauge g.pointer {
+  fill: #e85116;
+  stroke: #b64011;
+}
+
+#power-gauge g.label text {
+  text-anchor: middle;
+  font-size: 14px;
+  font-weight: bold;
+  fill: #666;
+}
+
+div.gauge-label{
+  line-height: 15px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+div.gauge-btn-ctn {
+  padding: 10px;
+}
+
+.starting-business-graph, .property-registry-graph, .construction-permission-handling-graph, .contract-compliance-graph {
+  padding-left: 7px;
+}

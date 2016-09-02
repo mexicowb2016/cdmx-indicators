@@ -1,14 +1,12 @@
 'use strict';
 
 angular.module('cdmxIndicatorsApp')
-  .controller('NegociosCtrl', function ($scope, $uibModal, financeDataService, $rootScope) {
+  .controller('NegociosCtrl', function ($scope, $uibModal, businessDataService, $rootScope) {
     $rootScope.loading = true;
 
     $scope.selectedBusiness = "active-menu";
 
     $scope.ui = {};
-
-    $scope.ui.top3CapitalSpentModel = 'Dependency';
 
     $scope.myModalContent = {
       indicator1: {
@@ -54,66 +52,12 @@ angular.module('cdmxIndicatorsApp')
     };
     //Fin codigo modal
 
-    financeDataService.getAllTotalSpentData().then(function (response) {
+    businessDataService.getSubnationalRankData().then(function (response) {
       var data = response.data;
-      financeDataService.getTotalSpentGraph($scope, data);
+      businessDataService.getSubnationalRankGraph(data);
       $rootScope.loading = false;
     }).catch(function (err) {
       console.log(err);
-    });
+    })
 
-    $scope.indicator4favorite = true;
-    $scope.indicator4dependency = 'preferred';
-    $scope.indicator4sort = 'current';
-    $scope.updateIndicator4 = function() {
-      var favorite = $scope.indicator4dependency == 'preferred' ? 1 : 0;
-      financeDataService.getExecutedSpentsByDependencyData(favorite, $scope.indicator4dependency, $scope.indicator4sort).then(function (response) {
-        var data = response.data;
-        financeDataService.getExecutedSpentsByDependencyGraph(data);
-      }).catch(function (err) {
-        console.log(err);
-      });
-    };
-    $scope.updateIndicator4();
-
-    $scope.indicator5sort = 'name';
-    $scope.updateIndicator5 = function() {
-      financeDataService.getExecutedSpentsByDepartmentFunctionData($scope.indicator5sort).then(function (response) {
-        var data = response.data;
-        financeDataService.getExecutedSpentsByDepartmentFunctionGraph(data);
-      }).catch(function (err) {
-        console.log(err);
-      });
-    };
-    $scope.updateIndicator5();
-
-    $scope.getTop3CapitalSpentsByDependency = function () {
-      $scope.ui.firstCapitalSpent = '';
-      $scope.ui.secondCapitalSpent = '';
-      $scope.ui.thirdCapitalSpent = '';
-      financeDataService.getTop3CapitalSpentsByDependencyData().then(function (response) {
-        var data = response.data;
-        $scope.ui.firstCapitalSpent = data.first.name.toUpperCase();
-        $scope.ui.secondCapitalSpent = data.second.name.toUpperCase();
-        $scope.ui.thirdCapitalSpent = data.third.name.toUpperCase();
-      }).catch(function (err) {
-        console.log(err);
-      });
-    };
-
-    $scope.getTop3CapitalSpentsByInstAct = function () {
-      $scope.ui.firstCapitalSpent = '';
-      $scope.ui.secondCapitalSpent = '';
-      $scope.ui.thirdCapitalSpent = '';
-      financeDataService.getTop3CapitalSpentsByInstActData().then(function (response) {
-        var data = response.data;
-        $scope.ui.firstCapitalSpent = data.first.name;
-        $scope.ui.secondCapitalSpent = data.second.name;
-        $scope.ui.thirdCapitalSpent = data.third.name;
-      }).catch(function (err) {
-        console.log(err);
-      });
-    };
-
-    $scope.getTop3CapitalSpentsByDependency();
   });
