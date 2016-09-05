@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para institutionalActivity
+ */
+
 var express = require('express');
 var controller = require('./institutionalActivity.controller');
 

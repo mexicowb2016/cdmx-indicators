@@ -5,13 +5,21 @@ var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 
+/**
+ * Response for validation error
+ * @param  {Response} res - Objeto para respuesta
+ * @param  {Object} err - Descripcion del error
+ * @return {Response} - Respuesta del request
+ */
 var validationError = function(res, err) {
   return res.status(422).json(err);
 };
 
 /**
- * Get list of users
- * restriction: 'admin'
+ * Obtiene la lista de usuarios
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
  */
 exports.index = function(req, res) {
   User.find({}, '-salt -hashedPassword', function (err, users) {
@@ -21,7 +29,11 @@ exports.index = function(req, res) {
 };
 
 /**
- * Creates a new user
+ * Crea un usuario
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @param  {Function} next - Siguiente funcion a ejecutar
+ * @return {Response} - Respuesta del request
  */
 exports.create = function (req, res, next) {
   var newUser = new User(req.body);
@@ -35,7 +47,11 @@ exports.create = function (req, res, next) {
 };
 
 /**
- * Get a single user
+ * Obtiene un usuario
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @param  {Function} next - Siguiente funcion a ejecutar
+ * @return {Response} - Respuesta del request
  */
 exports.show = function (req, res, next) {
   var userId = req.params.id;
@@ -48,8 +64,10 @@ exports.show = function (req, res, next) {
 };
 
 /**
- * Deletes a user
- * restriction: 'admin'
+ * Elimina un usuario
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
  */
 exports.destroy = function(req, res) {
   User.findByIdAndRemove(req.params.id, function(err, user) {
@@ -59,7 +77,11 @@ exports.destroy = function(req, res) {
 };
 
 /**
- * Change a users password
+ * Cambia el password del usuario
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @param  {Function} next - Siguiente funcion a ejecutar
+ * @return {Response} - Respuesta del request
  */
 exports.changePassword = function(req, res, next) {
   var userId = req.user._id;
@@ -80,7 +102,11 @@ exports.changePassword = function(req, res, next) {
 };
 
 /**
- * Get my info
+ * Obtiene la informacion del usuario actual
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @param  {Function} next - Siguiente funcion a ejecutar
+ * @return {Response} - Respuesta del request
  */
 exports.me = function(req, res, next) {
   var userId = req.user._id;
@@ -94,7 +120,11 @@ exports.me = function(req, res, next) {
 };
 
 /**
- * Authentication callback
+ * Callback de autenticacion
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @param  {Function} next - Siguiente funcion a ejecutar
+ * @return {Response} - Respuesta del request
  */
 exports.authCallback = function(req, res, next) {
   res.redirect('/');

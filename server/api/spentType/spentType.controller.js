@@ -1,9 +1,18 @@
 'use strict';
 
+/**
+ * Controlador para Tipo de Gasto
+ */
+
 var _ = require('lodash');
 var SpentType = require('./spentType.model');
 
-// Get list of spentTypes
+/**
+ * Lista los tipos de gasto
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
+ */
 exports.index = function(req, res) {
   SpentType.find(function (err, spentTypes) {
     if(err) { return handleError(res, err); }
@@ -11,7 +20,12 @@ exports.index = function(req, res) {
   });
 };
 
-// Get a single spentType
+/**
+ * Obtiene un tipo de gasto
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
+ */
 exports.show = function(req, res) {
   SpentType.findById(req.params.id, function (err, spentType) {
     if(err) { return handleError(res, err); }
@@ -20,7 +34,12 @@ exports.show = function(req, res) {
   });
 };
 
-// Creates a new spentType in the DB.
+/**
+ * Crea un tipo de gasto
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
+ */
 exports.create = function(req, res) {
   SpentType.create(req.body, function(err, spentType) {
     if(err) { return handleError(res, err); }
@@ -28,7 +47,12 @@ exports.create = function(req, res) {
   });
 };
 
-// Updates an existing spentType in the DB.
+/**
+ * Modifica un tipo de gasto
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
+ */
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   SpentType.findById(req.params.id, function (err, spentType) {
@@ -42,7 +66,12 @@ exports.update = function(req, res) {
   });
 };
 
-// Deletes a spentType from the DB.
+/**
+ * Elimina un tipo de gasto
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
+ */
 exports.destroy = function(req, res) {
   SpentType.findById(req.params.id, function (err, spentType) {
     if(err) { return handleError(res, err); }
@@ -54,6 +83,12 @@ exports.destroy = function(req, res) {
   });
 };
 
+/**
+ * Maneja errores
+ * @param  {Request} req - Objeto para el request
+ * @param  {Object} err - Objeto de error
+ * @return {Response} - Respuesta del request
+ */
 function handleError(res, err) {
   return res.status(500).send(err);
 }

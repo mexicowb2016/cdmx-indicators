@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para Usuario
+ */
+
 var express = require('express');
 var controller = require('./user.controller');
 var config = require('../../config/environment');

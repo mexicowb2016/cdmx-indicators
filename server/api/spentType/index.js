@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para Tipo de Gasto
+ */
+
 var express = require('express');
 var controller = require('./spentType.controller');
 

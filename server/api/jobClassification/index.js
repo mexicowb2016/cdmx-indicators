@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para jobClassification
+ */
+
 var express = require('express');
 var controller = require('./jobClassification.controller');
 

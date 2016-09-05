@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para Sector
+ */
+
 var express = require('express');
 var controller = require('./sector.controller');
 

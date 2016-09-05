@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para genre
+ */
+
 var express = require('express');
 var controller = require('./genre.controller');
 

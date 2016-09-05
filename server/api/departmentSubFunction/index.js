@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para departmentSubFunction
+ */
+
 var express = require('express');
 var controller = require('./departmentSubFunction.controller');
 

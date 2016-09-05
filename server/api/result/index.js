@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para Resultados
+ */
+
 var express = require('express');
 var controller = require('./result.controller');
 

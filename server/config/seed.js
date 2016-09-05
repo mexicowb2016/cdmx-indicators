@@ -1,6 +1,6 @@
 /**
- * Populate DB with sample data on server start
- * to disable, edit config/environment/index.js, and set `seedDB: false`
+ * Popula la Base de Datos al iniciar el servidor
+ * para deshabilitar, editar config/environment/index.js, y poner `seedDB: false`
  */
 
 'use strict';

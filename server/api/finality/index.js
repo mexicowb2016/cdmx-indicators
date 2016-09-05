@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para finality
+ */
+
 var express = require('express');
 var controller = require('./finality.controller');
 

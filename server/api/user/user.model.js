@@ -5,6 +5,10 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
+/**
+ * Esquema para usuario
+ * @type {Schema}
+ */
 var UserSchema = new Schema({
   name: String,
   email: { type: String, lowercase: true },
@@ -22,7 +26,7 @@ var UserSchema = new Schema({
 });
 
 /**
- * Virtuals
+ * Campo virtual de password
  */
 UserSchema
   .virtual('password')
@@ -35,7 +39,9 @@ UserSchema
     return this._password;
   });
 
-// Public profile information
+/**
+ * Informacion publica de perfil
+ */
 UserSchema
   .virtual('profile')
   .get(function() {
@@ -45,7 +51,9 @@ UserSchema
     };
   });
 
-// Non-sensitive info we'll be putting in the token
+/**
+ * Informacion para el token
+ */
 UserSchema
   .virtual('token')
   .get(function() {
@@ -56,10 +64,12 @@ UserSchema
   });
 
 /**
- * Validations
+ * Validaciones
  */
 
-// Validate empty email
+/**
+ * Validar email vacio
+ */
 UserSchema
   .path('email')
   .validate(function(email) {
@@ -67,7 +77,9 @@ UserSchema
     return email.length;
   }, 'Email cannot be blank');
 
-// Validate empty password
+/**
+ * Validar password vacio
+ */
 UserSchema
   .path('hashedPassword')
   .validate(function(hashedPassword) {
@@ -75,7 +87,9 @@ UserSchema
     return hashedPassword.length;
   }, 'Password cannot be blank');
 
-// Validate email is not taken
+/**
+ * Validar que el email no haya sido utilizado antes por otro usuario
+ */
 UserSchema
   .path('email')
   .validate(function(value, respond) {
@@ -95,7 +109,7 @@ var validatePresenceOf = function(value) {
 };
 
 /**
- * Pre-save hook
+ * Validacion antes de guardar
  */
 UserSchema
   .pre('save', function(next) {
@@ -108,14 +122,15 @@ UserSchema
   });
 
 /**
- * Methods
+ * Metodos
+ * @type {Object}
  */
 UserSchema.methods = {
   /**
-   * Authenticate - check if the passwords are the same
+   * Verifica que los passwords coincidan
    *
-   * @param {String} plainText
-   * @return {Boolean}
+   * @param {String} Password en texto plano
+   * @return {Boolean} Verdadero si los passwords coinciden y falso en otro caso
    * @api public
    */
   authenticate: function(plainText) {
@@ -123,9 +138,9 @@ UserSchema.methods = {
   },
 
   /**
-   * Make salt
+   * Generar salt para la encriptacion
    *
-   * @return {String}
+   * @return {String} Salt para la encriptacion
    * @api public
    */
   makeSalt: function() {
@@ -133,10 +148,10 @@ UserSchema.methods = {
   },
 
   /**
-   * Encrypt password
+   * Encriptar password
    *
-   * @param {String} password
-   * @return {String}
+   * @param {String} password - Password para encriptar
+   * @return {String} Password encriptado
    * @api public
    */
   encryptPassword: function(password) {

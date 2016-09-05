@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Rutas para managerCenter
+ */
+
 var express = require('express');
 var controller = require('./managerCenter.controller');
 
