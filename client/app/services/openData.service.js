@@ -1,7 +1,10 @@
-/**
- * Created by joel on 25-08-16.
- */
 'use strict';
+/**
+ * @function openDataService
+ * Este servicio retorna un objeto con un metodo para realizar llamada REST al back-end y grafico utilizando la libreria
+ * GoogleCharts
+ * @returns {Object}
+ */
 angular.module('cdmxIndicatorsApp').
   service('openDataService', function ($http) {
 
@@ -49,12 +52,4 @@ angular.module('cdmxIndicatorsApp').
     });
   }
 
-  function formatOfferDemandLinearData (data) {
-    var currentLine;
-    for (var i = 0; i < data.length; i++) {
-      currentLine = data[i];
-      currentLine[0] = new Date(currentLine[0]);
-    }
-    return data;
-  }
 });

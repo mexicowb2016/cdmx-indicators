@@ -1,5 +1,12 @@
+'use strict';
+/**
+ * @function financeDataService
+ * Este servicio retorna un objeto con metodos para realizar llamadas REST al back-end y graficos utilizando las librerias
+ * D3.js y GoogleCharts
+ * @returns {Object}
+ */
 angular.module('cdmxIndicatorsApp').
-  service('financeDataService', function ($http, $filter, $timeout) {
+  service('financeDataService', function ($http, $filter) {
     return {
       getAllTotalSpentData: getAllTotalSpentsData,
       getExecutedSpentsByDepartmentFunctionData: getExecutedSpentsByDepartmentFunctionData,
@@ -139,40 +146,6 @@ angular.module('cdmxIndicatorsApp').
         var elementSvg = angular.element('#' + elementContainerCls + " svg")[0];
         elementSvg.setAttribute('height', element.getBBox().height + 20);
       });
-      // nv.addGraph(function() {
-      //   var chart = nv.models.multiBarHorizontalChart()
-      //     .color(['#FF0E98','#C1C1C1']) //colors for every barChart
-      //     .showControls(false)
-      //     // .staggerLabels(true)
-      //     .margin({"left": 620})
-      //     .showLegend(false);
-      //
-      //   chart.yAxis
-      //     .tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
-      //     .tickFormat(function (d){ return d + '%'; });
-      //
-      //   chart.xAxis
-      //     .tickFormat(function (d){ return d; });
-      //
-      //   chart.forceY([0, 100]);
-      //
-      //   // if (data.length > 10) {
-      //   //   // chart.rotateLabels(-90);
-      //   //   // chart.xAxis.ticks(5);
-      //   //   chart.groupSpacing(0.1);
-      //   //   chart.wrapLabels(true);
-      //   // }
-      //
-      //   d3.select('.' + elementContainerCls + ' svg')
-      //     .datum(data)
-      //     .call(chart);
-      //
-      //   // d3.select('.' + elementContainerCls + ' svg').selectAll('g.nv-group').selectAll('rect').attr('width', 20);
-      //
-      //   nv.utils.windowResize(chart.update);
-      //
-      //   return chart;
-      // });
     }
 
     function createMultiHorizontalBarGraph(data, elementContainerCls) {
@@ -201,43 +174,6 @@ angular.module('cdmxIndicatorsApp').
 
         chart.draw(dataGraph, options);
       });
-      // nv.addGraph(function() {
-      //   var chart = nv.models.multiBarHorizontalChart()
-      //     // .x(function(d) { return d.label })
-      //     // .y(function(d) { return d.value })
-      //     .color(['#FF149B']) //colors for every barChart
-      //     .showControls(false)
-      //     .margin({"left": 420})
-      //     .showLegend(false);
-      //
-      //   format = d3.format("0,000");
-      //
-      //   chart.xAxis
-      //     .tickFormat(function (d){return d});
-      //
-      //   chart.yAxis
-      //     .tickFormat(function (d){ return format(d)});
-      //
-      //   // chart.forceY([0, 100]);
-      //
-      //   // chart.xRange([0, 800]);
-      //   //
-      //   // setTimeout(function() {
-      //   //   d3.selectAll('.' + elementContainerCls + ' svg').selectAll('rect').attr("height", chart.xAxis.rangeBand() / 3);
-      //   // }, 10);
-      //
-      //   if (data.length > 10) {
-      //     chart.groupSpacing(0.1);
-      //   }
-      //
-      //   d3.select('.' + elementContainerCls + ' svg')
-      //     .datum(data)
-      //     .call(chart);
-      //
-      //   nv.utils.windowResize(chart.update);
-      //
-      //   return chart;
-      // });
     }
 
     function createSingleHorizontalBarGraph(dataArr, mainContainerSelector) {
@@ -269,23 +205,6 @@ angular.module('cdmxIndicatorsApp').
         .select('div.executed-bar-graph')
         .style('width', x(dataArr[2]) + 'px')
         .text(function(d) { return executedCurrency + ' mdp'; });
-    }
-
-    function formatMultiBarData (data) {
-      var key;
-      var result = [];
-      for (key in data) {
-        if (data.hasOwnProperty(key)) {
-          result.push({
-            "key": "Gasto Corriente",
-            "values": [{x:key, y:data[key].normalSpentExecuted}]
-          }, {
-            "key": "Gasto Capital",
-            "values": [{x:key, y:data[key].capitalSpentExecuted}]
-          })
-        }
-      }
-      return result;
     }
 
     function formatMultiBarDataIndicator4(data) {

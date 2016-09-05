@@ -1,5 +1,9 @@
+'use strict';
 /**
- * Created by joel on 24-08-16.
+ * @function genreDataService
+ * Este servicio retorna un objeto con metodos para realizar llamadas REST al back-end y graficos utilizando las librerias
+ * D3.js y GoogleCharts
+ * @returns {Object}
  */
 angular.module('cdmxIndicatorsApp').
   service('genreDataService', function ($http) {

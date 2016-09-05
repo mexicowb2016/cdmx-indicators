@@ -1,6 +1,6 @@
 'use strict';
 /**
- * @function {Function} - MainCtrl
+ * @function MainCtrl
  * Este es el controlador del modulo de finanzas, el cual realiza los siguientes procesos:
  * - Establece y ejecuta el evento para mostrar modales de informacion de cada grafico(Al momento de hacer click en los
  * iconos de informacion de cada panel)
@@ -13,7 +13,7 @@
  * @param {Object} $scope - Objeto privado que se establece para guardar/usar propiedades/metodos en el controlador
  * @param {Object} $uibModal - Servicio generico que la libreria Angular-Bootstrap establece para la configuracion/uso de propiedades/metodos
  * de un componente web tipo Modal.
- * @param {Object} financeDataService - Servico generico que utiliza este controlador para invocar sus metodos de obtencion de datos
+ * @param {Object} financeDataService - Servicio generico que utiliza este controlador para invocar sus metodos de obtencion de datos
  * y dibujar graficos de dichos datos.
  */
 angular.module('cdmxIndicatorsApp')
