@@ -138,6 +138,47 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Ejecución del Gasto por Función<i ng-click="open(myModalContent.indicator6)" class="mdi mdi-information icon-information"></i>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-10 col-sm-10">
+              <div class="btn-group" uib-dropdown>
+                <a href="#" class="btn btn-color" data-toggle="dropdown" uib-dropdown-toggle>Elegir mes <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-size" uib-dropdown-menu role="menu">
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="0" id="months0" ng-change="updateIndicator6()" /><label for="months0">Todos</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="1" id="months1" ng-change="updateIndicator6()" /><label for="months1">Enero</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="2" id="months2" ng-change="updateIndicator6()" /><label for="months2">Febrero</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="3" id="months3" ng-change="updateIndicator6()" /><label for="months3">Marzo</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="4" id="months4" ng-change="updateIndicator6()" /><label for="months4">Abril</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="5" id="months5" ng-change="updateIndicator6()" /><label for="months5">Mayo</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="6" id="months6" ng-change="updateIndicator6()" /><label for="months6">Junio</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="7" id="months7" ng-change="updateIndicator6()" /><label for="months7">Julio</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="8" id="months8" ng-change="updateIndicator6()" /><label for="months8">Agosto</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="9" id="months9" ng-change="updateIndicator6()" /><label for="months9">Septiembre</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="10" id="months10" ng-change="updateIndicator6()" /><label for="months10">Octubre</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="11" id="months11" ng-change="updateIndicator6()" /><label for="months11">Noviembre</label></li>
+                  <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="12" id="months12" ng-change="updateIndicator6()" /><label for="months12">Diciembre</label></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+              <label class="btn btn-sm btn-color" ng-click="removeLevelIndicator6()" >&lt; Nivel</label>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body panel-center-graph executed-spent-function-bubble-graph">
+          <svg id="indicator6div"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer-cdmx></footer-cdmx>
 <!-- Information modal -->
 <script type="text/ng-template" id="information-modal.html">

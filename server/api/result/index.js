@@ -20,6 +20,7 @@ router.get('/get/top3CapitalSpents/dependency/', controller.financeTop3CapitalSp
 router.get('/get/top3CapitalSpents/institutionalActivity/', controller.financeTop3CapitalSpentsByInstitutionalActivity);
 router.get('/get/executedSpents/dependency/', controller.financeExecutedSpentsByDependency);
 router.get('/get/executedSpents/function/', controller.financeExecutedSpentsByDepartmentFunction);
+router.get('/get/executedSpents/bubble/', controller.financeExecutedSpentsBubble);
 router.get('/get/openData/demandOffer/', controller.openDataDemandOffer);
 router.get('/get/genre/proportion/', controller.genreProportion);
 router.get('/get/genre/salaryGap/', controller.genreSalaryGap);

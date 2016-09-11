@@ -241,5 +241,47 @@ angular.module('cdmxIndicatorsApp')
      */
     $scope.updateIndicator5();
 
+    $scope.monthIndicator6 = 0;
+    $scope.level0Indicator6 = null;
+    $scope.level1Indicator6 = null;
+
+    $scope.updateIndicator6 = function() {
+      financeDataService.getExecutedSpentsBubbleData($scope.monthIndicator6, $scope.level0Indicator6, $scope.level1Indicator6).then(function(response) {
+        var data = response.data;
+        var level = 0;
+        if ($scope.level0Indicator6 != null) {
+          if ($scope.level1Indicator6 != null) {
+            level = 2;
+          } else {
+            level = 1;
+          }
+        }
+        financeDataService.getExecutedSpentsBubbleGraph(data, level, $scope);
+      }).catch(function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.addLevelIndicator6 = function(value) {
+      if ($scope.level0Indicator6 == null) {
+        $scope.level0Indicator6 = value;
+        $scope.updateIndicator6();
+      } else if ($scope.level1Indicator6 == null) {
+        $scope.level1Indicator6 = value;
+        $scope.updateIndicator6();
+      }
+    };
+
+    $scope.removeLevelIndicator6 = function(value) {
+      if ($scope.level1Indicator6 != null) {
+        $scope.level1Indicator6 = null;
+        $scope.updateIndicator6();
+      } else if ($scope.level0Indicator6 != null) {
+        $scope.level0Indicator6 = null;
+        $scope.updateIndicator6();
+      }
+    };
+
+    $scope.updateIndicator6();
 
   });

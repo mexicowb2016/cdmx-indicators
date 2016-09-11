@@ -6,13 +6,15 @@
  * @returns {Object}
  */
 angular.module('cdmxIndicatorsApp').
-  service('financeDataService', function ($http, $filter) {
+  service('financeDataService', function ($http, $filter, $compile) {
     return {
       getAllTotalSpentData: getAllTotalSpentsData,
       getExecutedSpentsByDepartmentFunctionData: getExecutedSpentsByDepartmentFunctionData,
       getExecutedSpentsByDepartmentFunctionGraph: getExecutedSpentsByDepartmentFunctionGraph,
       getExecutedSpentsByDependencyData: getExecutedSpentsByDependencyData,
       getExecutedSpentsByDependencyGraph: getExecutedSpentsByDependencyGraph,
+      getExecutedSpentsBubbleData: getExecutedSpentsBubbleData,
+      getExecutedSpentsBubbleGraph: getExecutedSpentsBubbleGraph,
       getTop3CapitalSpentsByDependencyData: getTop3CapitalSpentsByDependencyData,
       getTop3CapitalSpentsByInstActData: getTop3CapitalSpentsByInstActData,
       getTotalSpentData: getTotalSpentData,
@@ -57,6 +59,29 @@ angular.module('cdmxIndicatorsApp').
     function getExecutedSpentsByDependencyGraph (data) {
       data = formatMultiBarDataIndicator4(data);
       createMultiBarGraph(data, 'indicator4div', true);
+    }
+
+    function getExecutedSpentsBubbleData (month, level0, level1) {
+      var params = {
+        month: month
+      };
+      if (level0 != null) {
+        params.level0 = level0;
+        if (level1 != null) {
+          params.level1 = level1;
+        }
+      }
+      var url = '/api/results/get/executedSpents/bubble/';
+      return $http({
+        url: url,
+        method: 'GET',
+        params: params
+      });
+    }
+
+    function getExecutedSpentsBubbleGraph(data, level, scope) {
+      data = formatBubbleChartIndicator6(data, level);
+      createBubbleGraph(data, 'indicator6div', scope);
     }
 
     function getTop3CapitalSpentsByDependencyData() {
@@ -207,6 +232,168 @@ angular.module('cdmxIndicatorsApp').
         .text(function(d) { return executedCurrency + ' mdp'; });
     }
 
+    function createBubbleGraph(data, selector, scope) {
+      var width = 700;
+      var height = 700;
+      var center = { x: width / 2, y: height / 2 };
+      var damper = 0.102;
+      var maxValue = d3.max(data, function (d) { return +d.value; });
+      var radiusScale = d3.scale.pow()
+        .exponent(0.5)
+        .range([2, 85]);
+      radiusScale.domain([0, maxValue]);
+
+      var nodes = [];
+      for (var i = 0; i < data.length; i++) {
+        nodes.push({
+          radius: radiusScale(+data[i].value),
+          value: data[i].value,
+          name: data[i].name,
+          x: Math.random() * 900,
+          y: Math.random() * 800
+        });
+      }
+
+      var charge = function(d) {
+        return -Math.pow(d.radius, 2.0) / 8;
+      };
+
+      var force = d3.layout.force()
+        .size([width, height])
+        .charge(charge)
+        .gravity(-0.01)
+        .friction(0.9)
+        .nodes(nodes);
+
+      var svg = d3.select('#' + selector);
+      svg.selectAll('.bubble').remove();
+      d3.select('.bubble-tooltip').remove();
+
+      var fillColor = function(selected) {
+        if (selected) {
+          return '#FF149B';
+        } else {
+          return '#F0BECE';
+        }
+      };
+
+      function floatingTooltip(tooltipId, width) {
+        var tt = d3.select('body')
+          .append('div')
+          .attr('class', 'tooltip bubble-tooltip')
+          .attr('id', tooltipId)
+          .style('pointer-events', 'none');
+
+        if (width) {
+          tt.style('width', width);
+        }
+
+        hideTooltip();
+
+        function showTooltip(content, event) {
+          tt.style('opacity', 1.0)
+            .html(content);
+          updatePosition(event);
+        }
+
+        function hideTooltip() {
+          tt.style('opacity', 0.0);
+        }
+
+        function updatePosition(event) {
+          var xOffset = 20;
+          var yOffset = 10;
+          var ttw = tt.style('width');
+          var tth = tt.style('height');
+          var wscrY = window.scrollY;
+          var wscrX = window.scrollX;
+          var curX = (document.all) ? event.clientX + wscrX : event.pageX;
+          var curY = (document.all) ? event.clientY + wscrY : event.pageY;
+          var ttleft = ((curX - wscrX + xOffset * 2 + ttw) > window.innerWidth) ? curX - ttw - xOffset * 2 : curX + xOffset;
+          if (ttleft < wscrX + xOffset) {
+            ttleft = wscrX + xOffset;
+          }
+          var tttop = ((curY - wscrY + yOffset * 2 + tth) > window.innerHeight) ? curY - tth - yOffset * 2 : curY + yOffset;
+          if (tttop < wscrY + yOffset) {
+            tttop = curY + yOffset;
+          }
+          tt.style({ top: tttop + 'px', left: ttleft + 'px' });
+        }
+
+        return {
+          showTooltip: showTooltip,
+          hideTooltip: hideTooltip,
+          updatePosition: updatePosition
+        };
+      };
+
+      var tooltip = floatingTooltip('bubble_tooltip', 240);
+
+      function addCommas(nStr) {
+        nStr /= 1000000;
+        nStr += '';
+        var x = nStr.split('.');
+        if (x.length > 1) {
+          if (x[1].length > 1) {
+            x[1] = x[1].substring(0, 1);
+          }
+        }
+        var x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '0';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+          x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+      }
+
+      var showDetail = function(d) {
+        var circle = d3.select(this);
+        circle
+          .attr('fill', fillColor(true))
+          .attr('ng-click', "addLevelIndicator6('" + d.name + "')");
+        $compile(circle[0])(scope);
+        var content = d.name + '<br />' + addCommas(d.value) + ' MDP';
+        tooltip.showTooltip(content, d3.event);
+      }
+
+      var hideDetail = function(d) {
+        d3.select(this).attr('fill', fillColor(false));
+        tooltip.hideTooltip();
+      }
+
+      var bubbles = svg.selectAll('.bubble')
+        .data(nodes, function (d) { return d.value; });
+
+      bubbles.enter().append('circle')
+        .classed('bubble', true)
+        .attr('r', 0)
+        .attr('fill', function (d) { return fillColor(false); })
+        .attr('stroke', fillColor(true))
+        .attr('stroke-width', 4)
+        .on('mouseover', showDetail)
+        .on('mouseout', hideDetail);
+
+      bubbles.transition()
+        .duration(2000)
+        .attr('r', function (d) { return d.radius; });
+
+      function moveToCenter(alpha) {
+        return function (d) {
+          d.x = d.x + (center.x - d.x) * damper * alpha;
+          d.y = d.y + (center.y - d.y) * damper * alpha;
+        };
+      }
+
+      force.on('tick', function (e) {
+        bubbles.each(moveToCenter(e.alpha))
+          .attr('cx', function (d) { return d.x; })
+          .attr('cy', function (d) { return d.y; });
+      });
+
+      force.start();
+    }
+
     function formatMultiBarDataIndicator4(data) {
       var result = [['Centro', 'Gasto Corriente', 'Gasto Capital']];
       for (var i = 0; i < data.length; i++) {
@@ -221,6 +408,17 @@ angular.module('cdmxIndicatorsApp').
       for (var i = 0; i < data.length; i++) {
         var key = data[i].description;
         result.push([key, data[i].executed]);
+      }
+      return result;
+    }
+
+    function formatBubbleChartIndicator6(data, level) {
+      var result = [];
+      for (var i = 0; i < data.length; i++) {
+        result.push({
+          name: data[i].name,
+          value: data[i].value
+        });
       }
       return result;
     }

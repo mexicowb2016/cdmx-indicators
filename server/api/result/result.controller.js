@@ -216,6 +216,65 @@ exports.financeExecutedSpentsByDepartmentFunction = function (req, res) {
 };
 
 /**
+* Ejecucion del Gasto por Dependencia
+* @param  {Request} req - Objeto para el request
+* @param  {Response} res - Objeto para respuesta
+* @return {Response} - Respuesta del request
+*/
+exports.financeExecutedSpentsBubble = function (req, res) {
+  var month = req.query.month;
+  var monthField = 'EJERCIDO';
+  if (month != null) {
+    if (month != '0') {
+      monthField = 'MES' + month;
+    }
+  }
+  var level0 = req.query.level0;
+  var level1 = req.query.level1;
+  var tmpResults = {};
+  for (var i = 0; i < financeResults.sixthIndicator.DATA.length; i++) {
+    var data = financeResults.sixthIndicator.DATA[i];
+    var add = false;
+    var resultsKey = null;
+    var resultsValue = 0;
+    if (level0 == null) {
+      add = true;
+      resultsKey = data['FUNCION'];
+      resultsValue = parseInt(data[monthField].split(',').join(''));
+    } else {
+      if (data['FUNCION'] == level0) {
+        if (level1 == null) {
+          add = true;
+          resultsKey = data['TIPO'];
+          resultsValue = parseInt(data[monthField].split(',').join(''));
+        } else {
+          if (data['TIPO'] == level1) {
+            add = true;
+            resultsKey = data['CENTRO'];
+            resultsValue = parseInt(data[monthField].split(',').join(''));
+          }
+        }
+      }
+    }
+    if (add) {
+      if (tmpResults[resultsKey] == null) {
+        tmpResults[resultsKey] = {
+          name: resultsKey,
+          value: resultsValue
+        };
+      } else {
+        tmpResults[resultsKey].value = tmpResults[resultsKey].value + resultsValue;
+      }
+    }
+  }
+  var results = [];
+  for (var key in tmpResults) {
+    results.push(tmpResults[key]);
+  }
+  return res.status(200).json(results);
+};
+
+/**
  * Indicadores Datos Abiertos
  */
 /**
