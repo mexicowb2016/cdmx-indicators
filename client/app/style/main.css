@@ -95,6 +95,7 @@ body {
 .navbar {
     margin-bottom: 0px;
     text-align: center;
+    z-index: 5000;
 }
 .main-container{
   padding-top:143px;
@@ -696,16 +697,16 @@ div.panel-body.executed-spent-function-graph #indicator5div {
 }
 
 div.panel-body.executed-spent-function-bubble-graph {
-  height: 800px;
+  height: 350px;
 }
 
 div.panel-body.executed-spent-function-bubble-graph svg {
-  height: 800px;
+  height: 350px;
 }
 
 div.panel-body.executed-spent-function-bubble-graph #indicator6div {
-  height: 800px;
-  width: 800px;
+  height: 350px;
+  width: 500px;
 }
 
 .bubble-tooltip {

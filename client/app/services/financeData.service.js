@@ -233,14 +233,14 @@ angular.module('cdmxIndicatorsApp').
     }
 
     function createBubbleGraph(data, selector, scope) {
-      var width = 700;
-      var height = 700;
+      var width = 500;
+      var height = 300;
       var center = { x: width / 2, y: height / 2 };
       var damper = 0.102;
       var maxValue = d3.max(data, function (d) { return +d.value; });
       var radiusScale = d3.scale.pow()
         .exponent(0.5)
-        .range([2, 85]);
+        .range([2, 45]);
       radiusScale.domain([0, maxValue]);
 
       var nodes = [];
@@ -249,8 +249,8 @@ angular.module('cdmxIndicatorsApp').
           radius: radiusScale(+data[i].value),
           value: data[i].value,
           name: data[i].name,
-          x: Math.random() * 900,
-          y: Math.random() * 800
+          x: Math.random() * 450,
+          y: Math.random() * 400
         });
       }
 
@@ -350,10 +350,8 @@ angular.module('cdmxIndicatorsApp').
       var showDetail = function(d) {
         var circle = d3.select(this);
         circle
-          .attr('fill', fillColor(true))
-          .attr('ng-click', "addLevelIndicator6('" + d.name + "')");
-        $compile(circle[0])(scope);
-        var content = d.name + '<br />' + addCommas(d.value) + ' MDP';
+          .attr('fill', fillColor(true));
+        var content = d.name + '<br />' + addCommas(d.value) + ' millones de pesos';
         tooltip.showTooltip(content, d3.event);
       }
 
@@ -371,11 +369,14 @@ angular.module('cdmxIndicatorsApp').
         .attr('fill', function (d) { return fillColor(false); })
         .attr('stroke', fillColor(true))
         .attr('stroke-width', 4)
+        .attr('ng-click', function(d) { return "addLevelIndicator6('" + d.name + "', $event);"})
         .on('mouseover', showDetail)
         .on('mouseout', hideDetail);
 
+      $compile(bubbles[0])(scope);
+
       bubbles.transition()
-        .duration(2000)
+        .duration(100)
         .attr('r', function (d) { return d.radius; });
 
       function moveToCenter(alpha) {

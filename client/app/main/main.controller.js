@@ -17,7 +17,7 @@
  * y dibujar graficos de dichos datos.
  */
 angular.module('cdmxIndicatorsApp')
-  .controller('MainCtrl', function ($rootScope, $scope, $uibModal, financeDataService) {
+  .controller('MainCtrl', function ($rootScope, $scope, $uibModal, financeDataService, SweetAlert) {
     /**
      * @type {boolean} $rootScope.loading - Variable que se guarda en el $rootScope y enmascara la pagina de finanzas utilizando el servicio ng-show
      * en un componente web personalido llamado "loader".
@@ -262,22 +262,38 @@ angular.module('cdmxIndicatorsApp')
       });
     };
 
-    $scope.addLevelIndicator6 = function(value) {
+    $scope.indicator6Label = null;
+
+    $scope.addLevelIndicator6 = function(value, event) {
       if ($scope.level0Indicator6 == null) {
         $scope.level0Indicator6 = value;
+        $scope.indicator6Label = $scope.level0Indicator6;
         $scope.updateIndicator6();
       } else if ($scope.level1Indicator6 == null) {
         $scope.level1Indicator6 = value;
+        $scope.indicator6Label = $scope.level0Indicator6 + " - " + $scope.level1Indicator6;
         $scope.updateIndicator6();
+      } else {
+        SweetAlert.swal({
+          title: "No hay información.",
+          text: "Subir de nivel para visualizar la información.",
+          type: "error",
+          showCancelButton: false,
+          timer: 3000,
+          showConfirmButton: true
+        });
       }
+      event.stopPropagation();
     };
 
     $scope.removeLevelIndicator6 = function(value) {
       if ($scope.level1Indicator6 != null) {
         $scope.level1Indicator6 = null;
+        $scope.indicator6Label = $scope.level0Indicator6;
         $scope.updateIndicator6();
       } else if ($scope.level0Indicator6 != null) {
         $scope.level0Indicator6 = null;
+        $scope.indicator6Label = null;
         $scope.updateIndicator6();
       }
     };

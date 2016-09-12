@@ -142,7 +142,7 @@
   <div class="row">
     <div class="col-lg-12 col-sm-12">
       <div class="panel panel-default">
-        <div class="panel-heading">Ejecución del Gasto por Función<i ng-click="open(myModalContent.indicator6)" class="mdi mdi-information icon-information"></i>
+        <div class="panel-heading">{{indicator6Label == null ? 'Ejecución del Gasto por Función' : indicator6Label}}<i ng-click="open(myModalContent.indicator6)" class="mdi mdi-information icon-information"></i>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -165,9 +165,7 @@
                   <li class="li-margin"><input type="radio" ng-model="monthIndicator6" ng-value="12" id="months12" ng-change="updateIndicator6()" /><label for="months12">Diciembre</label></li>
                 </ul>
               </div>
-            </div>
-            <div class="col-lg-2 col-sm-2">
-              <label class="btn btn-sm btn-color" ng-click="removeLevelIndicator6()" >&lt; Nivel</label>
+              <label class="btn btn-sm btn-color" ng-click="removeLevelIndicator6()" ng-disabled="level0Indicator6 == null" >&lt; Nivel</label>
             </div>
           </div>
         </div>

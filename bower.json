@@ -17,6 +17,7 @@
     "mdi": "^1.6.50",
     "nvd3": "^1.8.4",
     "d3": "^4.2.2",
+    "ngSweetAlert": "angular-sweetalert#~1.1.0",
     "radar-chart-d3": "https://github.com/alangrafu/radar-chart-d3.git#^1.2.1"
   },
   "devDependencies": {
