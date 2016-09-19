@@ -5,7 +5,7 @@ var businessData4 = require('./business4.json');
 
 var firstIndicator = {
   "Apertura de una empresa": 11,
-  "Cumplimiento de contratos": 26,
+  "Cumplimiento de contratos": 30,
   "Manejo de permisos de construccion": 26,
   "Registro de propiedades": 32
 };

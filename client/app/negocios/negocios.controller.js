@@ -17,7 +17,7 @@
  * y dibujar graficos de dichos datos.
  */
 angular.module('cdmxIndicatorsApp')
-  .controller('NegociosCtrl', function ($scope, $uibModal, businessDataService, $rootScope) {
+  .controller('NegociosCtrl', function ($scope, $uibModal, businessDataService, $rootScope, $sce) {
     $rootScope.loading = true;
 
     $scope.selectedBusiness = "active-menu";
@@ -49,13 +49,48 @@ angular.module('cdmxIndicatorsApp')
       }
     };
 
+    $scope.modalFirstIndicator = {
+      graph1: {
+        title: 'Apertura de una empresa',
+        description: '<p>Mide los retos para comenzar un negocio en CDMX. Incluye el número de pasos que nuevos empresarios necesitan cumplir, el tiempo promedio que toma, y el costo y capital mínimo requerido como porcentaje del Ingreso Nacional Bruto per capita.</p>' +
+        '<div><strong>Procedimientos (Número):</strong> Número total de procedimientos necesarios para inscribir una sociedad. Un procedimiento se define como cualquier interacción de los fundadores de la sociedad con terceras partes externas (por ejemplo, organismos del gobierno, abogados, auditores o notarios).</div>' +
+        '<div><strong>Tiempo (Días):</strong> Número total de días necesarios para inscribir una empresa. La medición captura la duración promedio que los abogados expertos en la constitución de sociedades estiman como necesaria para completar un procedimiento</div>' +
+        '<div><strong>Calidad (%):</strong> Importe que el empresario necesita depositar en un banco o ante un notario antes de la inscripción y hasta tres meses después de la constitución de la sociedad. Se computa como un porcentaje del ingreso per cápita de la economía.</div>' +
+        '<div><strong>Costo (MXN):</strong> El costo se registra como un porcentaje del ingreso per cápita de la economía. Incluye todas las tarifas oficiales y los honorarios por servicios legales o profesionales si la ley los exige.</div>'
+      },
+      graph2: {
+        title: 'Registro de propiedades',
+        description: '<p>Se refiere a la facilidad con la que las empresas pueden asegurar los derechos de propiedad. Esto incluye el número de pasos, el tiempo y el costo de registro de la propiedad.</p>' +
+        '<div><strong>Procedimientos (Número):</strong> Número total de procedimientos requeridos para registrar propiedades. Un procedimiento se define como cualquier interacción del comprador o del vendedor, de sus agentes o de la propiedad con partes externas.</div>' +
+        '<div><strong>Tiempo (Días):</strong> Número total de días requeridos para registrar propiedades. La medición captura la duración promedio que los abogados expertos en compraventa de bienes inmuebles, así como los notarios o los funcionarios del registro indiquen como necesarios para completar un procedimiento.</div>' +
+        '<div><strong>Calidad (0 - 30):</strong> El índice de calidad de administración de tierras tiene cuatro dimensiones: la fiabilidad de la infraestructura, la transparencia de la información, la cobertura geográfica y la resolución de disputas sobre propiedades.</div>' +
+        '<div><strong>Costo (% del valor de la propiedad):</strong> El costo se registra como un porcentaje del valor de la propiedad, que se presume equivalente a 50 veces el ingreso per cápita. Sólo se utilizan los costos oficiales que exige la ley.</div>'
+      },
+      graph3: {
+        title: 'Manejo de permisos de construcción',
+        description: '<p>Incluye los procedimientos, tiempo y costo para construir un almacén, incluyendo la obtención de licencias y permisos, completar las notificaciones e inspecciones requeridas, y la obtención de conexiones a servicios públicos.</p>' +
+        '<div><strong>Procedimientos (Número):</strong> Número total de procedimientos necesarios para construir un almacén. Un procedimiento es cualquier interacción de los empleados o gerentes de la empresa con terceras partes.</div>' +
+        '<div><strong>Tiempo (Días):</strong> Número total de días necesarios para construir un almacén. La medición captura la duración promedio que los expertos locales estiman necesaria para completar un procedimiento en la práctica.</div>' +
+        '<div><strong>Calidad (0 - 15):</strong> El índice de control de calidad de la construcción se basa en otros seis índices: los índices de calidad de las normas de construcción, control de calidad antes de la construcción, control de calidad durante la construcción, control de calidad después de la construcción, regímenes de responsabilidad y seguros, y certificaciones profesionales.</div>' +
+        '<div><strong>Costo (MXN):</strong> El costo se calcula como un porcentaje del ingreso per cápita de la economía. Sólo se registran los costos oficiales.</div>'
+      },
+      graph4: {
+        title: 'Cumplimiento de contratos',
+        description: '<p>Mide la facilidad para hacer cumplir contratos comerciales en CDMX. Se determina haciendo seguimiento a la evolución de una disputa en el pago y estableciendo el tiempo, costo y el número de procedimientos que se requieren desde el momento en que se establece una demanda legal hasta el momento del pago final.</p>' +
+        '<div><strong>Procedimientos (Número):</strong> El número de procedimientos que se requieren en promedio para conseguir el cumplimiento de un contrato. La lista de trámites de cada economía muestra el orden cronológico de una disputa commercial ante el tribunal competente.</div>' +
+        '<div><strong>Tiempo (Días):</strong> Tiempo para resolver una disputa, contado desde el momento en que el demandante decide presentar la demanda en el juzgado hasta el momento del pago. Incluye los días en que tiene lugar el juicio y también los períodos de espera entre las diferentes fases.</div>' +
+        '<div><strong>Calidad (0 - 18):</strong> El índice de calidad de los procesos judiciales evalúa si cada una de las economías que cubre el proyecto Doing Business ha adoptado una serie de buenas prácticas en su sistema judicial en cuatro diferentes areas: estructura de los tribunales y procedimientos judiciales, administración de causas, automatización de los tribunales y resolución alternativa de disputas.</div>' +
+        '<div><strong>Costo (%):</strong> Costos judiciales y honorarios de un abogado (si se exige comparecer con abogado o son necesarios en la práctica) expresados como un porcentaje del importe en la demanda. </div>'
+      }
+    };
+
     $scope.animationsEnabled = true;
-    $scope.open = function (indicator) {
+    $scope.open = function (indicator, size) {
       var modalInstance = $uibModal.open({
        animation: $scope.animationsEnabled,
        templateUrl: 'information-modal.html',
        controller: 'ModalCtrl',
-       size: 'sm',
+       size: size || 'sm',
        resolve: {
          indicator: function () {
            return indicator;
@@ -112,7 +147,7 @@ angular.module('cdmxIndicatorsApp')
       businessDataService.getCurrentQualificationData(indicator).then(function (response) {
         var data = response.data;
         businessDataService.getCurrentQualificationGraph(data.radarData, $scope.selectedIndicator3, data.qualification);
-      })
+      });
     };
 
     $scope.updateIndicator4 = function() {

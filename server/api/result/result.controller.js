@@ -355,7 +355,8 @@ function getSetBusiness3IndicatorResultObj (data, key) {
   // var className  = key.toLowerCase();
   // className = 'radarg-' + (className.split(' ').join('-'));
   var resultObj = {
-    className: key,
+    // className: key,
+    className: "",
     axes: []
   };
   var axisObj;

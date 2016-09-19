@@ -158,11 +158,9 @@ angular.module('cdmxIndicatorsApp')
 
       //Update line indicator with the passed data
       var ratio = scale(data);
-      var fixLinePosition;
+      var fixLinePosition = 2.7;
       if (data > 15) {
-        fixLinePosition = -1;
-      } else {
-        fixLinePosition = 4
+        fixLinePosition = 2.5;
       }
       var newAngle = config.minAngle + (ratio * range) + fixLinePosition;
       // var newAngle = config.minAngle + (ratio * range);

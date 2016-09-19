@@ -31,3 +31,7 @@ div.gauge-btn-ctn {
 .goal-complainment-g{
   height: 385px;
 }
+
+.gauge-btn-ctn > i.icon-info-db-indicator1{
+  float: none;
+}

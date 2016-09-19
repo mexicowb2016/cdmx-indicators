@@ -372,6 +372,7 @@ font-size: 18px;
   color: #b4b5b4;
   position: relative;
   font-size: 20px !important;
+  cursor: pointer;
 }
 
 .icon-position{
@@ -620,6 +621,11 @@ p.size-percentage-2.light-label-open-data{
 }
 .btn-warning-cdmx{
   background-color: #fcf37b;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+.btn-danger-cdmx{
+  background-color: #ff2222;
   color: #FFFFFF;
   font-weight: bold;
 }

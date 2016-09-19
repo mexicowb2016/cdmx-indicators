@@ -37,29 +37,29 @@
             <div class="col-md-3">
               <div class="starting-business-graph"></div>
               <div>
-                <div class="text-center gauge-label">Apertura de una empresa ({{ui.indicator1.firstTitle}})</div>
-                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: Alcanzadas" tooltip-placement="top" class="btn btn-success-cdmx btn-flat button-align" ng-click="selectIndicator4('Apertura de una empresa')">Detalles</button></div>
+                <div class="text-center gauge-label">Apertura de una empresa ({{ui.indicator1.firstTitle}}) </div>
+                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: Alcanzadas" tooltip-placement="top" class="btn btn-success-cdmx btn-flat button-align" ng-click="selectIndicator4('Apertura de una empresa')">Detalles</button><i ng-click="open(modalFirstIndicator.graph1, 'md')" class="mdi mdi-information icon-information icon-info-db-indicator1"></i></div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="property-registry-graph"></div>
               <div>
-                <div class="text-center gauge-label">Registro de propiedades ({{ui.indicator1.secondTitle}})</div>
-                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: En progreso" class="btn btn-warning-cdmx btn-flat button-align" ng-click="selectIndicator4('Registro de propiedades')">Detalles</button></div>
+                <div class="text-center gauge-label">Registro de propiedades ({{ui.indicator1.secondTitle}}) </div>
+                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: En progreso" class="btn btn-danger-cdmx btn-flat button-align" ng-click="selectIndicator4('Registro de propiedades')">Detalles</button><i ng-click="open(modalFirstIndicator.graph2, 'md')" class="mdi mdi-information icon-information icon-info-db-indicator1"></i></div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="construction-permission-handling-graph"></div>
               <div>
-                <div class="text-center gauge-label">Manejo de permisos de construccion ({{ui.indicator1.thirdTitle}})</div>
-                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: En progreso" class="btn btn-warning-cdmx btn-flat button-align" ng-click="selectIndicator4('Manejo de permisos de construcción')">Detalles</button></div>
+                <div class="text-center gauge-label">Manejo de permisos de construccion ({{ui.indicator1.thirdTitle}}) </div>
+                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: En progreso" class="btn btn-warning-cdmx btn-flat button-align" ng-click="selectIndicator4('Manejo de permisos de construcción')">Detalles</button><i ng-click="open(modalFirstIndicator.graph3, 'md')" class="mdi mdi-information icon-information icon-info-db-indicator1"></i></div>
             </div>
             </div>
             <div class="col-md-3">
               <div class="contract-compliance-graph"></div>
               <div>
-                <div class="text-center gauge-label">Cumplimiento de contratos ({{ui.indicator1.fourthTitle}})</div>
-                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: Sin definir" class="btn btn-color-2 btn-flat button-align" ng-click="selectIndicator4('Cumplimiento de contratos')">Detalles</button></div>
+                <div class="text-center gauge-label">Cumplimiento de contratos ({{ui.indicator1.fourthTitle}}) </div>
+                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: Sin definir" class="btn btn-color-2 btn-flat button-align" ng-click="selectIndicator4('Cumplimiento de contratos')">Detalles</button><i ng-click="open(modalFirstIndicator.graph4, 'md')" class="mdi mdi-information icon-information icon-info-db-indicator1"></i></div>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@
         <div class="panel-body">
           <div class="text-ranking-mundial">
               <p class="text-mexico">Ciudad de México</p>
-              <p class="text-mexico-1">32</p>
+              <p class="text-mexico-1">38</p>
               <p class="text-mexico-2">de 138</p>
           </div>
               <div class="img-CDMX pull-right img-responsive"></div>
@@ -146,7 +146,7 @@
         <span class="modal-title modal-text">{{indicatorContent.title}}</span>
     </div>
     <div class="modal-body">
-        <p>{{indicatorContent.description}}</p>
+        <p ng-bind-html="indicatorContent.description"></p>
     </div>
     <div class="modal-footer">
         <button class="btn btn-modal" type="button" ng-click="ok()">OK</button>
