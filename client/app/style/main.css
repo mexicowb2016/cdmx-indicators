@@ -620,7 +620,7 @@ p.size-percentage-2.light-label-open-data{
   font-weight: bold;
 }
 .btn-warning-cdmx{
-  background-color: #fcf37b;
+  background-color: #FFDB5E;
   color: #FFFFFF;
   font-weight: bold;
 }
@@ -632,6 +632,12 @@ p.size-percentage-2.light-label-open-data{
 
 .button-align{
   margin-top: 10px;
+}
+.button-align-left{
+  margin-left: 10px;
+}
+.container-padding{
+  padding: 20px;
 }
 /*Button footer*/
 * {
