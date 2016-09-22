@@ -351,7 +351,7 @@ angular.module('cdmxIndicatorsApp').
         var circle = d3.select(this);
         circle
           .attr('fill', fillColor(true));
-        var content = d.name + '<br />' + addCommas(d.value) + ' millones de pesos';
+        var content = d.name + '<br /><strong>' + addCommas(d.value) + ' Millones de Pesos</strong>';
         tooltip.showTooltip(content, d3.event);
       }
 
@@ -368,7 +368,7 @@ angular.module('cdmxIndicatorsApp').
         .attr('r', 0)
         .attr('fill', function (d) { return fillColor(false); })
         .attr('stroke', fillColor(true))
-        .attr('stroke-width', 4)
+        .attr('stroke-width', 2)
         .attr('ng-click', function(d) { return "addLevelIndicator6('" + d.name + "', $event);"})
         .on('mouseover', showDetail)
         .on('mouseout', hideDetail);

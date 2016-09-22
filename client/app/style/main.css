@@ -726,7 +726,7 @@ div.panel-body.executed-spent-function-bubble-graph #indicator6div {
 	top: 100px;
 	left: 100px;
   -moz-border-radius:5px;
-	border-radius: 5px;
+	border-radius: 0px;
   border: 2px solid #000;
 	opacity: .9;
 	padding: 10px;
@@ -735,6 +735,9 @@ div.panel-body.executed-spent-function-bubble-graph #indicator6div {
 	z-index: 10;
   background-color: #000000;
   color: #FFFFFF;
+}
+
+.bubble-tooltip strong {
   font-weight: bolder;
 }
 
