@@ -709,16 +709,23 @@ div.panel-body.executed-spent-function-graph #indicator5div {
 }
 
 div.panel-body.executed-spent-function-bubble-graph {
-  height: 350px;
+  height: 320px;
 }
 
 div.panel-body.executed-spent-function-bubble-graph svg {
-  height: 350px;
+  height: 300px;
 }
 
 div.panel-body.executed-spent-function-bubble-graph #indicator6div {
-  height: 350px;
+  height: 300px;
   width: 500px;
+}
+
+.indicator6-label {
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+  color: #4C4C4C;
 }
 
 .bubble-tooltip {

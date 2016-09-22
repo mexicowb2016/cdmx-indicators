@@ -245,7 +245,7 @@ angular.module('cdmxIndicatorsApp')
      */
     $scope.updateIndicator5();
 
-    $scope.monthIndicator6 = 0;
+    $scope.monthIndicator6 = 1;
     $scope.level0Indicator6 = null;
     $scope.level1Indicator6 = null;
 
@@ -275,7 +275,7 @@ angular.module('cdmxIndicatorsApp')
         $scope.updateIndicator6();
       } else if ($scope.level1Indicator6 == null) {
         $scope.level1Indicator6 = value;
-        $scope.indicator6Label = $scope.level0Indicator6 + " - " + $scope.level1Indicator6;
+        $scope.indicator6Label = $scope.level0Indicator6 + " > " + $scope.level1Indicator6;
         $scope.updateIndicator6();
       } else {
         SweetAlert.swal({

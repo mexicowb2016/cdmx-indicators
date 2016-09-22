@@ -256,6 +256,9 @@ exports.financeExecutedSpentsBubble = function (req, res) {
         }
       }
     }
+    if (resultsValue == 0) {
+      add = false;
+    }
     if (add) {
       if (tmpResults[resultsKey] == null) {
         tmpResults[resultsKey] = {

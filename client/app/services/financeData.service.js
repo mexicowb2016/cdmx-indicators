@@ -81,7 +81,11 @@ angular.module('cdmxIndicatorsApp').
 
     function getExecutedSpentsBubbleGraph(data, level, scope) {
       data = formatBubbleChartIndicator6(data, level);
-      createBubbleGraph(data, 'indicator6div', scope);
+      if (data.length == 0) {
+        createTextInBubbleGraph('indicator6div');
+      } else {
+        createBubbleGraph(data, 'indicator6div', scope);
+      }
     }
 
     function getTop3CapitalSpentsByDependencyData() {
@@ -232,6 +236,21 @@ angular.module('cdmxIndicatorsApp').
         .text(function(d) { return executedCurrency + ' mdp'; });
     }
 
+    function createTextInBubbleGraph(selector) {
+      var svg = d3.select('#' + selector);
+      svg.selectAll('.bubble').remove();
+      svg.selectAll('text').remove();
+      d3.select('.bubble-tooltip').remove();
+      svg.append("text")
+        .attr("x", 80)
+        .attr("y", 100)
+        .text("No hay datos de ejecución para el mes seleccionado.");
+      svg.append("text")
+        .attr("x", 60)
+        .attr("y", 120)
+        .text("Favor seleccionar otro mes utilizando el menú desplegable.");
+    }
+
     function createBubbleGraph(data, selector, scope) {
       var width = 500;
       var height = 300;
@@ -267,6 +286,7 @@ angular.module('cdmxIndicatorsApp').
 
       var svg = d3.select('#' + selector);
       svg.selectAll('.bubble').remove();
+      svg.selectAll('text').remove();
       d3.select('.bubble-tooltip').remove();
 
       var fillColor = function(selected) {
