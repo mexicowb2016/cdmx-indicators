@@ -373,6 +373,12 @@ angular.module('cdmxIndicatorsApp').
         .on('mouseover', showDetail)
         .on('mouseout', hideDetail);
 
+      for (var i = 0; i < bubbles[0].length; i++) {
+        if (bubbles[0][i] == null) {
+          bubbles[0].splice(i, 1);
+          i--;
+        }
+      }
       $compile(bubbles[0])(scope);
 
       bubbles.transition()
