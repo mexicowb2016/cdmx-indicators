@@ -74,6 +74,10 @@ angular.module('cdmxIndicatorsApp')
       indicator5:{
         title:'Ejecución del gasto por función',
         description:'Presenta la ejecución del gasto por función, de conformidad con la finalidad a la cual corresponde el gasto (gobierno, desarrollo social o desarrollo económico).'
+      },
+      indicator6:{
+        title:'Ejecución del Gasto por Función, Tipo de Unidad Responsable y Unidad Responsable',
+        description:'Presenta la ejecución del gasto por función (primer nivel), tipos de unidades responsables relacionados con cada función (segundo nivel) y unidades responsables relacionadas con cada función (tercer nivel). Esta gráfica permite comparar cantidades por cada elemento. Entre más grande sea la burbuja, más grande es el presupuesto ejercido.'
       }
     };
     /**
