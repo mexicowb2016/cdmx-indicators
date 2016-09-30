@@ -12,31 +12,48 @@ var firstIndicator = {
 
 var thirdIndicator = require('./businessData.json');
 
-var fourthIndicator = function(indicator) {
-  var indicatorStarts = ' ';
-  if (indicator == 'all') {
-    indicatorStarts = '*';
-  } else if (indicator == 'opening') {
-    indicatorStarts = 'A';
-  } else if (indicator == 'permissions') {
-    indicatorStarts = 'M';
-  } else if (indicator == 'registry') {
-    indicatorStarts = 'R';
-  } else if (indicator == 'contracts') {
-    indicatorStarts = 'C';
-  }
+var fourthIndicator = function(indicator, entityInCharge, entityGcdmx) {
   var results = [];
+  // console.log("indicator == null");
+  // console.log(indicator);
+  // console.log(indicator == null);
   for (var i = 0; i < businessData4.DATA.length; i++) {
     var data = businessData4.DATA[i];
-    if ((indicatorStarts == '*' || data['INDICATOR'].charAt(0) == indicatorStarts) && data['ENTITY_GCDMX'] == 'SI') {
+    if (indicator == data['INDICATOR'] && data['ENTITY_IN_CHARGE'] == entityInCharge && data['ENTITY_GCDMX'] == entityGcdmx) {
       results.push({
-        entity: data['ENTITY_IN_CHARGE'],
-        procedures: data['NUMBER_CURRENT_PROCESS'],
-        time: data['CURRENT_TIME'],
-        cost: data['CURRENT_COST'],
-        quality: data['CURRENT_QUALIFICATION']
+        process: data['PROCESS'],
+        entityInCharge: data['ENTITY_IN_CHARGE'],
+        costSubnational2014: data['COST_SUBNATIONAL_2014'],
+        procedureWorld2016: data['PROCEDURE_WORLD_2016'],
+        timeWorld2016: data['TIME_WORLD_2016'],
+        metaProcedure: data['META_PROCEDURE'],
+        metaProcedureInCharge: data['META_PROCEDURE_IN_CHARGE'],
+        metaTime: data['META_TIME'],
+        metaTimeInCharge: data['META_TIME_IN_CHARGE'],
+        metaCost: data['META_COST'],
+        metaCostInCharge: data['META_COST_IN_CHARGE'],
       });
     }
+  }
+  return results;
+};
+
+var fourthIndicatorLists = function() {
+  var results = {
+    indicators: [],
+    inCharge: []
+  };
+  var indicators = {};
+  var inCharge = {};
+  for (var i = 0; i < businessData4.DATA.length; i++) {
+    indicators[businessData4.DATA[i]['INDICATOR']] = true;
+    inCharge[businessData4.DATA[i]['ENTITY_IN_CHARGE']] = true;
+  }
+  for (var key in indicators) {
+    results.indicators.push(key);
+  }
+  for (var key in inCharge) {
+    results.inCharge.push(key);
   }
   return results;
 };
@@ -45,5 +62,6 @@ module.exports = {
   businessData4: businessData4,
   firstIndicator: firstIndicator,
   thirdIndicator: thirdIndicator,
-  fourthIndicator: fourthIndicator
+  fourthIndicator: fourthIndicator,
+  fourthIndicatorLists: fourthIndicatorLists
 };

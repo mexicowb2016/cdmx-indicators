@@ -2,30 +2,38 @@
 var fs = require('fs');
 var csv = require('fast-csv');
 var file = __dirname;
-var stream = fs.createReadStream(file+"/Grafico4_DoingBusiness.csv");
+var stream = fs.createReadStream(file+"/Grafico4_DB-utf8.csv");
 
 var csvStream = csv();
 
 var resObj = {};
 resObj['DATA'] = [];
 csvStream.on("data", function(data) {
-  if (data[0].indexOf('Indicador') != 0) {
+  if (data[0].indexOf('#') != 0) {
     resObj['DATA'].push({
-      'INDICATOR': data[0],
-      'WORLD_RANKING': data[1],
-      'SUBNATIONAL_RANKING': data[2],
-      'CURRENT_QUALIFICATION': data[3],
-      'PROCESS': data[4],
-      'ENTITY_IN_CHARGE': data[5],
-      'ENTITY_GCDMX': data[6],
-      'NUMBER_CURRENT_PROCESS': data[7],
-      'CURRENT_TIME': data[8],
-      'CURRENT_COST': data[9],
-      'GOAL_REDUCTION_REMOVE_PROCESS': data[10],
-      'GOAL_TIME': data[11],
-      'GOAL_COST': data[12],
-      'DEADLINE_GOAL_ACCOMPLISHMENT': data[13],
-      'CURRENT_STATUS': data[14]
+      'NUMBER': data[0],
+      'INDICATOR': data[1],
+      'PROCESS': data[2],
+      'ENTITY_IN_CHARGE': data[3],
+      'ENTITY_GCDMX': data[4],
+      'PROCEDURE': data[5],
+      'TIME_SUBNATIONAL_2014': data[6],
+      'COST_SUBNATIONAL_2014': data[7],
+      'PROCEDURE_WORLD_2016': data[8],
+      'TIME_WORLD_2016': data[9],
+      'COST_WORLD_2016': data[10],
+      'PROCEDURE_SUBNATIONAL_2016': data[11],
+      'TIME_SUBNATIONAL_2016': data[12],
+      'COST_SUBNATIONAL_2016': data[13],
+      'PRIORITY_ACTION_PROCEDURE': data[14],
+      'PRIORITY_ACTION_TIME': data[15],
+      'PRIORITY_ACTION_COST': data[16],
+      'META_PROCEDURE': data[17],
+      'META_PROCEDURE_IN_CHARGE': data[18],
+      'META_TIME': data[19],
+      'META_TIME_IN_CHARGE': data[20],
+      'META_COST': data[21],
+      'META_COST_IN_CHARGE': data[22]
     });
   }
 });

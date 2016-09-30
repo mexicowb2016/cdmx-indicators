@@ -311,7 +311,19 @@ exports.businessSubnationalRank = function (req, res) {
  */
 exports.businessGoals = function (req, res) {
   var indicator = req.query.indicator;
-  return res.status(200).json(businessDataResults.fourthIndicator(indicator));
+  var entityInCharge = req.query.entityInCharge;
+  var entityGcdmx = req.query.entityGcdmx;
+  return res.status(200).json(businessDataResults.fourthIndicator(indicator, entityInCharge, entityGcdmx));
+};
+
+/**
+ * Cumplimiento de metas - listas
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
+ */
+exports.businessGoalsLists = function (req, res) {
+  return res.status(200).json(businessDataResults.fourthIndicatorLists());
 };
 
 /**
