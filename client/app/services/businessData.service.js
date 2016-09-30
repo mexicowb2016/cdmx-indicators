@@ -12,6 +12,7 @@ angular.module('cdmxIndicatorsApp')
       getCurrentQualificationGraph: getCurrentQualificationGraph,
       getSubnationalRankData: getSubnationalRankData,
       getDoingBusinessGoals: getDoingBusinessGoals,
+      getDoingBusinessGoalsLists: getDoingBusinessGoalsLists,
       getSubnationalRankGraph: getSubnationalRankGraph
     };
 
@@ -27,12 +28,21 @@ angular.module('cdmxIndicatorsApp')
       return $http.get('/api/results/get/businessSubnationalRank/');
     }
 
-    function getDoingBusinessGoals(indicator) {
+    function getDoingBusinessGoalsLists() {
+      return $http({
+        url: '/api/results/get/businessGoalsLists',
+        method: 'GET'
+      });
+    }
+
+    function getDoingBusinessGoals(indicator, entityInCharge, entityGcdmx) {
       return $http({
         url: '/api/results/get/businessGoals',
         method: 'GET',
         params: {
-          indicator: indicator
+          indicator: indicator,
+          entityInCharge: entityInCharge,
+          entityGcdmx: entityGcdmx
         }
       });
     }

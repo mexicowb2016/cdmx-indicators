@@ -150,20 +150,35 @@ angular.module('cdmxIndicatorsApp')
       });
     };
 
-    $scope.updateIndicator4 = function() {
-      var indicator = '';
-      if ($scope.selectedIndicator.charAt(0) == 'A') {
-        indicator = 'opening';
-      } else if ($scope.selectedIndicator.charAt(0) == 'M') {
-        indicator = 'permissions';
-      } else if ($scope.selectedIndicator.charAt(0) == 'R') {
-        indicator = 'registry';
-      } else if ($scope.selectedIndicator.charAt(0) == 'C') {
-        indicator = 'contracts';
-      } else if ($scope.selectedIndicator.charAt(0) == 'T') {
-        indicator = 'all';
+    $scope.indicator4Indicator = null;
+    $scope.indicator4Entity = null;
+    $scope.indicator4Gcdmx = null;
+    $scope.indicator4Indicators = [];
+    $scope.indicator4Entities = [];
+    businessDataService.getDoingBusinessGoalsLists().then(function (response) {
+      var data = response.data;
+      $scope.indicator4Indicators = data.indicators;
+      $scope.indicator4Entities = data.inCharge;
+    });
+
+    $scope.selectIndicator4Indicator = function(indicator, event) {
+      $scope.indicator4Indicator = indicator;
+      if (event != null) {
+        event.stopPropagation();
       }
-      businessDataService.getDoingBusinessGoals(indicator).then(function (response) {
+      $scope.updateIndicator4();
+    }
+
+    $scope.selectIndicator4Entity = function(entity, event) {
+      $scope.indicator4Entity = entity;
+      if (event != null) {
+        event.stopPropagation();
+      }
+      $scope.updateIndicator4();
+    }
+
+    $scope.updateIndicator4 = function() {
+      businessDataService.getDoingBusinessGoals($scope.indicator4Indicator, $scope.indicator4Entity, $scope.indicator4Gcdmx).then(function (response) {
         var data = response.data;
         $scope.indicator4data = data;
       })
