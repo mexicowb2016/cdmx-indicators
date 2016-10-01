@@ -748,6 +748,19 @@ div.panel-body.executed-spent-function-bubble-graph #indicator6div {
   font-weight: bolder;
 }
 
+.table-scroll {
+  overflow: auto;
+  height: 300px;
+}
+
+.table-container {
+  padding-top: 10px;
+}
+
+.table-content {
+  border-style: solid;
+}
+
 div.panel-body.women-promoted-percentage svg, div.panel-body.women-quantity-percentage svg, div.panel-body.women-recruitment-percentage svg, div.panel-body.women-salaryGap-percentage svg{
   height: 300px;
 }

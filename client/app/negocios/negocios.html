@@ -50,7 +50,7 @@
               <div class="construction-permission-handling-graph"></div>
               <div>
                 <div class="text-center gauge-label">Manejo de permisos de construccion ({{ui.indicator1.thirdTitle}}) </div>
-                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: En progreso" class="btn btn-warning-cdmx btn-flat button-align" ng-click="selectIndicator4('Manejo de permisos de construcción')">Detalles</button><button ng-click="open(modalFirstIndicator.graph3, 'md')" class="btn btn-warning-cdmx btn-flat button-align button-align-left">Info</button></div>
+                <div class="text-center gauge-btn-ctn"><button uib-tooltip="Metas: En progreso" class="btn btn-warning-cdmx btn-flat button-align" ng-click="selectIndicator4('Manejo de Permisos de construcción')">Detalles</button><button ng-click="open(modalFirstIndicator.graph3, 'md')" class="btn btn-warning-cdmx btn-flat button-align button-align-left">Info</button></div>
             </div>
             </div>
             <div class="col-md-3">
@@ -112,6 +112,12 @@
               <div class="btn-group" uib-dropdown>
                 <a href="#" class="btn btn-color btn-sm" data-toggle="dropdown" uib-dropdown-toggle>{{indicator4Entity == null ? 'Elegir Entidad Responsable' : indicator4Entity}} <span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-size" uib-dropdown-menu role="menu">
+                  <li class="li-margin" ng-click="selectIndicator4Entity('Todos', $event)">
+                    <label>
+                      <input type="radio" ng-checked="indicator4Entity == 'Todos'" ng-value="Todos" />
+                      Todos
+                    </label>
+                  </li>
                   <li class="li-margin" ng-repeat="entity in indicator4Entities" ng-click="selectIndicator4Entity(entity, $event)">
                     <label>
                       <input type="radio" ng-model="$parent.indicator4Entity" ng-value="entity" />
@@ -128,30 +134,42 @@
                 <label class="btn btn-sm btn-color" ng-model="indicator4Gcdmx" ng-click="updateIndicator4()" uib-btn-radio="'NO'" ng-class="{active: indicator4Gcdmx == 'NO'}">No</label>
               </div>
             </div>
-            <div class="col-lg-12 col-sm-12">
-              <table class="table table-hover table-responsive" ng-repeat="data in indicator4data">
-                <tr>
-                  <td>{{data.process}}</td>
-                  <td>{{data.entityInCharge}}</td>
-                </tr>
-                <tr>
-                  <td>{{data.costSubnational2014}}</td>
-                  <td>{{data.procedureWorld2016}}</td>
-                  <td>{{data.timeWorld2016}}</td>
-                </tr>
-                <tr>
-                  <td>{{data.metaProcedure}}</td>
-                  <td>{{data.metaProcedureInCharge}}</td>
-                </tr>
-                <tr>
-                  <td>{{data.metaTime}}</td>
-                  <td>{{data.metaTimeInCharge}}</td>
-                </tr>
-                <tr>
-                  <td>{{data.metaCost}}</td>
-                  <td>{{data.metaCostInCharge}}</td>
-                </tr>
-              </table>
+            <div class="col-lg-12 col-sm-12 table-scroll">
+              <div class="table-container" ng-show="indicator4data.length == 0">
+                <table class="table table-hover table-responsive">
+                  <tr>
+                    <td>No hay datos de cumplimiento de metas para los filtros seleccionados.</td>
+                  </tr>
+                  <tr>
+                    <td>Favor seleccionar otros filtros utilizando los menúes desplegables.</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="table-container" ng-repeat="data in indicator4data" ng-show="indicator4data.length != 0">
+                <table class="table table-hover table-responsive table-content">
+                  <tr>
+                    <td>{{data.process}}</td>
+                    <td colspan="2">{{data.entityInCharge}}</td>
+                  </tr>
+                  <tr>
+                    <td>{{data.costSubnational2014}}</td>
+                    <td>{{data.procedureWorld2016}}</td>
+                    <td>{{data.timeWorld2016}}</td>
+                  </tr>
+                  <tr ng-hide="data.metaProcedure == '' && data.metaProcedureInCharge == ''">
+                    <td>{{data.metaProcedure}}</td>
+                    <td colspan="2">{{data.metaProcedureInCharge}}</td>
+                  </tr>
+                  <tr ng-hide="data.metaTime == '' && data.metaTimeInCharge == ''">
+                    <td>{{data.metaTime}}</td>
+                    <td colspan="2">{{data.metaTimeInCharge}}</td>
+                  </tr>
+                  <tr ng-hide="data.metaCost == '' && data.metaCostInCharge == ''">
+                    <td>{{data.metaCost}}</td>
+                    <td colspan="2">{{data.metaCostInCharge}}</td>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>

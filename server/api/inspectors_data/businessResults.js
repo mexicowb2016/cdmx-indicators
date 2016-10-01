@@ -19,7 +19,7 @@ var fourthIndicator = function(indicator, entityInCharge, entityGcdmx) {
   // console.log(indicator == null);
   for (var i = 0; i < businessData4.DATA.length; i++) {
     var data = businessData4.DATA[i];
-    if (indicator == data['INDICATOR'] && data['ENTITY_IN_CHARGE'] == entityInCharge && data['ENTITY_GCDMX'] == entityGcdmx) {
+    if (indicator == data['INDICATOR'] && (data['ENTITY_IN_CHARGE'] == entityInCharge || entityInCharge == 'Todos') && data['ENTITY_GCDMX'] == entityGcdmx) {
       results.push({
         process: data['PROCESS'],
         entityInCharge: data['ENTITY_IN_CHARGE'],

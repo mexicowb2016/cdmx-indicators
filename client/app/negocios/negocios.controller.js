@@ -130,7 +130,7 @@ angular.module('cdmxIndicatorsApp')
       $scope.selectedIndicator3 = indicator;
       $scope.indicator4all = false;
       $scope.updateIndicator3();
-      $scope.updateIndicator4();
+      $scope.selectIndicator4Indicator(indicator);
     };
 
     $scope.updateIndicator3 = function() {
@@ -151,7 +151,7 @@ angular.module('cdmxIndicatorsApp')
     };
 
     $scope.indicator4Indicator = null;
-    $scope.indicator4Entity = null;
+    $scope.indicator4Entity = "Todos";
     $scope.indicator4Gcdmx = null;
     $scope.indicator4Indicators = [];
     $scope.indicator4Entities = [];
