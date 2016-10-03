@@ -2,7 +2,7 @@
 var fs = require('fs');
 var csv = require('fast-csv');
 var file = __dirname;
-var stream = fs.createReadStream(file+"/Grafico4_DB-utf8.csv");
+var stream = fs.createReadStream(file+"/Grafico4_DB-utf8_v2.csv");
 
 var csvStream = csv();
 
