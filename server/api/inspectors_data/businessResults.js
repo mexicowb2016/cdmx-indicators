@@ -23,6 +23,8 @@ var fourthIndicator = function(indicator, entityInCharge, entityGcdmx) {
       results.push({
         process: data['PROCESS'],
         entityInCharge: data['ENTITY_IN_CHARGE'],
+        procedure: data['PROCEDURE'],
+        timeSubnational2014: data['TIME_SUBNATIONAL_2014'],
         costSubnational2014: data['COST_SUBNATIONAL_2014'],
         procedureWorld2016: data['PROCEDURE_WORLD_2016'],
         timeWorld2016: data['TIME_WORLD_2016'],

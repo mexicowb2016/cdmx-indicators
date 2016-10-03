@@ -748,9 +748,23 @@ div.panel-body.executed-spent-function-bubble-graph #indicator6div {
   font-weight: bolder;
 }
 
+.btn-goals {
+  background-color: #F5F5F5;
+}
+
 .table-scroll {
   overflow: auto;
-  height: 300px;
+  height: 360px;
+}
+
+.table-title {
+  color: #FF149B;
+  font-weight: bold;
+}
+
+.table-title2 {
+  color: ##4C4C4C;
+  font-weight: bold;
 }
 
 .table-container {
