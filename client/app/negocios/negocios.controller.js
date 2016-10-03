@@ -150,9 +150,9 @@ angular.module('cdmxIndicatorsApp')
       });
     };
 
-    $scope.indicator4Indicator = null;
+    $scope.indicator4Indicator = "Apertura de una empresa";
     $scope.indicator4Entity = "Todos";
-    $scope.indicator4Gcdmx = null;
+    $scope.indicator4Gcdmx = "SI";
     $scope.indicator4Indicators = [];
     $scope.indicator4Entities = [];
     businessDataService.getDoingBusinessGoalsLists().then(function (response) {
