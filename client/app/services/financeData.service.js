@@ -21,13 +21,13 @@ angular.module('cdmxIndicatorsApp').
       getTotalSpentGraph: getTotalSpentGraph
     };
 
-    function getAllTotalSpentsData() {
-      var url = '/api/results/get/totalAllSpents/';
+    function getAllTotalSpentsData(month) {
+      var url = '/api/financefilters/indicators/indicator1/' + month;
       return $http.get(url);
     }
 
-    function getExecutedSpentsByDepartmentFunctionData (sort) {
-      var url = '/api/results/get/executedSpents/function/';
+    function getExecutedSpentsByDepartmentFunctionData(sort, month) {
+      var url = '/api/financefilters/indicators/indicator5/' + month;
       return $http({
         url: url,
         method: 'GET',
@@ -42,9 +42,9 @@ angular.module('cdmxIndicatorsApp').
       createMultiHorizontalBarGraph(data, 'indicator5div');
     }
 
-    function getExecutedSpentsByDependencyData (favorite, dependency, sort) {
+    function getExecutedSpentsByDependencyData (favorite, dependency, sort, month) {
       dependency = dependency == 'dependencies' ? 1 : 0;
-      var url = '/api/results/get/executedSpents/dependency/';
+      var url = '/api/financefilters/indicators/indicator4/' + month;
       return $http({
         url: url,
         method: 'GET',
@@ -88,13 +88,13 @@ angular.module('cdmxIndicatorsApp').
       }
     }
 
-    function getTop3CapitalSpentsByDependencyData() {
-      var url = '/api/results/get/top3CapitalSpents/dependency';
+    function getTop3CapitalSpentsByDependencyData(month) {
+      var url = '/api/financefilters/indicators/indicator3/dependencies/' + month;
       return $http.get(url, {cache:true});
     }
 
-    function getTop3CapitalSpentsByInstActData() {
-      var url = '/api/results/get/top3CapitalSpents/institutionalActivity';
+    function getTop3CapitalSpentsByInstActData(month) {
+      var url = '/api/financefilters/indicators/indicator3/activities/' + month;
       return $http.get(url, {cache:true});
     }
 
@@ -192,7 +192,7 @@ angular.module('cdmxIndicatorsApp').
         var options = {
           title: '',
           colors: ['#FF149B'],
-          chartArea: {width: '58%', height: '90%', left: '38%', top: 10},
+          chartArea: {width: '53%', height: '90%', left: '43%', top: 10},
           fontSize: 12,
           legend: "none",
           bars: "horizontal",
@@ -425,6 +425,10 @@ angular.module('cdmxIndicatorsApp').
       var result = [['Centro', 'Gasto Corriente', 'Gasto Capital']];
       for (var i = 0; i < data.length; i++) {
         var key = data[i].center;
+        if (key.length > 80) {
+          key = key.substring(0, 79).trim();
+          key = key.substring(0, key.lastIndexOf(' ')).trim() + "...";
+        }
         result.push([key, data[i].currentSpent, data[i].capitalSpent])
       }
       return result;

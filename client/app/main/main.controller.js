@@ -132,8 +132,25 @@ angular.module('cdmxIndicatorsApp')
       });
     };
 
+    $scope.months = {
+      1: 'Enero',
+      2: 'Febrero',
+      3: 'Marzo',
+      4: 'Abril',
+      5: 'Mayo',
+      6: 'Junio',
+      7: 'Julio',
+      8: 'Agosto',
+      9: 'Septiembre',
+      10: 'Octubre',
+      11: 'Noviembre',
+      12: 'Diciembre'
+    };
+    $scope.month = 8;
+    $scope.monthName = 'Agosto';
+
     /**
-     * @function financeDataService.getAllTotalSpentData
+     * @function updateIndicator1And2
      * Metodo que se invoca en el servicio financeDataService, el cual realiza una llamada REST al back-end (lado servidor) para la obtencion de los datos del total de las
      * ventas clasificadas por tipo de gasto capital y corriente. Este metodo retorna un objecto tipo {Promise} el cual indica si la llamada REST ha sido
      * exitosa o no (utilizando los metodos "then" y "catch"). Si esta llamada ha sido exitosa, mandara los datos retonardos de la llamada REST como parametro al metodo getTotalSpentGraph
@@ -141,13 +158,30 @@ angular.module('cdmxIndicatorsApp')
      * a traves del servicio ng-show. De lo contrario, si la llamada ha sido erronea, entonces solo mostrara en consola del navegador, el error que sucedio al momento de finalizar la llamada REST.
      * @return {Promise} - El resultado de la llamada REST.
      */
-    financeDataService.getAllTotalSpentData().then(function (response) {
-      var data = response.data;
-      financeDataService.getTotalSpentGraph($scope, data);
-      $rootScope.loading = false;
-    }).catch(function (err) {
-      console.log(err);
-    });
+    $scope.updateIndicator1And2 = function() {
+      financeDataService.getAllTotalSpentData($scope.month).then(function (response) {
+        var data = response.data;
+        financeDataService.getTotalSpentGraph($scope, data);
+        $rootScope.loading = false;
+      }).catch(function (err) {
+        console.log(err);
+      });
+    };
+
+    $scope.indicator3Dependency = true;
+
+    $scope.selectIndicator3 = function(isDependency) {
+      $scope.indicator3Dependency = isDependency;
+      $scope.updateIndicator3();
+    };
+
+    $scope.updateIndicator3 = function() {
+      if ($scope.indicator3Dependency) {
+        $scope.getTop3CapitalSpentsByDependency();
+      } else {
+        $scope.getTop3CapitalSpentsByInstAct();
+      }
+    };
 
     /**
      * @function $scope.getTop3CapitalSpentsByDependency
@@ -162,7 +196,7 @@ angular.module('cdmxIndicatorsApp')
      */
     $scope.getTop3CapitalSpentsByDependency = function () {
       $scope.clearTop3Data();
-      financeDataService.getTop3CapitalSpentsByDependencyData().then(function (response) {
+      financeDataService.getTop3CapitalSpentsByDependencyData($scope.month).then(function (response) {
         var data = response.data;
         $scope.ui.firstCapitalSpent = data.first.name.toUpperCase();
         $scope.ui.secondCapitalSpent = data.second.name.toUpperCase();
@@ -184,7 +218,7 @@ angular.module('cdmxIndicatorsApp')
      */
     $scope.getTop3CapitalSpentsByInstAct = function () {
       $scope.clearTop3Data();
-      financeDataService.getTop3CapitalSpentsByInstActData().then(function (response) {
+      financeDataService.getTop3CapitalSpentsByInstActData($scope.month).then(function (response) {
         var data = response.data;
         $scope.ui.firstCapitalSpent = data.first.name;
         $scope.ui.secondCapitalSpent = data.second.name;
@@ -197,7 +231,7 @@ angular.module('cdmxIndicatorsApp')
      * Invocar el metodo al momento de instanciar el controlador. Este cuenta con las variables que necesita por defecto ($scope.ui.firstCapitalSpent, $scope.ui.secondCapitalSpent, $scope.ui.thirdCapitalSpent).
      * establecidas en el inicio de este controlador.
      */
-    $scope.getTop3CapitalSpentsByDependency();
+    // $scope.getTop3CapitalSpentsByDependency();
     /**
      * @function $scope.updateIndicator4
      * Metodo que se invoca al instanciar este controlador y al momento de hacer click en los botones de filtracion del cuarto indicador. Este metodo invoca a un metodo en el servicio financeDataService llamado
@@ -210,7 +244,7 @@ angular.module('cdmxIndicatorsApp')
      */
     $scope.updateIndicator4 = function() {
       var favorite = $scope.indicator4dependency == 'preferred' ? 1 : 0;
-      financeDataService.getExecutedSpentsByDependencyData(favorite, $scope.indicator4dependency, $scope.indicator4sort).then(function (response) {
+      financeDataService.getExecutedSpentsByDependencyData(favorite, $scope.indicator4dependency, $scope.indicator4sort, $scope.month).then(function (response) {
         var data = response.data;
         financeDataService.getExecutedSpentsByDependencyGraph(data);
       }).catch(function (err) {
@@ -221,7 +255,7 @@ angular.module('cdmxIndicatorsApp')
      * Invocar el metodo al momento de instanciar el controlador. Este cuenta con las variables que necesita por defecto ($scope.indicator4dependency, $scope.indicator4sort) establecidas
      * en el inicio de este controlador.
      */
-    $scope.updateIndicator4();
+    // $scope.updateIndicator4();
     /**
      * @function $scope.updateIndicator5
      * Metodo que se invoca al instanciar este controlador y al momento de hacer click en los botones de filtracion del quinto indicador. Este metodo invoca a un metodo en el servicio financeDataService llamado
@@ -233,7 +267,7 @@ angular.module('cdmxIndicatorsApp')
      * De lo contrario, si la llamada ha sido erronea, entonces solo mostrara en consola del navegador, el error que sucedio al momento de finalizar la llamada REST.
      */
     $scope.updateIndicator5 = function() {
-      financeDataService.getExecutedSpentsByDepartmentFunctionData($scope.indicator5sort).then(function (response) {
+      financeDataService.getExecutedSpentsByDepartmentFunctionData($scope.indicator5sort, $scope.month).then(function (response) {
         var data = response.data;
         financeDataService.getExecutedSpentsByDepartmentFunctionGraph(data);
       }).catch(function (err) {
@@ -243,7 +277,7 @@ angular.module('cdmxIndicatorsApp')
     /**
      * Invocar el metodo al momento de instanciar el controlador. Este cuenta con la variable que necesita por defecto ($scope.indicator5sort) establecida en el inicio de este controlador.
      */
-    $scope.updateIndicator5();
+    // $scope.updateIndicator5();
 
     $scope.monthIndicator6 = 1;
     $scope.level0Indicator6 = null;
@@ -303,5 +337,15 @@ angular.module('cdmxIndicatorsApp')
     };
 
     $scope.updateIndicator6();
+
+    $scope.updateAllIndicators = function() {
+      $scope.monthName = $scope.months[$scope.month];
+      $scope.updateIndicator1And2();
+      $scope.updateIndicator3();
+      $scope.updateIndicator4();
+      $scope.updateIndicator5();
+    };
+
+    $scope.updateAllIndicators();
 
   });
