@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/cdmxindicators-dev'
   },
 
-  seedDB: false
+  seedDB: true
 };
