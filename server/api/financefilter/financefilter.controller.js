@@ -54,18 +54,32 @@ exports.destroy = function(req, res) {
   });
 };
 
-// Get finance indicator 1 and 2 results
-exports.indicator1 = function(req, res) {
-  var month = req.params.month;
+var getExecutedField = function(month) {
   if (month == null) {
     month = '8';
   }
-  var executedField = '$executedTo' + month;
-  var modifiedField = '$modifiedTo' + month;
   if (month == '1') {
-    executedField = '$executed1';
-    modifiedField = '$modified1';
+    return "$executed1";
+  } else {
+    return "$executedTo" + month;
   }
+};
+
+var getModifiedField = function(month) {
+  if (month == null) {
+    month = '8';
+  }
+  if (month == '1') {
+    return "$modified1";
+  } else {
+    return "$modifiedTo" + month;
+  }
+};
+
+// Get finance indicator 1 and 2 results
+exports.indicator1 = function(req, res) {
+  var executedField = getExecutedField(req.params.month);
+  var modifiedField = getModifiedField(req.params.month);
   Financefilter.aggregate([
     {'$match': {'spent': 'GASTO DE CAPITAL'}},
     {'$group': {
@@ -111,11 +125,7 @@ exports.indicator1 = function(req, res) {
 
 // Get finance indicator 3 dependencies
 exports.indicator3Dependencies = function(req, res) {
-  var month = req.params.month;
-  if (month == null) {
-    month = '8';
-  }
-  var executedField = '$executedTo' + month;
+  var executedField = getExecutedField(req.params.month);
   Financefilter.aggregate([
     {
       '$match': {
@@ -152,11 +162,7 @@ exports.indicator3Dependencies = function(req, res) {
 
 // Get finance indicator 3 activities
 exports.indicator3Activities = function(req, res) {
-  var month = req.params.month;
-  if (month == null) {
-    month = '8';
-  }
-  var executedField = '$executedTo' + month;
+  var executedField = getExecutedField(req.params.month);
   Financefilter.aggregate([
     {
       '$match': {
@@ -200,12 +206,8 @@ var favoritesIndicator4 = [
 
 // Get finance indicator 4
 exports.indicator4 = function(req, res) {
-  var month = req.params.month;
-  if (month == null) {
-    month = '8';
-  }
-  var executedField = '$executedTo' + month;
-  var modifiedField = '$modifiedTo' + month;
+  var executedField = getExecutedField(req.params.month);
+  var modifiedField = getModifiedField(req.params.month);
   var favorite = req.query.favorite;
   var dependency = req.query.dependency;
   var matchOptionsCapital = {
@@ -298,11 +300,7 @@ exports.indicator4 = function(req, res) {
 
 // Get finance indicator 5
 exports.indicator5 = function(req, res) {
-  var month = req.params.month;
-  if (month == null) {
-    month = '8';
-  }
-  var executedField = '$executedTo' + month;
+  var executedField = getExecutedField(req.params.month);
   var sort = req.query.sort;
   var sortField = {'executed': 1};
   if (sort == 'name') {
