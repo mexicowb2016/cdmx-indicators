@@ -772,7 +772,11 @@ div.panel-body.executed-spent-function-bubble-graph #indicator6div {
 }
 
 .table-content {
-  border-style: solid;
+  background-color: #F5F5F5;
+}
+
+.table-content tbody tr td {
+  border-top: 0px;
 }
 
 div.panel-body.women-promoted-percentage svg, div.panel-body.women-quantity-percentage svg, div.panel-body.women-recruitment-percentage svg, div.panel-body.women-salaryGap-percentage svg{
