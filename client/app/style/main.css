@@ -490,6 +490,12 @@ font-size: 14px;
 .dropdown-size {
   width: 245px;
 }
+.dropdown-size-business4 {
+  width: 275px;
+}
+.dropdown-size-finance4 {
+  width: 395px;
+}
 .panel-center-graph{
   text-align: center;
 }
