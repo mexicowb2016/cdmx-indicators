@@ -17,6 +17,7 @@ angular.module('cdmxIndicatorsApp').
       getExecutedSpentsBubbleGraph: getExecutedSpentsBubbleGraph,
       getTop3CapitalSpentsByDependencyData: getTop3CapitalSpentsByDependencyData,
       getTop3CapitalSpentsByInstActData: getTop3CapitalSpentsByInstActData,
+      getTypes: getTypes,
       getTotalSpentData: getTotalSpentData,
       getTotalSpentGraph: getTotalSpentGraph
     };
@@ -42,15 +43,15 @@ angular.module('cdmxIndicatorsApp').
       createMultiHorizontalBarGraph(data, 'indicator5div');
     }
 
-    function getExecutedSpentsByDependencyData (favorite, dependency, sort, month) {
-      dependency = dependency == 'dependencies' ? 1 : 0;
+    function getExecutedSpentsByDependencyData (favorite, dependencies, sort, month) {
+      favorite = favorite ? '1' : '0';
       var url = '/api/financefilters/indicators/indicator4/' + month;
       return $http({
         url: url,
         method: 'GET',
         params: {
           favorite: favorite,
-          dependency: dependency,
+          dependencies: dependencies,
           sort: sort
         }
       });
@@ -452,6 +453,11 @@ angular.module('cdmxIndicatorsApp').
         });
       }
       return result;
+    }
+
+    function getTypes() {
+      var url = '/api/financefilters/indicators/indicator4type';
+      return $http.get(url);
     }
 
 });

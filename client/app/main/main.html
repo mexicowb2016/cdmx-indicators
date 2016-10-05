@@ -115,9 +115,18 @@
           <div class="row">
             <div class="col-lg-4 col-sm-4">
               Filtro: <br />
-              <label class="btn btn-sm btn-color" ng-model="indicator4dependency" ng-click="updateIndicator4()" uib-btn-radio="'preferred'" ng-class="{active: indicator4dependency == 'preferred'}">Preferida</label>
-              <label class="btn btn-sm btn-color" ng-model="indicator4dependency" ng-click="updateIndicator4()" uib-btn-radio="'dependencies'" ng-class="{active: indicator4dependency == 'dependencies'}">Dependencias</label>
-              <label class="btn btn-sm btn-color" ng-model="indicator4dependency" ng-click="updateIndicator4()" uib-btn-radio="'delegacies'" ng-class="{active: indicator4dependency == 'delegacies'}">Otros Centros Gestores</label>
+              <div class="btn-group" uib-dropdown>
+                <a href="#" class="btn btn-color btn-sm" data-toggle="dropdown" uib-dropdown-toggle>Elegir Tipo de Centro Gestor &nbsp;&nbsp;<span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-size" uib-dropdown-menu role="menu">
+                  <li class="li-margin"><input type="radio" ng-model="indicator4Preferred" ng-value="true" id="preferred" ng-click="selectIndicator4Preferred($event)" /><label for="preferred">Preferida</label></li>
+                  <li class="li-margin" ng-repeat="indicator in indicator4Type">
+                    <label>
+                      <input type="checkbox" ng-model="indicator.selected" ng-change="selectIndicator4Indicator(indicator, $event)" />
+                      {{indicator.name}}
+                    </label>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div class="col-lg-4 col-sm-4">
               Ranking por gasto (del total): <br />

@@ -149,6 +149,19 @@ angular.module('cdmxIndicatorsApp')
     $scope.month = 8;
     $scope.monthName = 'Agosto';
 
+    financeDataService.getTypes().then(function(response) {
+      $scope.indicator4Type = [];
+      for (var i = 0; i < response.data.length; i++) {
+        $scope.indicator4Type.push({
+          name: response.data[i],
+          selected: false
+        })
+      }
+      $scope.updateAllIndicators();
+    });
+
+    $scope.indicator4Preferred = true;
+
     /**
      * @function updateIndicator1And2
      * Metodo que se invoca en el servicio financeDataService, el cual realiza una llamada REST al back-end (lado servidor) para la obtencion de los datos del total de las
@@ -243,8 +256,13 @@ angular.module('cdmxIndicatorsApp')
      * De lo contrario, si la llamada ha sido erronea, entonces solo mostrara en consola del navegador, el error que sucedio al momento de finalizar la llamada REST.
      */
     $scope.updateIndicator4 = function() {
-      var favorite = $scope.indicator4dependency == 'preferred' ? 1 : 0;
-      financeDataService.getExecutedSpentsByDependencyData(favorite, $scope.indicator4dependency, $scope.indicator4sort, $scope.month).then(function (response) {
+      var selectedTypes = [];
+      for (var i = 0; i < $scope.indicator4Type.length; i++) {
+        if ($scope.indicator4Type[i].selected) {
+          selectedTypes.push($scope.indicator4Type[i].name);
+        }
+      }
+      financeDataService.getExecutedSpentsByDependencyData($scope.indicator4Preferred, selectedTypes, $scope.indicator4sort, $scope.month).then(function (response) {
         var data = response.data;
         financeDataService.getExecutedSpentsByDependencyGraph(data);
       }).catch(function (err) {
@@ -346,6 +364,33 @@ angular.module('cdmxIndicatorsApp')
       $scope.updateIndicator5();
     };
 
-    $scope.updateAllIndicators();
+    $scope.uncheckAllIndicator4 = function() {
+      for (var i = 0; i < $scope.indicator4Type.length; i++) {
+        $scope.indicator4Type[i].selected = false;
+      }
+      $scope.indicator4Preferred = true;
+    };
+
+    $scope.selectIndicator4Preferred = function(event) {
+      $scope.indicator4Preferred = true;
+      $scope.uncheckAllIndicator4();
+      $scope.updateIndicator4();
+      event.stopPropagation();
+    };
+
+    $scope.selectIndicator4Indicator = function(indicator, event) {
+      $scope.indicator4Preferred = false;
+      var noneSelected = true;
+      for (var i = 0; i < $scope.indicator4Type.length; i++) {
+        if ($scope.indicator4Type[i].selected) {
+          noneSelected = false;
+        }
+      }
+      if (noneSelected) {
+        $scope.indicator4Preferred = true;
+      }
+      $scope.updateIndicator4();
+      event.stopPropagation();
+    };
 
   });

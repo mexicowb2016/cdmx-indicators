@@ -204,12 +204,23 @@ var favoritesIndicator4 = [
   'Secretaría de Seguridad Pública'
 ];
 
+// Get finance indicator 4 distinct types
+exports.indicator4type = function(req, res) {
+  Financefilter.find().distinct('urg', function (err, results) {
+    if(err) { return handleError(res, err); }
+    return res.status(200).json(results);
+  });
+};
+
 // Get finance indicator 4
 exports.indicator4 = function(req, res) {
   var executedField = getExecutedField(req.params.month);
   var modifiedField = getModifiedField(req.params.month);
   var favorite = req.query.favorite;
-  var dependency = req.query.dependency;
+  var dependencies = req.query.dependencies;
+  if (typeof dependencies == 'string') {
+    dependencies = [dependencies];
+  }
   var matchOptionsCapital = {
     'spent': 'GASTO DE CAPITAL'
   };
@@ -220,12 +231,11 @@ exports.indicator4 = function(req, res) {
     matchOptionsCapital.centerShort = {'$in': favoritesIndicator4};
     matchOptionsCurrent.centerShort = {'$in': favoritesIndicator4};
   } else {
-    if (dependency == '1') {
-      matchOptionsCapital.urg = 'DEPENDENCIAS';
-      matchOptionsCurrent.urg = 'DEPENDENCIAS';
-    } else {
-      matchOptionsCapital.urg = {'$ne': 'DEPENDENCIAS'};
-      matchOptionsCurrent.urg = {'$ne': 'DEPENDENCIAS'};
+    if (dependencies != null) {
+      if (dependencies.length != 0) {
+        matchOptionsCapital.urg = {'$in': dependencies};
+        matchOptionsCurrent.urg = {'$in': dependencies};
+      }
     }
   }
   var sort = req.query.sort;

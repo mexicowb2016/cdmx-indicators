@@ -15,6 +15,7 @@ router.get('/indicators/indicator1/:month', controller.indicator1);
 router.get('/indicators/indicator3/dependencies/:month', controller.indicator3Dependencies);
 router.get('/indicators/indicator3/activities/:month', controller.indicator3Activities);
 router.get('/indicators/indicator4/:month', controller.indicator4);
+router.get('/indicators/indicator4type', controller.indicator4type);
 router.get('/indicators/indicator5/:month', controller.indicator5);
 
 module.exports = router;
