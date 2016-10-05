@@ -394,8 +394,8 @@ font-size: 18px;
 }
 
 .fixed-panel {
-  min-height: 320px;
-  max-height: 320px;
+  min-height: 400px;
+  max-height: 400px;
 
 }
 
@@ -949,6 +949,13 @@ div.women-demographic-classification div.google-visualization-tooltip {
   padding-left: 2px;
   width: 0;
 }
+
+.first-indicator-graph div.bar-value, .second-indicator-graph div.bar-value {
+  color: #666666;
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
 .modal.in .modal-dialog {
       margin-top: 12%;
 }

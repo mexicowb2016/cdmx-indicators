@@ -223,17 +223,26 @@ angular.module('cdmxIndicatorsApp').
 
       mainContainer
         .select('div.original-bar-graph')
-        .style('width', x(dataArr[0]) + 'px')
+        .style('width', x(dataArr[0]) + 'px');
+
+      mainContainer
+        .select('div.original-bar-graph-value')
         .text(function(d) { return originalCurrency + ' mdp'; });
 
       mainContainer
         .select('div.modified-bar-graph')
-        .style('width', x(dataArr[1]) + 'px')
+        .style('width', x(dataArr[1]) + 'px');
+
+      mainContainer
+        .select('div.modified-bar-graph-value')
         .text(function(d) { return modifiedCurrency + ' mdp'; });
 
       mainContainer
         .select('div.executed-bar-graph')
-        .style('width', x(dataArr[2]) + 'px')
+        .style('width', x(dataArr[2]) + 'px');
+
+      mainContainer
+        .select('div.executed-bar-graph-value')
         .text(function(d) { return executedCurrency + ' mdp'; });
     }
 

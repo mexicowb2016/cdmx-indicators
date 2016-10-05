@@ -60,10 +60,13 @@
                 <div class="first-indicator-graph">
                   <label>Presupuesto Original</label>
                   <div class="original-bar-graph"></div>
+                  <div class="original-bar-graph-value bar-value"></div>
                   <label>Presupuesto Modificado</label>
                   <div class="modified-bar-graph"></div>
+                  <div class="modified-bar-graph-value bar-value"></div>
                   <label>Presupuesto Ejercido</label>
                   <div class="executed-bar-graph"></div>
+                  <div class="executed-bar-graph-value bar-value"></div>
                 </div>
               </div>
             </div>
@@ -77,10 +80,13 @@
                   <div class="second-indicator-graph">
                     <label>Presupuesto Original</label>
                     <div class="original-bar-graph"></div>
+                    <div class="original-bar-graph-value bar-value"></div>
                     <label>Presupuesto Modificado</label>
                     <div class="modified-bar-graph"></div>
+                    <div class="modified-bar-graph-value bar-value"></div>
                     <label>Presupuesto Ejercido</label>
                     <div class="executed-bar-graph"></div>
+                    <div class="executed-bar-graph-value bar-value"></div>
                   </div>
                 </div>
             </div>
@@ -89,14 +95,18 @@
             <div class="panel panel-default fixed-panel">
               <div class="panel-heading">Tres primeros en Ejecución de Gasto de Capital<i ng-click="open(myModalContent.indicator3)" class="mdi mdi-information icon-information"></i></div>
               <div class="panel-body">
+                <br />
                 <div class="btn-group buttom-position">
                   <label ng-class="{active: ui.top3CapitalSpentModel == 'Dependency'}" class="btn btn-color btn-sm" ng-model="ui.top3CapitalSpentModel" ng-click="selectIndicator3(true)" uib-btn-radio="'Dependency'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dependencia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                   <label ng-class="{active: ui.top3CapitalSpentModel == 'institutionalActivity'}" class="btn btn-color btn-sm" ng-model="ui.top3CapitalSpentModel" ng-click="selectIndicator3(false)" uib-btn-radio="'institutionalActivity'">Actividad Institucional</label>
                 </div>
-                <br>
+                <br />
                 <div class="panel-width">
+                  <br />
                   <p><span class="label label-background">1</span> <div class="text-box">{{ui.firstCapitalSpent}}</div></p>
+                  <br />
                   <p><span class="label label-background">2</span> <div class="text-box">{{ui.secondCapitalSpent}}</div></p>
+                  <br />
                   <p><span class="label label-background">3</span> <div class="text-box">{{ui.thirdCapitalSpent}}</div></p>
                 </div>
               </div>
