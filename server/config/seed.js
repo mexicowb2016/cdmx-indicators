@@ -455,7 +455,7 @@
 // })();
 
 var Financefilter = require('../api/financefilter/financefilter.model');
-var financefilterData = require('../api/inspectors_data/financefilterData.json');
+var financefilterData = require('../api/inspectors_data/Finanzas_General.json');
 
 Financefilter.find({}, function(err, financefilters) {
   if (financefilters.length == 0) {

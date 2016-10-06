@@ -2,7 +2,7 @@
 var fs = require('fs');
 var csv = require('fast-csv');
 var file = __dirname;
-var stream = fs.createReadStream(file + "/Datos_Finanzas-utf8.csv");
+var stream = fs.createReadStream(file + "/Finanzas_General.csv");
 
 var csvStream = csv();
 
@@ -69,7 +69,7 @@ csvStream.on("data", function(data) {
 });
 
 csvStream.on("end", function() {
-  fs.writeFile(file+'/financefilterData.json', JSON.stringify(resObj), function (err){
+  fs.writeFile(file+'/Finanzas_General.json', JSON.stringify(resObj), function (err){
     if (err) throw err;
     console.log('Successfully saved.');
   });
