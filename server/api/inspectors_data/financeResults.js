@@ -43,7 +43,7 @@ var fourthIndicator = require('./financeData2.json');
 
 var fifthIndicator = require('./financeData3.json');
 
-var sixthIndicator = require('./financeData4.json');
+var sixthIndicator = require('./Finanzas_Indicador6.json');
 
 module.exports = {
   firstSecondIndicatorData: firstSecondIndicator,

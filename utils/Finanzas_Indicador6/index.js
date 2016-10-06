@@ -2,7 +2,7 @@
 var fs = require('fs');
 var csv = require('fast-csv');
 var file = __dirname;
-var stream = fs.createReadStream(file+"/Bubble_Chart_Finanzas_v2_utf8.csv");
+var stream = fs.createReadStream(file+"/Finanzas_Indicador6.csv");
 
 var csvStream = csv();
 
@@ -32,7 +32,7 @@ csvStream.on("data", function(data) {
 });
 
 csvStream.on("end", function() {
-  fs.writeFile(file+'/financeData4.json', JSON.stringify(resObj), function (err){
+  fs.writeFile(file+'/Finanzas_Indicador6.json', JSON.stringify(resObj), function (err){
     if (err) throw err;
     console.log('Successfully saved.');
   });
