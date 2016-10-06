@@ -10,7 +10,7 @@ var firstIndicator = {
   "Registro de propiedades": 32
 };
 
-var thirdIndicator = require('./businessData.json');
+var thirdIndicator = require('./DoingBusiness_Indicador3.json');
 
 var fourthIndicator = function(indicator, entityInCharge, entityGcdmx) {
   var results = [];
