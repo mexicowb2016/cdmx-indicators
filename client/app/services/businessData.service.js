@@ -11,6 +11,7 @@ angular.module('cdmxIndicatorsApp')
       getCurrentQualificationData: getCurrentQualificationData,
       getCurrentQualificationGraph: getCurrentQualificationGraph,
       getSubnationalRankData: getSubnationalRankData,
+      getWorldRankData: getWorldRankData,
       getDoingBusinessGoals: getDoingBusinessGoals,
       getDoingBusinessGoalsLists: getDoingBusinessGoalsLists,
       getSubnationalRankGraph: getSubnationalRankGraph
@@ -26,6 +27,10 @@ angular.module('cdmxIndicatorsApp')
 
     function getSubnationalRankData () {
       return $http.get('/api/results/get/businessSubnationalRank/');
+    }
+
+    function getWorldRankData () {
+      return $http.get('/api/results/get/businessWorldRank/');
     }
 
     function getDoingBusinessGoalsLists() {

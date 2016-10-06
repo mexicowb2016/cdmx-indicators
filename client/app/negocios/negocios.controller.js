@@ -115,6 +115,15 @@ angular.module('cdmxIndicatorsApp')
       console.log(err);
     });
 
+    $scope.ui.indicator2 = {};
+    businessDataService.getWorldRankData().then(function (response) {
+      var data = response.data;
+      $scope.ui.indicator2.ranking = data['Ranking'];
+      $scope.ui.indicator2.total = data['Ranking Total'];
+    }).catch(function (err) {
+      console.log(err);
+    });
+
     $scope.selectedIndicator = 'Todos';
     $scope.selectedIndicator3 = 'Apertura de una empresa';
     $scope.indicator4all = true;

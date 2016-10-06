@@ -176,6 +176,16 @@ exports.businessSubnationalRank = function (req, res) {
 };
 
 /**
+ * Ranking Mundial
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
+ */
+exports.businessWorldRank = function (req, res) {
+  return res.status(200).json(businessDataResults.secondIndicator);
+};
+
+/**
  * Cumplimiento de metas
  * @param  {Request} req - Objeto para el request
  * @param  {Response} res - Objeto para respuesta

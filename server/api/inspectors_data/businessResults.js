@@ -3,12 +3,17 @@
  */
 var businessData4 = require('./DoingBusiness_Indicador4.json');
 
-var firstIndicator = {
-  "Apertura de una empresa": 11,
-  "Cumplimiento de contratos": 30,
-  "Manejo de permisos de construccion": 26,
-  "Registro de propiedades": 32
-};
+var businessData1 = require('./DoingBusiness_Indicador1_2.json');
+
+var firstIndicator = {};
+var secondIndicator = {};
+for (var key in businessData1) {
+  if (key.indexOf("Ranking") < 0) {
+    firstIndicator[key] = businessData1[key];
+  } else {
+    secondIndicator[key] = businessData1[key];
+  }
+}
 
 var thirdIndicator = require('./DoingBusiness_Indicador3.json');
 
@@ -63,6 +68,7 @@ var fourthIndicatorLists = function() {
 module.exports = {
   businessData4: businessData4,
   firstIndicator: firstIndicator,
+  secondIndicator: secondIndicator,
   thirdIndicator: thirdIndicator,
   fourthIndicator: fourthIndicator,
   fourthIndicatorLists: fourthIndicatorLists
