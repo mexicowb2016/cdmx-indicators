@@ -1,7 +1,7 @@
 /**
  * Created by joel on 01-09-16.
  */
-var businessData4 = require('./business4.json');
+var businessData4 = require('./DoingBusiness_Indicador4.json');
 
 var firstIndicator = {
   "Apertura de una empresa": 11,
