@@ -14,7 +14,7 @@
  * @param {Object} $uibModal - Servicio generico que la libreria Angular-Bootstrap establece para la configuracion/uso de propiedades/metodos
  * de un componente web tipo Modal.
  * @param {Object} openDataService - Servicio generico que utiliza este controlador para invocar sus metodos de obtencion de datos
- * y dibujar graficos de dichos datos. 
+ * y dibujar graficos de dichos datos.
  */
 angular.module('cdmxIndicatorsApp')
   .controller('DatosAbiertosCtrl', function ($scope, $uibModal, openDataService, $rootScope) {
@@ -61,6 +61,13 @@ angular.module('cdmxIndicatorsApp')
     $scope.toggleAnimation = function () {
      $scope.animationsEnabled = !$scope.animationsEnabled;
     };
+
+    $scope.indicator1 = [];
+    openDataService.getIndicator1OpenData().then(function(response) {
+      $scope.indicator1 = response.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
 
     openDataService.getOfferDemandOpenData().then(function (response) {
       var data = response.data;

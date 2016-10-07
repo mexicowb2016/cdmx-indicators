@@ -9,9 +9,14 @@ angular.module('cdmxIndicatorsApp').
   service('openDataService', function ($http) {
 
   return {
+    getIndicator1OpenData: getIndicator1OpenData,
     getOfferDemandOpenData: getOfferDemandOpenData,
     getOfferDemandOpenDataGraph: getOfferDemandOpenDataGraph
   };
+
+  function getIndicator1OpenData() {
+    return $http.get('/api/results/get/openData/indicator1/');
+  }
 
   function getOfferDemandOpenData () {
     return $http.get('/api/results/get/openData/demandOffer/');
