@@ -69,6 +69,13 @@ angular.module('cdmxIndicatorsApp')
       console.log(err);
     });
 
+    $scope.indicator2 = [];
+    openDataService.getIndicator2OpenData().then(function(response) {
+      $scope.indicator2 = response.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+
     openDataService.getOfferDemandOpenData().then(function (response) {
       var data = response.data;
       openDataService.getOfferDemandOpenDataGraph(data);

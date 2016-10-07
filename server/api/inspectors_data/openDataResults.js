@@ -2,6 +2,7 @@
  * Created by joel on 26-08-16.
  */
 var indicator1 = require('./DatosAbiertos_Indicador1.json');
+var indicator2 = require('./DatosAbiertos_Indicador2_3.json');
 
 function createOfferDemandOpenDataResult() {
   var offerOpenDataGathering = [
@@ -101,5 +102,6 @@ function saveOpenDataFormatArray(saveArray, offerDataArr, demandDataArr) {
 
 module.exports = {
   indicator1: indicator1,
+  indicator2: indicator2,
   firstIndicator: createOfferDemandOpenDataResult()
 };

@@ -10,12 +10,17 @@ angular.module('cdmxIndicatorsApp').
 
   return {
     getIndicator1OpenData: getIndicator1OpenData,
+    getIndicator2OpenData: getIndicator2OpenData,
     getOfferDemandOpenData: getOfferDemandOpenData,
     getOfferDemandOpenDataGraph: getOfferDemandOpenDataGraph
   };
 
   function getIndicator1OpenData() {
     return $http.get('/api/results/get/openData/indicator1/');
+  }
+
+  function getIndicator2OpenData() {
+    return $http.get('/api/results/get/openData/indicator2/');
   }
 
   function getOfferDemandOpenData () {

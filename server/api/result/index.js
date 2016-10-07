@@ -18,6 +18,7 @@ router.delete('/:id', controller.destroy);
 router.get('/get/executedSpents/bubble/', controller.financeExecutedSpentsBubble);
 router.get('/get/openData/demandOffer/', controller.openDataDemandOffer);
 router.get('/get/openData/indicator1/', controller.openDataIndicator1);
+router.get('/get/openData/indicator2/', controller.openDataIndicator2);
 router.get('/get/genre/proportion/', controller.genreProportion);
 router.get('/get/genre/salaryGap/', controller.genreSalaryGap);
 router.get('/get/genre/demographic/', controller.genreDemographic);

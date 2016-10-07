@@ -163,6 +163,16 @@ exports.openDataIndicator1 = function (req, res) {
 };
 
 /**
+ * Visitas y usuarios de datos abiertos
+ * @param  {Request} req - Objeto para el request
+ * @param  {Response} res - Objeto para respuesta
+ * @return {Response} - Respuesta del request
+ */
+exports.openDataIndicator2 = function (req, res) {
+  return res.status(200).json(openDataResults.indicator2);
+};
+
+/**
  * Evolución oferta y demanda de datos abiertos
  * @param  {Request} req - Objeto para el request
  * @param  {Response} res - Objeto para respuesta
