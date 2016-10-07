@@ -17,7 +17,7 @@
  * y dibujar graficos de dichos datos.
  */
 angular.module('cdmxIndicatorsApp')
-  .controller('MainCtrl', function ($rootScope, $scope, $uibModal, financeDataService, SweetAlert) {
+  .controller('MainCtrl', function ($rootScope, $scope, $uibModal, financeDataService, SweetAlert, $timeout) {
     /**
      * @type {boolean} $rootScope.loading - Variable que se guarda en el $rootScope y enmascara la pagina de finanzas utilizando el servicio ng-show
      * en un componente web personalido llamado "loader".
@@ -252,6 +252,9 @@ angular.module('cdmxIndicatorsApp')
         console.log(err);
       });
     };
+
+    $scope.indicator4NoData = false;
+
     /**
      * Invocar el metodo al momento de instanciar el controlador. Este cuenta con las variables que necesita por defecto ($scope.ui.firstCapitalSpent, $scope.ui.secondCapitalSpent, $scope.ui.thirdCapitalSpent).
      * establecidas en el inicio de este controlador.
@@ -276,11 +279,21 @@ angular.module('cdmxIndicatorsApp')
       }
       financeDataService.getExecutedSpentsByDependencyData($scope.indicator4Preferred, selectedTypes, $scope.indicator4sort, $scope.month).then(function (response) {
         var data = response.data;
-        financeDataService.getExecutedSpentsByDependencyGraph(data);
+        if (data.length == 0) {
+          $scope.indicator4NoData = true;
+        } else {
+          $scope.indicator4NoData = false;
+          $timeout(function() {
+            financeDataService.getExecutedSpentsByDependencyGraph(data);
+          }, 100);
+        }
       }).catch(function (err) {
         console.log(err);
       });
     };
+
+    $scope.indicator5NoData = false;
+
     /**
      * Invocar el metodo al momento de instanciar el controlador. Este cuenta con las variables que necesita por defecto ($scope.indicator4dependency, $scope.indicator4sort) establecidas
      * en el inicio de este controlador.
@@ -299,7 +312,20 @@ angular.module('cdmxIndicatorsApp')
     $scope.updateIndicator5 = function() {
       financeDataService.getExecutedSpentsByDepartmentFunctionData($scope.indicator5sort, $scope.month).then(function (response) {
         var data = response.data;
-        financeDataService.getExecutedSpentsByDepartmentFunctionGraph(data);
+        var allZeros = true;
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].executed != 0) {
+            allZeros = false;
+          }
+        }
+        if (allZeros) {
+          $scope.indicator5NoData = true;
+        } else {
+          $scope.indicator5NoData = false;
+          $timeout(function() {
+            financeDataService.getExecutedSpentsByDepartmentFunctionGraph(data);
+          }, 100);
+        }
       }).catch(function (err) {
         console.log(err);
       });
