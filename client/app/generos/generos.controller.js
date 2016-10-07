@@ -154,6 +154,7 @@
       $scope.updateIndicator5();
 
       $scope.openLoginModal = function () {
+        $rootScope.modalOpened = true;
         var modalInstance = $uibModal.open({
           templateUrl: 'login_modal.html',
           controller: 'LoginCtrl',
@@ -167,7 +168,7 @@
 
       };
 
-      if (!$rootScope.passwordValidated) {
+      if (!$rootScope.passwordValidated && !$rootScope.modalOpened) {
         $scope.openLoginModal();
       }
     });

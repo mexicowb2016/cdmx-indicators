@@ -133,3 +133,30 @@
     </div>
 </script>
 <!-- Information modal end -->
+<!-- Modal Login-->
+  <script type="text/ng-template" id="login_modal.html">
+    <div class="modal-login">
+      <!--<div class="modal-header"><button type="button" class="close" ng-click="cancel()">×</button></div>-->
+      <div class="modal-body text-center">
+        <form name="form" ng-submit="login(form)" novalidate>
+          <!--div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="user.email">
+          </div-->
+          <div class="form-group" ng-class="{ 'has-error' : form.password.$invalid && (form.password.$pristine || form.password.$dirty) && formSubmitted}">
+            <input ng-required="true"
+                   name="password"
+                   type="password"
+                   class="form-control"
+                   placeholder="Please Enter Your Password"
+                   ng-model="user.password">
+            <p ng-show="form.password.$invalid &&
+              (form.password.$pristine || form.password.$dirty) &&
+              formSubmitted" class="help-block">Access Denied - Password Incorrect, Please Try Again.
+            </p>
+          </div>
+          <button type="submit" class="btn btn-primary">Log in</button>
+        </form>
+      </div>
+    </div>
+  </script>
+<!-- End login-->

@@ -25,6 +25,7 @@ angular.module('cdmxIndicatorsApp')
 
 angular.module('cdmxIndicatorsApp').
   controller('LoginCtrl', function ($rootScope, $scope, $uibModalInstance) {
+    $rootScope.passwordValidated = false;
     $scope.formSubmitted = false;
     $scope.user = {
       password: ""
@@ -33,7 +34,7 @@ angular.module('cdmxIndicatorsApp').
       $scope.formSubmitted = true;
       if (form.$valid && form['password'].$modelValue === "Wa2d83$!"){
         $rootScope.passwordValidated = true;
-        $rootScope.modalClosed = true;
+        $rootScope.modalOpened = false;
         $uibModalInstance.close();
       } else {
         form['password'].$invalid = true;

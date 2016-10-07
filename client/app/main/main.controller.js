@@ -432,6 +432,7 @@ angular.module('cdmxIndicatorsApp')
     };
 
     $scope.openLoginModal = function () {
+      $rootScope.modalOpened = true;
       var modalInstance = $uibModal.open({
         templateUrl: 'login_modal.html',
         controller: 'LoginCtrl',
@@ -445,7 +446,7 @@ angular.module('cdmxIndicatorsApp')
 
     };
 
-    if (!$rootScope.passwordValidated && !$rootScope.modalClosed) {
+    if (!$rootScope.passwordValidated && !$rootScope.modalOpened) {
       $scope.openLoginModal();
     }
   });

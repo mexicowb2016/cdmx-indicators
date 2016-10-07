@@ -93,4 +93,23 @@ angular.module('cdmxIndicatorsApp')
     }).catch(function (err) {
       console.log(err);
     });
+
+    $scope.openLoginModal = function () {
+      $rootScope.modalOpened = true;
+      var modalInstance = $uibModal.open({
+        templateUrl: 'login_modal.html',
+        controller: 'LoginCtrl',
+        size: 'md',
+        backdrop: 'static'
+      });
+
+      modalInstance.result.then(function () {
+        $scope.initBackground = false;
+      }, function () {});
+
+    };
+
+    if (!$rootScope.passwordValidated && !$rootScope.modalOpened) {
+      $scope.openLoginModal();
+    }
   });
