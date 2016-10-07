@@ -453,6 +453,11 @@ font-size: 14px;
   text-align: center;
 }
 
+.btn-login {
+  background-color: #FF149B;
+  color: #FFFFFF;
+}
+
 .btn-color{
   border-radius: 0px;
   box-shadow: none;
