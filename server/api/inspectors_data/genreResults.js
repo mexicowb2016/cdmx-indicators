@@ -1,5 +1,7 @@
 var firstToThirdIndicator = require('./Genero_Indicador1.json');
 
+var secondIndicator = require('./Genero_Indicador2.json');
+
 var fifthIndicator = {
   "Estabilidad Laboral": {
     "bruteSalaryGapPercentage": 13,
@@ -41,5 +43,6 @@ var fifthIndicator = {
 
 module.exports = {
   firstToThirdIndicator: firstToThirdIndicator,
+  secondIndicator: secondIndicator,
   fifthIndicator: fifthIndicator
 };
