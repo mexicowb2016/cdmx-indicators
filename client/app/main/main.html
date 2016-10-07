@@ -110,9 +110,9 @@
                   <br />
                   <p><span class="label label-background">3</span> <div class="text-box">{{ui.thirdCapitalSpent}}</div></p>
                 </div>
-                <div class="panel-width" ng-show="indicator3NoData">
+                <div class="panel-width table-title" ng-show="indicator3NoData">
                   <br />
-                  No hay datos de ejecución para el mes seleccionado.
+                  * No hay datos de ejecución para el mes seleccionado.
                   <br />
                   Favor seleccionar otro mes utilizando el menú desplegable.
                 </div>
@@ -152,10 +152,10 @@
                 <label class="btn btn-sm btn-color" ng-model="indicator4sort" ng-click="updateIndicator4()" uib-btn-radio="'capital'" ng-class="{active: indicator4sort == 'capital'}">Capital</label>
               </div>
             </div>
-            <div class="col-lg-12 col-sm-12" ng-show="indicator4NoData">
+            <div class="col-lg-12 col-sm-12 table-title" ng-show="indicator4NoData">
               <br />
               <br />
-              No hay datos de ejecución para el mes seleccionado.
+              * No hay datos de ejecución para el mes seleccionado.
               <br />
               Favor seleccionar otro mes utilizando el menú desplegable.
             </div>
@@ -181,9 +181,9 @@
             <label class="btn btn-color btn-sm" ng-model="indicator5sort" ng-click="updateIndicator5()" uib-btn-radio="'executed'" ng-class="{active: indicator5sort == 'executed'}">Ranking por Ejercido</label>
           </div>
         </div>
-        <div class="panel-body executed-spent-function-graph" ng-show="indicator5NoData">
+        <div class="panel-body executed-spent-function-graph table-title" ng-show="indicator5NoData">
           <br />
-          No hay datos de ejecución para el mes seleccionado.
+          * No hay datos de ejecución para el mes seleccionado.
           <br />
           Favor seleccionar otro mes utilizando el menú desplegable.
         </div>
