@@ -3,6 +3,7 @@
  */
 var indicator1 = require('./DatosAbiertos_Indicador1.json');
 var indicator2 = require('./DatosAbiertos_Indicador2_3.json');
+var indicator4 = require('./DatosAbiertos_Indicador4.json');
 
 function createOfferDemandOpenDataResult() {
   var offerOpenDataGathering = [
@@ -103,5 +104,6 @@ function saveOpenDataFormatArray(saveArray, offerDataArr, demandDataArr) {
 module.exports = {
   indicator1: indicator1,
   indicator2: indicator2,
+  indicator4: indicator4,
   firstIndicator: createOfferDemandOpenDataResult()
 };

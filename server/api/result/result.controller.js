@@ -179,7 +179,7 @@ exports.openDataIndicator2 = function (req, res) {
  * @return {Response} - Respuesta del request
  */
 exports.openDataDemandOffer = function (req, res) {
-  return res.status(200).json(openDataResults.firstIndicator);
+  return res.status(200).json(openDataResults.indicator4);
 };
 
 /**
