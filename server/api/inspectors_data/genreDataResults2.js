@@ -1,4 +1,4 @@
-var genreData2 = require('./genreData2.json');
+var genreData2 = require('./Genero_Indicador4.json');
 
 var genreData2FilterDemographic = function(dependency, classification) {
   var results = {};
