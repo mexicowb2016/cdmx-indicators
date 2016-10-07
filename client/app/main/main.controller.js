@@ -57,19 +57,19 @@ angular.module('cdmxIndicatorsApp')
     $scope.myModalContent = {
       indicator1: {
         title: 'Gasto de capital',
-        description: 'Evolución del gasto de capital. Presenta el presupuesto original (o presupuesto aprobado) anual y el presupuesto modificado y ejercido (para el último mes disponible) del gasto de capital. También presenta el porcentaje de ejecución del gasto de capital (el cual se calcula dividiendo el presupuesto ejercido sobre el presupuesto modificado).'
+        description: 'Evolución del gasto de capital. Presenta el presupuesto original (o presupuesto aprobado) anual y el presupuesto modificado y ejercido (acumulado mensual) del gasto de capital. También presenta el porcentaje de ejecución del gasto de capital (el cual se calcula dividiendo el presupuesto ejercido sobre el presupuesto modificado).'
       },
       indicator2: {
         title:'Gasto corriente',
-        description:'Evolución del gasto corriente. Presenta el presupuesto original (o presupuesto aprobado) anual y el presupuesto modificado y ejercido (para el último mes disponible) del gasto corriente. También presenta el porcentaje de ejecución del gasto corriente (el cual se calcula dividiendo el presupuesto ejercido sobre el presupuesto modificado).'
+        description:'Evolución del gasto corriente. Presenta el presupuesto original (o presupuesto aprobado) anual y el presupuesto modificado y ejercido (acumulado mensual) del gasto corriente. También presenta el porcentaje de ejecución del gasto corriente (el cual se calcula dividiendo el presupuesto ejercido sobre el presupuesto modificado).'
       },
       indicator3: {
         title:'Tres primeros en ejecución de gasto de capital',
         description:'Presenta las tres Dependencias y las tres Actividades Institucionales con mayor ejecución de gasto de capital. Hacer clic en el botón de Dependencia o Actividad Institucional según lo que se quiera revisar.'
       },
       indicator4:{
-        title:'Ejecución del gasto por Dependencia',
-        description:'Presenta la ejecución del gasto corriente y la ejecución del gasto de capital para las cinco principales Dependencias según el presupuesto original (o presupuesto aprobado) anual. Si desea revisar la ejecución del gasto de otras Dependencias, debe seleccionar los nombres en el menú desplegable.'
+        title:'Ejecución del gasto por Centro Gestor',
+        description:'Presenta el porcentaje de ejecución del gasto corriente y el porcentaje de ejecución del gasto de capital para las cinco principales dependencias según el presupuesto original (o presupuesto aprobado) anual. Si desea revisar el porcentaje de ejecución del gasto de otros centros gestores (incluyendo otras dependencias), debe seleccionar el tipo de centro gestor en el menú desplegable.'
       },
       indicator5:{
         title:'Ejecución del gasto por función',
