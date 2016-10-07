@@ -2,7 +2,7 @@
 var fs = require('fs');
 var csv = require('fast-csv');
 var file = __dirname;
-var stream = fs.createReadStream(file+"/Genero_Indicador1_2_3.csv");
+var stream = fs.createReadStream(file+"/Genero_Indicador1.csv");
 
 var csvStream = csv();
 
@@ -21,7 +21,7 @@ csvStream.on("data", function(data) {
 });
 
 csvStream.on("end", function() {
-  fs.writeFile(file+'/Genero_Indicador1_2_3.json', JSON.stringify(resObj), function (err){
+  fs.writeFile(file+'/Genero_Indicador1.json', JSON.stringify(resObj), function (err){
     if (err) throw err;
     console.log('Successfully saved.');
   });

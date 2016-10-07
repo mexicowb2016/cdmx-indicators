@@ -1,4 +1,4 @@
-var firstToThirdIndicator = require('./Genero_Indicador1_2_3.json');
+var firstToThirdIndicator = require('./Genero_Indicador1.json');
 
 var fifthIndicator = {
   "Estabilidad Laboral": {
