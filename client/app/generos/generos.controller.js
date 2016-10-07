@@ -8,7 +8,7 @@
  * graficos (Bar y Pie charts).
  * - Inyecta servicios genericos de AngularJS para guardar/usar propiedades/metodos declarados en este controlador.
  * - Inyecta servicio de Angular-Bootstrap para el uso de su componente web tipo Modal.
- * 
+ *
  * @param {Object} $rootScope - Objeto global que utiliza AngularJS para guardar/usar propiedades/metodos globales en la aplicacion.
  * @param {Object} $scope - Objeto privado que se establece para guardar/usar propiedades/metodos en el controlador
  * @param {Object} $uibModal - Servicio generico que la libreria Angular-Bootstrap establece para la configuracion/uso de propiedades/metodos
@@ -153,4 +153,21 @@
       $scope.getGenreJobClassificationGraph($scope.classifications[3]);
       $scope.updateIndicator5();
 
+      $scope.openLoginModal = function () {
+        var modalInstance = $uibModal.open({
+          templateUrl: 'login_modal.html',
+          controller: 'LoginCtrl',
+          size: 'md',
+          backdrop: 'static'
+        });
+
+        modalInstance.result.then(function () {
+          $scope.initBackground = false;
+        }, function () {});
+
+      };
+
+      if (!$rootScope.passwordValidated) {
+        $scope.openLoginModal();
+      }
     });
