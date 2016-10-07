@@ -102,13 +102,19 @@
                   <label ng-class="{active: ui.top3CapitalSpentModel == 'institutionalActivity'}" class="btn btn-color btn-sm" ng-model="ui.top3CapitalSpentModel" ng-click="selectIndicator3(false)" uib-btn-radio="'institutionalActivity'">Actividad Institucional</label>
                 </div>
                 <br />
-                <div class="panel-width">
+                <div class="panel-width" ng-hide="indicator3NoData">
                   <br />
                   <p><span class="label label-background">1</span> <div class="text-box">{{ui.firstCapitalSpent}}</div></p>
                   <br />
                   <p><span class="label label-background">2</span> <div class="text-box">{{ui.secondCapitalSpent}}</div></p>
                   <br />
                   <p><span class="label label-background">3</span> <div class="text-box">{{ui.thirdCapitalSpent}}</div></p>
+                </div>
+                <div class="panel-width" ng-show="indicator3NoData">
+                  <br />
+                  No hay datos de ejecución para el mes seleccionado.
+                  <br />
+                  Favor seleccionar otro mes utilizando el menú desplegable.
                 </div>
               </div>
             </div>

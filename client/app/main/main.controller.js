@@ -196,6 +196,8 @@ angular.module('cdmxIndicatorsApp')
       }
     };
 
+    $scope.indicator3NoData = false;
+
     /**
      * @function $scope.getTop3CapitalSpentsByDependency
      * Metodo que se invoca al instanciar este controlador y al momento de hacer click en los botones de filtracion del tercer indicador.
@@ -211,6 +213,11 @@ angular.module('cdmxIndicatorsApp')
       $scope.clearTop3Data();
       financeDataService.getTop3CapitalSpentsByDependencyData($scope.month).then(function (response) {
         var data = response.data;
+        if (data.first.totalSpent == 0 && data.second.totalSpent == 0 && data.third.totalSpent == 0) {
+          $scope.indicator3NoData = true;
+        } else {
+          $scope.indicator3NoData = false;
+        }
         $scope.ui.firstCapitalSpent = data.first.name.toUpperCase();
         $scope.ui.secondCapitalSpent = data.second.name.toUpperCase();
         $scope.ui.thirdCapitalSpent = data.third.name.toUpperCase();
@@ -233,6 +240,11 @@ angular.module('cdmxIndicatorsApp')
       $scope.clearTop3Data();
       financeDataService.getTop3CapitalSpentsByInstActData($scope.month).then(function (response) {
         var data = response.data;
+        if (data.first.totalSpent == 0 && data.second.totalSpent == 0 && data.third.totalSpent == 0) {
+          $scope.indicator3NoData = true;
+        } else {
+          $scope.indicator3NoData = false;
+        }
         $scope.ui.firstCapitalSpent = data.first.name;
         $scope.ui.secondCapitalSpent = data.second.name;
         $scope.ui.thirdCapitalSpent = data.third.name;
