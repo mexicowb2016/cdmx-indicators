@@ -12,6 +12,7 @@ angular.module('cdmxIndicatorsApp').
     getIndicator1OpenData: getIndicator1OpenData,
     getIndicator2OpenData: getIndicator2OpenData,
     getOfferDemandOpenData: getOfferDemandOpenData,
+    getRankingOfferDemandOpenData: getRankingOfferDemandOpenData,
     getOfferDemandOpenDataGraph: getOfferDemandOpenDataGraph
   };
 
@@ -25,6 +26,10 @@ angular.module('cdmxIndicatorsApp').
 
   function getOfferDemandOpenData () {
     return $http.get('/api/results/get/openData/demandOffer/');
+  }
+
+  function getRankingOfferDemandOpenData () {
+    return $http.get('/api/results/get/openData/rankingDemandOffer/');
   }
 
   function getOfferDemandOpenDataGraph (data, rootScope) {

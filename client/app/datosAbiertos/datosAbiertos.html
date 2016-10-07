@@ -83,30 +83,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><span class="label label-background">1</span></td>
-                <td>Sobse</td>
-                <td>163</td>
-              </tr>
-              <tr>
-                <td><span class="label label-background">2</span></td>
-                <td>Sedema</td>
-                <td>75</td>
-              </tr>
-              <tr>
-                <td><span class="label label-background">3</span></td>
-                <td>Contraloría Gral.</td>
-                <td>21</td>
-              </tr>
-              <tr>
-                <td><span class="label label-background">4</span></td>
-                <td>Agu</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td><span class="label label-background">5</span></td>
-                <td>Sec. Turismo</td>
-                <td>5</td>
+              <tr ng-repeat="rank in indicator5.offer">
+                <td><span class="label label-background">{{$index + 1}}</span></td>
+                <td>{{rank.dependency}}</td>
+                <td>{{rank.datasets}}</td>
               </tr>
             </tbody>
           </table>
@@ -126,30 +106,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><span class="label label-background">1</span></td>
-                <td>Semovi</td>
-                <td>3650</td>
-              </tr>
-              <tr>
-                <td><span class="label label-background">2</span></td>
-                <td>Agu</td>
-                <td>1282</td>
-              </tr>
-              <tr>
-                <td><span class="label label-background">3</span></td>
-                <td>Sobse</td>
-                <td>1050</td>
-              </tr>
-              <tr>
-                <td><span class="label label-background">4</span></td>
-                <td>Sedema</td>
-                <td>605</td>
-              </tr>
-              <tr>
-                <td><span class="label label-background">5</span></td>
-                <td>Seduvi</td>
-                <td>210</td>
+              <tr ng-repeat="rank in indicator5.demand">
+                <td><span class="label label-background">{{$index + 1}}</span></td>
+                <td>{{rank.dependency}}</td>
+                <td>{{rank.datasets}}</td>
               </tr>
             </tbody>
           </table>
